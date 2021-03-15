@@ -21,6 +21,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.event.AncestorListener;
+import javax.swing.event.AncestorEvent;
 
 public class AddManageSubjects extends JFrame {
 
@@ -37,19 +43,15 @@ public class AddManageSubjects extends JFrame {
 	private JLabel lblNewLabel_6;
 	private JLabel lblNewLabel_7;
 	private JLabel lblNewLabel_8;
-	private JTextField txtNumOfEvaH;
-	private JTextField txtNumOfLabH;
-	private JTextField txtSubOffYear;
-	private JTextField txtSubOffSem;
 	private JTextField txtSubName;
 	private JTextField txtSubCode;
-	private JTextField txtNumOfLecH;
-	private JTextField txtNumOfTuteH;
 	private JLabel lblNewLabel_9;
 	private JButton btnNewButton_2;
 	private JButton btnNewButton_3;
 	private JButton btnLoadTable;
 	private JTable table;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -75,7 +77,7 @@ public class AddManageSubjects extends JFrame {
 		SublayeredPane.revalidate();
 	}
 	
-	Connection connection=null;
+	//Connection connection=null;
 	private JButton btnNewButton_4;
 	private JButton btnNewButton_5;
 	private JLabel lblNewLabel_1;
@@ -88,15 +90,64 @@ public class AddManageSubjects extends JFrame {
 	private JLabel lblNewLabel_16;
 	private JLabel lblNewLabel_17;
 	private JTextField txtSubID;
-	private JTextField txtSubOffYear2;
-	private JTextField txtSubOffSem2;
 	private JTextField txtSubName2;
 	private JTextField txtSubCode2;
-	private JTextField txtNumOfLecH2;
-	private JTextField txtNumOfTuteH2;
-	private JTextField txtNumOfLabH2;
-	private JTextField txtNumOfEvaH2;
 	private JLabel lblNewLabel_18;
+	private JComboBox SubjectComboBox;
+	private JComboBox txtSubOffYear;
+	private JComboBox txtSubOffSem;
+	
+	
+	
+	Connection connection=null;
+	private JComboBox NumOfLecHours;
+	private JComboBox NumOfEvaltionHours;
+	private JComboBox NumOfTuteHours;
+	private JComboBox NumOfLabHours;
+	private JComboBox txtSubOffYear2;
+	private JComboBox txtSubOffSem2;
+	private JComboBox txtNumOfLecH2;
+	private JComboBox txtNumOfTuteH2;
+	private JComboBox txtNumOfLabH2;
+	private JComboBox txtNumOfEvaH2;
+	private JPanel panel_1;
+	public void refreshSubjectTable()
+	{
+		try {
+			
+			String query="select * from subjects";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			table.setModel(DbUtils.resultSetToTableModel(rs));
+			
+			
+		}catch(Exception e1)
+		{
+			e1.printStackTrace();
+		}
+	}
+	
+	public void fillSubjectCobmoBox() {
+		
+
+		try {
+			
+			String query="select * from subjects";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			
+			while(rs.next()) {
+				
+				SubjectComboBox.addItem(rs.getString("SubjectName"));
+			}
+			
+		}catch(Exception e1)
+		{
+			e1.printStackTrace();
+		}
+		
+		
+	}
 	
 	/**
 	 * Create the frame.
@@ -152,26 +203,6 @@ public class AddManageSubjects extends JFrame {
 		lblNewLabel_8.setBounds(365, 390, 194, 13);
 		AddSubPanel.add(lblNewLabel_8);
 		
-		txtNumOfEvaH = new JTextField();
-		txtNumOfEvaH.setBounds(532, 387, 186, 19);
-		AddSubPanel.add(txtNumOfEvaH);
-		txtNumOfEvaH.setColumns(10);
-		
-		txtNumOfLabH = new JTextField();
-		txtNumOfLabH.setBounds(532, 351, 186, 19);
-		AddSubPanel.add(txtNumOfLabH);
-		txtNumOfLabH.setColumns(10);
-		
-		txtSubOffYear = new JTextField();
-		txtSubOffYear.setBounds(532, 134, 186, 19);
-		AddSubPanel.add(txtSubOffYear);
-		txtSubOffYear.setColumns(10);
-		
-		txtSubOffSem = new JTextField();
-		txtSubOffSem.setBounds(532, 172, 186, 19);
-		AddSubPanel.add(txtSubOffSem);
-		txtSubOffSem.setColumns(10);
-		
 		txtSubName = new JTextField();
 		txtSubName.setBounds(532, 211, 186, 19);
 		AddSubPanel.add(txtSubName);
@@ -182,16 +213,6 @@ public class AddManageSubjects extends JFrame {
 		AddSubPanel.add(txtSubCode);
 		txtSubCode.setColumns(10);
 		
-		txtNumOfLecH = new JTextField();
-		txtNumOfLecH.setBounds(532, 285, 186, 19);
-		AddSubPanel.add(txtNumOfLecH);
-		txtNumOfLecH.setColumns(10);
-		
-		txtNumOfTuteH = new JTextField();
-		txtNumOfTuteH.setBounds(532, 318, 186, 19);
-		AddSubPanel.add(txtNumOfTuteH);
-		txtNumOfTuteH.setColumns(10);
-		
 		lblNewLabel_9 = new JLabel("Add Subjects :");
 		lblNewLabel_9.setBounds(327, 75, 145, 13);
 		AddSubPanel.add(lblNewLabel_9);
@@ -201,34 +222,7 @@ public class AddManageSubjects extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				//insert data into the database :
-				
-           try {
-					
-					String query="insert into subjects (OfferedYear,OfferedSem,SubjectName,SublectCode,NumOfLecHours,NumOfTuteHours,NumOfLabHours,NumOfEvaltionHours) values (?,?,?,?,?,?,?,?)";                      
-					PreparedStatement pst=connection.prepareStatement(query);
-					pst.setString(1, txtSubOffYear.getText());
-					pst.setString(2, txtSubOffSem.getText());
-					pst.setString(3, txtSubName.getText());
-					pst.setString(4, txtSubCode.getText());
-					pst.setString(5, txtNumOfLecH.getText());
-					pst.setString(6, txtNumOfTuteH.getText());
-					pst.setString(7, txtNumOfLabH.getText());
-					pst.setString(8, txtNumOfEvaH.getText());
-					
-					
-					
-					pst.execute();
-					JOptionPane.showMessageDialog(null, "Data inserted successfully!");
-					
-					pst.close();
-					
-					
-				}catch(Exception e1)
-				{
-					e1.printStackTrace();
-				}
-				
-				
+			
 			}
 		});
 		btnNewButton_2.setBounds(365, 471, 150, 21);
@@ -238,6 +232,49 @@ public class AddManageSubjects extends JFrame {
 		btnNewButton_3.setBounds(548, 471, 170, 21);
 		AddSubPanel.add(btnNewButton_3);
 		
+		txtSubOffYear = new JComboBox();
+		txtSubOffYear.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4"}));
+		txtSubOffYear.setBounds(530, 133, 188, 21);
+		AddSubPanel.add(txtSubOffYear);
+		
+		txtSubOffSem = new JComboBox();
+		txtSubOffSem.setModel(new DefaultComboBoxModel(new String[] {"1", "2"}));
+		txtSubOffSem.setBounds(532, 171, 186, 21);
+		AddSubPanel.add(txtSubOffSem);
+		
+		NumOfLecHours = new JComboBox();
+		NumOfLecHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		NumOfLecHours.setBounds(530, 284, 188, 21);
+		AddSubPanel.add(NumOfLecHours);
+		
+		NumOfTuteHours = new JComboBox();
+		NumOfTuteHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		NumOfTuteHours.setBounds(532, 317, 186, 21);
+		AddSubPanel.add(NumOfTuteHours);
+		
+		NumOfLabHours = new JComboBox();
+		NumOfLabHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		NumOfLabHours.setBounds(532, 350, 186, 21);
+		AddSubPanel.add(NumOfLabHours);
+		
+		NumOfEvaltionHours = new JComboBox();
+		NumOfEvaltionHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		NumOfEvaltionHours.setBounds(530, 386, 188, 21);
+		AddSubPanel.add(NumOfEvaltionHours);
+		
+		panel_1 = new JPanel();
+		panel_1.addAncestorListener(new AncestorListener() {
+			public void ancestorAdded(AncestorEvent event) {
+			}
+			public void ancestorMoved(AncestorEvent event) {
+			}
+			public void ancestorRemoved(AncestorEvent event) {
+			}
+		});
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		panel_1.setBounds(261, 58, 631, 472);
+		AddSubPanel.add(panel_1);
+		
 		ManageSubPanel = new JPanel();
 		SublayeredPane.add(ManageSubPanel, "name_127354460414000");
 		ManageSubPanel.setLayout(null);
@@ -246,18 +283,7 @@ public class AddManageSubjects extends JFrame {
 		btnLoadTable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				try {
-					
-					String query="select * from subjects";
-					PreparedStatement pst=connection.prepareStatement(query);
-					ResultSet rs=pst.executeQuery();
-					table.setModel(DbUtils.resultSetToTableModel(rs));
-					
-					
-				}catch(Exception e1)
-				{
-					e1.printStackTrace();
-				}
+				 //To refresh the table after adding details
 				
 			}
 		});
@@ -269,18 +295,38 @@ public class AddManageSubjects extends JFrame {
 		ManageSubPanel.add(scrollPane);
 		
 		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				//table eken click karaama methnta ena eka
+				
+			}
+		});
 		scrollPane.setViewportView(table);
 		
 		btnNewButton_4 = new JButton("Update Details");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+				
+				//Update details :
+				
 			}
 		});
 		btnNewButton_4.setBounds(689, 509, 191, 32);
 		ManageSubPanel.add(btnNewButton_4);
 		
 		btnNewButton_5 = new JButton("Delete Details");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//Delete
+				
+				//To refresh the table after deleting details :
+				
+				
+			}
+		});
 		btnNewButton_5.setBounds(910, 509, 205, 32);
 		ManageSubPanel.add(btnNewButton_5);
 		
@@ -325,16 +371,6 @@ public class AddManageSubjects extends JFrame {
 		ManageSubPanel.add(txtSubID);
 		txtSubID.setColumns(10);
 		
-		txtSubOffYear2 = new JTextField();
-		txtSubOffYear2.setBounds(189, 141, 177, 19);
-		ManageSubPanel.add(txtSubOffYear2);
-		txtSubOffYear2.setColumns(10);
-		
-		txtSubOffSem2 = new JTextField();
-		txtSubOffSem2.setBounds(189, 175, 177, 19);
-		ManageSubPanel.add(txtSubOffSem2);
-		txtSubOffSem2.setColumns(10);
-		
 		txtSubName2 = new JTextField();
 		txtSubName2.setBounds(189, 219, 177, 19);
 		ManageSubPanel.add(txtSubName2);
@@ -345,29 +381,52 @@ public class AddManageSubjects extends JFrame {
 		ManageSubPanel.add(txtSubCode2);
 		txtSubCode2.setColumns(10);
 		
-		txtNumOfLecH2 = new JTextField();
-		txtNumOfLecH2.setBounds(189, 300, 177, 19);
-		ManageSubPanel.add(txtNumOfLecH2);
-		txtNumOfLecH2.setColumns(10);
-		
-		txtNumOfTuteH2 = new JTextField();
-		txtNumOfTuteH2.setBounds(189, 340, 177, 19);
-		ManageSubPanel.add(txtNumOfTuteH2);
-		txtNumOfTuteH2.setColumns(10);
-		
-		txtNumOfLabH2 = new JTextField();
-		txtNumOfLabH2.setBounds(189, 380, 177, 19);
-		ManageSubPanel.add(txtNumOfLabH2);
-		txtNumOfLabH2.setColumns(10);
-		
-		txtNumOfEvaH2 = new JTextField();
-		txtNumOfEvaH2.setBounds(189, 425, 177, 19);
-		ManageSubPanel.add(txtNumOfEvaH2);
-		txtNumOfEvaH2.setColumns(10);
-		
 		lblNewLabel_18 = new JLabel("ManageDetails  :");
 		lblNewLabel_18.setBounds(39, 52, 120, 17);
 		ManageSubPanel.add(lblNewLabel_18);
+		
+		
+		
+		
+		//SElect detail from combo box and display in the form
+		SubjectComboBox = new JComboBox();
+		SubjectComboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		SubjectComboBox.setBounds(544, 68, 85, 21);
+		ManageSubPanel.add(SubjectComboBox);
+		
+		txtSubOffYear2 = new JComboBox();
+		txtSubOffYear2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4"}));
+		txtSubOffYear2.setBounds(189, 140, 177, 21);
+		ManageSubPanel.add(txtSubOffYear2);
+		
+		txtSubOffSem2 = new JComboBox();
+		txtSubOffSem2.setModel(new DefaultComboBoxModel(new String[] {"1", "2"}));
+		txtSubOffSem2.setBounds(189, 174, 177, 21);
+		ManageSubPanel.add(txtSubOffSem2);
+		
+		txtNumOfLecH2 = new JComboBox();
+		txtNumOfLecH2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4"}));
+		txtNumOfLecH2.setBounds(189, 299, 177, 21);
+		ManageSubPanel.add(txtNumOfLecH2);
+		
+		txtNumOfTuteH2 = new JComboBox();
+		txtNumOfTuteH2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		txtNumOfTuteH2.setBounds(189, 339, 177, 21);
+		ManageSubPanel.add(txtNumOfTuteH2);
+		
+		txtNumOfLabH2 = new JComboBox();
+		txtNumOfLabH2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		txtNumOfLabH2.setBounds(189, 379, 177, 21);
+		ManageSubPanel.add(txtNumOfLabH2);
+		
+		txtNumOfEvaH2 = new JComboBox();
+		txtNumOfEvaH2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		txtNumOfEvaH2.setBounds(190, 424, 176, 21);
+		ManageSubPanel.add(txtNumOfEvaH2);
 		
 		JButton btnNewButton = new JButton("ADD");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -389,5 +448,10 @@ public class AddManageSubjects extends JFrame {
 		});
 		btnNewButton_1.setBounds(140, 10, 123, 32);
 		contentPane.add(btnNewButton_1);
+		
+		refreshSubjectTable();
+		fillSubjectCobmoBox();
+		
+		
 	}
 }
