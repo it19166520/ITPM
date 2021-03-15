@@ -171,6 +171,7 @@ public class AddManageSubjects extends JFrame {
 		SublayeredPane.add(AddSubPanel, "name_127330680826200");
 		AddSubPanel.setLayout(null);
 		
+		//create form to get subject details from user :
 		lblNewLabel = new JLabel("Offered Year  :");
 		lblNewLabel.setBounds(365, 137, 194, 13);
 		AddSubPanel.add(lblNewLabel);
@@ -221,7 +222,54 @@ public class AddManageSubjects extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//insert data into the database :
+				  //Get Subject Details from the user and store the details in the database:
+				
+				 try {
+						
+						String query="insert into subjects (OfferedYear,OfferedSem,SubjectName,SublectCode,NumOfLecHours,NumOfTuteHours,NumOfLabHours,NumOfEvaltionHours) values (?,?,?,?,?,?,?,?)";                      
+						PreparedStatement pst=connection.prepareStatement(query);
+						
+						//get year details from the user by using  JComboBox :
+						String OffYear=txtSubOffYear.getSelectedItem().toString();
+						pst.setString(1, OffYear);
+						
+						//get semester details from user by using JComboBox:
+						String OffSem=txtSubOffSem.getSelectedItem().toString();
+						pst.setString(2, OffSem);
+						
+						//get Subject name and subject code from text fields:
+						pst.setString(3, txtSubName.getText());
+						pst.setString(4, txtSubCode.getText());
+						
+						//get Number of lecturer hours from user by using JComboBox:
+						String LecHours=txtSubOffSem.getSelectedItem().toString();
+						pst.setString(5, LecHours);
+						
+						//get Number of Tutorial hours from user by using JComboBox:
+						String TuteHours=txtSubOffSem.getSelectedItem().toString();
+						pst.setString(6, TuteHours);
+						
+						//get Number of lab hours from user by using JComboBox:
+						String LabHours=txtSubOffSem.getSelectedItem().toString();
+						pst.setString(7, LabHours);
+						
+						//get Number of Evalution Hours from by using JComboBox:
+						String EvaHours=txtSubOffSem.getSelectedItem().toString();
+						pst.setString(8, EvaHours);
+						
+						
+						//Display successful massage when data was inserted to the database successfully:
+						pst.execute();
+						JOptionPane.showMessageDialog(null, "Data inserted successfully!");
+						
+						pst.close();
+						
+						
+					}catch(Exception e1)
+					{
+						e1.printStackTrace();
+					}
+				
 			
 			}
 		});
@@ -327,6 +375,8 @@ public class AddManageSubjects extends JFrame {
 				
 			}
 		});
+		
+		//create form to update subject details which user added before :
 		btnNewButton_5.setBounds(910, 509, 205, 32);
 		ManageSubPanel.add(btnNewButton_5);
 		
@@ -367,7 +417,7 @@ public class AddManageSubjects extends JFrame {
 		ManageSubPanel.add(lblNewLabel_17);
 		
 		txtSubID = new JTextField();
-		txtSubID.setBounds(189, 103, 177, 19);
+		txtSubID.setBounds(189, 103, 176, 19);
 		ManageSubPanel.add(txtSubID);
 		txtSubID.setColumns(10);
 		
