@@ -270,7 +270,9 @@ public class AddManageSubjects extends JFrame {
 						e1.printStackTrace();
 					}
 				
-			
+				//call "refreshSubjectTable" method to refresh the table after doing any changes:
+				 refreshSubjectTable();
+				 
 			}
 		});
 		btnNewButton_2.setBounds(365, 471, 150, 21);
@@ -331,7 +333,19 @@ public class AddManageSubjects extends JFrame {
 		btnLoadTable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				 //To refresh the table after adding details
+				//To refresh the table after doing any changes:
+				try {
+					
+						String query="select * from subjects";
+						PreparedStatement pst=connection.prepareStatement(query);
+						ResultSet rs=pst.executeQuery();
+						table.setModel(DbUtils.resultSetToTableModel(rs));
+					
+					
+					}catch(Exception e1)
+					{
+						e1.printStackTrace();
+					}
 				
 			}
 		});
@@ -347,8 +361,37 @@ public class AddManageSubjects extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				//table eken click karaama methnta ena eka
-				
+				//To pass the relevant details to the form after selecting the raw of the table:
+				  try {
+						int row = table.getSelectedRow();
+						String ID_=(table.getModel().getValueAt(row, 0)).toString();
+						
+					   
+						String query="select * from subjects where ID='"+ID_+"' ";                      
+						PreparedStatement pst=connection.prepareStatement(query);
+					
+						ResultSet rs=pst.executeQuery();
+						
+						while(rs.next())
+						{
+							txtSubID.setText(rs.getString("ID"));
+							txtSubOffYear2.setSelectedItem(rs.getString("OfferedYear"));
+							txtSubOffSem2.setSelectedItem(rs.getString("OfferedSem"));
+							txtSubName2.setText(rs.getString("SubjectName"));
+							txtSubCode2.setText(rs.getString("SublectCode"));
+							txtNumOfLecH2.setSelectedItem(rs.getString("NumOfLecHours"));
+							txtNumOfTuteH2.setSelectedItem(rs.getString("NumOfTuteHours"));
+							txtNumOfLabH2.setSelectedItem(rs.getString("NumOfLabHours"));
+							txtNumOfEvaH2.setSelectedItem(rs.getString("NumOfEvaltionHours"));
+						}
+						
+						pst.close();
+						
+						
+					}catch(Exception e1)
+					{
+						e1.printStackTrace();
+					}
 			}
 		});
 		scrollPane.setViewportView(table);
@@ -358,6 +401,26 @@ public class AddManageSubjects extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				//Update details :
+
+				  try {
+						
+						String query="update subjects set  OfferedYear='"+txtSubOffYear2.getSelectedItem()+"' , OfferedSem='"+txtSubOffSem2.getSelectedItem()+"' ,SubjectName='"+txtSubName2.getText()+"' ,SublectCode='"+txtSubCode2.getText()+"', NumOfLecHours='"+txtNumOfLecH2.getSelectedItem()+"',  NumOfTuteHours='"+txtNumOfTuteH2.getSelectedItem()+"' , NumOfLabHours='"+txtNumOfLabH2.getSelectedItem()+"' , NumOfEvaltionHours='"+txtNumOfEvaH2.getSelectedItem()+"' where ID='"+txtSubID.getText()+"' ";                      
+						PreparedStatement pst=connection.prepareStatement(query);
+						
+						pst.execute();
+						
+						JOptionPane.showMessageDialog(null, "Details Updated Sucsessfully!");
+						
+						pst.close();
+						
+						
+					}catch(Exception e1)
+					{
+						e1.printStackTrace();
+					}
+				  
+				//To refresh the table after updating details :
+				  refreshSubjectTable();
 				
 			}
 		});
@@ -369,10 +432,25 @@ public class AddManageSubjects extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				//Delete
-				
+				try {
+					
+					String query="delete from subjects where ID='"+txtSubID.getText()+"'";                      
+					PreparedStatement pst=connection.prepareStatement(query);
+					
+					pst.execute();
+					
+					JOptionPane.showMessageDialog(null, "Details Deleted Sucsessfully!");
+					
+					pst.close();
+					
+					
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}
+			
 				//To refresh the table after deleting details :
-				
-				
+				refreshSubjectTable();	
 			}
 		});
 		
@@ -438,10 +516,39 @@ public class AddManageSubjects extends JFrame {
 		
 		
 		
-		//SElect detail from combo box and display in the form
+		
 		SubjectComboBox = new JComboBox();
 		SubjectComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				//To get the details to the form  according to the Subject name which user selected from the comboBox :
+	                try {
+						
+						String query="select * from subjects where SubjectName=?";                      
+						PreparedStatement pst=connection.prepareStatement(query);
+						pst.setString(1, (String)SubjectComboBox.getSelectedItem());
+						ResultSet rs=pst.executeQuery();
+						
+						while(rs.next())
+						{
+							txtSubID.setText(rs.getString("ID"));
+							txtSubOffYear2.setSelectedItem(rs.getString("OfferedYear"));
+							txtSubOffSem2.setSelectedItem(rs.getString("OfferedSem"));
+							txtSubName2.setText(rs.getString("SubjectName"));
+							txtSubCode2.setText(rs.getString("SublectCode"));
+							txtNumOfLecH2.setSelectedItem(rs.getString("NumOfLecHours"));
+							txtNumOfTuteH2.setSelectedItem(rs.getString("NumOfTuteHours"));
+							txtNumOfLabH2.setSelectedItem(rs.getString("NumOfLabHours"));
+							txtNumOfEvaH2.setSelectedItem(rs.getString("NumOfEvaltionHours"));
+						}
+						
+						pst.close();
+						
+						
+					}catch(Exception e1)
+					{
+						e1.printStackTrace();
+					}
 				
 			}
 		});
