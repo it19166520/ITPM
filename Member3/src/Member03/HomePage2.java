@@ -53,6 +53,7 @@ public class HomePage2 {
 	 */
 	private void initialize() {
 		wokingDayHourframe = new JFrame();
+		wokingDayHourframe.getContentPane().setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		wokingDayHourframe.getContentPane().setBackground(SystemColor.window);
 		wokingDayHourframe.setBounds(0, 0, 1370, 728);
 		wokingDayHourframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,7 +82,7 @@ public class HomePage2 {
 			}
 		});
 		btnAddWorkingDays.setForeground(Color.WHITE);
-		btnAddWorkingDays.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
+		btnAddWorkingDays.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnAddWorkingDays.setBackground(new Color(0, 0, 139));
 		btnAddWorkingDays.setBounds(431, 238, 435, 66);
 		wokingDayHourframe.getContentPane().add(btnAddWorkingDays);
@@ -92,7 +93,7 @@ public class HomePage2 {
 			}
 		});
 		btnManageNotAvaillable.setForeground(Color.WHITE);
-		btnManageNotAvaillable.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		btnManageNotAvaillable.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnManageNotAvaillable.setBackground(new Color(0, 0, 139));
 		btnManageNotAvaillable.setBounds(431, 365, 435, 66);
 		wokingDayHourframe.getContentPane().add(btnManageNotAvaillable);
@@ -103,7 +104,7 @@ public class HomePage2 {
 			}
 		});
 		btnManageARoom.setForeground(Color.WHITE);
-		btnManageARoom.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		btnManageARoom.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnManageARoom.setBackground(new Color(0, 0, 139));
 		btnManageARoom.setBounds(431, 488, 435, 66);
 		wokingDayHourframe.getContentPane().add(btnManageARoom);
@@ -117,7 +118,7 @@ public class HomePage2 {
 			}
 		});
 		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setBounds(1168, 90, 154, 59);
 		wokingDayHourframe.getContentPane().add(btnNewButton);

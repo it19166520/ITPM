@@ -151,7 +151,7 @@ public class WorkingDaysAndHours {
 		addWorkingDHframe.getContentPane().add(daysck7);
 		
 		JLabel l2_1 = new JLabel("Working Time Per Day :");
-		l2_1.setBounds(115, 467, 518, 23);
+		l2_1.setBounds(115, 467, 219, 23);
 		l2_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		addWorkingDHframe.getContentPane().add(l2_1);
 		
@@ -163,7 +163,7 @@ public class WorkingDaysAndHours {
 		
 		JSpinner minutes = new JSpinner();
 		minutes.setModel(new SpinnerNumberModel(0, 0, 60, 1));
-		minutes.setBounds(570, 468, 63, 22);
+		minutes.setBounds(582, 469, 63, 22);
 		minutes.setBackground(new Color(216, 191, 216));
 		addWorkingDHframe.getContentPane().add(minutes);
 		
@@ -178,7 +178,7 @@ public class WorkingDaysAndHours {
 		addWorkingDHframe.getContentPane().add(lblMinutes);
 		
 		JLabel l2_1_1 = new JLabel("Time Slots :");
-		l2_1_1.setBounds(115, 512, 518, 23);
+		l2_1_1.setBounds(115, 512, 219, 23);
 		l2_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		addWorkingDHframe.getContentPane().add(l2_1_1);
 		
@@ -189,7 +189,7 @@ public class WorkingDaysAndHours {
 		timeslot1.setColumns(10);
 		
 		timeslot2 = new JTextField();
-		timeslot2.setBounds(570, 514, 63, 20);
+		timeslot2.setBounds(582, 515, 63, 20);
 		timeslot2.setBackground(new Color(176, 224, 230));
 		timeslot2.setColumns(10);
 		addWorkingDHframe.getContentPane().add(timeslot2);
@@ -200,7 +200,7 @@ public class WorkingDaysAndHours {
 		addWorkingDHframe.getContentPane().add(lblNewLabel_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(771, 160, 573, 529);
+		scrollPane.setBounds(775, 167, 569, 522);
 		addWorkingDHframe.getContentPane().add(scrollPane);
 		
 		JTextArea list = new JTextArea();
@@ -210,7 +210,7 @@ public class WorkingDaysAndHours {
 		addbtn.setForeground(new Color(255, 255, 255));
 		addbtn.setBackground(new Color(0, 0, 128));
 		addbtn.setBounds(78, 566, 269, 50);
-		addbtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		addbtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		addbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				list.append("\t--- Working Days And Hours--- \n\n"+
@@ -229,8 +229,8 @@ public class WorkingDaysAndHours {
 		JButton updatebtn = new JButton("Update Details");
 		updatebtn.setForeground(new Color(255, 255, 255));
 		updatebtn.setBackground(new Color(0, 139, 139));
-		updatebtn.setBounds(389, 567, 269, 50);
-		updatebtn.setFont(new Font("Tahoma", Font.BOLD, 13));
+		updatebtn.setBounds(404, 567, 269, 50);
+		updatebtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		addWorkingDHframe.getContentPane().add(updatebtn);
 		
 		JButton deletebtn = new JButton("Delete Details");
@@ -248,13 +248,13 @@ public class WorkingDaysAndHours {
 			}
 		});
 		deletebtn.setBounds(78, 628, 269, 50);
-		deletebtn.setFont(new Font("Tahoma", Font.BOLD, 13));
+		deletebtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		addWorkingDHframe.getContentPane().add(deletebtn);
 		
 		JButton clearbtn = new JButton("Clear Details");
 		clearbtn.setForeground(new Color(0, 0, 0));
 		clearbtn.setBackground(new Color(0, 255, 255));
-		clearbtn.setBounds(389, 628, 269, 50);
+		clearbtn.setBounds(404, 628, 269, 50);
 		clearbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				li1.setToolTipText(null);
@@ -272,7 +272,7 @@ public class WorkingDaysAndHours {
 
 			}
 		});
-		clearbtn.setFont(new Font("Tahoma", Font.BOLD, 13));
+		clearbtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		addWorkingDHframe.getContentPane().add(clearbtn);
 		
 		JButton exitbtn = new JButton("Exit\r\n");

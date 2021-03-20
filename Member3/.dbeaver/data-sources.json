@@ -1,0 +1,53 @@
+{
+	"folders": {},
+	"connections": {
+		"microsoft-1784b0d20e0-56f66679280c032c": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "ITPM",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "LAKSHI99\\SQLEXPRESS",
+				"port": "1433",
+				"database": "ITPM",
+				"url": "jdbc:sqlserver://;serverName=LAKSHI99\\SQLEXPRESS;databaseName=ITPM",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-authentication@": "SQL_SERVER_PASSWORD",
+					"@dbeaver-show-all-schemas@": "false"
+				},
+				"handlers": {}
+			}
+		},
+		"microsoft-1784b11227a-2cbf909dc779dea8": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "ITPM 2",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "LAKSHI99\\SQLEXPRESS",
+				"port": "1433",
+				"database": "ITPM",
+				"url": "jdbc:sqlserver://;serverName=LAKSHI99\\SQLEXPRESS;databaseName=ITPM",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-authentication@": "SQL_SERVER_PASSWORD",
+					"@dbeaver-show-all-schemas@": "false"
+				},
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}
