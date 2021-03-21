@@ -16,24 +16,6 @@
 				"provider-properties": {
 					"@dbeaver-authentication@": "SQL_SERVER_PASSWORD",
 					"@dbeaver-show-all-schemas@": "false"
-				}
-			}
-		},
-		"microsoft-17849d1eb50-3d63fc3cff5302db": {
-			"provider": "sqlserver",
-			"driver": "microsoft",
-			"name": "New",
-			"save-password": true,
-			"read-only": false,
-			"configuration": {
-				"host": "itpmserver.database.windows.net",
-				"port": "1433",
-				"database": "ITPM(New)",
-				"url": "jdbc:sqlserver://;serverName=itpmserver.database.windows.net;databaseName=ITPM(New)",
-				"type": "dev",
-				"provider-properties": {
-					"@dbeaver-authentication@": "SQL_SERVER_PASSWORD",
-					"@dbeaver-show-all-schemas@": "false"
 				},
 				"handlers": {}
 			}

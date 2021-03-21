@@ -2,22 +2,20 @@ package Lecturer;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.sql.*;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLayeredPane;
+
 import java.awt.CardLayout;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
+
 import javax.swing.border.LineBorder;
+
+import DBConnection.SqlServerConnection;
+import net.proteanit.sql.DbUtils;
+
 import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JToggleButton;
-import javax.swing.JTabbedPane;
 
 public class AddManageLecturer extends JFrame {
 
@@ -74,12 +72,94 @@ public class AddManageLecturer extends JFrame {
 		
 	}
 
+	Connection connection=null;
+	private JTable LecDetailstable;
+	private JTable ActiveHoursDetailstable;
+	private JTextField txtLecturerRegistrationNumber;
+	private JComboBox ActiveHoursComboBox;
+	private JComboBox LecturerDetailsComboBox;
+	
+	
+	public void refreshLecturerDetailsTable()
+	{	
+			try {
+				
+				String query="select LecturerRegistrationNumber,LecturerName,Faculty,Department,Campus,Building,LecturerID,Level,Rank from Lecturer";
+				PreparedStatement pst=connection.prepareStatement(query);
+				ResultSet rs=pst.executeQuery();
+				LecDetailstable.setModel(DbUtils.resultSetToTableModel(rs));
+				
+				
+			}catch(Exception e1)
+			{
+				e1.printStackTrace();
+			}				
+	}
+	
+	public void refreshActiveHoursTable()
+	{		
+		try {
+			
+			String query="select LecturerRegistrationNumber,LecturerName,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday from Lecturer";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			ActiveHoursDetailstable.setModel(DbUtils.resultSetToTableModel(rs));
+			
+			
+		}catch(Exception e1)
+		{
+			e1.printStackTrace();
+		}			
+		
+	}		
+	
+	public void fillLecturerComboBox()
+	{
+		try {
+			
+			String query="select * from Lecturer";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			
+			while(rs.next())
+			{
+				LecturerDetailsComboBox.addItem(rs.getObject("LecturerName"));
+			}
+			
+		}catch(Exception e1){
+			
+			e1.printStackTrace();
+		}
+		
+	}
+	
+	public void fillActiveHoursComboBox()
+	{
+		try {
+			
+			String query="select * from Lecturer";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			
+			while(rs.next())
+			{
+				ActiveHoursComboBox.addItem(rs.getObject("LecturerName"));
+			}
+			
+		}catch(Exception e1){
+			
+			e1.printStackTrace();
+		}
+		
+	}
+	
 	/**
 	 * Create the frame.
 	 */
 	public AddManageLecturer() {
+		connection = SqlServerConnection.dbConnecter();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1277, 695);
+		setBounds(0,0,1370,728);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -139,22 +219,27 @@ public class AddManageLecturer extends JFrame {
 		txtLecturerName.setColumns(10);
 		
 		JComboBox txtFaculty = new JComboBox();
+		txtFaculty.setModel(new DefaultComboBoxModel(new String[] {"Computing", "Engineering", "Management", "Medicine", "Science", "Architeccher"}));
 		txtFaculty.setBounds(147, 133, 96, 21);
 		panel.add(txtFaculty);
 		
 		JComboBox txtDepartment = new JComboBox();
+		txtDepartment.setModel(new DefaultComboBoxModel(new String[] {"IT", "SE", "DS", "SC", "IS"}));
 		txtDepartment.setBounds(147, 175, 96, 21);
 		panel.add(txtDepartment);
 		
 		JComboBox txtCampus = new JComboBox();
+		txtCampus.setModel(new DefaultComboBoxModel(new String[] {"Malabe", "Kandy", "Kagalle", "Jaffna"}));
 		txtCampus.setBounds(147, 214, 96, 21);
 		panel.add(txtCampus);
 		
 		JComboBox txtBuilding = new JComboBox();
+		txtBuilding.setModel(new DefaultComboBoxModel(new String[] {"501", "502", "301", "302", "401", "408"}));
 		txtBuilding.setBounds(147, 251, 96, 21);
 		panel.add(txtBuilding);
 		
 		JComboBox txtLevel = new JComboBox();
+		txtLevel.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7"}));
 		txtLevel.setBounds(147, 338, 96, 21);
 		panel.add(txtLevel);
 		
@@ -167,10 +252,6 @@ public class AddManageLecturer extends JFrame {
 		txtRank.setBounds(147, 431, 96, 19);
 		panel.add(txtRank);
 		txtRank.setColumns(10);
-		
-		JButton btnNewButton_3 = new JButton("Generate ID");
-		btnNewButton_3.setBounds(101, 392, 85, 21);
-		panel.add(btnNewButton_3);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 3));
@@ -246,6 +327,78 @@ public class AddManageLecturer extends JFrame {
 		panel_1.add(lblNewLabel_17);
 		
 		JButton btnNewButton_4 = new JButton("Save Details  ");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			try {	
+				String query="insert into Lecturer (LecturerName,Faculty,Department,Campus,Building,LecturerID,Level,Rank,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";                      
+				PreparedStatement pst=connection.prepareStatement(query);
+				
+				//get subject name from the user by using text fields :
+				pst.setString(1,txtLecturerName.getText());
+				
+				//get semester details from user by using JComboBox:
+				String fac=txtFaculty.getSelectedItem().toString();
+				pst.setString(2, fac);
+				
+				//get Number of lecturer hours from user by using JComboBox:
+				String Department=txtDepartment.getSelectedItem().toString();
+				pst.setString(3, Department);
+				
+				//get Number of Tutorial hours from user by using JComboBox:
+				String Campus=txtCampus.getSelectedItem().toString();
+				pst.setString(4, Campus);
+				
+				//get Number of lab hours from user by using JComboBox:
+				String Building=txtBuilding.getSelectedItem().toString();
+				pst.setString(5, Building);
+				
+				//get Number of Evalution Hours from by using JComboBox:
+				pst.setString(6,txtLecturerID.getText());
+				
+				//get Number of lab hours from user by using JComboBox:
+				String level=txtLevel.getSelectedItem().toString();
+				pst.setString(7, level);
+				
+				//get Number of lab hours from user by using JComboBox:
+				pst.setString(8,txtRank.getText());
+				
+				//get Number of lab hours from user by using JComboBox:
+				pst.setString(9,txtMonday.getText());
+				
+				//get Number of lab hours from user by using JComboBox:
+				pst.setString(10,txtTuesday.getText());
+				
+				//get Number of lab hours from user by using JComboBox:
+				pst.setString(11,txtWednesday.getText());
+				
+				//get Number of lab hours from user by using JComboBox:
+				pst.setString(12,txtThursday.getText());
+				
+				//get Number of lab hours from user by using JComboBox:
+				pst.setString(13,txtFriday.getText());
+				
+				//get Number of lab hours from user by using JComboBox:
+				pst.setString(14,txtSatarday.getText());
+				
+				//get Number of lab hours from user by using JComboBox:
+				pst.setString(15,txtSunday.getText());
+				
+				//Display successful massage when data was inserted to the database successfully:
+				pst.execute();
+				JOptionPane.showMessageDialog(null, "Data inserted successfully!");
+				
+				pst.close();
+				
+				
+			}catch(Exception e1)
+			{
+				e1.printStackTrace();
+			}
+				
+			   refreshLecturerDetailsTable();
+			}
+		});
 		btnNewButton_4.setBounds(692, 494, 138, 21);
 		panel1.add(btnNewButton_4);
 		
@@ -315,24 +468,38 @@ public class AddManageLecturer extends JFrame {
 		panel_2.add(btnNewButton_9);
 		
 		JComboBox txtFaculty2 = new JComboBox();
+		txtFaculty2.setModel(new DefaultComboBoxModel(new String[] {"Computing", "Engineering", "Management", "Medicine", "Archtecture"}));
 		txtFaculty2.setBounds(152, 121, 167, 21);
 		panel_2.add(txtFaculty2);
 		
 		JComboBox txtDepartment2 = new JComboBox();
+		txtDepartment2.setModel(new DefaultComboBoxModel(new String[] {"IT", "SE", "SC", "DS", "IS"}));
 		txtDepartment2.setBounds(152, 166, 167, 21);
 		panel_2.add(txtDepartment2);
 		
 		JComboBox txtCampus2 = new JComboBox();
+		txtCampus2.setModel(new DefaultComboBoxModel(new String[] {"Malabe", "Kandy", "Kagalle", "Jaffna"}));
 		txtCampus2.setBounds(152, 210, 167, 21);
 		panel_2.add(txtCampus2);
 		
 		JComboBox txtBuilding2 = new JComboBox();
+		txtBuilding2.setModel(new DefaultComboBoxModel(new String[] {"501", "502", "301", "302", "402", "402"}));
 		txtBuilding2.setBounds(152, 251, 167, 21);
 		panel_2.add(txtBuilding2);
 		
 		JComboBox txtLevel2 = new JComboBox();
+		txtLevel2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6"}));
 		txtLevel2.setBounds(155, 334, 164, 21);
 		panel_2.add(txtLevel2);
+		
+		JLabel lblNewLabel_33 = new JLabel("Registration Number  :");
+		lblNewLabel_33.setBounds(36, 53, 109, 13);
+		panel_2.add(lblNewLabel_33);
+		
+		txtLecturerRegistrationNumber = new JTextField();
+		txtLecturerRegistrationNumber.setBounds(152, 50, 167, 19);
+		panel_2.add(txtLecturerRegistrationNumber);
+		txtLecturerRegistrationNumber.setColumns(10);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -340,15 +507,96 @@ public class AddManageLecturer extends JFrame {
 		panel2.add(panel_3);
 		panel_3.setLayout(null);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 108, 570, 362);
-		panel_3.add(tabbedPane);
+		JButton btnLoadLecturerDetails = new JButton("Load Table");
+		btnLoadLecturerDetails.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+					String query="select LecturerRegistrationNumber,LecturerName,Faculty,Department,Campus,Building,LecturerID,Level,Rank from Lecturer";
+					PreparedStatement pst=connection.prepareStatement(query);
+					ResultSet rs=pst.executeQuery();
+					LecDetailstable.setModel(DbUtils.resultSetToTableModel(rs));
+					
+					
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}				
+				
+				
+				
+			}
+		});
+		btnLoadLecturerDetails.setBounds(418, 36, 151, 21);
+		panel_3.add(btnLoadLecturerDetails);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(25, 122, 544, 304);
+		panel_3.add(scrollPane);
+		
+		LecDetailstable = new JTable();
+		scrollPane.setViewportView(LecDetailstable);
+		
+		LecturerDetailsComboBox = new JComboBox();
+		LecturerDetailsComboBox.setBounds(25, 36, 151, 21);
+		panel_3.add(LecturerDetailsComboBox);
 		
 		JButton btnNewButton_6 = new JButton("Update");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//Update Inserted data into the table :
+				
+				  try {
+						
+						String query="update Lecturer set  LecturerName='"+txtLecturerName2.getText()+"' , Faculty='"+txtFaculty2.getSelectedItem()+"' ,Department='"+txtDepartment2.getSelectedItem()+"' ,Campus='"+txtCampus2.getSelectedItem()+"', Building='"+txtBuilding2.getSelectedItem()+"',  LecturerID='"+txtLecturerID2.getText()+"' , Level='"+txtLevel2.getSelectedItem()+"' , Rank='"+txtRank2.getText()+"' where LecturerRegistrationNumber='"+txtLecturerRegistrationNumber.getText()+"' ";                      
+						PreparedStatement pst=connection.prepareStatement(query);
+						
+						pst.execute();
+						
+						JOptionPane.showMessageDialog(null, "Details Updated Sucsessfully!");
+						
+						pst.close();
+						
+						
+					}catch(Exception e1)
+					{
+						e1.printStackTrace();
+					}
+				  refreshLecturerDetailsTable();
+			}
+		});
 		btnNewButton_6.setBounds(1111, 172, 109, 39);
 		panel2.add(btnNewButton_6);
 		
 		JButton btnNewButton_7 = new JButton("Delete");
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//delete lecturer details  :
+				
+				try {
+					
+					String query="delete from Lecturer where LecturerRegistrationNumber='"+txtLecturerRegistrationNumber.getText()+"'";                      
+					PreparedStatement pst=connection.prepareStatement(query);
+					
+					pst.execute();
+					
+					JOptionPane.showMessageDialog(null, "Details Deleted Sucsessfully!");
+					
+					pst.close();
+					
+					
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}
+				
+				refreshLecturerDetailsTable();
+				
+			}
+		});
 		btnNewButton_7.setBounds(1111, 221, 109, 39);
 		panel2.add(btnNewButton_7);
 		
@@ -460,17 +708,72 @@ public class AddManageLecturer extends JFrame {
 		panel3.add(panel_6);
 		panel_6.setLayout(null);
 		
-		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_1.setBounds(10, 10, 672, 242);
-		panel_6.add(tabbedPane_1);
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(10, 41, 672, 211);
+		panel_6.add(scrollPane_1);
+		
+		ActiveHoursDetailstable = new JTable();
+		scrollPane_1.setViewportView(ActiveHoursDetailstable);
+		
+		JButton btnLoadActiveHoursDetails = new JButton("Load Details");
+		btnLoadActiveHoursDetails.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				try {
+					
+					String query="select LecturerRegistrationNumber,LecturerName,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday from Lecturer";
+					PreparedStatement pst=connection.prepareStatement(query);
+					ResultSet rs=pst.executeQuery();
+					ActiveHoursDetailstable.setModel(DbUtils.resultSetToTableModel(rs));
+					
+					
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}			
+				
+				
+				
+			}
+		});
+		btnLoadActiveHoursDetails.setBounds(436, 10, 166, 21);
+		panel_6.add(btnLoadActiveHoursDetails);
+		
+		ActiveHoursComboBox = new JComboBox();
+		ActiveHoursComboBox.setBounds(10, 10, 149, 21);
+		panel_6.add(ActiveHoursComboBox);
 		
 		JButton btnNewButton_10 = new JButton("Update");
-		btnNewButton_10.setBounds(1073, 88, 85, 21);
+		btnNewButton_10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//Update Active hours details :
+				
+				  try {
+						
+						String query="Update Lecturer set Monday='"+txtMonday3.getText()+"' , Tuesday='"+txtTuesday3.getText()+"' , Wednesday='"+txtWednesday3.getText()+"' , Thursday='"+txtThursday3.getText()+"', Friday='"+txtFriday3.getText()+"', Satarday='"+txtSatarday3.getText()+"' , Sunday='"+txtSunday3.getText()+"'  where LecturerRegistrationNumber='"+txtLecturerID3.getText()+"' ";                      
+						PreparedStatement pst=connection.prepareStatement(query);
+						
+						pst.execute();
+						
+						JOptionPane.showMessageDialog(null, "Details Updated Sucsessfully!");
+						
+						pst.close();
+						
+						
+					}catch(Exception e1)
+					{
+						e1.printStackTrace();
+					}
+				  
+				  refreshActiveHoursTable();
+	
+			}
+			
+		});
+		btnNewButton_10.setBounds(1073, 119, 85, 21);
 		panel3.add(btnNewButton_10);
-		
-		JButton btnNewButton_11 = new JButton("Delete");
-		btnNewButton_11.setBounds(1073, 119, 85, 21);
-		panel3.add(btnNewButton_11);
 		
 		JButton btnNewButton_12 = new JButton("Clear");
 		btnNewButton_12.setBounds(1073, 150, 85, 21);
@@ -505,5 +808,11 @@ public class AddManageLecturer extends JFrame {
 		});
 		btnNewButton_2.setBounds(258, 41, 143, 21);
 		contentPane.add(btnNewButton_2);
+		
+		refreshLecturerDetailsTable();
+		refreshActiveHoursTable();
+		
+		fillLecturerComboBox();
+		fillActiveHoursComboBox();
 	}
 }

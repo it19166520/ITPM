@@ -111,6 +111,8 @@ public class AddManageSubjects extends JFrame {
 	private JComboBox txtNumOfLabH2;
 	private JComboBox txtNumOfEvaH2;
 	private JPanel panel_1;
+	
+	
 	public void refreshSubjectTable()
 	{
 		try {

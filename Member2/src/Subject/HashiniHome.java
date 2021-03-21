@@ -3,6 +3,9 @@ package Subject;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
+import Lecturer.AddManageLecturer;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -39,13 +42,20 @@ public class HashiniHome {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 716, 571);
+		frame.setBounds(0, 0, 1370, 728);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("Lecturer");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				frame.dispose();
+				AddManageLecturer sub = new AddManageLecturer();
+				sub.setVisible(true);
+				
+				
+				
 			}
 		});
 		btnNewButton.setBounds(131, 164, 179, 36);

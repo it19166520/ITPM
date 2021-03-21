@@ -5,9 +5,9 @@ import javax.swing.*;
 public class SqlServerConnection {
 	
 	
-	private static String url = "jdbc:sqlserver://ttmanagement.database.windows.net;databaseName=TTManagement";
+	private static String url = "jdbc:sqlserver://itpmserver.database.windows.net;databaseName=ITPM(New)";
 	private static String username = "ITPM";
-	private static String password = "GProject@20";
+	private static String password = "GProject#20";
 	static //private static Connection con;
 	
 	
