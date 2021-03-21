@@ -228,14 +228,14 @@ public class WorkingDaysAndHours {
 		
 		JButton updatebtn = new JButton("Update Details");
 		updatebtn.setForeground(new Color(255, 255, 255));
-		updatebtn.setBackground(new Color(0, 139, 139));
+		updatebtn.setBackground(new Color(34, 139, 34));
 		updatebtn.setBounds(404, 567, 269, 50);
 		updatebtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		addWorkingDHframe.getContentPane().add(updatebtn);
 		
 		JButton deletebtn = new JButton("Delete Details");
 		deletebtn.setForeground(new Color(255, 255, 255));
-		deletebtn.setBackground(new Color(65, 105, 225));
+		deletebtn.setBackground(new Color(255, 0, 0));
 		deletebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
