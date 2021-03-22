@@ -16,6 +16,8 @@ import DBConnection.SqlServerConnection;
 import net.proteanit.sql.DbUtils;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AddManageLecturer extends JFrame {
 
@@ -536,6 +538,44 @@ public class AddManageLecturer extends JFrame {
 		panel_3.add(scrollPane);
 		
 		LecDetailstable = new JTable();
+		LecDetailstable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				try {
+					
+					int row = LecDetailstable.getSelectedRow();
+					String LecturerRegistrationNumber_=(LecDetailstable.getModel().getValueAt(row, 0)).toString();
+					
+					String query="select LecturerRegistrationNumber,LecturerName,Faculty,Department,Campus,Building,LecturerID,Level,Rank from Lecturer where LecturerRegistrationNumber = '"+LecturerRegistrationNumber_+"' ";
+					PreparedStatement pst=connection.prepareStatement(query);
+					
+					ResultSet rs=pst.executeQuery();
+					
+					while(rs.next())
+					{
+						txtLecturerRegistrationNumber.setText(rs.getString("LecturerRegistrationNumber"));
+						txtLecturerName2.setText(rs.getString("LecturerName"));
+						txtFaculty2.setSelectedItem(rs.getString("Faculty"));
+						txtDepartment2.setSelectedItem(rs.getString("Department"));
+						txtCampus2.setSelectedItem(rs.getString("Campus"));
+						txtBuilding2.setSelectedItem(rs.getString("Building"));
+						txtLecturerID2.setText(rs.getString("LecturerID"));
+						txtLevel2.setSelectedItem(rs.getString("Level"));
+						txtRank2.setText(rs.getString("Rank"));
+						
+						
+					}
+					
+					pst.close();
+					
+					
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}		
+			}
+		});
 		scrollPane.setViewportView(LecDetailstable);
 		
 		LecturerDetailsComboBox = new JComboBox();
@@ -749,6 +789,47 @@ public class AddManageLecturer extends JFrame {
 		panel_6.add(scrollPane_1);
 		
 		ActiveHoursDetailstable = new JTable();
+		ActiveHoursDetailstable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				try {
+					
+					int row = ActiveHoursDetailstable.getSelectedRow();
+					String LecturerRegistrationNumber_=(ActiveHoursDetailstable.getModel().getValueAt(row, 0)).toString();
+					
+					String query="select LecturerRegistrationNumber,LecturerName,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday from Lecturer where LecturerRegistrationNumber = '"+LecturerRegistrationNumber_+"' ";
+					PreparedStatement pst=connection.prepareStatement(query);
+					 
+					ResultSet rs=pst.executeQuery();
+					
+					while(rs.next())
+					{
+						txtLecturerID3.setText(rs.getString("LecturerRegistrationNumber"));
+						txtLecturerName3.setText(rs.getString("LecturerName"));
+						txtMonday3.setText(rs.getString("Monday"));
+						txtTuesday3.setText(rs.getString("Tuesday"));
+						txtWednesday3.setText(rs.getString("Wednesday"));
+						txtThursday3.setText(rs.getString("Thursday"));
+						txtFriday3.setText(rs.getString("Friday"));
+						txtSatarday3.setText(rs.getString("Satarday"));
+						txtSunday3.setText(rs.getString("Sunday"));
+						
+						
+					}
+					
+					pst.close();
+					
+					
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}		
+				
+				
+				
+			}
+		});
 		scrollPane_1.setViewportView(ActiveHoursDetailstable);
 		
 		JButton btnLoadActiveHoursDetails = new JButton("Load Details");
