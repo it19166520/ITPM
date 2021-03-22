@@ -539,6 +539,42 @@ public class AddManageLecturer extends JFrame {
 		scrollPane.setViewportView(LecDetailstable);
 		
 		LecturerDetailsComboBox = new JComboBox();
+		LecturerDetailsComboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+					String query="select LecturerRegistrationNumber,LecturerName,Faculty,Department,Campus,Building,LecturerID,Level,Rank from Lecturer where LecturerName=? ";
+					PreparedStatement pst=connection.prepareStatement(query);
+					pst.setString(1, (String)LecturerDetailsComboBox.getSelectedItem() );
+					ResultSet rs=pst.executeQuery();
+					
+					while(rs.next())
+					{
+						txtLecturerRegistrationNumber.setText(rs.getString("LecturerRegistrationNumber"));
+						txtLecturerName2.setText(rs.getString("LecturerName"));
+						txtFaculty2.setSelectedItem(rs.getString("Faculty"));
+						txtDepartment2.setSelectedItem(rs.getString("Department"));
+						txtCampus2.setSelectedItem(rs.getString("Campus"));
+						txtBuilding2.setSelectedItem(rs.getString("Building"));
+						txtLecturerID2.setText(rs.getString("LecturerID"));
+						txtLevel2.setSelectedItem(rs.getString("Level"));
+						txtRank2.setText(rs.getString("Rank"));
+						
+						
+					}
+					
+					pst.close();
+					
+					
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}		
+				
+				
+			}
+		});
 		LecturerDetailsComboBox.setBounds(25, 36, 151, 21);
 		panel_3.add(LecturerDetailsComboBox);
 		
@@ -741,6 +777,46 @@ public class AddManageLecturer extends JFrame {
 		panel_6.add(btnLoadActiveHoursDetails);
 		
 		ActiveHoursComboBox = new JComboBox();
+		ActiveHoursComboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				//Get selected comobox value to the form :
+				
+				try {
+					
+					String query="select LecturerRegistrationNumber,LecturerName,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday from Lecturer where LecturerName=? ";
+					PreparedStatement pst=connection.prepareStatement(query);
+					pst.setString(1, (String)ActiveHoursComboBox.getSelectedItem() );
+					ResultSet rs=pst.executeQuery();
+					
+					while(rs.next())
+					{
+						txtLecturerID3.setText(rs.getString("LecturerRegistrationNumber"));
+						txtLecturerName3.setText(rs.getString("LecturerName"));
+						txtMonday3.setText(rs.getString("Monday"));
+						txtTuesday3.setText(rs.getString("Tuesday"));
+						txtWednesday3.setText(rs.getString("Wednesday"));
+						txtThursday3.setText(rs.getString("Thursday"));
+						txtFriday3.setText(rs.getString("Friday"));
+						txtSatarday3.setText(rs.getString("Satarday"));
+						txtSunday3.setText(rs.getString("Sunday"));
+						
+						
+					}
+					
+					pst.close();
+					
+					
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}		
+				
+				
+				
+			}
+		});
 		ActiveHoursComboBox.setBounds(10, 10, 149, 21);
 		panel_6.add(ActiveHoursComboBox);
 		
