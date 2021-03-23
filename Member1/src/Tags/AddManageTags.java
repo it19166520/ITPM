@@ -35,6 +35,8 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
 public class AddManageTags extends JFrame {
+	
+	Connection connection=null;
 
 	private JPanel contentPane;
 	private JTextArea txtrTimeTableManagement;
@@ -85,11 +87,37 @@ public class AddManageTags extends JFrame {
 			}
 		});
 	}
+	
+
+	//switch panels
+	public void SwitchTagPanels(JPanel panel)
+	{
+		TagsLayeredPane.removeAll();
+		TagsLayeredPane.add(panel);
+		TagsLayeredPane.repaint();
+		TagsLayeredPane.revalidate();
+	}
+	
+	public void ClearFields()
+	{
+		txtTagName.setText(null);
+		txtTagCode.setText(null);
+		RelatedTagComboBox.setSelectedIndex(-1);
+		
+		RelatedTagListView.setSelectedIndex(-1);
+		textviewTagName.setText(null);
+		textViewTagCodeField.setText(null);
+		
+		
+	}
 
 	/**
 	 * Create the frame.
 	 */
 	public AddManageTags() {
+		
+		connection = DBConnection.dbConnecter();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
 		contentPane = new JPanel();
@@ -302,6 +330,13 @@ public class AddManageTags extends JFrame {
 	
 	//Button Add to switch panel to add form
 		btnAddTags = new JButton("Add Tags");
+		btnAddTags.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				SwitchTagPanels(AddTagsPanel); //Switch to add tag panel
+				
+			}
+		});
 		btnAddTags.setBounds(64, 114, 294, 38);
 		btnAddTags.setFocusPainted(false);
 		btnAddTags.setBackground(new Color(58, 83, 155));
@@ -311,6 +346,13 @@ public class AddManageTags extends JFrame {
 		
 	//Button Manage Tags to switch panel to manage tags
 		btnManageTags = new JButton("Manage Tags");
+		btnManageTags.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				SwitchTagPanels(ManageTagsPanel); //Switch to add tag panel
+				
+			}
+		});
 		btnManageTags.setBounds(453, 114, 294, 38);
 		btnManageTags.setFocusPainted(false);
 		btnManageTags.setBackground(new Color(58, 83, 155));
