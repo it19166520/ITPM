@@ -261,6 +261,10 @@ public class AddManageLecturer extends JFrame {
 		txtRank.setColumns(10);
 		
 		btnGenerateID = new JButton("Generate ID");
+		btnGenerateID.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnGenerateID.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

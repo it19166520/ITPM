@@ -16,6 +16,8 @@ import java.awt.Button;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Sessions extends JFrame {
 
@@ -67,6 +69,7 @@ public class Sessions extends JFrame {
 	private JComboBox txtSessionDuration;
 	private JButton btnNewButton_4;
 	private JButton btnNewButton_3;
+	private JComboBox SessioncomboBox;
 
 	/**
 	 * Launch the application.
@@ -92,7 +95,43 @@ public class Sessions extends JFrame {
 		SessionlayeredPane.revalidate();
 	}
 	
+	public void refreshSessionTable()
+	{
+		try {
+			
+			String query="select * from sessions";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			table.setModel(DbUtils.resultSetToTableModel(rs));
+			
+			
+		}catch(Exception e1)
+		{
+			e1.printStackTrace();
+		}
+		
+		
+	}
 	
+	public void fillSessionCobmoBox() {
+		
+
+		try {
+			
+			String query="select * from sessions";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			
+			while(rs.next()) {
+				
+				SessioncomboBox.addItem(rs.getString("SessionId"));
+			}
+			
+		}catch(Exception e2)
+		{
+			e2.printStackTrace();
+		}
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -224,6 +263,32 @@ public class Sessions extends JFrame {
 		panel_1.add(txtGroupIDSession);
 		
 		JButton btnNewButton = new JButton("Generate ID");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				try {
+					
+				String lecName2 = (String)txtLecturerNameSession.getSelectedItem();
+				String SubCode2 = (String)txtSubjectCodeSession.getSelectedItem();
+				String SubName2 = (String)txtSubjectNameSession.getSelectedItem();
+				String SubTag2 = (String)txtTagSession.getSelectedItem();
+				String GroupID2 = (String)txtGroupIDSession.getSelectedItem();
+				String StudentCount2 = txtStudentCountSession.getText();
+				String Duration2 = (String)txtSessionDuration.getSelectedItem();
+				String SessionId2 = (String)txtLecturerNameSession.getSelectedItem() +"."+ txtSubjectCodeSession.getSelectedItem()+"."+ txtSubjectNameSession.getSelectedItem()+"."+txtTagSession.getSelectedItem()+"."+txtGroupIDSession.getSelectedItem()+"."+txtStudentCountSession.getText()+"."+txtSessionDuration.getSelectedItem();
+				txtSessionId.setText(SessionId2);
+				
+				
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}
+				
+				
+				
+			}
+		});
 		btnNewButton.setBounds(190, 367, 85, 21);
 		panel_1.add(btnNewButton);
 		
@@ -285,6 +350,8 @@ public class Sessions extends JFrame {
 					{
 						e1.printStackTrace();
 					}
+				 
+				 refreshSessionTable();
 				
 			}
 		});
@@ -347,11 +414,43 @@ public class Sessions extends JFrame {
 		txtStudentCountSession2.setColumns(10);
 		
 		txtSessionId2 = new JTextField();
-		txtSessionId2.setBounds(215, 405, 192, 19);
+		txtSessionId2.setBounds(109, 405, 390, 19);
 		panel_2.add(txtSessionId2);
 		txtSessionId2.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("GenerateID");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				
+				//Generete Rank using Lecturer ID and level :
+				try {
+					
+				String lecName = (String)txtLecturerNameSession2.getSelectedItem();
+				String SubCode = (String)txtSubjectCodeSession2.getSelectedItem();
+				String SubName = (String)txtSubjectNameSession2.getSelectedItem();
+				String SubTag = (String)txtTagSession2.getSelectedItem();
+				String GroupID = (String)txtGroupIDSession2.getSelectedItem();
+				String StudentCount = txtStudentCountSession2.getText();
+				String Duration = (String)txtSessionDuration2.getSelectedItem();
+				String SessionId = (String)txtLecturerNameSession2.getSelectedItem() +"."+ txtSubjectCodeSession2.getSelectedItem()+"."+ txtSubjectNameSession2.getSelectedItem()+"."+txtTagSession2.getSelectedItem()+"."+txtGroupIDSession2.getSelectedItem()+"."+txtStudentCountSession2.getText()+"."+txtSessionDuration2.getSelectedItem();
+				txtSessionId2.setText(SessionId);
+				
+				
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}
+				
+				
+			}
+		});
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+			}
+		});
 		btnNewButton_1.setBounds(138, 374, 85, 21);
 		panel_2.add(btnNewButton_1);
 		
@@ -360,26 +459,32 @@ public class Sessions extends JFrame {
 		panel_2.add(lblNewLabel_18);
 		
 		txtLecturerNameSession2 = new JComboBox();
+		txtLecturerNameSession2.setModel(new DefaultComboBoxModel(new String[] {"Mr.Kamal", "Mr.Nimal", "Mr.Kalum", "Mr.Nayana", "Mr.Kasun", "Mr.Amal"}));
 		txtLecturerNameSession2.setBounds(214, 96, 193, 21);
 		panel_2.add(txtLecturerNameSession2);
 		
 		txtSubjectCodeSession2 = new JComboBox();
+		txtSubjectCodeSession2.setModel(new DefaultComboBoxModel(new String[] {"IT6787", "IT9809", "IT4565", "IT9809", "IT3454", "IT8798"}));
 		txtSubjectCodeSession2.setBounds(214, 136, 193, 21);
 		panel_2.add(txtSubjectCodeSession2);
 		
 		txtSubjectNameSession2 = new JComboBox();
+		txtSubjectNameSession2.setModel(new DefaultComboBoxModel(new String[] {"IP", "OOP", "DMS", "DS", "IWT", "OSSA", "CN"}));
 		txtSubjectNameSession2.setBounds(214, 174, 193, 21);
 		panel_2.add(txtSubjectNameSession2);
 		
 		txtTagSession2 = new JComboBox();
+		txtTagSession2.setModel(new DefaultComboBoxModel(new String[] {"Lecturers", "Tutorials", "Labs"}));
 		txtTagSession2.setBounds(217, 208, 190, 21);
 		panel_2.add(txtTagSession2);
 		
 		txtGroupIDSession2 = new JComboBox();
+		txtGroupIDSession2.setModel(new DefaultComboBoxModel(new String[] {"Y1.S1.1", "Y1.S1.2", "Y1.S1.3", "Y1.S1.4", "Y1.S1.5", "Y1.S1.6"}));
 		txtGroupIDSession2.setBounds(215, 250, 192, 21);
 		panel_2.add(txtGroupIDSession2);
 		
 		txtSessionDuration2 = new JComboBox();
+		txtSessionDuration2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7"}));
 		txtSessionDuration2.setBounds(220, 336, 187, 21);
 		panel_2.add(txtSessionDuration2);
 		
@@ -388,15 +493,54 @@ public class Sessions extends JFrame {
 		panel_2.add(btnNewButton_4);
 		
 		panel_3 = new JPanel();
-		panel_3.setBounds(633, 31, 670, 455);
+		panel_3.setBounds(568, 31, 761, 477);
 		manageSessionPanel.add(panel_3);
 		panel_3.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(28, 71, 620, 358);
+		scrollPane.setBounds(28, 71, 589, 358);
 		panel_3.add(scrollPane);
 		
 		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				//To pass the relevant details to the form after selecting the raw of the table:
+				  try {
+						int row = table.getSelectedRow();
+						String SessionIndex_=(table.getModel().getValueAt(row, 0)).toString();
+						
+					   
+						String query="select * from sessions where SessionIndex='"+SessionIndex_+"' ";                      
+						PreparedStatement pst=connection.prepareStatement(query);
+					
+						ResultSet rs=pst.executeQuery();
+						
+						while(rs.next())
+						{
+							txtLecturerSessionIndex.setText(rs.getString("SessionIndex"));
+							txtLecturerNameSession2.setSelectedItem(rs.getString("LecturerNameSession"));
+							txtSubjectCodeSession2.setSelectedItem(rs.getString("SubjectCodeSession"));
+							txtSubjectNameSession2.setSelectedItem(rs.getString("SubjectNameSession"));
+							txtTagSession2.setSelectedItem(rs.getString("TagSession"));
+							txtGroupIDSession2.setSelectedItem(rs.getString("GroupIDSession"));
+							txtStudentCountSession2.setText(rs.getString("StudentCountSession"));
+							txtSessionDuration2.setSelectedItem(rs.getString("SessionDuration"));
+							txtSessionId2.setText(rs.getString("SessionId"));
+						}
+						
+						pst.close();
+						
+						
+					}catch(Exception e1)
+					{
+						e1.printStackTrace();
+					}
+				
+				
+			}
+		});
 		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton_2 = new JButton("Loard All Details   :");
@@ -423,9 +567,108 @@ public class Sessions extends JFrame {
 		btnNewButton_2.setBounds(378, 26, 164, 21);
 		panel_3.add(btnNewButton_2);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(28, 26, 164, 21);
-		panel_3.add(comboBox);
+		SessioncomboBox = new JComboBox();
+		SessioncomboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+                try {
+					
+					String query="select * from sessions where SessionId=?";                      
+					PreparedStatement pst=connection.prepareStatement(query);
+					pst.setString(1, (String)SessioncomboBox.getSelectedItem());
+					ResultSet rs=pst.executeQuery();
+					
+					while(rs.next())
+					{
+						txtLecturerSessionIndex.setText(rs.getString("SessionIndex"));
+						txtLecturerNameSession2.setSelectedItem(rs.getString("LecturerNameSession"));
+						txtSubjectCodeSession2.setSelectedItem(rs.getString("SubjectCodeSession"));
+						txtSubjectNameSession2.setSelectedItem(rs.getString("SubjectNameSession"));
+						txtTagSession2.setSelectedItem(rs.getString("TagSession"));
+						txtGroupIDSession2.setSelectedItem(rs.getString("GroupIDSession"));
+						txtStudentCountSession2.setText(rs.getString("StudentCountSession"));
+						txtSessionDuration2.setSelectedItem(rs.getString("SessionDuration"));
+						txtSessionId2.setText(rs.getString("SessionId"));
+					}
+					
+					pst.close();
+					
+					
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}
+				
+				
+				
+				
+			}
+		});
+		SessioncomboBox.setBounds(28, 26, 164, 21);
+		panel_3.add(SessioncomboBox);
+		
+		JButton btnNewButton_5 = new JButton("Update");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//Update details :
+
+				  try {
+						
+						String query="update sessions set  LecturerNameSession='"+txtLecturerNameSession2.getSelectedItem()+"' , SubjectCodeSession='"+txtSubjectCodeSession2.getSelectedItem()+"' ,SubjectNameSession='"+txtSubjectNameSession2.getSelectedItem()+"' ,TagSession='"+txtTagSession2.getSelectedItem()+"', GroupIDSession='"+txtGroupIDSession2.getSelectedItem()+"',  StudentCountSession='"+txtStudentCountSession2.getText()+"' , SessionDuration='"+txtSessionDuration2.getSelectedItem()+"' , SessionId='"+txtSessionId2.getText()+"' where SessionIndex='"+txtLecturerSessionIndex.getText()+"' ";                      
+						PreparedStatement pst=connection.prepareStatement(query);
+						
+						pst.execute();
+						
+						JOptionPane.showMessageDialog(null, "Details Updated Sucsessfully!");
+						
+						pst.close();
+						
+						
+					}catch(Exception e1)
+					{
+						e1.printStackTrace();
+					}
+				
+				  refreshSessionTable();
+				
+				
+			}
+		});
+		btnNewButton_5.setBounds(645, 174, 85, 21);
+		panel_3.add(btnNewButton_5);
+		
+		JButton btnNewButton_6 = new JButton("Delete");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				//Delete
+				try {
+					
+					String query="delete from sessions where SessionIndex='"+txtLecturerSessionIndex.getText()+"'";                      
+					PreparedStatement pst=connection.prepareStatement(query);
+					
+					pst.execute();
+					
+					JOptionPane.showMessageDialog(null, "Details Deleted Sucsessfully!");
+					
+					pst.close();
+					
+					
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}
+			
+				refreshSessionTable();
+			}
+		});
+		btnNewButton_6.setBounds(645, 220, 85, 21);
+		panel_3.add(btnNewButton_6);
+		
+		refreshSessionTable();
+		fillSessionCobmoBox();
 		
 		
 	}
