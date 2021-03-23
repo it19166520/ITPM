@@ -71,6 +71,11 @@ public class AddManageTags extends JFrame {
 	private JButton BtnDeleteTagView;
 	private JButton btnAddTags;
 	private JButton btnManageTags;
+	private JTable ViewTagsTable;
+	private JScrollPane scrollPane;
+	
+
+	
 
 	/**
 	 * Launch the application.
@@ -204,6 +209,11 @@ public class AddManageTags extends JFrame {
 		AddTagFormPanel.add(RelatedTagComboBox);
 		
 		btnClearTag = new JButton("Clear");
+		btnClearTag.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ClearFields();
+			}
+		});
 		btnClearTag.setForeground(Color.WHITE);
 		btnClearTag.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 16));
 		btnClearTag.setFocusPainted(false);
@@ -211,7 +221,39 @@ public class AddManageTags extends JFrame {
 		btnClearTag.setBounds(110, 325, 220, 38);
 		AddTagFormPanel.add(btnClearTag);
 		
+		
+	//save details	
 		btnSaveTag = new JButton("Save");
+		btnSaveTag.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+					String query="insert into Tag(TagName,TagCode,RelatedTag) values(?,?,?)";
+					PreparedStatement pstat=connection.prepareStatement(query);
+					
+					pstat.setString(1, txtTagName.getText());
+					pstat.setString(2, txtTagCode.getText());
+					
+					String RelatedT = RelatedTagComboBox.getSelectedItem().toString();
+					pstat.setString(3, RelatedT);
+					
+					//data insertion success message
+					pstat.execute();
+					JOptionPane.showMessageDialog(null, "Data inserted successfully!");
+					
+					pstat.close();
+					ClearFields();
+					
+				}
+				catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+				
+				
+			}
+		});
 		btnSaveTag.setBounds(110, 388, 89, 23);
 		btnSaveTag.setForeground(Color.WHITE);
 		btnSaveTag.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 16));
@@ -248,6 +290,57 @@ public class AddManageTags extends JFrame {
 		BtnSearchTag.setBackground(new Color(31, 58, 147));
 		BtnSearchTag.setBounds(557, 21, 123, 27);
 		ViewTagsPanel.add(BtnSearchTag);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		scrollPane.setBackground(Color.WHITE);
+		scrollPane.setBounds(26, 61, 644, 422);
+		ViewTagsPanel.add(scrollPane);
+		
+		ViewTagsTable = new JTable();
+		ViewTagsTable.setRowHeight(18);
+		ViewTagsTable.setBorder(null);
+		ViewTagsTable.setShowHorizontalLines(false);
+		ViewTagsTable.setBackground(Color.WHITE);
+		ViewTagsTable.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		
+		ViewTagsTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				try {
+					
+					int row = ViewTagsTable.getSelectedRow();
+					String ID1=(ViewTagsTable.getModel().getValueAt(row, 0)).toString();
+					
+					String query ="select * from Tag where TagID='"+ID1+"'";
+					PreparedStatement psat=connection.prepareStatement(query);
+					
+					ResultSet rs=psat.executeQuery();
+					
+					while(rs.next()) {
+						
+						textTagID.setText(rs.getString("TagID"));
+						textviewTagName.setText(rs.getString("TagName"));
+						textViewTagCodeField.setText(rs.getString("TagCode"));
+						RelatedTagListView.setSelectedItem(rs.getString("RelatedTag"));
+					}
+					
+					psat.close();
+					
+				}
+				catch(Exception E)
+				{
+					E.printStackTrace();
+				}
+				
+			}
+		});
+		
+		scrollPane.setViewportView(ViewTagsTable);
+		
+		
+		
 		
 		GetTagsFormPanel = new JPanel();
 		GetTagsFormPanel.setLayout(null);
@@ -350,6 +443,20 @@ public class AddManageTags extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				SwitchTagPanels(ManageTagsPanel); //Switch to add tag panel
+				
+				try {
+					
+					String query = "select * from Tag";
+					PreparedStatement psat = connection.prepareStatement(query);
+					ResultSet rs= psat.executeQuery();
+					
+					ViewTagsTable.setModel(DbUtils.resultSetToTableModel(rs));
+					
+				}
+				catch(Exception e4)
+				{
+					e4.printStackTrace();
+				}
 				
 			}
 		});
