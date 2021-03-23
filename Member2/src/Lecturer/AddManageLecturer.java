@@ -18,6 +18,7 @@ import net.proteanit.sql.DbUtils;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Font;
 
 public class AddManageLecturer extends JFrame {
 
@@ -80,6 +81,7 @@ public class AddManageLecturer extends JFrame {
 	private JTextField txtLecturerRegistrationNumber;
 	private JComboBox ActiveHoursComboBox;
 	private JComboBox LecturerDetailsComboBox;
+	private JButton btnGenerateID;
 	
 	
 	public void refreshLecturerDetailsTable()
@@ -161,25 +163,28 @@ public class AddManageLecturer extends JFrame {
 	public AddManageLecturer() {
 		connection = SqlServerConnection.dbConnecter();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0,0,1370,728);
+		setBounds(0,0,1380,846);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		LeclayeredPane = new JLayeredPane();
-		LeclayeredPane.setBounds(10, 72, 1243, 576);
+		LeclayeredPane.setBounds(57, 163, 1258, 623);
 		contentPane.add(LeclayeredPane);
 		LeclayeredPane.setLayout(new CardLayout(0, 0));
 		
 		panel1 = new JPanel();
+		panel1.setBackground(new Color(135, 206, 250));
 		panel1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		LeclayeredPane.add(panel1, "name_74284114373600");
 		panel1.setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		panel.setBounds(61, 45, 507, 488);
+		panel.setBounds(61, 56, 507, 512);
 		panel1.add(panel);
 		panel.setLayout(null);
 		
@@ -255,7 +260,32 @@ public class AddManageLecturer extends JFrame {
 		panel.add(txtRank);
 		txtRank.setColumns(10);
 		
+		btnGenerateID = new JButton("Generate ID");
+		btnGenerateID.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				//Generete Rank using Lecturer ID and level :
+				try {
+					
+				String lecId = txtLecturerID.getText();
+				String leclevel = (String)txtLevel.getSelectedItem();
+				String lecrank = (String)txtLevel.getSelectedItem() +"."+ txtLecturerID.getText();
+				txtRank.setText(lecrank);
+				
+				
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}
+
+			}
+		});
+		btnGenerateID.setBounds(111, 389, 165, 21);
+		panel.add(btnGenerateID);
+		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		panel_1.setBounds(625, 45, 565, 406);
 		panel1.add(panel_1);
@@ -465,9 +495,7 @@ public class AddManageLecturer extends JFrame {
 		panel_2.add(txtRank2);
 		txtRank2.setColumns(10);
 		
-		JButton btnNewButton_9 = new JButton("Generate ID");
-		btnNewButton_9.setBounds(115, 379, 133, 21);
-		panel_2.add(btnNewButton_9);
+
 		
 		JComboBox txtFaculty2 = new JComboBox();
 		txtFaculty2.setModel(new DefaultComboBoxModel(new String[] {"Computing", "Engineering", "Management", "Medicine", "Archtecture"}));
@@ -503,11 +531,40 @@ public class AddManageLecturer extends JFrame {
 		panel_2.add(txtLecturerRegistrationNumber);
 		txtLecturerRegistrationNumber.setColumns(10);
 		
+		JButton btnNewButton_9 = new JButton("Generate ID");
+		btnNewButton_9.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				//Genarete rank using lecturerId and level
+				try {
+					
+					String UpdatedLecId = txtLecturerID2.getText();
+			    	String UpdatedLevel = (String)txtLevel2.getSelectedItem();
+					String lecrank2 = (String)txtLevel2.getSelectedItem() +"."+ txtLecturerID2.getText();
+					txtRank2.setText(lecrank2);
+					
+					
+					}catch(Exception e1)
+					{
+						e1.printStackTrace();
+					}	
+			}
+		});
+		btnNewButton_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnNewButton_9.setBounds(115, 379, 133, 21);
+		panel_2.add(btnNewButton_9);
+		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_3.setBounds(493, 49, 590, 517);
 		panel2.add(panel_3);
 		panel_3.setLayout(null);
+		
 		
 		JButton btnLoadLecturerDetails = new JButton("Load Table");
 		btnLoadLecturerDetails.addActionListener(new ActionListener() {
@@ -943,7 +1000,7 @@ public class AddManageLecturer extends JFrame {
 				switchPannels(panel1);
 			}
 		});
-		btnNewButton.setBounds(10, 41, 85, 21);
+		btnNewButton.setBounds(55, 121, 134, 21);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Manage Lecturer Details");
@@ -953,7 +1010,7 @@ public class AddManageLecturer extends JFrame {
 				switchPannels(panel2);
 			}
 		});
-		btnNewButton_1.setBounds(105, 41, 143, 21);
+		btnNewButton_1.setBounds(199, 121, 143, 21);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Manage Active Hours");
@@ -963,8 +1020,21 @@ public class AddManageLecturer extends JFrame {
 				switchPannels(panel3);
 			}
 		});
-		btnNewButton_2.setBounds(258, 41, 143, 21);
+		btnNewButton_2.setBounds(352, 121, 143, 21);
 		contentPane.add(btnNewButton_2);
+		
+		JPanel panel_7 = new JPanel();
+		panel_7.setForeground(new Color(255, 99, 71));
+		panel_7.setBackground(Color.LIGHT_GRAY);
+		panel_7.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		panel_7.setBounds(0, 0, 1365, 75);
+		contentPane.add(panel_7);
+		panel_7.setLayout(null);
+		
+		JLabel lblNewLabel_34 = new JLabel("Timetable Management System");
+		lblNewLabel_34.setFont(new Font("Tahoma", Font.BOLD, 24));
+		lblNewLabel_34.setBounds(489, 21, 609, 29);
+		panel_7.add(lblNewLabel_34);
 		
 		refreshLecturerDetailsTable();
 		refreshActiveHoursTable();

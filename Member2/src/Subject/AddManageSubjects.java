@@ -27,6 +27,7 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
+import java.awt.Font;
 
 public class AddManageSubjects extends JFrame {
 
@@ -158,14 +159,14 @@ public class AddManageSubjects extends JFrame {
 		
 		connection = SqlServerConnection.dbConnecter();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1303, 686);
+		setBounds(100, 100, 1384, 789);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		SublayeredPane = new JLayeredPane();
-		SublayeredPane.setBounds(10, 46, 1269, 593);
+		SublayeredPane.setBounds(147, 183, 1132, 559);
 		contentPane.add(SublayeredPane);
 		SublayeredPane.setLayout(new CardLayout(0, 0));
 		
@@ -215,10 +216,6 @@ public class AddManageSubjects extends JFrame {
 		txtSubCode.setBounds(532, 247, 186, 19);
 		AddSubPanel.add(txtSubCode);
 		txtSubCode.setColumns(10);
-		
-		lblNewLabel_9 = new JLabel("Add Subjects :");
-		lblNewLabel_9.setBounds(327, 75, 145, 13);
-		AddSubPanel.add(lblNewLabel_9);
 		
 		btnNewButton_2 = new JButton("ADD");
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -324,8 +321,11 @@ public class AddManageSubjects extends JFrame {
 			}
 		});
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		panel_1.setBounds(261, 58, 631, 472);
+		panel_1.setBounds(224, 23, 668, 507);
 		AddSubPanel.add(panel_1);
+		
+		lblNewLabel_9 = new JLabel("Add Subjects :");
+		panel_1.add(lblNewLabel_9);
 		
 		ManageSubPanel = new JPanel();
 		SublayeredPane.add(ManageSubPanel, "name_127354460414000");
@@ -595,7 +595,7 @@ public class AddManageSubjects extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(39, 10, 91, 32);
+		btnNewButton.setBounds(153, 141, 91, 32);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("View ALL & Manage");
@@ -605,8 +605,26 @@ public class AddManageSubjects extends JFrame {
 				switchPanel(ManageSubPanel);
 			}
 		});
-		btnNewButton_1.setBounds(140, 10, 123, 32);
+		btnNewButton_1.setBounds(254, 141, 123, 32);
 		contentPane.add(btnNewButton_1);
+		
+		//Header :
+		JPanel panel = new JPanel();
+		panel.setForeground(new Color(255, 99, 71));
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		panel.setBounds(0, 0, 1365, 75);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JTextArea txtrTimeTableManagement = new JTextArea();
+		txtrTimeTableManagement.setBounds(487, 21, 385, 44);
+		txtrTimeTableManagement.setFont(new Font("Tahoma", Font.BOLD, 24));
+		txtrTimeTableManagement.setBackground(Color.LIGHT_GRAY);
+		txtrTimeTableManagement.setForeground(Color.BLACK);
+		//txtrTimeTableManagement.setFont(new Font("Tahoma", Font.BOLD, 24));
+		txtrTimeTableManagement.setText("Timetable Management System");
+		panel.add(txtrTimeTableManagement);
 		
 		refreshSubjectTable();
 		fillSubjectCobmoBox();
