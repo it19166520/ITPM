@@ -1,10 +1,11 @@
-package Subject;
+package Home;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
 import Lecturer.AddManageLecturer;
+import Subject.AddManageSubjects;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;

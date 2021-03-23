@@ -1023,6 +1023,8 @@ public class AddManageLecturer extends JFrame {
 		btnNewButton_2.setBounds(352, 121, 143, 21);
 		contentPane.add(btnNewButton_2);
 		
+		//Header 
+		
 		JPanel panel_7 = new JPanel();
 		panel_7.setForeground(new Color(255, 99, 71));
 		panel_7.setBackground(Color.LIGHT_GRAY);
