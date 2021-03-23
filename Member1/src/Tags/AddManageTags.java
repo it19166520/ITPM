@@ -115,6 +115,23 @@ public class AddManageTags extends JFrame {
 		
 		
 	}
+	
+	public void RefreshTagsTable()
+	{
+		try {
+			
+			String refreshque="select * from Tag";
+			PreparedStatement psat= connection.prepareStatement(refreshque);
+			ResultSet rs=psat.executeQuery();
+			
+			ViewTagsTable.setModel(DbUtils.resultSetToTableModel(rs));
+			
+		}
+		catch(Exception E2)
+		{
+			E2.printStackTrace();
+		}
+	}
 
 	/**
 	 * Create the frame.
@@ -394,6 +411,11 @@ public class AddManageTags extends JFrame {
 		
 	//clear button of view tag form
 		BtnClearTagView = new JButton("Clear");
+		BtnClearTagView.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ClearFields();
+			}
+		});
 		BtnClearTagView.setForeground(Color.WHITE);
 		BtnClearTagView.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		BtnClearTagView.setFocusPainted(false);
@@ -404,6 +426,32 @@ public class AddManageTags extends JFrame {
 		
 	//update button of view tag form
 		BtnUpdateTag = new JButton("Update");
+		BtnUpdateTag.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					
+					String query="update Tag set  TagName='"+textviewTagName.getText()+"' , TagCode='"+textViewTagCodeField.getText()+"' ,RelatedTag='"+RelatedTagListView.getSelectedItem()+"' where TagID='"+textTagID.getText()+"' ";                    
+					PreparedStatement psat=connection.prepareStatement(query);
+					
+					psat.execute();
+					
+					JOptionPane.showMessageDialog(null, "Update Sucsessful!");
+					
+					psat.close();
+					ClearFields();
+					
+				}
+				catch(Exception e5)
+				{
+					e5.printStackTrace();
+				}
+				
+				
+				//to refresh the table after updating
+				RefreshTagsTable();
+				
+			}
+		});
 		BtnUpdateTag.setForeground(Color.WHITE);
 		BtnUpdateTag.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		BtnUpdateTag.setFocusPainted(false);
@@ -414,6 +462,31 @@ public class AddManageTags extends JFrame {
 		
 	//delete button of view tag form 
 		BtnDeleteTagView = new JButton("Delete");
+		BtnDeleteTagView.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+					String deletequery="delete from Tag where TagID='"+textTagID.getText()+"'";                      
+					PreparedStatement psat=connection.prepareStatement(deletequery);
+					
+					psat.execute();
+					
+					JOptionPane.showMessageDialog(null, "Details Deleted Sucsessfully!");
+					
+					psat.close();
+					ClearFields();
+					
+				}
+				catch(Exception e3)
+				{
+					e3.printStackTrace();
+				}
+				
+				RefreshTagsTable();
+				
+			}
+		});
 		BtnDeleteTagView.setBounds(152, 431, 123, 30);
 		GetTagsFormPanel.add(BtnDeleteTagView);
 		BtnDeleteTagView.setForeground(Color.WHITE);
