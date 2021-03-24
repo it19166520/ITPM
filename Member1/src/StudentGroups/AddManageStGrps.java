@@ -462,6 +462,28 @@ public class AddManageStGrps extends JFrame {
 		GetDetailsFormPanel.setLayout(null);
 		
 		btnGenGID = new JButton("Generate GroupID");
+		btnGenGID.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+					String yr = AcYrSemViewList.getSelectedItem().toString();
+					String pr = ProgramViewList.getSelectedItem().toString();
+					String Gno = ViewGrpNumbertxt.getText().toString();
+					
+					String gengrpID = yr+"."+pr+"."+Gno;
+					ViewGrpID.setText(gengrpID);
+					
+					
+					
+				}catch(Exception e5) {
+					
+					e5.printStackTrace();
+				}
+				
+				
+			}
+		});
 		btnGenGID.setForeground(Color.WHITE);
 		btnGenGID.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		btnGenGID.setFocusPainted(false);
