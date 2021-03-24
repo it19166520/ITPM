@@ -461,6 +461,8 @@ public class AddManageStGrps extends JFrame {
 		ManageStudentGrpPanel_1.add(GetDetailsFormPanel);
 		GetDetailsFormPanel.setLayout(null);
 		
+	
+	//generating sub group id of manage students Groups panel
 		btnGenGID = new JButton("Generate GroupID");
 		btnGenGID.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -491,7 +493,31 @@ public class AddManageStGrps extends JFrame {
 		btnGenGID.setBounds(109, 213, 185, 30);
 		GetDetailsFormPanel.add(btnGenGID);
 		
+	//generating sub group id of manage students Groups panel
 		btnGenSubGID = new JButton("Generate SubGroupID");
+		btnGenSubGID.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+
+				try {
+					
+					String yr = AcYrSemViewList.getSelectedItem().toString();
+					String pr = ProgramViewList.getSelectedItem().toString();
+					String Gno = ViewGrpNumbertxt.getText().toString();
+					String SubGNo = ViewSubGrpNotxt.getText().toString();
+					
+					String gensubgrpID = yr+"."+pr+"."+Gno+"."+SubGNo;
+					ViewSubGrpID.setText(gensubgrpID);
+					
+					
+					
+				}catch(Exception e5) {
+					
+					e5.printStackTrace();
+				}
+				
+			}
+		});
 		btnGenSubGID.setForeground(Color.WHITE);
 		btnGenSubGID.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		btnGenSubGID.setFocusPainted(false);
