@@ -132,6 +132,25 @@ public class AddManageStGrps extends JFrame {
 		}
 		
 		
+	//refresh table after doing update and delete
+		public void RefreshStGroupsTable()
+		{
+			try {
+				
+				String refreshque="select * from StudentGroups";
+				PreparedStatement psat= connection.prepareStatement(refreshque);
+				ResultSet rs=psat.executeQuery();
+				
+				ViewStGrpsTable.setModel(DbUtils.resultSetToTableModel(rs));
+				
+			}
+			catch(Exception E2)
+			{
+				E2.printStackTrace();
+			}
+		}
+		
+		
 
 	/**
 	 * Create the frame.
@@ -413,6 +432,7 @@ public class AddManageStGrps extends JFrame {
 		ViewStGrpsTable.setBackground(Color.WHITE);
 		ViewStGrpsTable.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		
+	//fetch data after selecting
 		ViewStGrpsTable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -599,6 +619,31 @@ public class AddManageStGrps extends JFrame {
 		GetDetailsFormPanel.add(lblSubGroupIdViewForm);
 		
 		BtnDeleteStGView = new JButton("Delete");
+		BtnDeleteStGView.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+					String deletequery="delete from StudentGroups where StGrpID='"+textViewStGrpID.getText()+"'";                      
+					PreparedStatement psat=connection.prepareStatement(deletequery);
+					
+					psat.execute();
+					
+					JOptionPane.showMessageDialog(null, "Details Deleted Sucsessfully!");
+					
+					psat.close();
+					ClearFields();
+					
+				}
+				catch(Exception e3)
+				{
+					e3.printStackTrace();
+				}
+				
+				RefreshStGroupsTable();
+				
+			}
+		});
 		BtnDeleteStGView.setForeground(Color.WHITE);
 		BtnDeleteStGView.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		BtnDeleteStGView.setFocusPainted(false);
