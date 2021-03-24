@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -33,6 +32,7 @@ import net.proteanit.sql.DbUtils;
 
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+
 
 public class AddManageTags extends JFrame {
 	
@@ -74,7 +74,6 @@ public class AddManageTags extends JFrame {
 	private JTable ViewTagsTable;
 	private JScrollPane scrollPane;
 	
-
 	
 
 	/**
@@ -103,6 +102,8 @@ public class AddManageTags extends JFrame {
 		TagsLayeredPane.revalidate();
 	}
 	
+	
+	//clear fields of forms
 	public void ClearFields()
 	{
 		txtTagName.setText(null);
@@ -111,11 +112,11 @@ public class AddManageTags extends JFrame {
 		
 		RelatedTagListView.setSelectedIndex(-1);
 		textviewTagName.setText(null);
-		textViewTagCodeField.setText(null);
-		
+		textViewTagCodeField.setText(null);	
 		
 	}
 	
+	//refresh table after adding/updating a record
 	public void RefreshTagsTable()
 	{
 		try {
@@ -132,6 +133,7 @@ public class AddManageTags extends JFrame {
 			E2.printStackTrace();
 		}
 	}
+	
 
 	/**
 	 * Create the frame.
@@ -292,7 +294,7 @@ public class AddManageTags extends JFrame {
 		ViewTagsPanel.setBounds(0, 0, 726, 494);
 		ManageTagsPanel.add(ViewTagsPanel);
 		
-		SearchField = new JTextField();
+		SearchField = new JTextField();			
 		SearchField.setFont(new Font("Leelawadee UI Semilight", Font.ITALIC, 14));
 		SearchField.setBackground(new Color(255, 255, 255));
 		SearchField.setText("search");
@@ -321,6 +323,7 @@ public class AddManageTags extends JFrame {
 		ViewTagsTable.setBackground(Color.WHITE);
 		ViewTagsTable.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		
+	//fetch clicked data into a form
 		ViewTagsTable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -355,9 +358,6 @@ public class AddManageTags extends JFrame {
 		});
 		
 		scrollPane.setViewportView(ViewTagsTable);
-		
-		
-		
 		
 		GetTagsFormPanel = new JPanel();
 		GetTagsFormPanel.setLayout(null);
@@ -430,6 +430,7 @@ public class AddManageTags extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					
+					//update details
 					String query="update Tag set  TagName='"+textviewTagName.getText()+"' , TagCode='"+textViewTagCodeField.getText()+"' ,RelatedTag='"+RelatedTagListView.getSelectedItem()+"' where TagID='"+textTagID.getText()+"' ";                    
 					PreparedStatement psat=connection.prepareStatement(query);
 					
@@ -519,6 +520,7 @@ public class AddManageTags extends JFrame {
 				
 				try {
 					
+					//retrieve data to a table
 					String query = "select * from Tag";
 					PreparedStatement psat = connection.prepareStatement(query);
 					ResultSet rs= psat.executeQuery();
