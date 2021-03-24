@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import javax.swing.JOptionPane;
 import javax.swing.JLayeredPane;
 
@@ -14,12 +16,16 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import DBConnection.DBConnection;
+import net.proteanit.sql.DbUtils;
+
 import javax.swing.JLayeredPane;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -63,8 +69,6 @@ public class AddManageStGrps extends JFrame {
 	private JButton btnGenSubGID;
 	private JComboBox AcYrSemViewList;
 	private JComboBox ProgramViewList;
-	private JSpinner SubGNumberViewSpinner;
-	private JSpinner GNumberViewSpinner;
 	private JTextField ViewGrpID;
 	private JTextField ViewSubGrpID;
 	private JButton BtnClearView;
@@ -78,6 +82,10 @@ public class AddManageStGrps extends JFrame {
 	private JButton BtnDeleteStGView;
 	private JTable ViewStGrpsTable;
 	private JScrollPane scrollPane;
+	private JLabel lblStGrpID;
+	private JTextField textViewStGrpID;
+	private JTextField ViewGrpNumbertxt;
+	private JTextField ViewSubGrpNotxt;
 
 	/**
 	 * Launch the application.
@@ -119,6 +127,8 @@ public class AddManageStGrps extends JFrame {
 			ProgramViewList.setSelectedIndex(-1);
 			ViewGrpID.setText(null);
 			ViewSubGrpID.setText(null);
+			ViewGrpNumbertxt.setText(null);
+			ViewSubGrpNotxt.setText(null);
 		}
 		
 		
@@ -397,10 +407,55 @@ public class AddManageStGrps extends JFrame {
 		ViewStudentGroupsPanel.add(scrollPane);
 		
 		ViewStGrpsTable = new JTable();
+		ViewStGrpsTable.setRowHeight(18);
+		ViewStGrpsTable.setBorder(null);
+		ViewStGrpsTable.setShowHorizontalLines(false);
+		ViewStGrpsTable.setBackground(Color.WHITE);
+		ViewStGrpsTable.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		
+		ViewStGrpsTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				try {
+					int row = ViewStGrpsTable.getSelectedRow();
+					String ID2 = (ViewStGrpsTable.getModel().getValueAt(row, 0)).toString();
+					
+					String query = "select * from StudentGroups where StGrpID= '"+ID2+"'";
+					
+					PreparedStatement psat=connection.prepareStatement(query);
+					
+					ResultSet rs=psat.executeQuery();
+					
+					while(rs.next())
+					{
+						textViewStGrpID.setText(rs.getString("StGrpID"));
+						AcYrSemViewList.setSelectedItem(rs.getString("AcademicYrSem"));
+						ProgramViewList.setSelectedItem(rs.getString("Program"));
+						
+						ViewGrpNumbertxt.setText(rs.getString("GroupNo"));
+						ViewSubGrpNotxt.setText(rs.getString("SubGroupNo"));
+						ViewGrpID.setText(rs.getString("GroupID"));
+						ViewSubGrpID.setText(rs.getString("SubGroupID"));
+					}
+					
+					psat.close();
+					
+				}
+				catch(Exception e2) {
+					
+					e2.printStackTrace();
+				}
+				
+			}
+			
+		});
+		
+		
 		scrollPane.setViewportView(ViewStGrpsTable);
 		
 		GetDetailsFormPanel = new JPanel();
-		GetDetailsFormPanel.setBounds(770, 33, 443, 450);
+		GetDetailsFormPanel.setBounds(770, 0, 443, 483);
 		GetDetailsFormPanel.setBackground(new Color(197, 239, 247));
 		GetDetailsFormPanel.setBorder(null);
 		ManageStudentGrpPanel_1.add(GetDetailsFormPanel);
@@ -411,7 +466,7 @@ public class AddManageStGrps extends JFrame {
 		btnGenGID.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		btnGenGID.setFocusPainted(false);
 		btnGenGID.setBackground(new Color(31, 58, 147));
-		btnGenGID.setBounds(109, 188, 185, 30);
+		btnGenGID.setBounds(109, 213, 185, 30);
 		GetDetailsFormPanel.add(btnGenGID);
 		
 		btnGenSubGID = new JButton("Generate SubGroupID");
@@ -419,45 +474,43 @@ public class AddManageStGrps extends JFrame {
 		btnGenSubGID.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		btnGenSubGID.setFocusPainted(false);
 		btnGenSubGID.setBackground(new Color(31, 58, 147));
-		btnGenSubGID.setBounds(109, 288, 185, 30);
+		btnGenSubGID.setBounds(109, 310, 185, 30);
 		GetDetailsFormPanel.add(btnGenSubGID);
 		
 		AcYrSemViewList = new JComboBox(AYSList);
 		AcYrSemViewList.setSelectedIndex(-1);
 		AcYrSemViewList.setBackground(Color.WHITE);
-		AcYrSemViewList.setBounds(220, 30, 185, 24);
+		AcYrSemViewList.setBounds(220, 57, 185, 24);
 		GetDetailsFormPanel.add(AcYrSemViewList);
 		
 		ProgramViewList = new JComboBox(PRList);
 		ProgramViewList.setSelectedIndex(-1);
 		ProgramViewList.setBackground(Color.WHITE);
-		ProgramViewList.setBounds(220, 71, 185, 24);
+		ProgramViewList.setBounds(220, 92, 185, 24);
 		GetDetailsFormPanel.add(ProgramViewList);
 		
-		SubGNumberViewSpinner = new JSpinner();
-		SubGNumberViewSpinner.setBounds(220, 153, 185, 20);
-		GetDetailsFormPanel.add(SubGNumberViewSpinner);
-		
-		GNumberViewSpinner = new JSpinner();
-		GNumberViewSpinner.setBounds(220, 112, 185, 20);
-		GetDetailsFormPanel.add(GNumberViewSpinner);
-		
 		ViewGrpID = new JTextField();
-		ViewGrpID.setBounds(220, 235, 185, 24);
+		ViewGrpID.setBounds(220, 254, 185, 24);
 		GetDetailsFormPanel.add(ViewGrpID);
 		ViewGrpID.setColumns(10);
 		
 		ViewSubGrpID = new JTextField();
 		ViewSubGrpID.setColumns(10);
-		ViewSubGrpID.setBounds(220, 335, 185, 24);
+		ViewSubGrpID.setBounds(220, 351, 185, 24);
 		GetDetailsFormPanel.add(ViewSubGrpID);
 		
 		BtnClearView = new JButton("Clear");
+		BtnClearView.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ClearFields();
+			}
+		});
 		BtnClearView.setForeground(Color.WHITE);
 		BtnClearView.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		BtnClearView.setFocusPainted(false);
 		BtnClearView.setBackground(new Color(31, 58, 147));
-		BtnClearView.setBounds(72, 368, 123, 30);
+		BtnClearView.setBounds(73, 401, 123, 30);
 		GetDetailsFormPanel.add(BtnClearView);
 		
 		BtnUpdate = new JButton("Update");
@@ -465,36 +518,36 @@ public class AddManageStGrps extends JFrame {
 		BtnUpdate.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		BtnUpdate.setFocusPainted(false);
 		BtnUpdate.setBackground(new Color(27, 163, 156));
-		BtnUpdate.setBounds(253, 370, 123, 30);
+		BtnUpdate.setBounds(253, 401, 123, 30);
 		GetDetailsFormPanel.add(BtnUpdate);
 		
 		lblAcademicYearsemesterViewForm = new JLabel("Academic year &semester :");
 		lblAcademicYearsemesterViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
-		lblAcademicYearsemesterViewForm.setBounds(10, 30, 209, 24);
+		lblAcademicYearsemesterViewForm.setBounds(10, 55, 209, 24);
 		GetDetailsFormPanel.add(lblAcademicYearsemesterViewForm);
 		
 		lblProgramViewForm = new JLabel("Program :");
 		lblProgramViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
-		lblProgramViewForm.setBounds(10, 71, 209, 24);
+		lblProgramViewForm.setBounds(10, 90, 209, 24);
 		GetDetailsFormPanel.add(lblProgramViewForm);
 		
 		lblGroupNumberViewForm = new JLabel("Group Number:");
 		lblGroupNumberViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
-		lblGroupNumberViewForm.setBounds(10, 112, 209, 24);
+		lblGroupNumberViewForm.setBounds(10, 123, 209, 24);
 		GetDetailsFormPanel.add(lblGroupNumberViewForm);
 		
 		lblSubGroupNumberViewForm = new JLabel("Sub Group Number :");
 		lblSubGroupNumberViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
-		lblSubGroupNumberViewForm.setBounds(10, 153, 209, 24);
+		lblSubGroupNumberViewForm.setBounds(10, 167, 209, 24);
 		GetDetailsFormPanel.add(lblSubGroupNumberViewForm);
 		
 		lblGroupIdViewForm = new JLabel("Group ID :");
 		lblGroupIdViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
-		lblGroupIdViewForm.setBounds(10, 235, 209, 24);
+		lblGroupIdViewForm.setBounds(10, 252, 209, 24);
 		GetDetailsFormPanel.add(lblGroupIdViewForm);
 		lblSubGroupIdViewForm = new JLabel("Sub Group ID :");
 		lblSubGroupIdViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
-		lblSubGroupIdViewForm.setBounds(10, 335, 209, 24);
+		lblSubGroupIdViewForm.setBounds(10, 349, 209, 24);
 		GetDetailsFormPanel.add(lblSubGroupIdViewForm);
 		
 		BtnDeleteStGView = new JButton("Delete");
@@ -502,8 +555,29 @@ public class AddManageStGrps extends JFrame {
 		BtnDeleteStGView.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		BtnDeleteStGView.setFocusPainted(false);
 		BtnDeleteStGView.setBackground(new Color(210, 77, 87));
-		BtnDeleteStGView.setBounds(171, 409, 123, 30);
+		BtnDeleteStGView.setBounds(171, 442, 123, 30);
 		GetDetailsFormPanel.add(BtnDeleteStGView);
+		
+		lblStGrpID = new JLabel("Student GroupID :");
+		lblStGrpID.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		lblStGrpID.setBounds(10, 20, 209, 24);
+		GetDetailsFormPanel.add(lblStGrpID);
+		
+		textViewStGrpID = new JTextField();
+		textViewStGrpID.setEditable(false);
+		textViewStGrpID.setColumns(10);
+		textViewStGrpID.setBounds(220, 22, 185, 24);
+		GetDetailsFormPanel.add(textViewStGrpID);
+		
+		ViewGrpNumbertxt = new JTextField();
+		ViewGrpNumbertxt.setColumns(10);
+		ViewGrpNumbertxt.setBounds(220, 127, 185, 24);
+		GetDetailsFormPanel.add(ViewGrpNumbertxt);
+		
+		ViewSubGrpNotxt = new JTextField();
+		ViewSubGrpNotxt.setColumns(10);
+		ViewSubGrpNotxt.setBounds(220, 171, 185, 24);
+		GetDetailsFormPanel.add(ViewSubGrpNotxt);
 	
 	//Header
 		panel_1 = new JPanel();
@@ -543,6 +617,21 @@ public class AddManageStGrps extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				SwitchPanels(ManageStudentGrpPanel_1);
+				
+				try {
+					
+					//retrieve data to a table
+					String query = "select * from StudentGroups";
+					PreparedStatement psat = connection.prepareStatement(query);
+					ResultSet rs= psat.executeQuery();
+					
+					ViewStGrpsTable.setModel(DbUtils.resultSetToTableModel(rs));
+					
+				}
+				catch(Exception e4)
+				{
+					e4.printStackTrace();
+				}
 				
 			}
 		});
