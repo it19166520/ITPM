@@ -28,6 +28,7 @@ import java.awt.Color;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
 import java.awt.Font;
+import javax.swing.border.EtchedBorder;
 
 public class AddManageSubjects extends JFrame {
 
@@ -113,6 +114,9 @@ public class AddManageSubjects extends JFrame {
 	private JComboBox txtNumOfLabH2;
 	private JComboBox txtNumOfEvaH2;
 	private JPanel panel_1;
+	private JButton btnNewButton_6;
+	private JPanel panel_5;
+	private JPanel panel_6;
 	
 	
 	public void refreshSubjectTable()
@@ -162,63 +166,128 @@ public class AddManageSubjects extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1384, 789);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		SublayeredPane = new JLayeredPane();
-		SublayeredPane.setBounds(147, 183, 1132, 559);
+		SublayeredPane.setBounds(22, 145, 1343, 597);
 		contentPane.add(SublayeredPane);
 		SublayeredPane.setLayout(new CardLayout(0, 0));
 		
 		AddSubPanel = new JPanel();
+		AddSubPanel.setBackground(new Color(255, 255, 255));
 		SublayeredPane.add(AddSubPanel, "name_127330680826200");
 		AddSubPanel.setLayout(null);
 		
-		//create form to get subject details from user :
-		lblNewLabel = new JLabel("Offered Year  :");
-		lblNewLabel.setBounds(365, 137, 194, 13);
-		AddSubPanel.add(lblNewLabel);
+		panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setForeground(Color.WHITE);
+		panel_1.addAncestorListener(new AncestorListener() {
+			public void ancestorAdded(AncestorEvent event) {
+			}
+			public void ancestorMoved(AncestorEvent event) {
+			}
+			public void ancestorRemoved(AncestorEvent event) {
+			}
+		});
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel_1.setBounds(312, 49, 663, 501);
+		AddSubPanel.add(panel_1);
+		panel_1.setLayout(null);
+		
+		lblNewLabel_9 = new JLabel("Add Subjects :");
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_9.setForeground(new Color(0, 0, 0));
+		lblNewLabel_9.setBackground(new Color(0, 0, 0));
+		lblNewLabel_9.setBounds(42, 40, 103, 13);
+		panel_1.add(lblNewLabel_9);
 		
 		lblNewLabel_2 = new JLabel("Offered Semester  :");
-		lblNewLabel_2.setBounds(365, 175, 194, 13);
-		AddSubPanel.add(lblNewLabel_2);
+		lblNewLabel_2.setBounds(97, 125, 194, 13);
+		panel_1.add(lblNewLabel_2);
+		
+		//create form to get subject details from user :
+		lblNewLabel = new JLabel("Offered Year  :");
+		lblNewLabel.setBounds(97, 89, 238, 13);
+		panel_1.add(lblNewLabel);
 		
 		lblNewLabel_3 = new JLabel("Subject Name  :");
-		lblNewLabel_3.setBounds(365, 214, 194, 13);
-		AddSubPanel.add(lblNewLabel_3);
+		lblNewLabel_3.setBounds(97, 159, 194, 13);
+		panel_1.add(lblNewLabel_3);
 		
 		lblNewLabel_4 = new JLabel("Subject Code  :");
-		lblNewLabel_4.setBounds(365, 250, 194, 13);
-		AddSubPanel.add(lblNewLabel_4);
+		lblNewLabel_4.setBounds(97, 195, 194, 13);
+		panel_1.add(lblNewLabel_4);
 		
 		lblNewLabel_5 = new JLabel("Number Of Lecturer Hours  :");
-		lblNewLabel_5.setBounds(365, 288, 194, 13);
-		AddSubPanel.add(lblNewLabel_5);
+		lblNewLabel_5.setBounds(97, 233, 194, 13);
+		panel_1.add(lblNewLabel_5);
 		
 		lblNewLabel_6 = new JLabel("Number Of Tutorial Hours  :");
-		lblNewLabel_6.setBounds(365, 321, 194, 13);
-		AddSubPanel.add(lblNewLabel_6);
+		lblNewLabel_6.setBounds(97, 272, 194, 13);
+		panel_1.add(lblNewLabel_6);
 		
 		lblNewLabel_7 = new JLabel("Number of Lab Hours  :");
-		lblNewLabel_7.setBounds(365, 354, 194, 13);
-		AddSubPanel.add(lblNewLabel_7);
+		lblNewLabel_7.setBounds(97, 306, 194, 13);
+		panel_1.add(lblNewLabel_7);
 		
 		lblNewLabel_8 = new JLabel("Number of Evalution hours  :");
-		lblNewLabel_8.setBounds(365, 390, 194, 13);
-		AddSubPanel.add(lblNewLabel_8);
+		lblNewLabel_8.setBounds(97, 346, 194, 13);
+		panel_1.add(lblNewLabel_8);
+		
+		txtSubOffYear = new JComboBox();
+		txtSubOffYear.setBackground(new Color(255, 255, 255));
+		txtSubOffYear.setBounds(303, 85, 238, 21);
+		panel_1.add(txtSubOffYear);
+		txtSubOffYear.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4"}));
+		
+		txtSubOffSem = new JComboBox();
+		txtSubOffSem.setBounds(301, 121, 240, 21);
+		panel_1.add(txtSubOffSem);
+		txtSubOffSem.setModel(new DefaultComboBoxModel(new String[] {"1", "2"}));
 		
 		txtSubName = new JTextField();
-		txtSubName.setBounds(532, 211, 186, 19);
-		AddSubPanel.add(txtSubName);
+		txtSubName.setBounds(301, 156, 240, 19);
+		panel_1.add(txtSubName);
 		txtSubName.setColumns(10);
 		
 		txtSubCode = new JTextField();
-		txtSubCode.setBounds(532, 247, 186, 19);
-		AddSubPanel.add(txtSubCode);
+		txtSubCode.setBounds(301, 192, 240, 19);
+		panel_1.add(txtSubCode);
 		txtSubCode.setColumns(10);
 		
-		btnNewButton_2 = new JButton("ADD");
+		NumOfLecHours = new JComboBox();
+		NumOfLecHours.setBounds(301, 229, 240, 21);
+		panel_1.add(NumOfLecHours);
+		NumOfLecHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		
+		NumOfTuteHours = new JComboBox();
+		NumOfTuteHours.setBounds(301, 268, 240, 21);
+		panel_1.add(NumOfTuteHours);
+		NumOfTuteHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		
+		NumOfLabHours = new JComboBox();
+		NumOfLabHours.setBounds(301, 302, 240, 21);
+		panel_1.add(NumOfLabHours);
+		NumOfLabHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		
+		NumOfEvaltionHours = new JComboBox();
+		NumOfEvaltionHours.setBounds(301, 342, 240, 21);
+		panel_1.add(NumOfEvaltionHours);
+		NumOfEvaltionHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		
+		btnNewButton_2 = new JButton("SAVE");
+		btnNewButton_2.setBounds(97, 416, 193, 41);
+		panel_1.add(btnNewButton_2);
+		btnNewButton_2.setForeground(Color.BLACK);
+		btnNewButton_2.setBackground(new Color(50, 205, 50));
+		
+		btnNewButton_3 = new JButton("CLEAR");
+		btnNewButton_3.setBounds(357, 416, 185, 41);
+		panel_1.add(btnNewButton_3);
+		btnNewButton_3.setBackground(new Color(30, 144, 255));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -275,88 +344,22 @@ public class AddManageSubjects extends JFrame {
 				 
 			}
 		});
-		btnNewButton_2.setBounds(365, 471, 150, 21);
-		AddSubPanel.add(btnNewButton_2);
 		
-		btnNewButton_3 = new JButton("CLEAR");
-		btnNewButton_3.setBounds(548, 471, 170, 21);
-		AddSubPanel.add(btnNewButton_3);
-		
-		txtSubOffYear = new JComboBox();
-		txtSubOffYear.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4"}));
-		txtSubOffYear.setBounds(530, 133, 188, 21);
-		AddSubPanel.add(txtSubOffYear);
-		
-		txtSubOffSem = new JComboBox();
-		txtSubOffSem.setModel(new DefaultComboBoxModel(new String[] {"1", "2"}));
-		txtSubOffSem.setBounds(532, 171, 186, 21);
-		AddSubPanel.add(txtSubOffSem);
-		
-		NumOfLecHours = new JComboBox();
-		NumOfLecHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		NumOfLecHours.setBounds(530, 284, 188, 21);
-		AddSubPanel.add(NumOfLecHours);
-		
-		NumOfTuteHours = new JComboBox();
-		NumOfTuteHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		NumOfTuteHours.setBounds(532, 317, 186, 21);
-		AddSubPanel.add(NumOfTuteHours);
-		
-		NumOfLabHours = new JComboBox();
-		NumOfLabHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		NumOfLabHours.setBounds(532, 350, 186, 21);
-		AddSubPanel.add(NumOfLabHours);
-		
-		NumOfEvaltionHours = new JComboBox();
-		NumOfEvaltionHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		NumOfEvaltionHours.setBounds(530, 386, 188, 21);
-		AddSubPanel.add(NumOfEvaltionHours);
-		
-		panel_1 = new JPanel();
-		panel_1.addAncestorListener(new AncestorListener() {
-			public void ancestorAdded(AncestorEvent event) {
-			}
-			public void ancestorMoved(AncestorEvent event) {
-			}
-			public void ancestorRemoved(AncestorEvent event) {
-			}
-		});
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		panel_1.setBounds(224, 23, 668, 507);
-		AddSubPanel.add(panel_1);
-		
-		lblNewLabel_9 = new JLabel("Add Subjects :");
-		panel_1.add(lblNewLabel_9);
+		panel_5 = new JPanel();
+		panel_5.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		panel_5.setBackground(new Color(135, 206, 250));
+		panel_5.setBounds(109, 10, 1094, 577);
+		AddSubPanel.add(panel_5);
+		panel_5.setLayout(null);
 		
 		ManageSubPanel = new JPanel();
+		ManageSubPanel.setBackground(new Color(255, 255, 255));
 		SublayeredPane.add(ManageSubPanel, "name_127354460414000");
 		ManageSubPanel.setLayout(null);
 		
-		btnLoadTable = new JButton("Load Details");
-		btnLoadTable.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				//To refresh the table after doing any changes:
-				try {
-					
-						String query="select * from subjects";
-						PreparedStatement pst=conn.prepareStatement(query);
-						ResultSet rs=pst.executeQuery();
-						table.setModel(DbUtils.resultSetToTableModel(rs));
-					
-					
-					}catch(Exception e1)
-					{
-						e1.printStackTrace();
-					}
-				
-			}
-		});
-		btnLoadTable.setBounds(885, 52, 85, 21);
-		ManageSubPanel.add(btnLoadTable);
-		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(544, 104, 702, 380);
+		scrollPane.setBounds(586, 99, 691, 346);
+		scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
 		ManageSubPanel.add(scrollPane);
 		
 		table = new JTable();
@@ -399,7 +402,178 @@ public class AddManageSubjects extends JFrame {
 		});
 		scrollPane.setViewportView(table);
 		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(39, 33, 485, 446);
+		panel_2.setBackground(Color.WHITE);
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		ManageSubPanel.add(panel_2);
+		panel_2.setLayout(null);
+		
+		txtSubID = new JTextField();
+		txtSubID.setBounds(192, 70, 252, 19);
+		panel_2.add(txtSubID);
+		txtSubID.setColumns(10);
+		
+		txtSubOffYear2 = new JComboBox();
+		txtSubOffYear2.setBounds(192, 99, 252, 21);
+		panel_2.add(txtSubOffYear2);
+		txtSubOffYear2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4"}));
+		
+		txtSubOffSem2 = new JComboBox();
+		txtSubOffSem2.setBounds(192, 130, 252, 21);
+		panel_2.add(txtSubOffSem2);
+		txtSubOffSem2.setModel(new DefaultComboBoxModel(new String[] {"1", "2"}));
+		
+		lblNewLabel_1 = new JLabel("ID  :");
+		lblNewLabel_1.setBounds(31, 73, 65, 13);
+		panel_2.add(lblNewLabel_1);
+		
+		lblNewLabel_10 = new JLabel("Offered Year  :");
+		lblNewLabel_10.setBounds(31, 103, 106, 13);
+		panel_2.add(lblNewLabel_10);
+		
+		lblNewLabel_11 = new JLabel("Offered Semester  :");
+		lblNewLabel_11.setBounds(31, 134, 106, 13);
+		panel_2.add(lblNewLabel_11);
+		
+		lblNewLabel_12 = new JLabel("Subject Name  :");
+		lblNewLabel_12.setBounds(31, 167, 106, 13);
+		panel_2.add(lblNewLabel_12);
+		
+		lblNewLabel_13 = new JLabel("Subject Code  :");
+		lblNewLabel_13.setBounds(31, 200, 106, 13);
+		panel_2.add(lblNewLabel_13);
+		
+		lblNewLabel_14 = new JLabel("Number Of Lecture Hours  :");
+		lblNewLabel_14.setBounds(31, 238, 151, 13);
+		panel_2.add(lblNewLabel_14);
+		
+		lblNewLabel_15 = new JLabel("Number Of Tutorial Hours");
+		lblNewLabel_15.setBounds(31, 274, 151, 13);
+		panel_2.add(lblNewLabel_15);
+		
+		lblNewLabel_16 = new JLabel("Number Of Lab Hours  :");
+		lblNewLabel_16.setBounds(31, 319, 133, 13);
+		panel_2.add(lblNewLabel_16);
+		
+		lblNewLabel_17 = new JLabel("Number Of Evalution Hours  :");
+		lblNewLabel_17.setBounds(31, 360, 151, 13);
+		panel_2.add(lblNewLabel_17);
+		
+		lblNewLabel_18 = new JLabel("ManageDetails  :");
+		lblNewLabel_18.setFont(new Font("Arial", Font.BOLD, 13));
+		lblNewLabel_18.setBounds(31, 28, 120, 17);
+		panel_2.add(lblNewLabel_18);
+		
+		txtSubName2 = new JTextField();
+		txtSubName2.setBounds(192, 164, 252, 19);
+		panel_2.add(txtSubName2);
+		txtSubName2.setColumns(10);
+		
+		txtSubCode2 = new JTextField();
+		txtSubCode2.setBounds(192, 197, 252, 19);
+		panel_2.add(txtSubCode2);
+		txtSubCode2.setColumns(10);
+		
+		txtNumOfLecH2 = new JComboBox();
+		txtNumOfLecH2.setBounds(192, 230, 252, 21);
+		panel_2.add(txtNumOfLecH2);
+		txtNumOfLecH2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4"}));
+		
+		txtNumOfTuteH2 = new JComboBox();
+		txtNumOfTuteH2.setBounds(192, 270, 252, 21);
+		panel_2.add(txtNumOfTuteH2);
+		txtNumOfTuteH2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		
+		txtNumOfLabH2 = new JComboBox();
+		txtNumOfLabH2.setBounds(192, 315, 252, 21);
+		panel_2.add(txtNumOfLabH2);
+		txtNumOfLabH2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		
+		txtNumOfEvaH2 = new JComboBox();
+		txtNumOfEvaH2.setBounds(193, 356, 251, 21);
+		panel_2.add(txtNumOfEvaH2);
+		txtNumOfEvaH2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(556, 37, 750, 440);
+		panel_3.setBackground(new Color(255, 255, 255));
+		panel_3.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		ManageSubPanel.add(panel_3);
+		panel_3.setLayout(null);
+		
+		
+		
+		
+		
+		SubjectComboBox = new JComboBox();
+		SubjectComboBox.setBounds(26, 23, 233, 21);
+		panel_3.add(SubjectComboBox);
+		
+		JLabel lblNewLabel_19 = new JLabel("Select Your Name In Here :");
+		lblNewLabel_19.setBounds(26, 10, 163, 13);
+		panel_3.add(lblNewLabel_19);
+		lblNewLabel_19.setFont(new Font("Arial", Font.BOLD, 12));
+		
+		btnLoadTable = new JButton("Load Details");
+		btnLoadTable.setBounds(579, 31, 139, 21);
+		panel_3.add(btnLoadTable);
+		
+		panel_6 = new JPanel();
+		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_6.setBounds(26, 59, 700, 353);
+		panel_3.add(panel_6);
+		panel_6.setLayout(null);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBounds(10, 10, 1323, 577);
+		panel_4.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		panel_4.setBackground(new Color(135, 206, 235));
+		ManageSubPanel.add(panel_4);
+		panel_4.setLayout(null);
+		
+		btnNewButton_6 = new JButton("Clear All ");
+		btnNewButton_6.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_6.setBackground(new Color(30, 144, 255));
+		btnNewButton_6.setBounds(212, 500, 145, 29);
+		panel_4.add(btnNewButton_6);
+		
 		btnNewButton_4 = new JButton("Update Details");
+		btnNewButton_4.setBounds(501, 498, 191, 32);
+		panel_4.add(btnNewButton_4);
+		btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_4.setBackground(new Color(50, 205, 50));
+		
+		btnNewButton_5 = new JButton("Delete Details");
+		btnNewButton_5.setBounds(880, 498, 205, 32);
+		panel_4.add(btnNewButton_5);
+		btnNewButton_5.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_5.setBackground(new Color(255, 0, 0));
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//Delete
+				try {
+					
+					String query="delete from subjects where ID='"+txtSubID.getText()+"'";                      
+					PreparedStatement pst=conn.prepareStatement(query);
+					
+					pst.execute();
+					
+					JOptionPane.showMessageDialog(null, "Details Deleted Sucsessfully!");
+					
+					pst.close();
+					
+					
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}
+			
+				//To refresh the table after deleting details :
+				refreshSubjectTable();	
+			}
+		});
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -427,100 +601,25 @@ public class AddManageSubjects extends JFrame {
 				
 			}
 		});
-		btnNewButton_4.setBounds(689, 509, 191, 32);
-		ManageSubPanel.add(btnNewButton_4);
-		
-		btnNewButton_5 = new JButton("Delete Details");
-		btnNewButton_5.addActionListener(new ActionListener() {
+		btnLoadTable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//Delete
+				//To refresh the table after doing any changes:
 				try {
 					
-					String query="delete from subjects where ID='"+txtSubID.getText()+"'";                      
-					PreparedStatement pst=conn.prepareStatement(query);
-					
-					pst.execute();
-					
-					JOptionPane.showMessageDialog(null, "Details Deleted Sucsessfully!");
-					
-					pst.close();
+						String query="select * from subjects";
+						PreparedStatement pst=conn.prepareStatement(query);
+						ResultSet rs=pst.executeQuery();
+						table.setModel(DbUtils.resultSetToTableModel(rs));
 					
 					
-				}catch(Exception e1)
-				{
-					e1.printStackTrace();
-				}
-			
-				//To refresh the table after deleting details :
-				refreshSubjectTable();	
+					}catch(Exception e1)
+					{
+						e1.printStackTrace();
+					}
+				
 			}
 		});
-		
-		//create form to update subject details which user added before :
-		btnNewButton_5.setBounds(910, 509, 205, 32);
-		ManageSubPanel.add(btnNewButton_5);
-		
-		lblNewLabel_1 = new JLabel("ID  :");
-		lblNewLabel_1.setBounds(39, 106, 65, 13);
-		ManageSubPanel.add(lblNewLabel_1);
-		
-		lblNewLabel_10 = new JLabel("Offered Year  :");
-		lblNewLabel_10.setBounds(39, 144, 106, 13);
-		ManageSubPanel.add(lblNewLabel_10);
-		
-		lblNewLabel_11 = new JLabel("Offered Semester  :");
-		lblNewLabel_11.setBounds(39, 178, 106, 13);
-		ManageSubPanel.add(lblNewLabel_11);
-		
-		lblNewLabel_12 = new JLabel("Subject Name  :");
-		lblNewLabel_12.setBounds(39, 222, 106, 13);
-		ManageSubPanel.add(lblNewLabel_12);
-		
-		lblNewLabel_13 = new JLabel("Subject Code  :");
-		lblNewLabel_13.setBounds(39, 261, 106, 13);
-		ManageSubPanel.add(lblNewLabel_13);
-		
-		lblNewLabel_14 = new JLabel("Number Of Lecture Hours  :");
-		lblNewLabel_14.setBounds(39, 303, 106, 13);
-		ManageSubPanel.add(lblNewLabel_14);
-		
-		lblNewLabel_15 = new JLabel("Number Of Tutorial Hours");
-		lblNewLabel_15.setBounds(39, 343, 106, 13);
-		ManageSubPanel.add(lblNewLabel_15);
-		
-		lblNewLabel_16 = new JLabel("Number Of Lab Hours  :");
-		lblNewLabel_16.setBounds(39, 383, 106, 13);
-		ManageSubPanel.add(lblNewLabel_16);
-		
-		lblNewLabel_17 = new JLabel("Number Of Evalution Hours  :");
-		lblNewLabel_17.setBounds(39, 428, 106, 13);
-		ManageSubPanel.add(lblNewLabel_17);
-		
-		txtSubID = new JTextField();
-		txtSubID.setBounds(189, 103, 176, 19);
-		ManageSubPanel.add(txtSubID);
-		txtSubID.setColumns(10);
-		
-		txtSubName2 = new JTextField();
-		txtSubName2.setBounds(189, 219, 177, 19);
-		ManageSubPanel.add(txtSubName2);
-		txtSubName2.setColumns(10);
-		
-		txtSubCode2 = new JTextField();
-		txtSubCode2.setBounds(189, 258, 177, 19);
-		ManageSubPanel.add(txtSubCode2);
-		txtSubCode2.setColumns(10);
-		
-		lblNewLabel_18 = new JLabel("ManageDetails  :");
-		lblNewLabel_18.setBounds(39, 52, 120, 17);
-		ManageSubPanel.add(lblNewLabel_18);
-		
-		
-		
-		
-		
-		SubjectComboBox = new JComboBox();
 		SubjectComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -555,40 +654,10 @@ public class AddManageSubjects extends JFrame {
 				
 			}
 		});
-		SubjectComboBox.setBounds(544, 68, 85, 21);
-		ManageSubPanel.add(SubjectComboBox);
 		
-		txtSubOffYear2 = new JComboBox();
-		txtSubOffYear2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4"}));
-		txtSubOffYear2.setBounds(189, 140, 177, 21);
-		ManageSubPanel.add(txtSubOffYear2);
-		
-		txtSubOffSem2 = new JComboBox();
-		txtSubOffSem2.setModel(new DefaultComboBoxModel(new String[] {"1", "2"}));
-		txtSubOffSem2.setBounds(189, 174, 177, 21);
-		ManageSubPanel.add(txtSubOffSem2);
-		
-		txtNumOfLecH2 = new JComboBox();
-		txtNumOfLecH2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4"}));
-		txtNumOfLecH2.setBounds(189, 299, 177, 21);
-		ManageSubPanel.add(txtNumOfLecH2);
-		
-		txtNumOfTuteH2 = new JComboBox();
-		txtNumOfTuteH2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		txtNumOfTuteH2.setBounds(189, 339, 177, 21);
-		ManageSubPanel.add(txtNumOfTuteH2);
-		
-		txtNumOfLabH2 = new JComboBox();
-		txtNumOfLabH2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		txtNumOfLabH2.setBounds(189, 379, 177, 21);
-		ManageSubPanel.add(txtNumOfLabH2);
-		
-		txtNumOfEvaH2 = new JComboBox();
-		txtNumOfEvaH2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		txtNumOfEvaH2.setBounds(190, 424, 176, 21);
-		ManageSubPanel.add(txtNumOfEvaH2);
-		
-		JButton btnNewButton = new JButton("ADD");
+		JButton btnNewButton = new JButton("Add Subjects");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton.setBackground(new Color(30, 144, 255));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -596,17 +665,19 @@ public class AddManageSubjects extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(153, 141, 91, 32);
+		btnNewButton.setBounds(128, 103, 243, 32);
 		contentPane.add(btnNewButton);
 		
-		btnNewButton_1 = new JButton("View ALL & Manage");
+		btnNewButton_1 = new JButton("View All & Manage");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_1.setBackground(new Color(30, 144, 255));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				switchPanel(ManageSubPanel);
 			}
 		});
-		btnNewButton_1.setBounds(254, 141, 123, 32);
+		btnNewButton_1.setBounds(395, 103, 289, 32);
 		contentPane.add(btnNewButton_1);
 		
 		//Header :
@@ -619,6 +690,7 @@ public class AddManageSubjects extends JFrame {
 		panel.setLayout(null);
 		
 		JTextArea txtrTimeTableManagement = new JTextArea();
+		txtrTimeTableManagement.setEditable(false);
 		txtrTimeTableManagement.setBounds(487, 21, 385, 44);
 		txtrTimeTableManagement.setFont(new Font("Tahoma", Font.BOLD, 24));
 		txtrTimeTableManagement.setBackground(Color.LIGHT_GRAY);
