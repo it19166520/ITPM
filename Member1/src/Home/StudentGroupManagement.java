@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import StudentGroups.AddManageStGrps;
 import Tags.AddManageTags;
 
 import java.awt.SystemColor;
@@ -74,6 +75,14 @@ public class StudentGroupManagement {
 		panel.add(lblNewLabel);
 		
 		StudentGrpManagementBtn = new JButton("Student Group Management");
+		StudentGrpManagementBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				JFrame AddManageStGrps = new AddManageStGrps();
+				AddManageStGrps.show();
+				
+			}
+		});
 		StudentGrpManagementBtn.setBounds(534, 215, 300, 33);
 		StudentGrpManagementBtn.setFocusPainted(false);
 		StudentGrpManagementBtn.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
