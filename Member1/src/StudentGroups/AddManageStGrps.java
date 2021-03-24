@@ -582,6 +582,33 @@ public class AddManageStGrps extends JFrame {
 		GetDetailsFormPanel.add(BtnClearView);
 		
 		BtnUpdate = new JButton("Update");
+		BtnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+					String query="update StudentGroups set AcademicYrSem='"+AcYrSemViewList.getSelectedItem()+"' , Program='"+ProgramViewList.getSelectedItem()+"' ,GroupNo='"+ViewGrpNumbertxt.getText()+"',SubGroupNo='"+ViewSubGrpNotxt.getText()+"',GroupId='"+ViewGrpID.getText()+"',SubGroupID='"+ViewSubGrpID.getText()+"'  where StGrpID='"+textViewStGrpID.getText()+"' ";                    
+					PreparedStatement psat=connection.prepareStatement(query);
+					
+					psat.execute();
+					
+					JOptionPane.showMessageDialog(null, "Update Sucsessful!");
+					
+					psat.close();
+					ClearFields();
+					
+				}
+				catch(Exception e5)
+				{
+					e5.printStackTrace();
+				}
+				
+				
+				//to refresh the table after updating
+				RefreshStGroupsTable();
+				
+			}
+		});
 		BtnUpdate.setForeground(Color.WHITE);
 		BtnUpdate.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		BtnUpdate.setFocusPainted(false);
