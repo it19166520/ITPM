@@ -100,7 +100,8 @@ public class AddManageSubjects extends JFrame {
 	
 	
 	
-	Connection connection=null;
+	//Connection connection=null;
+	Connection conn = SqlServerConnection.dbConnecter();
 	private JComboBox NumOfLecHours;
 	private JComboBox NumOfEvaltionHours;
 	private JComboBox NumOfTuteHours;
@@ -119,7 +120,7 @@ public class AddManageSubjects extends JFrame {
 		try {
 			
 			String query="select * from subjects";
-			PreparedStatement pst=connection.prepareStatement(query);
+			PreparedStatement pst=conn.prepareStatement(query);
 			ResultSet rs=pst.executeQuery();
 			table.setModel(DbUtils.resultSetToTableModel(rs));
 			
@@ -136,7 +137,7 @@ public class AddManageSubjects extends JFrame {
 		try {
 			
 			String query="select * from subjects";
-			PreparedStatement pst=connection.prepareStatement(query);
+			PreparedStatement pst=conn.prepareStatement(query);
 			ResultSet rs=pst.executeQuery();
 			
 			while(rs.next()) {
@@ -157,7 +158,7 @@ public class AddManageSubjects extends JFrame {
 	 */
 	public AddManageSubjects() {
 		
-		connection = SqlServerConnection.dbConnecter();
+		Connection conn = SqlServerConnection.dbConnecter();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1384, 789);
 		contentPane = new JPanel();
@@ -226,7 +227,7 @@ public class AddManageSubjects extends JFrame {
 				 try {
 						
 						String query="insert into subjects (OfferedYear,OfferedSem,SubjectName,SublectCode,NumOfLecHours,NumOfTuteHours,NumOfLabHours,NumOfEvaltionHours) values (?,?,?,?,?,?,?,?)";                      
-						PreparedStatement pst=connection.prepareStatement(query);
+						PreparedStatement pst=conn.prepareStatement(query);
 						
 						//get year details from the user by using  JComboBox :
 						String OffYear=txtSubOffYear.getSelectedItem().toString();
@@ -339,7 +340,7 @@ public class AddManageSubjects extends JFrame {
 				try {
 					
 						String query="select * from subjects";
-						PreparedStatement pst=connection.prepareStatement(query);
+						PreparedStatement pst=conn.prepareStatement(query);
 						ResultSet rs=pst.executeQuery();
 						table.setModel(DbUtils.resultSetToTableModel(rs));
 					
@@ -370,7 +371,7 @@ public class AddManageSubjects extends JFrame {
 						
 					   
 						String query="select * from subjects where ID='"+ID_+"' ";                      
-						PreparedStatement pst=connection.prepareStatement(query);
+						PreparedStatement pst=conn.prepareStatement(query);
 					
 						ResultSet rs=pst.executeQuery();
 						
@@ -407,7 +408,7 @@ public class AddManageSubjects extends JFrame {
 				  try {
 						
 						String query="update subjects set  OfferedYear='"+txtSubOffYear2.getSelectedItem()+"' , OfferedSem='"+txtSubOffSem2.getSelectedItem()+"' ,SubjectName='"+txtSubName2.getText()+"' ,SublectCode='"+txtSubCode2.getText()+"', NumOfLecHours='"+txtNumOfLecH2.getSelectedItem()+"',  NumOfTuteHours='"+txtNumOfTuteH2.getSelectedItem()+"' , NumOfLabHours='"+txtNumOfLabH2.getSelectedItem()+"' , NumOfEvaltionHours='"+txtNumOfEvaH2.getSelectedItem()+"' where ID='"+txtSubID.getText()+"' ";                      
-						PreparedStatement pst=connection.prepareStatement(query);
+						PreparedStatement pst=conn.prepareStatement(query);
 						
 						pst.execute();
 						
@@ -437,7 +438,7 @@ public class AddManageSubjects extends JFrame {
 				try {
 					
 					String query="delete from subjects where ID='"+txtSubID.getText()+"'";                      
-					PreparedStatement pst=connection.prepareStatement(query);
+					PreparedStatement pst=conn.prepareStatement(query);
 					
 					pst.execute();
 					
@@ -527,7 +528,7 @@ public class AddManageSubjects extends JFrame {
 	                try {
 						
 						String query="select * from subjects where SubjectName=?";                      
-						PreparedStatement pst=connection.prepareStatement(query);
+						PreparedStatement pst=conn.prepareStatement(query);
 						pst.setString(1, (String)SubjectComboBox.getSelectedItem());
 						ResultSet rs=pst.executeQuery();
 						
