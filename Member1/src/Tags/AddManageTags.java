@@ -32,6 +32,8 @@ import net.proteanit.sql.DbUtils;
 
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 public class AddManageTags extends JFrame {
@@ -73,6 +75,9 @@ public class AddManageTags extends JFrame {
 	private JButton btnManageTags;
 	private JTable ViewTagsTable;
 	private JScrollPane scrollPane;
+	private JLabel lbl_empTagName;
+	private JLabel lbl_empTagCode;
+	private JLabel lbl_empReTag;
 	
 	
 
@@ -209,12 +214,26 @@ public class AddManageTags extends JFrame {
 		AddTagFormPanel.add(TagRelatedLabel);
 		
 		txtTagName = new JTextField();
+		txtTagName.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				lbl_empTagName.setText("");
+				
+			}
+		});
 		txtTagName.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		txtTagName.setBounds(136, 98, 235, 23);
 		AddTagFormPanel.add(txtTagName);
 		txtTagName.setColumns(10);
 		
 		txtTagCode = new JTextField();
+		txtTagCode.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				lbl_empTagCode.setText("");
+				
+			}
+		});
 		txtTagCode.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		txtTagCode.setColumns(10);
 		txtTagCode.setBounds(136, 174, 235, 23);
@@ -222,6 +241,13 @@ public class AddManageTags extends JFrame {
 		
 		String[] RelatedTagList = {"Lecture" , "Tutorial", "Laboratory","Evaluation"};
 		RelatedTagComboBox = new JComboBox(RelatedTagList);
+		RelatedTagComboBox.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				lbl_empReTag.setText("");
+			}
+		});
 		RelatedTagComboBox.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		RelatedTagComboBox.setSelectedIndex(-1);
 		RelatedTagComboBox.setBounds(136, 248, 235, 23);
@@ -246,31 +272,50 @@ public class AddManageTags extends JFrame {
 		btnSaveTag.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				try {
-					
-					String query="insert into Tag(TagName,TagCode,RelatedTag) values(?,?,?)";
-					PreparedStatement pstat=connection.prepareStatement(query);
-					
-					pstat.setString(1, txtTagName.getText());
-					pstat.setString(2, txtTagCode.getText());
-					
-					String RelatedT = RelatedTagComboBox.getSelectedItem().toString();
-					pstat.setString(3, RelatedT);
-					
-					//data insertion success message
-					pstat.execute();
-					JOptionPane.showMessageDialog(null, "Data inserted successfully!");
-					
-					pstat.close();
-					ClearFields();
-					
-				}
-				catch(Exception ex)
+				if(txtTagName.getText().trim().isEmpty() && txtTagCode.getText().trim().isEmpty())
 				{
-					ex.printStackTrace();
+					lbl_empTagName.setText("Tag Name is empty!!");
+					lbl_empTagCode.setText("Tag code is empty!!");
+				}
+				
+				else if(txtTagName.getText().trim().isEmpty())
+				{
+					lbl_empTagName.setText("Tag Name is empty!!");
+				}
+				
+				else if(txtTagCode.getText().trim().isEmpty())
+				{
+					lbl_empTagCode.setText("Tag code is empty!!");
 				}
 				
 				
+				else {
+				
+					try {
+						
+						String query="insert into Tag(TagName,TagCode,RelatedTag) values(?,?,?)";
+						PreparedStatement pstat=connection.prepareStatement(query);
+						
+						pstat.setString(1, txtTagName.getText());
+						pstat.setString(2, txtTagCode.getText());
+						
+						String RelatedT = RelatedTagComboBox.getSelectedItem().toString();
+						pstat.setString(3, RelatedT);
+						
+						//data insertion success message
+						pstat.execute();
+						JOptionPane.showMessageDialog(null, "Data inserted successfully!");
+						
+						pstat.close();
+						ClearFields();
+						
+					}
+					catch(Exception ex)
+					{
+						ex.printStackTrace();
+					}
+					
+				}		
 			}
 		});
 		btnSaveTag.setBounds(110, 388, 89, 23);
@@ -280,6 +325,24 @@ public class AddManageTags extends JFrame {
 		btnSaveTag.setBackground(new Color(27, 163, 156));
 		btnSaveTag.setBounds(110, 390, 220, 38);
 		AddTagFormPanel.add(btnSaveTag);
+		
+		lbl_empTagName = new JLabel("");
+		lbl_empTagName.setForeground(Color.RED);
+		lbl_empTagName.setFont(new Font("Tahoma", Font.ITALIC, 14));
+		lbl_empTagName.setBounds(161, 132, 210, 25);
+		AddTagFormPanel.add(lbl_empTagName);
+		
+		lbl_empTagCode = new JLabel("");
+		lbl_empTagCode.setForeground(Color.RED);
+		lbl_empTagCode.setFont(new Font("Tahoma", Font.ITALIC, 14));
+		lbl_empTagCode.setBounds(161, 206, 220, 25);
+		AddTagFormPanel.add(lbl_empTagCode);
+		
+		lbl_empReTag = new JLabel("");
+		lbl_empReTag.setForeground(Color.RED);
+		lbl_empReTag.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lbl_empReTag.setBounds(161, 282, 210, 25);
+		AddTagFormPanel.add(lbl_empReTag);
 	
 	//Manage Tag panel
 		ManageTagsPanel = new JPanel();
