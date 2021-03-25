@@ -23,6 +23,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.*;
 
 public class pieTry {
@@ -182,6 +183,9 @@ public class pieTry {
 			panel_3.setBounds(623, 230, 629, 342);
 			panel.add(panel_3);
 			}
+			
+			DefaultCategoryDataset dataset=new DefaultCategoryDataset();
+			//dataset.setValue(80,"marks",")
 			/*
 			DefaultPieDataset pieDataset= new DefaultPieDataset()
 			details.addAll(new PieChart.Data("test1", 25),		

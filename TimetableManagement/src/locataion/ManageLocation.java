@@ -55,6 +55,9 @@ public class ManageLocation extends JFrame {
 	private JButton btnDelete;
 	private JLabel lblManage;
 	JTable tableLocation;
+	
+	String roomtype;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -179,6 +182,12 @@ public class ManageLocation extends JFrame {
 		contentPane.add(textViewRName);
 		
 		rdbtnLec = new JRadioButton("Lectures");
+		buttonGroup.add(rdbtnLec);
+		rdbtnLec.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				roomtype="Lecture";
+			}
+		});
 		rdbtnLec.setForeground(Color.WHITE);
 		rdbtnLec.setFont(new Font("Tahoma", Font.BOLD, 11));
 		rdbtnLec.setBackground(new Color(0, 0, 128));
@@ -186,6 +195,12 @@ public class ManageLocation extends JFrame {
 		contentPane.add(rdbtnLec);
 		
 		rdbtnLab = new JRadioButton("Laboratories");
+		buttonGroup.add(rdbtnLab);
+		rdbtnLab.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				roomtype="Laboratories";
+			}
+		});
 		rdbtnLab.setForeground(Color.WHITE);
 		rdbtnLab.setFont(new Font("Tahoma", Font.BOLD, 11));
 		rdbtnLab.setBackground(new Color(0, 0, 128));
@@ -279,9 +294,48 @@ public class ManageLocation extends JFrame {
 		btnClearViewPage.setBounds(1117, 195, 146, 36);
 		contentPane.add(btnClearViewPage);
 		
+		
+	//update data
 		btnUpdate = new JButton("Update");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+					
+					int row = tableLocation.getSelectedRow();
+					String value = (tableLocation.getModel().getValueAt(row, 0).toString());
+					String query = "update addLocation set BuildingName=?, RoomName=? , RoomType=? , Capacity=? where ID="+value;
+					PreparedStatement psat=connection.prepareStatement(query);
+					
+					psat.setString(1,textViewBName.getText());
+					psat.setString(2,textViewRName.getText());
+					
+					if(rdbtnLec.isSelected())
+					{
+						roomtype="Lecture";
+					}
+					else
+					{
+						roomtype="Laboratory";
+					}
+					psat.setString(3, roomtype);
+					
+					psat.setString(4, textViewCapacity.getText());
+					
+					psat.executeUpdate();
+					
+					CLearFieldsOftheForm();
+					
+				}
+				catch(Exception e5)
+				{
+					e5.printStackTrace();
+				}
+				
+				
+				//to refresh the table after updating
+				RefreshTable();
 				
 				
 			}
