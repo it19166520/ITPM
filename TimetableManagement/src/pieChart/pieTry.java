@@ -29,14 +29,10 @@ import org.jfree.data.general.*;
 public class pieTry {
 
 	private JFrame frmStatistics;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField textRegLecs;
+	private JTextField textRegStudents;
+	private JTextField textRegSubjs;
+	private JTextField textRegRooms;
 
 	/**
 	 * Launch the application.
@@ -82,109 +78,65 @@ public class pieTry {
 			txtpnTimtableManagement.setBackground(Color.LIGHT_GRAY);
 			frmStatistics.getContentPane().add(txtpnTimtableManagement);
 			
-			JPanel panel = new JPanel();
+			panel = new JPanel();
 			panel.setBackground(new Color(240, 255, 240));
-			panel.setBounds(0, 72, 1354, 606);
+			panel.setBounds(76, 72, 1238, 606);
 			frmStatistics.getContentPane().add(panel);
 			panel.setLayout(null);
 			
-			JPanel panel_1 = new JPanel();
-			panel_1.setBounds(672, 5, 10, 10);
-			panel.add(panel_1);
+			lblRegLecs = new JLabel("Registered Lectures");
+			lblRegLecs.setFont(new Font("Tahoma", Font.BOLD, 15));
+			lblRegLecs.setBounds(30, 147, 205, 65);
+			panel.add(lblRegLecs);
 			
-			JLabel lblNewLabel = new JLabel("Registered Lectures");
-			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-			lblNewLabel.setBounds(30, 147, 205, 65);
-			panel.add(lblNewLabel);
-			
-			JLabel lblRegisteredStudents = new JLabel("Registered Students");
+			lblRegisteredStudents = new JLabel("Registered Students");
 			lblRegisteredStudents.setFont(new Font("Tahoma", Font.BOLD, 15));
 			lblRegisteredStudents.setBounds(369, 147, 205, 65);
 			panel.add(lblRegisteredStudents);
 			
-			JLabel lblRegisteredSubjects = new JLabel("Registered Subjects");
+			lblRegisteredSubjects = new JLabel("Registered Subjects");
 			lblRegisteredSubjects.setFont(new Font("Tahoma", Font.BOLD, 15));
 			lblRegisteredSubjects.setBounds(725, 147, 205, 65);
 			panel.add(lblRegisteredSubjects);
 			
-			JLabel lblRegisteredRooms = new JLabel("Registered Rooms");
+			lblRegisteredRooms = new JLabel("Registered Rooms");
 			lblRegisteredRooms.setFont(new Font("Tahoma", Font.BOLD, 15));
 			lblRegisteredRooms.setBounds(1061, 147, 205, 65);
 			panel.add(lblRegisteredRooms);
 			
-			textField = new JTextField();
-			textField.setBounds(30, 50, 172, 102);
-			panel.add(textField);
-			textField.setColumns(10);
+			textRegLecs = new JTextField();
+			textRegLecs.setBounds(30, 50, 172, 102);
+			panel.add(textRegLecs);
+			textRegLecs.setColumns(10);
 			
-			textField_1 = new JTextField();
-			textField_1.setColumns(10);
-			textField_1.setBounds(358, 50, 172, 102);
-			panel.add(textField_1);
+			textRegStudents = new JTextField();
+			textRegStudents.setColumns(10);
+			textRegStudents.setBounds(358, 50, 172, 102);
+			panel.add(textRegStudents);
 			
-			textField_2 = new JTextField();
-			textField_2.setColumns(10);
-			textField_2.setBounds(721, 50, 172, 102);
-			panel.add(textField_2);
+			textRegSubjs = new JTextField();
+			textRegSubjs.setColumns(10);
+			textRegSubjs.setBounds(721, 50, 172, 102);
+			panel.add(textRegSubjs);
 			
-			textField_3 = new JTextField();
-			textField_3.setColumns(10);
-			textField_3.setBounds(1039, 50, 172, 102);
-			panel.add(textField_3);
+			textRegRooms = new JTextField();
+			textRegRooms.setColumns(10);
+			textRegRooms.setBounds(1039, 50, 172, 102);
+			panel.add(textRegRooms);
 			
-			JPanel panel_2 = new JPanel();
-			panel_2.setBounds(30, 223, 500, 349);
-			panel.add(panel_2);
-			panel_2.setLayout(null);
-			
-			JLabel lblNewLabel_1 = new JLabel("Lastest News");
-			lblNewLabel_1.setBackground(new Color(0, 0, 128));
-			lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-			lblNewLabel_1.setBounds(10, 0, 500, 56);
-			panel_2.add(lblNewLabel_1);
-			
-			JLabel lblNewLabel_2 = new JLabel("Registered Lectures");
-			lblNewLabel_2.setBounds(61, 80, 117, 28);
-			panel_2.add(lblNewLabel_2);
-			
-			JLabel lblNewLabel_2_1 = new JLabel("Registered Students");
-			lblNewLabel_2_1.setBounds(61, 139, 117, 28);
-			panel_2.add(lblNewLabel_2_1);
-			
-			JLabel lblNewLabel_2_2 = new JLabel("Registered Subjects");
-			lblNewLabel_2_2.setBounds(61, 206, 117, 28);
-			panel_2.add(lblNewLabel_2_2);
-			
-			JLabel lblNewLabel_2_3 = new JLabel("Registered Rooms");
-			lblNewLabel_2_3.setBounds(61, 270, 117, 28);
-			panel_2.add(lblNewLabel_2_3);
-			
-			textField_4 = new JTextField();
-			textField_4.setBounds(223, 78, 182, 26);
-			panel_2.add(textField_4);
-			textField_4.setColumns(10);
-			
-			textField_5 = new JTextField();
-			textField_5.setColumns(10);
-			textField_5.setBounds(223, 139, 182, 30);
-			panel_2.add(textField_5);
-			
-			textField_6 = new JTextField();
-			textField_6.setColumns(10);
-			textField_6.setBounds(223, 210, 182, 26);
-			panel_2.add(textField_6);
-			
-			textField_7 = new JTextField();
-			textField_7.setColumns(10);
-			textField_7.setBounds(223, 274, 182, 26);
-			panel_2.add(textField_7);
-			
-			JPanel panel_3 = new JPanel();
-			panel_3.setBounds(623, 230, 629, 342);
-			panel.add(panel_3);
+			panelChart = new JPanel();
+			panelChart.setBounds(252, 223, 606, 372);
+			panel.add(panelChart);
+			panelChart.setLayout(null);
 			}
 			
 			DefaultCategoryDataset dataset=new DefaultCategoryDataset();
+			private JPanel panel;
+			private JPanel panelChart;
+			private JLabel lblRegLecs;
+			private JLabel lblRegisteredStudents;
+			private JLabel lblRegisteredSubjects;
+			private JLabel lblRegisteredRooms;
 			//dataset.setValue(80,"marks",")
 			/*
 			DefaultPieDataset pieDataset= new DefaultPieDataset()
