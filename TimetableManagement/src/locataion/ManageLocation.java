@@ -262,6 +262,12 @@ public class ManageLocation extends JFrame {
 		contentPane.add(btnClearViewPage);
 		
 		btnUpdate = new JButton("Update");
+		btnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
 		btnUpdate.setForeground(Color.WHITE);
 		btnUpdate.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnUpdate.setBackground(new Color(27, 163, 156));
@@ -269,6 +275,29 @@ public class ManageLocation extends JFrame {
 		contentPane.add(btnUpdate);
 		
 		btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+					String deletequery="delete from addLocation where ID='"+textViewID.getText()+"'";                      
+					PreparedStatement psat=connection.prepareStatement(deletequery);
+					
+					psat.execute();
+					
+					JOptionPane.showMessageDialog(null, "Details Deleted Sucsessfully!");
+					
+					psat.close();
+					CLearFieldsOftheForm();
+					
+				}
+				catch(Exception e3)
+				{
+					e3.printStackTrace();
+				}
+				
+			}
+		});
 		btnDelete.setForeground(Color.WHITE);
 		btnDelete.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnDelete.setBackground(new Color(210, 77, 87));
