@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import locataion.Location;
+import pieChart.BarChart;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -20,6 +21,7 @@ public class ShankiHome {
 	private JPanel panelHeader;
 	private JLabel txtrTimeTableManagement;
 	private JButton btnLocatio;
+	private JButton btnStatistic;
 
 	/**
 	 * Launch the application.
@@ -50,6 +52,7 @@ public class ShankiHome {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(0, 0, 1370, 728);
+		frame.setBackground(Color.WHITE);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 	
@@ -68,6 +71,7 @@ public class ShankiHome {
 		panelHeader.add(txtrTimeTableManagement); //end of header
 		
 		btnLocatio = new JButton("Location");
+		btnLocatio.setFocusTraversalKeysEnabled(false);
 		btnLocatio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame Location = new Location();
@@ -80,6 +84,21 @@ public class ShankiHome {
 		btnLocatio.setBackground(new Color(0, 0, 139));
 		btnLocatio.setBounds(422, 251, 385, 46);
 		frame.getContentPane().add(btnLocatio);
+		
+		btnStatistic = new JButton("Statistic");
+		btnStatistic.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame barChart = new BarChart();
+				barChart.show();
+				
+			}
+		});
+		btnStatistic.setFocusTraversalKeysEnabled(false);
+		btnStatistic.setForeground(Color.WHITE);
+		btnStatistic.setFont(new Font("Segoe UI Semilight", Font.BOLD, 19));
+		btnStatistic.setBackground(new Color(0, 0, 139));
+		btnStatistic.setBounds(422, 342, 385, 46);
+		frame.getContentPane().add(btnStatistic);
 	}
 
 }
