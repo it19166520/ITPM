@@ -29,6 +29,8 @@ import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
 import java.awt.Font;
 import javax.swing.border.EtchedBorder;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AddManageSubjects extends JFrame {
 
@@ -117,6 +119,14 @@ public class AddManageSubjects extends JFrame {
 	private JButton btnNewButton_6;
 	private JPanel panel_5;
 	private JPanel panel_6;
+	private JLabel lblOfferedYear;
+	private JLabel lblOfferedSem;
+	private JLabel lblSubjectName;
+	private JLabel lblSublectCode;
+	private JLabel lblNumOfLecHours;
+	private JLabel lblNumOfTuteHours;
+	private JLabel lblNumOfLabHours;
+	private JLabel lblNumOfEvaltionHours;
 	
 	
 	public void refreshSubjectTable()
@@ -238,42 +248,108 @@ public class AddManageSubjects extends JFrame {
 		panel_1.add(lblNewLabel_8);
 		
 		txtSubOffYear = new JComboBox();
+		txtSubOffYear.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				//To release the label after filling the field:
+				lblOfferedYear.setText("");
+				
+			}
+		});
 		txtSubOffYear.setBackground(new Color(255, 255, 255));
 		txtSubOffYear.setBounds(303, 85, 238, 21);
 		panel_1.add(txtSubOffYear);
 		txtSubOffYear.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4"}));
 		
 		txtSubOffSem = new JComboBox();
+		txtSubOffSem.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				lblOfferedSem.setText("");
+			}
+		});
 		txtSubOffSem.setBounds(301, 121, 240, 21);
 		panel_1.add(txtSubOffSem);
 		txtSubOffSem.setModel(new DefaultComboBoxModel(new String[] {"1", "2"}));
 		
 		txtSubName = new JTextField();
+		txtSubName.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				//To release the label after filling the field:
+				lblSubjectName.setText("");
+			}
+		});
 		txtSubName.setBounds(301, 156, 240, 19);
 		panel_1.add(txtSubName);
 		txtSubName.setColumns(10);
 		
 		txtSubCode = new JTextField();
+		txtSubCode.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				//To release the label after filling the field:
+				lblSublectCode.setText("");
+			}
+		});
 		txtSubCode.setBounds(301, 192, 240, 19);
 		panel_1.add(txtSubCode);
 		txtSubCode.setColumns(10);
 		
 		NumOfLecHours = new JComboBox();
+		NumOfLecHours.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				//To release the label after filling the field:
+				lblNumOfLecHours.setText("");
+				
+			}
+		});
 		NumOfLecHours.setBounds(301, 229, 240, 21);
 		panel_1.add(NumOfLecHours);
 		NumOfLecHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
 		
 		NumOfTuteHours = new JComboBox();
+		NumOfTuteHours.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				//To release the label after filling the field:
+				lblNumOfTuteHours.setText("");
+			}
+		});
 		NumOfTuteHours.setBounds(301, 268, 240, 21);
 		panel_1.add(NumOfTuteHours);
 		NumOfTuteHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
 		
 		NumOfLabHours = new JComboBox();
+		NumOfLabHours.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				//To release the label after filling the field:
+				lblNumOfLabHours.setText("");
+			}
+		});
 		NumOfLabHours.setBounds(301, 302, 240, 21);
 		panel_1.add(NumOfLabHours);
 		NumOfLabHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
 		
 		NumOfEvaltionHours = new JComboBox();
+		NumOfEvaltionHours.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				//To release the label after filling the field:
+				lblNumOfEvaltionHours.setText("");
+				
+			}
+		});
 		NumOfEvaltionHours.setBounds(301, 342, 240, 21);
 		panel_1.add(NumOfEvaltionHours);
 		NumOfEvaltionHours.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
@@ -285,12 +361,123 @@ public class AddManageSubjects extends JFrame {
 		btnNewButton_2.setBackground(new Color(50, 205, 50));
 		
 		btnNewButton_3 = new JButton("CLEAR");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				txtSubOffYear.setSelectedIndex(-1);
+				txtSubOffSem.setSelectedIndex(-1);
+				txtSubName.setText("  ");
+				txtSubCode.setText("  ");
+				NumOfLecHours.setSelectedIndex(-1);
+				NumOfTuteHours.setSelectedIndex(-1);
+				NumOfLabHours.setSelectedIndex(-1);
+				NumOfEvaltionHours.setSelectedIndex(-1);
+				
+				
+				
+			}
+		});
 		btnNewButton_3.setBounds(357, 416, 185, 41);
 		panel_1.add(btnNewButton_3);
 		btnNewButton_3.setBackground(new Color(30, 144, 255));
+		
+		lblOfferedYear = new JLabel("");
+		lblOfferedYear.setForeground(Color.RED);
+		lblOfferedYear.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblOfferedYear.setBounds(551, 89, 79, 13);
+		panel_1.add(lblOfferedYear);
+		
+		lblOfferedSem = new JLabel("");
+		lblOfferedSem.setForeground(Color.RED);
+		lblOfferedSem.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblOfferedSem.setBounds(551, 125, 79, 13);
+		panel_1.add(lblOfferedSem);
+		
+		lblSubjectName = new JLabel("");
+		lblSubjectName.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblSubjectName.setForeground(Color.RED);
+		lblSubjectName.setBounds(551, 159, 79, 13);
+		panel_1.add(lblSubjectName);
+		
+		lblSublectCode = new JLabel("");
+		lblSublectCode.setForeground(Color.RED);
+		lblSublectCode.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblSublectCode.setBounds(551, 195, 79, 13);
+		panel_1.add(lblSublectCode);
+		
+		lblNumOfLecHours = new JLabel("");
+		lblNumOfLecHours.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblNumOfLecHours.setForeground(Color.RED);
+		lblNumOfLecHours.setBounds(551, 233, 79, 13);
+		panel_1.add(lblNumOfLecHours);
+		
+		lblNumOfTuteHours = new JLabel("");
+		lblNumOfTuteHours.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblNumOfTuteHours.setForeground(Color.RED);
+		lblNumOfTuteHours.setBounds(551, 272, 79, 13);
+		panel_1.add(lblNumOfTuteHours);
+		
+		lblNumOfLabHours = new JLabel("");
+		lblNumOfLabHours.setForeground(Color.RED);
+		lblNumOfLabHours.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblNumOfLabHours.setBounds(551, 306, 79, 13);
+		panel_1.add(lblNumOfLabHours);
+		
+		lblNumOfEvaltionHours = new JLabel("");
+		lblNumOfEvaltionHours.setForeground(Color.RED);
+		lblNumOfEvaltionHours.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblNumOfEvaltionHours.setBounds(551, 346, 79, 13);
+		panel_1.add(lblNumOfEvaltionHours);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				//To check weather the feilds are required or not:
+				
+				if(((String) txtSubOffYear.getSelectedItem()).trim().isEmpty() && ((String) txtSubOffSem.getSelectedItem()).trim().isEmpty() && txtSubName.getText().trim().isEmpty() && txtSubCode.getText().trim().isEmpty() && ((String) NumOfLecHours.getSelectedItem()).trim().isEmpty() && ((String) NumOfTuteHours.getSelectedItem()).trim().isEmpty() && ((String) NumOfLabHours.getSelectedItem()).trim().isEmpty() && ((String)NumOfEvaltionHours.getSelectedItem()).trim().isEmpty())
+				{
+					
+					lblOfferedYear.setText("*required");
+					lblOfferedSem.setText("*required");
+					lblSubjectName.setText("*required");
+					lblSublectCode.setText("*required");
+					lblNumOfLecHours.setText("*required");
+					lblNumOfTuteHours.setText("*required");
+					lblNumOfLabHours.setText("*required");
+					lblNumOfEvaltionHours.setText("*required");
+				}
+				else if(((String) txtSubOffYear.getSelectedItem()).trim().isEmpty())
+				{
+					lblOfferedYear.setText("*required");
+				}
+				else if(((String) txtSubOffSem.getSelectedItem()).trim().isEmpty()) {
+					
+					lblOfferedSem.setText("*required");
+				}
+				else if(txtSubName.getText().trim().isEmpty()) {
+					
+					lblSubjectName.setText("*required");
+				}
+				else if(txtSubCode.getText().trim().isEmpty())
+				{
+					lblSublectCode.setText("*required");
+				}
+				else if(((String) NumOfLecHours.getSelectedItem()).trim().isEmpty())
+				{
+					lblNumOfLecHours.setText("*required");
+				}
+				else if(((String) NumOfTuteHours.getSelectedItem()).trim().isEmpty()) 
+				{
+					lblNumOfTuteHours.setText("*required");
+				}
+				else if(((String) NumOfLabHours.getSelectedItem()).trim().isEmpty()) {
+					
+					lblNumOfLabHours.setText("*required");
+				}
+				else if(((String)NumOfEvaltionHours.getSelectedItem()).trim().isEmpty()) {
+					
+					lblNumOfEvaltionHours.setText("*required");
+				}
+				else
 				  //Get Subject Details from the user and store the details in the database:
 				
 				 try {
@@ -311,19 +498,19 @@ public class AddManageSubjects extends JFrame {
 						pst.setString(4, txtSubCode.getText());
 						
 						//get Number of lecturer hours from user by using JComboBox:
-						String LecHours=txtSubOffSem.getSelectedItem().toString();
+						String LecHours=NumOfLecHours.getSelectedItem().toString();
 						pst.setString(5, LecHours);
 						
 						//get Number of Tutorial hours from user by using JComboBox:
-						String TuteHours=txtSubOffSem.getSelectedItem().toString();
+						String TuteHours=NumOfTuteHours.getSelectedItem().toString();
 						pst.setString(6, TuteHours);
 						
 						//get Number of lab hours from user by using JComboBox:
-						String LabHours=txtSubOffSem.getSelectedItem().toString();
+						String LabHours=NumOfLabHours.getSelectedItem().toString();
 						pst.setString(7, LabHours);
 						
 						//get Number of Evalution Hours from by using JComboBox:
-						String EvaHours=txtSubOffSem.getSelectedItem().toString();
+						String EvaHours=NumOfEvaltionHours.getSelectedItem().toString();
 						pst.setString(8, EvaHours);
 						
 						
@@ -533,6 +720,24 @@ public class AddManageSubjects extends JFrame {
 		panel_4.setLayout(null);
 		
 		btnNewButton_6 = new JButton("Clear All ");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				txtSubID.setText("  ");
+				txtSubOffYear2.setSelectedIndex(-1);
+				txtSubOffSem2.setSelectedIndex(-1);
+				txtSubName2.setText("  ");
+				txtSubCode2.setText("  ");
+				txtNumOfLecH2.setSelectedIndex(-1);
+				txtNumOfTuteH2.setSelectedIndex(-1);
+				txtNumOfLabH2.setSelectedIndex(-1);
+				txtNumOfEvaH2.setSelectedIndex(-1);
+				
+				
+				
+			}
+		});
 		btnNewButton_6.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnNewButton_6.setBackground(new Color(30, 144, 255));
 		btnNewButton_6.setBounds(212, 500, 145, 29);

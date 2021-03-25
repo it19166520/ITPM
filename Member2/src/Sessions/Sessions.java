@@ -21,7 +21,8 @@ import java.awt.event.MouseEvent;
 
 public class Sessions extends JFrame {
 
-	Connection connection=null;
+	//Connection connection=null;
+	Connection conn = SqlServerConnection.dbConnecter();
 	private JPanel contentPane;
 	private JPanel AddSessionPanel;
 	private JPanel manageSessionPanel;
@@ -99,8 +100,8 @@ public class Sessions extends JFrame {
 	{
 		try {
 			
-			String query="select * from sessions";
-			PreparedStatement pst=connection.prepareStatement(query);
+			String query="select * from session";
+			PreparedStatement pst=conn.prepareStatement(query);
 			ResultSet rs=pst.executeQuery();
 			table.setModel(DbUtils.resultSetToTableModel(rs));
 			
@@ -118,8 +119,8 @@ public class Sessions extends JFrame {
 
 		try {
 			
-			String query="select * from sessions";
-			PreparedStatement pst=connection.prepareStatement(query);
+			String query="select * from session";
+			PreparedStatement pst=conn.prepareStatement(query);
 			ResultSet rs=pst.executeQuery();
 			
 			while(rs.next()) {
@@ -136,7 +137,8 @@ public class Sessions extends JFrame {
 	 * Create the frame.
 	 */
 	public Sessions() {
-		connection = SqlServerConnection.dbConnecter();
+		//connection = SqlServerConnection.dbConnecter();
+		Connection conn = SqlServerConnection.dbConnecter();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0,0,1385,728);
 		contentPane = new JPanel();
@@ -238,7 +240,7 @@ public class Sessions extends JFrame {
 		panel_1.add(lblNewLabel_9);
 		
 		txtLecturerNameSession = new JComboBox();
-		txtLecturerNameSession.setModel(new DefaultComboBoxModel(new String[] {"Mr.Kamal Dissanayake", "Mr.Nimal Dissanayake", "Mr.Namal Dissanayake", "Mr.Thilak Dissanayake", "Mr.karunarathna"}));
+		txtLecturerNameSession.setModel(new DefaultComboBoxModel(new String[] {"Mr.Kamal ", "Mr.Nimal ", "Mr.Namal ", "Mr.Thilak ", "Mr.karuna"}));
 		txtLecturerNameSession.setBounds(244, 92, 231, 21);
 		panel_1.add(txtLecturerNameSession);
 		
@@ -305,8 +307,8 @@ public class Sessions extends JFrame {
 				
 				 try {
 						
-						String query="insert into sessions (LecturerNameSession,SubjectCodeSession,SubjectNameSession,TagSession,GroupIDSession,StudentCountSession,SessionDuration,SessionId) values (?,?,?,?,?,?,?,?)";                      
-						PreparedStatement pst=connection.prepareStatement(query);
+						String query="insert into session (LecturerNameSession,SubjectCodeSession,SubjectNameSession,TagSession,GroupIDSession,StudentCountSession,SessionDuration,SessionId) values (?,?,?,?,?,?,?,?)";                      
+						PreparedStatement pst=conn.prepareStatement(query);
 						
 						//get LecturerName details from the user by using  JComboBox :
 						String SessionLecturerName=txtLecturerNameSession.getSelectedItem().toString();
@@ -512,8 +514,8 @@ public class Sessions extends JFrame {
 						String SessionIndex_=(table.getModel().getValueAt(row, 0)).toString();
 						
 					   
-						String query="select * from sessions where SessionIndex='"+SessionIndex_+"' ";                      
-						PreparedStatement pst=connection.prepareStatement(query);
+						String query="select * from session where SessionIndex='"+SessionIndex_+"' ";                      
+						PreparedStatement pst=conn.prepareStatement(query);
 					
 						ResultSet rs=pst.executeQuery();
 						
@@ -550,7 +552,7 @@ public class Sessions extends JFrame {
 				try {
 					
 					String query="select * from sessions";
-					PreparedStatement pst=connection.prepareStatement(query);
+					PreparedStatement pst=conn.prepareStatement(query);
 					ResultSet rs=pst.executeQuery();
 					table.setModel(DbUtils.resultSetToTableModel(rs));
 				
@@ -573,8 +575,8 @@ public class Sessions extends JFrame {
 				
                 try {
 					
-					String query="select * from sessions where SessionId=?";                      
-					PreparedStatement pst=connection.prepareStatement(query);
+					String query="select * from session where SessionId=?";                      
+					PreparedStatement pst=conn.prepareStatement(query);
 					pst.setString(1, (String)SessioncomboBox.getSelectedItem());
 					ResultSet rs=pst.executeQuery();
 					
@@ -615,8 +617,8 @@ public class Sessions extends JFrame {
 
 				  try {
 						
-						String query="update sessions set  LecturerNameSession='"+txtLecturerNameSession2.getSelectedItem()+"' , SubjectCodeSession='"+txtSubjectCodeSession2.getSelectedItem()+"' ,SubjectNameSession='"+txtSubjectNameSession2.getSelectedItem()+"' ,TagSession='"+txtTagSession2.getSelectedItem()+"', GroupIDSession='"+txtGroupIDSession2.getSelectedItem()+"',  StudentCountSession='"+txtStudentCountSession2.getText()+"' , SessionDuration='"+txtSessionDuration2.getSelectedItem()+"' , SessionId='"+txtSessionId2.getText()+"' where SessionIndex='"+txtLecturerSessionIndex.getText()+"' ";                      
-						PreparedStatement pst=connection.prepareStatement(query);
+						String query="update session set  LecturerNameSession='"+txtLecturerNameSession2.getSelectedItem()+"' , SubjectCodeSession='"+txtSubjectCodeSession2.getSelectedItem()+"' ,SubjectNameSession='"+txtSubjectNameSession2.getSelectedItem()+"' ,TagSession='"+txtTagSession2.getSelectedItem()+"', GroupIDSession='"+txtGroupIDSession2.getSelectedItem()+"',  StudentCountSession='"+txtStudentCountSession2.getText()+"' , SessionDuration='"+txtSessionDuration2.getSelectedItem()+"' , SessionId='"+txtSessionId2.getText()+"' where SessionIndex='"+txtLecturerSessionIndex.getText()+"' ";                      
+						PreparedStatement pst=conn.prepareStatement(query);
 						
 						pst.execute();
 						
@@ -646,8 +648,8 @@ public class Sessions extends JFrame {
 				//Delete
 				try {
 					
-					String query="delete from sessions where SessionIndex='"+txtLecturerSessionIndex.getText()+"'";                      
-					PreparedStatement pst=connection.prepareStatement(query);
+					String query="delete from session where SessionIndex='"+txtLecturerSessionIndex.getText()+"'";                      
+					PreparedStatement pst=conn.prepareStatement(query);
 					
 					pst.execute();
 					

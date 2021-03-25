@@ -19,9 +19,13 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.EtchedBorder;
 
 public class AddManageLecturer extends JFrame {
 
+	
+	Connection conn = SqlServerConnection.dbConnecter();
 	private JPanel contentPane;
 	private JPanel panel1;
 	private JPanel panel2;
@@ -75,7 +79,8 @@ public class AddManageLecturer extends JFrame {
 		
 	}
 
-	Connection connection=null;
+	
+	//Connection conn = SqlServerConnection.dbConnecter();
 	private JTable LecDetailstable;
 	private JTable ActiveHoursDetailstable;
 	private JTextField txtLecturerRegistrationNumber;
@@ -89,7 +94,7 @@ public class AddManageLecturer extends JFrame {
 			try {
 				
 				String query="select LecturerRegistrationNumber,LecturerName,Faculty,Department,Campus,Building,LecturerID,Level,Rank from Lecturer";
-				PreparedStatement pst=connection.prepareStatement(query);
+				PreparedStatement pst=conn.prepareStatement(query);
 				ResultSet rs=pst.executeQuery();
 				LecDetailstable.setModel(DbUtils.resultSetToTableModel(rs));
 				
@@ -105,7 +110,7 @@ public class AddManageLecturer extends JFrame {
 		try {
 			
 			String query="select LecturerRegistrationNumber,LecturerName,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday from Lecturer";
-			PreparedStatement pst=connection.prepareStatement(query);
+			PreparedStatement pst=conn.prepareStatement(query);
 			ResultSet rs=pst.executeQuery();
 			ActiveHoursDetailstable.setModel(DbUtils.resultSetToTableModel(rs));
 			
@@ -122,7 +127,7 @@ public class AddManageLecturer extends JFrame {
 		try {
 			
 			String query="select * from Lecturer";
-			PreparedStatement pst=connection.prepareStatement(query);
+			PreparedStatement pst=conn.prepareStatement(query);
 			ResultSet rs=pst.executeQuery();
 			
 			while(rs.next())
@@ -142,7 +147,7 @@ public class AddManageLecturer extends JFrame {
 		try {
 			
 			String query="select * from Lecturer";
-			PreparedStatement pst=connection.prepareStatement(query);
+			PreparedStatement pst=conn.prepareStatement(query);
 			ResultSet rs=pst.executeQuery();
 			
 			while(rs.next())
@@ -161,7 +166,7 @@ public class AddManageLecturer extends JFrame {
 	 * Create the frame.
 	 */
 	public AddManageLecturer() {
-		connection = SqlServerConnection.dbConnecter();
+		conn = SqlServerConnection.dbConnecter();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0,0,1380,846);
 		contentPane = new JPanel();
@@ -171,96 +176,107 @@ public class AddManageLecturer extends JFrame {
 		contentPane.setLayout(null);
 		
 		LeclayeredPane = new JLayeredPane();
-		LeclayeredPane.setBounds(57, 163, 1258, 623);
+		LeclayeredPane.setBounds(46, 145, 1269, 641);
 		contentPane.add(LeclayeredPane);
 		LeclayeredPane.setLayout(new CardLayout(0, 0));
 		
 		panel1 = new JPanel();
 		panel1.setBackground(new Color(135, 206, 250));
-		panel1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel1.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		LeclayeredPane.add(panel1, "name_74284114373600");
 		panel1.setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel.setBounds(61, 56, 507, 512);
 		panel1.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Lecturer Name :");
-		lblNewLabel.setBounds(46, 94, 91, 13);
+		lblNewLabel.setBounds(83, 83, 91, 13);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_3 = new JLabel("Faculty  :");
-		lblNewLabel_3.setBounds(46, 137, 91, 13);
+		lblNewLabel_3.setBounds(83, 120, 91, 13);
 		panel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Department");
-		lblNewLabel_4.setBounds(46, 179, 91, 13);
+		lblNewLabel_4.setBounds(83, 163, 91, 13);
 		panel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Campus/Center  :");
-		lblNewLabel_5.setBounds(46, 218, 91, 13);
+		lblNewLabel_5.setBounds(83, 203, 91, 13);
 		panel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("Building  :");
-		lblNewLabel_6.setBounds(46, 255, 58, 13);
+		lblNewLabel_6.setBounds(83, 255, 58, 13);
 		panel.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_7 = new JLabel("Lecturer ID  :");
-		lblNewLabel_7.setBounds(46, 302, 91, 13);
+		lblNewLabel_7.setBounds(83, 302, 91, 13);
 		panel.add(lblNewLabel_7);
 		
 		JLabel lblNewLabel_8 = new JLabel("Level  :");
-		lblNewLabel_8.setBounds(46, 342, 45, 13);
+		lblNewLabel_8.setBounds(83, 342, 45, 13);
 		panel.add(lblNewLabel_8);
 		
 		JLabel lblNewLabel_9 = new JLabel("Rank  :");
-		lblNewLabel_9.setBounds(46, 434, 45, 13);
+		lblNewLabel_9.setBounds(83, 434, 45, 13);
 		panel.add(lblNewLabel_9);
 		
 		txtLecturerName = new JTextField();
-		txtLecturerName.setBounds(147, 91, 96, 19);
+		txtLecturerName.setBounds(213, 80, 205, 19);
 		panel.add(txtLecturerName);
 		txtLecturerName.setColumns(10);
 		
 		JComboBox txtFaculty = new JComboBox();
 		txtFaculty.setModel(new DefaultComboBoxModel(new String[] {"Computing", "Engineering", "Management", "Medicine", "Science", "Architeccher"}));
-		txtFaculty.setBounds(147, 133, 96, 21);
+		txtFaculty.setBounds(213, 116, 205, 21);
 		panel.add(txtFaculty);
 		
 		JComboBox txtDepartment = new JComboBox();
 		txtDepartment.setModel(new DefaultComboBoxModel(new String[] {"IT", "SE", "DS", "SC", "IS"}));
-		txtDepartment.setBounds(147, 175, 96, 21);
+		txtDepartment.setBounds(213, 159, 205, 21);
 		panel.add(txtDepartment);
 		
 		JComboBox txtCampus = new JComboBox();
 		txtCampus.setModel(new DefaultComboBoxModel(new String[] {"Malabe", "Kandy", "Kagalle", "Jaffna"}));
-		txtCampus.setBounds(147, 214, 96, 21);
+		txtCampus.setBounds(213, 199, 205, 21);
 		panel.add(txtCampus);
 		
 		JComboBox txtBuilding = new JComboBox();
 		txtBuilding.setModel(new DefaultComboBoxModel(new String[] {"501", "502", "301", "302", "401", "408"}));
-		txtBuilding.setBounds(147, 251, 96, 21);
+		txtBuilding.setBounds(213, 251, 205, 21);
 		panel.add(txtBuilding);
 		
 		JComboBox txtLevel = new JComboBox();
 		txtLevel.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7"}));
-		txtLevel.setBounds(147, 338, 96, 21);
+		txtLevel.setBounds(213, 338, 205, 21);
 		panel.add(txtLevel);
 		
 		txtLecturerID = new JTextField();
-		txtLecturerID.setBounds(147, 299, 96, 19);
+		txtLecturerID.setBounds(213, 299, 205, 19);
 		panel.add(txtLecturerID);
 		txtLecturerID.setColumns(10);
 		
 		txtRank = new JTextField();
-		txtRank.setBounds(147, 431, 96, 19);
+		txtRank.setBounds(202, 431, 216, 19);
 		panel.add(txtRank);
 		txtRank.setColumns(10);
 		
+		JPanel panel_8 = new JPanel();
+		panel_8.setForeground(new Color(255, 255, 255));
+		panel_8.setBackground(new Color(255, 255, 255));
+		panel_8.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Lecturer Details :", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 128)));
+		panel_8.setBounds(35, 27, 440, 455);
+		panel.add(panel_8);
+		panel_8.setLayout(null);
+		
 		btnGenerateID = new JButton("Generate ID");
+		btnGenerateID.setBounds(126, 351, 165, 36);
+		panel_8.add(btnGenerateID);
+		btnGenerateID.setBackground(new Color(135, 206, 250));
 		btnGenerateID.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -285,90 +301,92 @@ public class AddManageLecturer extends JFrame {
 
 			}
 		});
-		btnGenerateID.setBounds(111, 389, 165, 21);
-		panel.add(btnGenerateID);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		panel_1.setBounds(625, 45, 565, 406);
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel_1.setBounds(626, 56, 565, 414);
 		panel1.add(panel_1);
 		panel_1.setLayout(null);
 		
 		JLabel lblNewLabel_10 = new JLabel("Monday  :");
-		lblNewLabel_10.setBounds(41, 92, 92, 13);
+		lblNewLabel_10.setBounds(72, 89, 92, 13);
 		panel_1.add(lblNewLabel_10);
 		
 		JLabel lblNewLabel_11 = new JLabel("Tuesday  :");
-		lblNewLabel_11.setBounds(41, 133, 92, 13);
+		lblNewLabel_11.setBounds(72, 133, 92, 13);
 		panel_1.add(lblNewLabel_11);
 		
 		JLabel lblNewLabel_12 = new JLabel("Wednessday  :");
-		lblNewLabel_12.setBounds(41, 176, 92, 13);
+		lblNewLabel_12.setBounds(72, 176, 92, 13);
 		panel_1.add(lblNewLabel_12);
 		
 		JLabel lblNewLabel_13 = new JLabel("Thursday  :");
-		lblNewLabel_13.setBounds(41, 215, 92, 13);
+		lblNewLabel_13.setBounds(72, 215, 92, 13);
 		panel_1.add(lblNewLabel_13);
 		
 		JLabel lblNewLabel_14 = new JLabel("Friday  :");
-		lblNewLabel_14.setBounds(41, 256, 92, 13);
+		lblNewLabel_14.setBounds(72, 256, 92, 13);
 		panel_1.add(lblNewLabel_14);
 		
 		JLabel lblNewLabel_15 = new JLabel("Satarday  :");
-		lblNewLabel_15.setBounds(41, 300, 92, 13);
+		lblNewLabel_15.setBounds(72, 300, 92, 13);
 		panel_1.add(lblNewLabel_15);
 		
 		JLabel lblNewLabel_16 = new JLabel("Sunday  :");
-		lblNewLabel_16.setBounds(41, 342, 92, 13);
+		lblNewLabel_16.setBounds(72, 345, 92, 13);
 		panel_1.add(lblNewLabel_16);
 		
 		txtMonday = new JTextField();
-		txtMonday.setBounds(141, 89, 185, 19);
+		txtMonday.setBounds(225, 86, 277, 19);
 		panel_1.add(txtMonday);
 		txtMonday.setColumns(10);
 		
 		txtTuesday = new JTextField();
-		txtTuesday.setBounds(141, 130, 185, 19);
+		txtTuesday.setBounds(225, 130, 277, 19);
 		panel_1.add(txtTuesday);
 		txtTuesday.setColumns(10);
 		
 		txtWednesday = new JTextField();
-		txtWednesday.setBounds(141, 173, 185, 19);
+		txtWednesday.setBounds(225, 173, 277, 19);
 		panel_1.add(txtWednesday);
 		txtWednesday.setColumns(10);
 		
 		txtThursday = new JTextField();
-		txtThursday.setBounds(141, 212, 185, 19);
+		txtThursday.setBounds(225, 212, 277, 19);
 		panel_1.add(txtThursday);
 		txtThursday.setColumns(10);
 		
 		txtFriday = new JTextField();
-		txtFriday.setBounds(141, 253, 185, 19);
+		txtFriday.setBounds(225, 253, 277, 19);
 		panel_1.add(txtFriday);
 		txtFriday.setColumns(10);
 		
 		txtSatarday = new JTextField();
-		txtSatarday.setBounds(141, 297, 185, 19);
+		txtSatarday.setBounds(225, 297, 277, 19);
 		panel_1.add(txtSatarday);
 		txtSatarday.setColumns(10);
 		
 		txtSunday = new JTextField();
-		txtSunday.setBounds(141, 342, 185, 19);
+		txtSunday.setBounds(225, 342, 185, 19);
 		panel_1.add(txtSunday);
 		txtSunday.setColumns(10);
 		
-		JLabel lblNewLabel_17 = new JLabel("Active days and Hours :");
-		lblNewLabel_17.setBounds(24, 50, 194, 13);
-		panel_1.add(lblNewLabel_17);
+		JPanel panel_9 = new JPanel();
+		panel_9.setBackground(new Color(255, 255, 255));
+		panel_9.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Active days and Hours :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 128)));
+		panel_9.setBounds(30, 33, 504, 354);
+		panel_1.add(panel_9);
+		panel_9.setLayout(null);
 		
 		JButton btnNewButton_4 = new JButton("Save Details  ");
+		btnNewButton_4.setBackground(new Color(127, 255, 0));
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			try {	
 				String query="insert into Lecturer (LecturerName,Faculty,Department,Campus,Building,LecturerID,Level,Rank,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";                      
-				PreparedStatement pst=connection.prepareStatement(query);
+				PreparedStatement pst=conn.prepareStatement(query);
 				
 				//get subject name from the user by using text fields :
 				pst.setString(1,txtLecturerName.getText());
@@ -435,67 +453,93 @@ public class AddManageLecturer extends JFrame {
 			   refreshLecturerDetailsTable();
 			}
 		});
-		btnNewButton_4.setBounds(692, 494, 138, 21);
+		btnNewButton_4.setBounds(696, 520, 181, 48);
 		panel1.add(btnNewButton_4);
 		
 		JButton btnNewButton_5 = new JButton("Clear  ");
-		btnNewButton_5.setBounds(912, 494, 85, 21);
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				txtLecturerName.setText("  ");
+				txtFaculty.setSelectedIndex(-1);
+				txtDepartment.setSelectedIndex(-1);
+				txtCampus.setSelectedIndex(-1);
+				txtBuilding.setSelectedIndex(-1);
+				txtLecturerID.setText("  ");
+				txtLevel.setSelectedIndex(-1);
+				txtRank.setText("  ");
+				
+				txtMonday.setText("  ");
+				txtTuesday.setText("  ");
+				txtWednesday.setText("  ");
+				txtThursday.setText("  ");
+				txtFriday.setText("  ");
+				txtSatarday.setText("  ");
+				txtSunday.setText("  ");
+			}
+		});
+		btnNewButton_5.setBackground(new Color(255, 127, 80));
+		btnNewButton_5.setBounds(970, 520, 161, 48);
 		panel1.add(btnNewButton_5);
 		
 		panel2 = new JPanel();
+		panel2.setBackground(new Color(135, 206, 250));
+		panel2.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		LeclayeredPane.add(panel2, "name_74288783095000");
 		panel2.setLayout(null);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(10, 45, 463, 521);
+		panel_2.setBackground(new Color(255, 255, 255));
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel_2.setBounds(42, 45, 430, 499);
 		panel2.add(panel_2);
 		panel_2.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("Lecturer Name :");
-		lblNewLabel_1.setBounds(36, 86, 109, 13);
+		lblNewLabel_1.setBounds(71, 89, 109, 13);
 		panel_2.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_18 = new JLabel("Faculty  :");
-		lblNewLabel_18.setBounds(36, 125, 109, 13);
+		lblNewLabel_18.setBounds(71, 129, 109, 13);
 		panel_2.add(lblNewLabel_18);
 		
 		JLabel lblNewLabel_19 = new JLabel("Department  :");
-		lblNewLabel_19.setBounds(36, 170, 109, 13);
+		lblNewLabel_19.setBounds(71, 170, 109, 13);
 		panel_2.add(lblNewLabel_19);
 		
 		JLabel lblNewLabel_20 = new JLabel("Campus  :");
-		lblNewLabel_20.setBounds(36, 214, 109, 13);
+		lblNewLabel_20.setBounds(71, 214, 109, 13);
 		panel_2.add(lblNewLabel_20);
 		
 		JLabel lblNewLabel_21 = new JLabel("Building  :");
-		lblNewLabel_21.setBounds(36, 255, 109, 13);
+		lblNewLabel_21.setBounds(71, 255, 109, 13);
 		panel_2.add(lblNewLabel_21);
 		
 		JLabel lblNewLabel_22 = new JLabel("Lecturer ID  :");
-		lblNewLabel_22.setBounds(36, 295, 109, 13);
+		lblNewLabel_22.setBounds(71, 295, 109, 13);
 		panel_2.add(lblNewLabel_22);
 		
 		JLabel lblNewLabel_23 = new JLabel("Level  :");
-		lblNewLabel_23.setBounds(36, 338, 109, 13);
+		lblNewLabel_23.setBounds(71, 338, 109, 13);
 		panel_2.add(lblNewLabel_23);
 		
 		JLabel lblNewLabel_24 = new JLabel("Rank  :");
-		lblNewLabel_24.setBounds(36, 428, 109, 13);
+		lblNewLabel_24.setBounds(71, 428, 109, 13);
 		panel_2.add(lblNewLabel_24);
 		
 		txtLecturerName2 = new JTextField();
-		txtLecturerName2.setBounds(155, 83, 164, 19);
+		txtLecturerName2.setBounds(222, 86, 164, 19);
 		panel_2.add(txtLecturerName2);
 		txtLecturerName2.setColumns(10);
 		
 		txtLecturerID2 = new JTextField();
-		txtLecturerID2.setBounds(155, 292, 164, 19);
+		txtLecturerID2.setBounds(216, 292, 164, 19);
 		panel_2.add(txtLecturerID2);
 		txtLecturerID2.setColumns(10);
 		
 		txtRank2 = new JTextField();
-		txtRank2.setBounds(155, 425, 164, 19);
+		txtRank2.setEditable(false);
+		txtRank2.setBounds(216, 425, 164, 19);
 		panel_2.add(txtRank2);
 		txtRank2.setColumns(10);
 		
@@ -503,35 +547,35 @@ public class AddManageLecturer extends JFrame {
 		
 		JComboBox txtFaculty2 = new JComboBox();
 		txtFaculty2.setModel(new DefaultComboBoxModel(new String[] {"Computing", "Engineering", "Management", "Medicine", "Archtecture"}));
-		txtFaculty2.setBounds(152, 121, 167, 21);
+		txtFaculty2.setBounds(219, 125, 167, 21);
 		panel_2.add(txtFaculty2);
 		
 		JComboBox txtDepartment2 = new JComboBox();
 		txtDepartment2.setModel(new DefaultComboBoxModel(new String[] {"IT", "SE", "SC", "DS", "IS"}));
-		txtDepartment2.setBounds(152, 166, 167, 21);
+		txtDepartment2.setBounds(216, 166, 167, 21);
 		panel_2.add(txtDepartment2);
 		
 		JComboBox txtCampus2 = new JComboBox();
 		txtCampus2.setModel(new DefaultComboBoxModel(new String[] {"Malabe", "Kandy", "Kagalle", "Jaffna"}));
-		txtCampus2.setBounds(152, 210, 167, 21);
+		txtCampus2.setBounds(216, 210, 167, 21);
 		panel_2.add(txtCampus2);
 		
 		JComboBox txtBuilding2 = new JComboBox();
 		txtBuilding2.setModel(new DefaultComboBoxModel(new String[] {"501", "502", "301", "302", "402", "402"}));
-		txtBuilding2.setBounds(152, 251, 167, 21);
+		txtBuilding2.setBounds(216, 251, 167, 21);
 		panel_2.add(txtBuilding2);
 		
 		JComboBox txtLevel2 = new JComboBox();
 		txtLevel2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6"}));
-		txtLevel2.setBounds(155, 334, 164, 21);
+		txtLevel2.setBounds(216, 334, 164, 21);
 		panel_2.add(txtLevel2);
 		
 		JLabel lblNewLabel_33 = new JLabel("Registration Number  :");
-		lblNewLabel_33.setBounds(36, 53, 109, 13);
+		lblNewLabel_33.setBounds(71, 53, 109, 13);
 		panel_2.add(lblNewLabel_33);
 		
 		txtLecturerRegistrationNumber = new JTextField();
-		txtLecturerRegistrationNumber.setBounds(152, 50, 167, 19);
+		txtLecturerRegistrationNumber.setBounds(219, 50, 167, 19);
 		panel_2.add(txtLecturerRegistrationNumber);
 		txtLecturerRegistrationNumber.setColumns(10);
 		
@@ -560,12 +604,13 @@ public class AddManageLecturer extends JFrame {
 				
 			}
 		});
-		btnNewButton_9.setBounds(115, 379, 133, 21);
+		btnNewButton_9.setBounds(149, 379, 133, 21);
 		panel_2.add(btnNewButton_9);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBounds(493, 49, 590, 517);
+		panel_3.setBackground(new Color(255, 255, 255));
+		panel_3.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel_3.setBounds(493, 49, 590, 495);
 		panel2.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -577,7 +622,7 @@ public class AddManageLecturer extends JFrame {
 				try {
 					
 					String query="select LecturerRegistrationNumber,LecturerName,Faculty,Department,Campus,Building,LecturerID,Level,Rank from Lecturer";
-					PreparedStatement pst=connection.prepareStatement(query);
+					PreparedStatement pst=conn.prepareStatement(query);
 					ResultSet rs=pst.executeQuery();
 					LecDetailstable.setModel(DbUtils.resultSetToTableModel(rs));
 					
@@ -595,7 +640,8 @@ public class AddManageLecturer extends JFrame {
 		panel_3.add(btnLoadLecturerDetails);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(25, 122, 544, 304);
+		scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
+		scrollPane.setBounds(25, 111, 544, 315);
 		panel_3.add(scrollPane);
 		
 		LecDetailstable = new JTable();
@@ -609,7 +655,7 @@ public class AddManageLecturer extends JFrame {
 					String LecturerRegistrationNumber_=(LecDetailstable.getModel().getValueAt(row, 0)).toString();
 					
 					String query="select LecturerRegistrationNumber,LecturerName,Faculty,Department,Campus,Building,LecturerID,Level,Rank from Lecturer where LecturerRegistrationNumber = '"+LecturerRegistrationNumber_+"' ";
-					PreparedStatement pst=connection.prepareStatement(query);
+					PreparedStatement pst=conn.prepareStatement(query);
 					
 					ResultSet rs=pst.executeQuery();
 					
@@ -646,7 +692,7 @@ public class AddManageLecturer extends JFrame {
 				try {
 					
 					String query="select LecturerRegistrationNumber,LecturerName,Faculty,Department,Campus,Building,LecturerID,Level,Rank from Lecturer where LecturerName=? ";
-					PreparedStatement pst=connection.prepareStatement(query);
+					PreparedStatement pst=conn.prepareStatement(query);
 					pst.setString(1, (String)LecturerDetailsComboBox.getSelectedItem() );
 					ResultSet rs=pst.executeQuery();
 					
@@ -679,6 +725,10 @@ public class AddManageLecturer extends JFrame {
 		LecturerDetailsComboBox.setBounds(25, 36, 151, 21);
 		panel_3.add(LecturerDetailsComboBox);
 		
+		JLabel lblNewLabel_35 = new JLabel("Select Your Name In Here :");
+		lblNewLabel_35.setBounds(25, 13, 151, 13);
+		panel_3.add(lblNewLabel_35);
+		
 		JButton btnNewButton_6 = new JButton("Update");
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -688,7 +738,7 @@ public class AddManageLecturer extends JFrame {
 				  try {
 						
 						String query="update Lecturer set  LecturerName='"+txtLecturerName2.getText()+"' , Faculty='"+txtFaculty2.getSelectedItem()+"' ,Department='"+txtDepartment2.getSelectedItem()+"' ,Campus='"+txtCampus2.getSelectedItem()+"', Building='"+txtBuilding2.getSelectedItem()+"',  LecturerID='"+txtLecturerID2.getText()+"' , Level='"+txtLevel2.getSelectedItem()+"' , Rank='"+txtRank2.getText()+"' where LecturerRegistrationNumber='"+txtLecturerRegistrationNumber.getText()+"' ";                      
-						PreparedStatement pst=connection.prepareStatement(query);
+						PreparedStatement pst=conn.prepareStatement(query);
 						
 						pst.execute();
 						
@@ -704,7 +754,7 @@ public class AddManageLecturer extends JFrame {
 				  refreshLecturerDetailsTable();
 			}
 		});
-		btnNewButton_6.setBounds(1111, 172, 109, 39);
+		btnNewButton_6.setBounds(1111, 196, 109, 39);
 		panel2.add(btnNewButton_6);
 		
 		JButton btnNewButton_7 = new JButton("Delete");
@@ -716,7 +766,7 @@ public class AddManageLecturer extends JFrame {
 				try {
 					
 					String query="delete from Lecturer where LecturerRegistrationNumber='"+txtLecturerRegistrationNumber.getText()+"'";                      
-					PreparedStatement pst=connection.prepareStatement(query);
+					PreparedStatement pst=conn.prepareStatement(query);
 					
 					pst.execute();
 					
@@ -734,20 +784,38 @@ public class AddManageLecturer extends JFrame {
 				
 			}
 		});
-		btnNewButton_7.setBounds(1111, 221, 109, 39);
+		btnNewButton_7.setBounds(1111, 261, 109, 39);
 		panel2.add(btnNewButton_7);
 		
 		JButton btnNewButton_8 = new JButton("Clear");
-		btnNewButton_8.setBounds(1111, 270, 109, 39);
+		btnNewButton_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				txtLecturerRegistrationNumber.setText("  ");
+				txtLecturerName2.setText("  ");
+				txtFaculty2.setSelectedIndex(-1);
+				txtDepartment2.setSelectedIndex(-1);
+				txtCampus2.setSelectedIndex(-1);
+				txtBuilding2.setSelectedIndex(-1);
+				txtLecturerID2.setText("  ");
+				txtLevel2.setSelectedIndex(-1);
+				txtRank2.setText("  ");
+				
+				
+			}
+		});
+		btnNewButton_8.setBounds(1111, 323, 109, 39);
 		panel2.add(btnNewButton_8);
 		
 		panel3 = new JPanel();
+		panel3.setBackground(Color.WHITE);
 		panel3.setForeground(Color.BLACK);
 		LeclayeredPane.add(panel3, "name_74339045343800");
 		panel3.setLayout(null);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_4.setBackground(Color.WHITE);
+		panel_4.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_4.setBounds(62, 42, 414, 252);
 		panel3.add(panel_4);
 		panel_4.setLayout(null);
@@ -761,17 +829,26 @@ public class AddManageLecturer extends JFrame {
 		panel_4.add(lblNewLabel_25);
 		
 		txtLecturerName3 = new JTextField();
+		txtLecturerName3.setEditable(false);
 		txtLecturerName3.setBounds(208, 78, 96, 19);
 		panel_4.add(txtLecturerName3);
 		txtLecturerName3.setColumns(10);
 		
 		txtLecturerID3 = new JTextField();
+		txtLecturerID3.setEditable(false);
 		txtLecturerID3.setBounds(208, 126, 96, 19);
 		panel_4.add(txtLecturerID3);
 		txtLecturerID3.setColumns(10);
 		
+		JLabel lblNewLabel_36 = new JLabel("You can't change Lecturer Name and Lecturer ID in here !");
+		lblNewLabel_36.setForeground(new Color(255, 0, 0));
+		lblNewLabel_36.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblNewLabel_36.setBounds(63, 173, 301, 13);
+		panel_4.add(lblNewLabel_36);
+		
 		JPanel panel_5 = new JPanel();
-		panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_5.setBackground(Color.WHITE);
+		panel_5.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_5.setBounds(582, 42, 431, 252);
 		panel3.add(panel_5);
 		panel_5.setLayout(null);
@@ -840,13 +917,14 @@ public class AddManageLecturer extends JFrame {
 		txtSunday3.setColumns(10);
 		
 		JPanel panel_6 = new JPanel();
-		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_6.setBounds(245, 304, 692, 262);
+		panel_6.setBackground(Color.WHITE);
+		panel_6.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel_6.setBounds(245, 304, 692, 310);
 		panel3.add(panel_6);
 		panel_6.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(10, 41, 672, 211);
+		scrollPane_1.setBounds(10, 68, 672, 232);
 		panel_6.add(scrollPane_1);
 		
 		ActiveHoursDetailstable = new JTable();
@@ -860,7 +938,7 @@ public class AddManageLecturer extends JFrame {
 					String LecturerRegistrationNumber_=(ActiveHoursDetailstable.getModel().getValueAt(row, 0)).toString();
 					
 					String query="select LecturerRegistrationNumber,LecturerName,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday from Lecturer where LecturerRegistrationNumber = '"+LecturerRegistrationNumber_+"' ";
-					PreparedStatement pst=connection.prepareStatement(query);
+					PreparedStatement pst=conn.prepareStatement(query);
 					 
 					ResultSet rs=pst.executeQuery();
 					
@@ -901,7 +979,7 @@ public class AddManageLecturer extends JFrame {
 				try {
 					
 					String query="select LecturerRegistrationNumber,LecturerName,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday from Lecturer";
-					PreparedStatement pst=connection.prepareStatement(query);
+					PreparedStatement pst=conn.prepareStatement(query);
 					ResultSet rs=pst.executeQuery();
 					ActiveHoursDetailstable.setModel(DbUtils.resultSetToTableModel(rs));
 					
@@ -915,7 +993,7 @@ public class AddManageLecturer extends JFrame {
 				
 			}
 		});
-		btnLoadActiveHoursDetails.setBounds(436, 10, 166, 21);
+		btnLoadActiveHoursDetails.setBounds(516, 37, 166, 21);
 		panel_6.add(btnLoadActiveHoursDetails);
 		
 		ActiveHoursComboBox = new JComboBox();
@@ -928,7 +1006,7 @@ public class AddManageLecturer extends JFrame {
 				try {
 					
 					String query="select LecturerRegistrationNumber,LecturerName,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday from Lecturer where LecturerName=? ";
-					PreparedStatement pst=connection.prepareStatement(query);
+					PreparedStatement pst=conn.prepareStatement(query);
 					pst.setString(1, (String)ActiveHoursComboBox.getSelectedItem() );
 					ResultSet rs=pst.executeQuery();
 					
@@ -959,10 +1037,15 @@ public class AddManageLecturer extends JFrame {
 				
 			}
 		});
-		ActiveHoursComboBox.setBounds(10, 10, 149, 21);
+		ActiveHoursComboBox.setBounds(10, 37, 149, 21);
 		panel_6.add(ActiveHoursComboBox);
 		
+		JLabel lblNewLabel_17 = new JLabel("Enter Your Name In Here :");
+		lblNewLabel_17.setBounds(10, 14, 149, 13);
+		panel_6.add(lblNewLabel_17);
+		
 		JButton btnNewButton_10 = new JButton("Update");
+		btnNewButton_10.setBackground(Color.GREEN);
 		btnNewButton_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -971,7 +1054,7 @@ public class AddManageLecturer extends JFrame {
 				  try {
 						
 						String query="Update Lecturer set Monday='"+txtMonday3.getText()+"' , Tuesday='"+txtTuesday3.getText()+"' , Wednesday='"+txtWednesday3.getText()+"' , Thursday='"+txtThursday3.getText()+"', Friday='"+txtFriday3.getText()+"', Satarday='"+txtSatarday3.getText()+"' , Sunday='"+txtSunday3.getText()+"'  where LecturerRegistrationNumber='"+txtLecturerID3.getText()+"' ";                      
-						PreparedStatement pst=connection.prepareStatement(query);
+						PreparedStatement pst=conn.prepareStatement(query);
 						
 						pst.execute();
 						
@@ -990,41 +1073,71 @@ public class AddManageLecturer extends JFrame {
 			}
 			
 		});
-		btnNewButton_10.setBounds(1073, 119, 85, 21);
+		btnNewButton_10.setBounds(1073, 237, 138, 36);
 		panel3.add(btnNewButton_10);
 		
-		JButton btnNewButton_12 = new JButton("Clear");
-		btnNewButton_12.setBounds(1073, 150, 85, 21);
+		JButton btnNewButton_12 = new JButton("Clear All");
+		btnNewButton_12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				txtLecturerName3.setText("  ");
+				txtLecturerID3.setText("  ");
+				txtMonday3.setText("  ");
+				txtTuesday3.setText("  ");
+				txtWednesday3.setText("  ");
+				txtThursday3.setText("  ");
+				txtFriday3.setText("  ");
+				txtSatarday3.setText("  ");
+				txtSunday3.setText("  ");
+				
+				
+			}
+		});
+		btnNewButton_12.setBackground(Color.ORANGE);
+		btnNewButton_12.setBounds(1073, 283, 138, 36);
 		panel3.add(btnNewButton_12);
 		
+		JPanel panel_10 = new JPanel();
+		panel_10.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		panel_10.setBackground(new Color(135, 206, 250));
+		panel_10.setBounds(29, 23, 1034, 608);
+		panel3.add(panel_10);
+		panel_10.setLayout(null);
+		
 		JButton btnNewButton = new JButton("ADD");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton.setBackground(new Color(135, 206, 250));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				switchPannels(panel1);
 			}
 		});
-		btnNewButton.setBounds(55, 121, 134, 21);
+		btnNewButton.setBounds(46, 104, 166, 31);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Manage Lecturer Details");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_1.setBackground(new Color(135, 206, 250));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				switchPannels(panel2);
 			}
 		});
-		btnNewButton_1.setBounds(199, 121, 143, 21);
+		btnNewButton_1.setBounds(222, 104, 204, 31);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Manage Active Hours");
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_2.setBackground(new Color(135, 206, 250));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				switchPannels(panel3);
 			}
 		});
-		btnNewButton_2.setBounds(352, 121, 143, 21);
+		btnNewButton_2.setBounds(436, 104, 189, 31);
 		contentPane.add(btnNewButton_2);
 		
 		//Header 
@@ -1033,7 +1146,7 @@ public class AddManageLecturer extends JFrame {
 		panel_7.setForeground(new Color(255, 99, 71));
 		panel_7.setBackground(Color.LIGHT_GRAY);
 		panel_7.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		panel_7.setBounds(0, 0, 1365, 75);
+		panel_7.setBounds(10, 10, 1346, 75);
 		contentPane.add(panel_7);
 		panel_7.setLayout(null);
 		
