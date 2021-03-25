@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import DBConnection.DBConnection;
+import net.proteanit.sql.DbUtils;
 
 import javax.swing.JTextPane;
 import java.awt.Font;
@@ -15,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
+
 import java.awt.Color;
 
 import javax.swing.ButtonGroup;
@@ -22,7 +25,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
+
+import locataion.ManageLocation;
 
 public class Location extends JFrame {
 	
@@ -44,8 +50,11 @@ public class Location extends JFrame {
 	private JPanel panelHeader;
 	private JLabel txtrTimeTableManagement;
 	
+	//JTable tableLocation;
+	
 	String roomtype;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JButton btnManageLoc;
 	
 
 	/**
@@ -168,7 +177,7 @@ public class Location extends JFrame {
 		btnClear.setForeground(Color.WHITE);
 		btnClear.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnClear.setBackground(new Color(0, 0, 139));
-		btnClear.setBounds(572, 580, 169, 46);
+		btnClear.setBounds(545, 548, 169, 46);
 		contentPane.add(btnClear);
 		
 		btnSave = new JButton("Save");
@@ -200,15 +209,18 @@ public class Location extends JFrame {
 				
 				
 			}
+				
+
 		
 			}
 		});
 		btnSave.setForeground(Color.WHITE);
 		btnSave.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnSave.setBackground(new Color(0, 0, 139));
-		btnSave.setBounds(834, 580, 169, 46);
+		btnSave.setBackground(new Color(27, 163, 156));
+		btnSave.setBounds(785, 548, 169, 46);
 		contentPane.add(btnSave);
 		
+	//header 
 		panelHeader = new JPanel();
 		panelHeader.setForeground(Color.WHITE);
 		panelHeader.setBackground(new Color(75, 119, 190));
@@ -220,7 +232,38 @@ public class Location extends JFrame {
 		txtrTimeTableManagement.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 26));
 		txtrTimeTableManagement.setForeground(Color.WHITE);
 		txtrTimeTableManagement.setBounds(401, 11, 510, 53);
-		panelHeader.add(txtrTimeTableManagement);
+		panelHeader.add(txtrTimeTableManagement);//end of header
+		
+		btnManageLoc = new JButton("Manage Location");
+		btnManageLoc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ManageLocation ManageLocation = new ManageLocation();
+				ManageLocation.show();
+				
+				try {
+					
+					//retrieve data to a table
+					String query = "select * from addLocation";
+					PreparedStatement psat = connection.prepareStatement(query);
+					ResultSet rs= psat.executeQuery();
+					
+					
+					ManageLocation.tableLocation.setModel(DbUtils.resultSetToTableModel(rs));
+					
+				}
+				catch(Exception e4)
+				{
+					e4.printStackTrace();
+				}
+				
+			}
+		});
+		btnManageLoc.setForeground(Color.WHITE);
+		btnManageLoc.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnManageLoc.setBackground(new Color(27, 163, 156));
+		btnManageLoc.setBounds(1067, 92, 252, 40);
+		contentPane.add(btnManageLoc);
 		
 		
 	}
