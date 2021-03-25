@@ -21,6 +21,8 @@ import java.awt.event.MouseEvent;
 import java.awt.Font;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AddManageLecturer extends JFrame {
 
@@ -87,6 +89,14 @@ public class AddManageLecturer extends JFrame {
 	private JComboBox ActiveHoursComboBox;
 	private JComboBox LecturerDetailsComboBox;
 	private JButton btnGenerateID;
+	private JLabel lblLecturerName;
+	private JLabel lblFaculty;
+	private JLabel lblDepartment;
+	private JLabel lblCampus;
+	private JLabel lblBuilding;
+	private JLabel lblLecturerID;
+	private JLabel lblLevel;
+	private JLabel onlyIndexLabel;
 	
 	
 	public void refreshLecturerDetailsTable()
@@ -193,10 +203,6 @@ public class AddManageLecturer extends JFrame {
 		panel1.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Lecturer Name :");
-		lblNewLabel.setBounds(83, 83, 91, 13);
-		panel.add(lblNewLabel);
-		
 		JLabel lblNewLabel_3 = new JLabel("Faculty  :");
 		lblNewLabel_3.setBounds(83, 120, 91, 13);
 		panel.add(lblNewLabel_3);
@@ -204,10 +210,6 @@ public class AddManageLecturer extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("Department");
 		lblNewLabel_4.setBounds(83, 163, 91, 13);
 		panel.add(lblNewLabel_4);
-		
-		JLabel lblNewLabel_5 = new JLabel("Campus/Center  :");
-		lblNewLabel_5.setBounds(83, 203, 91, 13);
-		panel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("Building  :");
 		lblNewLabel_6.setBounds(83, 255, 58, 13);
@@ -225,11 +227,6 @@ public class AddManageLecturer extends JFrame {
 		lblNewLabel_9.setBounds(83, 434, 45, 13);
 		panel.add(lblNewLabel_9);
 		
-		txtLecturerName = new JTextField();
-		txtLecturerName.setBounds(213, 80, 205, 19);
-		panel.add(txtLecturerName);
-		txtLecturerName.setColumns(10);
-		
 		JComboBox txtFaculty = new JComboBox();
 		txtFaculty.setModel(new DefaultComboBoxModel(new String[] {"Computing", "Engineering", "Management", "Medicine", "Science", "Architeccher"}));
 		txtFaculty.setBounds(213, 116, 205, 21);
@@ -239,11 +236,6 @@ public class AddManageLecturer extends JFrame {
 		txtDepartment.setModel(new DefaultComboBoxModel(new String[] {"IT", "SE", "DS", "SC", "IS"}));
 		txtDepartment.setBounds(213, 159, 205, 21);
 		panel.add(txtDepartment);
-		
-		JComboBox txtCampus = new JComboBox();
-		txtCampus.setModel(new DefaultComboBoxModel(new String[] {"Malabe", "Kandy", "Kagalle", "Jaffna"}));
-		txtCampus.setBounds(213, 199, 205, 21);
-		panel.add(txtCampus);
 		
 		JComboBox txtBuilding = new JComboBox();
 		txtBuilding.setModel(new DefaultComboBoxModel(new String[] {"501", "502", "301", "302", "401", "408"}));
@@ -256,11 +248,35 @@ public class AddManageLecturer extends JFrame {
 		panel.add(txtLevel);
 		
 		txtLecturerID = new JTextField();
+		txtLecturerID.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				//validate LecturerID for only accept numbers :
+				
+				char c = e.getKeyChar();
+				if(Character.isLetter(c)) {
+					
+					//canit able to enter in text field if entered char is not a number
+					txtLecturerID.setEditable(false);
+					//set error massage :
+					onlyIndexLabel.setText("*Please Enter Numarical value!");
+					
+				}else {
+					
+					txtLecturerID.setEditable(true);
+					
+				}
+				
+				
+			}
+		});
 		txtLecturerID.setBounds(213, 299, 205, 19);
 		panel.add(txtLecturerID);
 		txtLecturerID.setColumns(10);
 		
 		txtRank = new JTextField();
+		txtRank.setEditable(false);
 		txtRank.setBounds(202, 431, 216, 19);
 		panel.add(txtRank);
 		txtRank.setColumns(10);
@@ -277,6 +293,66 @@ public class AddManageLecturer extends JFrame {
 		btnGenerateID.setBounds(126, 351, 165, 36);
 		panel_8.add(btnGenerateID);
 		btnGenerateID.setBackground(new Color(135, 206, 250));
+		
+		JLabel lblNewLabel = new JLabel("Lecturer Name :");
+		lblNewLabel.setBounds(46, 49, 91, 13);
+		panel_8.add(lblNewLabel);
+		
+		txtLecturerName = new JTextField();
+		txtLecturerName.setBounds(179, 46, 205, 19);
+		panel_8.add(txtLecturerName);
+		txtLecturerName.setColumns(10);
+		
+		JComboBox txtCampus = new JComboBox();
+		txtCampus.setBounds(179, 177, 205, 21);
+		panel_8.add(txtCampus);
+		txtCampus.setModel(new DefaultComboBoxModel(new String[] {"Malabe", "Kandy", "Kagalle", "Jaffna"}));
+		
+		JLabel lblNewLabel_5 = new JLabel("Campus/Center  :");
+		lblNewLabel_5.setBounds(46, 181, 91, 13);
+		panel_8.add(lblNewLabel_5);
+		
+		lblLecturerName = new JLabel("");
+		lblLecturerName.setForeground(Color.RED);
+		lblLecturerName.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblLecturerName.setBounds(317, 64, 67, 13);
+		panel_8.add(lblLecturerName);
+		
+		lblFaculty = new JLabel("");
+		lblFaculty.setForeground(Color.RED);
+		lblFaculty.setBounds(317, 110, 67, 13);
+		panel_8.add(lblFaculty);
+		
+		lblDepartment = new JLabel("");
+		lblDepartment.setForeground(Color.RED);
+		lblDepartment.setBounds(317, 152, 66, 13);
+		panel_8.add(lblDepartment);
+		
+		lblCampus = new JLabel("");
+		lblCampus.setForeground(Color.RED);
+		lblCampus.setBounds(317, 196, 67, 13);
+		panel_8.add(lblCampus);
+		
+		lblBuilding = new JLabel("");
+		lblBuilding.setForeground(Color.RED);
+		lblBuilding.setBounds(317, 245, 67, 13);
+		panel_8.add(lblBuilding);
+		
+		lblLecturerID = new JLabel("");
+		lblLecturerID.setForeground(Color.RED);
+		lblLecturerID.setBounds(341, 295, 60, 13);
+		panel_8.add(lblLecturerID);
+		
+		lblLevel = new JLabel("");
+		lblLevel.setForeground(Color.RED);
+		lblLevel.setBounds(317, 334, 67, 13);
+		panel_8.add(lblLevel);
+		
+		onlyIndexLabel = new JLabel("");
+		onlyIndexLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
+		onlyIndexLabel.setForeground(Color.RED);
+		onlyIndexLabel.setBounds(178, 295, 184, 13);
+		panel_8.add(onlyIndexLabel);
 		btnGenerateID.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -368,7 +444,7 @@ public class AddManageLecturer extends JFrame {
 		txtSatarday.setColumns(10);
 		
 		txtSunday = new JTextField();
-		txtSunday.setBounds(225, 342, 185, 19);
+		txtSunday.setBounds(225, 342, 277, 19);
 		panel_1.add(txtSunday);
 		txtSunday.setColumns(10);
 		
@@ -380,9 +456,61 @@ public class AddManageLecturer extends JFrame {
 		panel_9.setLayout(null);
 		
 		JButton btnNewButton_4 = new JButton("Save Details  ");
+		btnNewButton_4.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+			}
+		});
 		btnNewButton_4.setBackground(new Color(127, 255, 0));
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				//To check weather the feilds are required or not:
+				
+				if(txtLecturerName.getText().trim().isEmpty() && ((String) txtFaculty.getSelectedItem()).trim().isEmpty() && ((String) txtDepartment.getSelectedItem()).trim().isEmpty() && ((String) txtCampus.getSelectedItem()).trim().isEmpty() && ((String) txtBuilding.getSelectedItem()).trim().isEmpty() && txtLecturerID.getText().trim().isEmpty() && ((String) txtLevel.getSelectedItem()).trim().isEmpty())
+				{
+					
+					lblLecturerName.setText("*required");
+					lblFaculty.setText("*required");
+					lblDepartment.setText("*required");
+					lblCampus.setText("*required");
+					lblBuilding.setText("*required");
+					lblLecturerID.setText("*required");
+					lblLevel.setText("*required");
+					
+				}
+				else if(txtLecturerName.getText().trim().isEmpty())
+				{
+					lblLecturerName.setText("*required");
+				}
+				else if(((String) txtFaculty.getSelectedItem()).trim().isEmpty()) {
+					
+					lblFaculty.setText("*required");
+				}
+				else if(((String) txtDepartment.getSelectedItem()).trim().isEmpty()) {
+					
+					lblDepartment.setText("*required");
+				}
+				else if(((String) txtCampus.getSelectedItem()).trim().isEmpty())
+				{
+					lblCampus.setText("*required");
+				}
+				else if(((String) txtBuilding.getSelectedItem()).trim().isEmpty())
+				{
+					lblBuilding.setText("*required");
+				}
+				else if(txtLecturerID.getText().trim().isEmpty()) 
+				{
+					lblLecturerID.setText("*required");
+				}
+				else if(((String) txtLevel.getSelectedItem()).trim().isEmpty()) {
+					
+					lblLevel.setText("*required");
+				}
+				else
+				
+				
+				
 				
 			try {	
 				String query="insert into Lecturer (LecturerName,Faculty,Department,Campus,Building,LecturerID,Level,Rank,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";                      
