@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableModel;
 
 import DBConnection.DBConnection;
+import net.proteanit.sql.DbUtils;
 
 import javax.swing.JTextPane;
 import java.awt.Font;
@@ -80,6 +81,23 @@ public class ManageLocation extends JFrame {
 		
 		textViewCapacity.setText(null);
 		
+	}
+	
+	public void RefreshTable()
+	{
+		try {
+			
+			String refreshque="select * from addLocation";
+			PreparedStatement psat= connection.prepareStatement(refreshque);
+			ResultSet rs=psat.executeQuery();
+			
+			tableLocation.setModel(DbUtils.resultSetToTableModel(rs));
+			
+		}
+		catch(Exception E2)
+		{
+			E2.printStackTrace();
+		}
 	}
 	
 	
@@ -295,6 +313,8 @@ public class ManageLocation extends JFrame {
 				{
 					e3.printStackTrace();
 				}
+				
+				RefreshTable();
 				
 			}
 		});
