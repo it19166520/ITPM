@@ -1,1 +1,1 @@
-SELECT * FROM addLocation
+SELECT * FROM addLocation  

@@ -1,1 +1,1 @@
-{"resources":{"Scripts/Script.sql":{"sql-editor-data-source-id":"microsoft-17868570b01-6355116424f47bef"}}}
+{"resources":{"Scripts/Script.sql":{"sql-editor-data-source-id":"microsoft-17868570b01-6355116424f47bef","default-datasource":"microsoft-17868570b01-6355116424f47bef","default-catalog":"ITPM(New)","default-schema":"dbo"}}}

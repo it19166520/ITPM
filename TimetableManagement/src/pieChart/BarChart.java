@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import DBConnection.DBConnection;
 import net.proteanit.sql.DbUtils;
@@ -14,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
 
 public class BarChart extends JFrame {
 	
@@ -28,11 +31,11 @@ public class BarChart extends JFrame {
 	private JLabel lblRegisteredStudents;
 	private JLabel lblRegisteredSubjects;
 	private JLabel lblRegisteredRooms;
-	private JTextField textRegLecs;
-	private JTextField textRegStudents;
-	private JTextField textRegSubjs;
-	private JTextField textRegRooms;
+	public static JTextField textRegStudents;
+	public static JTextField textRegSubjs;
+	public static  JTextField textRegRooms;
 	private JPanel panelChart;
+	public static JTextField textRegLecs;
 
 	/**
 	 * Launch the application.
@@ -56,6 +59,20 @@ public class BarChart extends JFrame {
 	public BarChart() {
 		
 		connection = DBConnection.dbConnect();
+		
+		/*try {
+			 String query = "select COUNT(StGrpID) from StudentGroups";
+			 PreparedStatement psat = connection.prepareStatement(query);
+			 ResultSet rs= psat.executeQuery();
+			 
+			 textRegStudents.setText(rs.toString());
+			
+		}
+		catch(Exception e2)
+		{
+			e2.printStackTrace();
+		}
+		*/
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
@@ -106,6 +123,7 @@ public class BarChart extends JFrame {
 		panel.add(lblRegisteredRooms);
 		
 		textRegLecs = new JTextField();
+		textRegLecs.setHorizontalAlignment(SwingConstants.CENTER);
 		textRegLecs.setFont(new Font("Tahoma", Font.BOLD, 31));
 		textRegLecs.setEditable(false);
 		textRegLecs.setBounds(44, 79, 172, 102);
@@ -113,6 +131,7 @@ public class BarChart extends JFrame {
 		textRegLecs.setColumns(10);
 		
 		textRegStudents = new JTextField();
+		textRegStudents.setHorizontalAlignment(SwingConstants.CENTER);
 		textRegStudents.setFont(new Font("Tahoma", Font.BOLD, 30));
 		textRegStudents.setEditable(false);
 		textRegStudents.setColumns(10);
@@ -120,6 +139,7 @@ public class BarChart extends JFrame {
 		panel.add(textRegStudents);
 		
 		textRegSubjs = new JTextField();
+		textRegSubjs.setHorizontalAlignment(SwingConstants.CENTER);
 		textRegSubjs.setFont(new Font("Tahoma", Font.BOLD, 30));
 		textRegSubjs.setEditable(false);
 		textRegSubjs.setColumns(10);
@@ -127,6 +147,7 @@ public class BarChart extends JFrame {
 		panel.add(textRegSubjs);
 		
 		textRegRooms = new JTextField();
+		textRegRooms.setHorizontalAlignment(SwingConstants.CENTER);
 		textRegRooms.setFont(new Font("Tahoma", Font.BOLD, 30));
 		textRegRooms.setEditable(false);
 		textRegRooms.setColumns(10);
