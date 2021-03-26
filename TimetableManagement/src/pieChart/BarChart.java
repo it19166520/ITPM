@@ -60,19 +60,6 @@ public class BarChart extends JFrame {
 		
 		connection = DBConnection.dbConnect();
 		
-		/*try {
-			 String query = "select COUNT(StGrpID) from StudentGroups";
-			 PreparedStatement psat = connection.prepareStatement(query);
-			 ResultSet rs= psat.executeQuery();
-			 
-			 textRegStudents.setText(rs.toString());
-			
-		}
-		catch(Exception e2)
-		{
-			e2.printStackTrace();
-		}
-		*/
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
