@@ -76,8 +76,8 @@ public class HomePage2 {
 		JButton btnAddWorkingDays = new JButton("Add Working Days Hours");
 		btnAddWorkingDays.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				WorkingDaysAndHours hp = new WorkingDaysAndHours();
-				hp.addWorkingDHframe.setVisible(true);
+				ManageWorkingDaysHours hp = new ManageWorkingDaysHours();
+				hp.manageDays();
 				wokingDayHourframe.dispose();
 			}
 		});

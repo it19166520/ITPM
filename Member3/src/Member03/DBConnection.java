@@ -3,26 +3,35 @@ package Member03;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
+import java.sql.*;
+import javax.swing.*;
 public class DBConnection {
-	static DBConnection conn = null;
-	@SuppressWarnings("rawtypes")
-	Statement stmt = null;
-	static String url = "jdbc:mysql://98.142.97.194:3306/sipnenam_itpm_remote_db_by_harsha";
-	static String userName = "sipnenam_itpm_remote_db_by_harsha";
-	static String password = "ah21%hsaklhagA";
 	
-
-	 public static DBConnection getConnection() {
+	
+	private static String url = "jdbc:sqlserver://itpmserver.database.windows.net;databaseName=ITPM(New)";
+	private static String username = "ITPM";
+	private static String password = "GProject#20";
+	static //private static Connection con;
+	
+	
+	
+	
+	Connection conn=null;
+	public static Connection dbConnecter()
+	{
+		
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = (DBConnection) DriverManager.getConnection(url,userName, password);
-			System.out.println("Database connection is success!!!");
+			
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			conn = DriverManager.getConnection(url,username,password);
+			return conn;
+			
+			
+			
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null,e);
+			return null;
 		}
-			catch (Exception e) {
-			System.out.println("Database connection is not success!!!");
-		}
-	
-	return conn;
+			
 	}
-
 }
