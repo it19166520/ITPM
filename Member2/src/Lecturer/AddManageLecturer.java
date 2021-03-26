@@ -1076,6 +1076,10 @@ public class AddManageLecturer extends JFrame {
 		btnNewButton_8.setBounds(1134, 323, 135, 39);
 		panel2.add(btnNewButton_8);
 		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(1185, 124, 5, 22);
+		panel2.add(textArea);
+		
 		panel3 = new JPanel();
 		panel3.setBackground(Color.WHITE);
 		panel3.setForeground(Color.BLACK);
