@@ -247,7 +247,7 @@ public class AddManageLecturer extends JFrame {
 		
 		
 		LeclayeredPane = new JLayeredPane();
-		LeclayeredPane.setBounds(46, 145, 1269, 641);
+		LeclayeredPane.setBounds(46, 145, 1454, 641);
 		contentPane.add(LeclayeredPane);
 		LeclayeredPane.setLayout(new CardLayout(0, 0));
 		
@@ -258,109 +258,18 @@ public class AddManageLecturer extends JFrame {
 		panel1.setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setForeground(new Color(224, 255, 255));
 		panel.setBackground(new Color(228,241,254));
-		panel.setBorder(null);
-		panel.setBounds(36, 24, 548, 607);
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBounds(36, 24, 660, 511);
 		panel1.add(panel);
 		panel.setLayout(null);
-		
-		lblNewLabel_3 = new JLabel("Faculty  :");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_3.setBounds(83, 120, 91, 13);
-		panel.add(lblNewLabel_3);
-		
-		lblNewLabel_4 = new JLabel("Department");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_4.setBounds(83, 163, 91, 13);
-		panel.add(lblNewLabel_4);
-		
-		JLabel lblNewLabel_6 = new JLabel("Building  :");
-		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_6.setBounds(83, 255, 58, 13);
-		panel.add(lblNewLabel_6);
-		
-		JLabel lblNewLabel_7 = new JLabel("Lecturer ID  :");
-		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_7.setBounds(83, 302, 91, 13);
-		panel.add(lblNewLabel_7);
-		
-		JLabel lblNewLabel_8 = new JLabel("Level  :");
-		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_8.setBounds(83, 342, 45, 13);
-		panel.add(lblNewLabel_8);
-		
-		JLabel lblNewLabel_9 = new JLabel("Rank  :");
-		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_9.setBounds(83, 434, 45, 13);
-		panel.add(lblNewLabel_9);
-		
-		txtFaculty = new JComboBox(faculty);
-		txtFaculty.setBackground(Color.WHITE);
-		txtFaculty.setSelectedIndex(-1);
-		txtFaculty.setFont(new Font("Tahoma", Font.BOLD, 10));
-		txtFaculty.setBounds(213, 116, 205, 21);
-		panel.add(txtFaculty);
-		
-		txtDepartment = new JComboBox(department);
-		txtDepartment.setBackground(Color.WHITE);
-		txtDepartment.setSelectedIndex(-1);
-		txtDepartment.setFont(new Font("Tahoma", Font.BOLD, 10));
-		txtDepartment.setBounds(213, 159, 205, 21);
-		panel.add(txtDepartment);
-		
-		txtBuilding = new JComboBox(buildingNumber);
-		txtBuilding.setSelectedIndex(-1);
-		txtBuilding.setBackground(Color.WHITE);
-		txtBuilding.setFont(new Font("Tahoma", Font.BOLD, 10));
-		txtBuilding.setBounds(213, 251, 205, 21);
-		panel.add(txtBuilding);
-		
-		txtLevel = new JComboBox(level);
-		txtLevel.setSelectedIndex(-1);
-		txtLevel.setBackground(Color.WHITE);
-		txtLevel.setFont(new Font("Tahoma", Font.BOLD, 10));
-		txtLevel.setBounds(213, 338, 205, 21);
-		panel.add(txtLevel);
-		
-		txtLecturerID = new JTextField();
-		txtLecturerID.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				
-				//validate LecturerID for only accept numbers :
-				
-				char c = e.getKeyChar();
-				if(Character.isLetter(c)) {
-					
-					//canit able to enter in text field if entered char is not a number
-					txtLecturerID.setEditable(false);
-					//set error massage :
-					onlyIndexLabel.setText("*Please Enter Numarical value!");
-					
-				}else {
-					
-					txtLecturerID.setEditable(true);
-					
-				}
-				
-				
-			}
-		});
-		txtLecturerID.setBounds(213, 299, 205, 19);
-		panel.add(txtLecturerID);
-		txtLecturerID.setColumns(10);
-		
-		txtRank = new JTextField();
-		txtRank.setEditable(false);
-		txtRank.setBounds(202, 431, 216, 19);
-		panel.add(txtRank);
-		txtRank.setColumns(10);
 		
 		panel_8 = new JPanel();
 		panel_8.setForeground(new Color(255, 255, 255));
 		panel_8.setBackground(new Color(255, 255, 255));
 		panel_8.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Lecturer Details :", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 128)));
-		panel_8.setBounds(35, 10, 491, 571);
+		panel_8.setBounds(40, 25, 573, 459);
 		panel.add(panel_8);
 		panel_8.setLayout(null);
 		
@@ -369,7 +278,7 @@ public class AddManageLecturer extends JFrame {
 		btnGenerateID.setFocusPainted(false);
 		btnGenerateID.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnGenerateID.setForeground(Color.WHITE);
-		btnGenerateID.setBounds(130, 366, 165, 36);
+		btnGenerateID.setBounds(244, 349, 171, 44);
 		panel_8.add(btnGenerateID);
 		btnGenerateID.setBackground(new Color(58, 83, 155));
 		
@@ -379,7 +288,7 @@ public class AddManageLecturer extends JFrame {
 		panel_8.add(lblNewLabel);
 		
 		txtLecturerName = new JTextField();
-		txtLecturerName.setBounds(179, 46, 205, 19);
+		txtLecturerName.setBounds(179, 46, 304, 19);
 		panel_8.add(txtLecturerName);
 		txtLecturerName.setColumns(10);
 		
@@ -387,13 +296,13 @@ public class AddManageLecturer extends JFrame {
 		txtCampus.setBackground(Color.WHITE);
 		txtCampus.setSelectedIndex(-1);
 		txtCampus.setFont(new Font("Tahoma", Font.BOLD, 10));
-		txtCampus.setBounds(179, 192, 205, 21);
+		txtCampus.setBounds(179, 175, 304, 21);
 		panel_8.add(txtCampus);
 
 		
 		JLabel lblNewLabel_5 = new JLabel("Campus/Center  :");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_5.setBounds(46, 196, 104, 13);
+		lblNewLabel_5.setBounds(46, 179, 104, 13);
 		panel_8.add(lblNewLabel_5);
 		
 		lblLecturerName = new JLabel("");
@@ -437,6 +346,98 @@ public class AddManageLecturer extends JFrame {
 		onlyIndexLabel.setForeground(Color.RED);
 		onlyIndexLabel.setBounds(178, 295, 184, 13);
 		panel_8.add(onlyIndexLabel);
+		
+		txtFaculty = new JComboBox(faculty);
+		txtFaculty.setBounds(179, 91, 304, 21);
+		panel_8.add(txtFaculty);
+		txtFaculty.setBackground(Color.WHITE);
+		txtFaculty.setSelectedIndex(-1);
+		txtFaculty.setFont(new Font("Tahoma", Font.BOLD, 10));
+		
+		txtDepartment = new JComboBox(department);
+		txtDepartment.setBounds(179, 133, 304, 21);
+		panel_8.add(txtDepartment);
+		txtDepartment.setBackground(Color.WHITE);
+		txtDepartment.setSelectedIndex(-1);
+		txtDepartment.setFont(new Font("Tahoma", Font.BOLD, 10));
+		
+		txtBuilding = new JComboBox(buildingNumber);
+		txtBuilding.setBounds(179, 219, 304, 21);
+		panel_8.add(txtBuilding);
+		txtBuilding.setSelectedIndex(-1);
+		txtBuilding.setBackground(Color.WHITE);
+		txtBuilding.setFont(new Font("Tahoma", Font.BOLD, 10));
+		
+		txtLecturerID = new JTextField();
+		txtLecturerID.setBounds(179, 268, 304, 19);
+		panel_8.add(txtLecturerID);
+		txtLecturerID.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				//validate LecturerID for only accept numbers :
+				
+				char c = e.getKeyChar();
+				if(Character.isLetter(c)) {
+					
+					//canit able to enter in text field if entered char is not a number
+					txtLecturerID.setEditable(false);
+					//set error massage :
+					onlyIndexLabel.setText("*Please Enter Numarical value!");
+					
+				}else {
+					
+					txtLecturerID.setEditable(true);
+					
+				}
+				
+				
+			}
+		});
+		txtLecturerID.setColumns(10);
+		
+		txtLevel = new JComboBox(level);
+		txtLevel.setBounds(179, 318, 304, 21);
+		panel_8.add(txtLevel);
+		txtLevel.setSelectedIndex(-1);
+		txtLevel.setBackground(Color.WHITE);
+		txtLevel.setFont(new Font("Tahoma", Font.BOLD, 10));
+		
+		txtRank = new JTextField();
+		txtRank.setBounds(179, 403, 304, 26);
+		panel_8.add(txtRank);
+		txtRank.setEditable(false);
+		txtRank.setColumns(10);
+		
+		lblNewLabel_3 = new JLabel("Faculty  :");
+		lblNewLabel_3.setBounds(46, 95, 91, 13);
+		panel_8.add(lblNewLabel_3);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		lblNewLabel_4 = new JLabel("Department");
+		lblNewLabel_4.setBounds(46, 137, 91, 13);
+		panel_8.add(lblNewLabel_4);
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_6 = new JLabel("Building  :");
+		lblNewLabel_6.setBounds(46, 223, 58, 13);
+		panel_8.add(lblNewLabel_6);
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_7 = new JLabel("Lecturer ID  :");
+		lblNewLabel_7.setBounds(46, 271, 91, 13);
+		panel_8.add(lblNewLabel_7);
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_8 = new JLabel("Level  :");
+		lblNewLabel_8.setBounds(46, 318, 45, 13);
+		panel_8.add(lblNewLabel_8);
+		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_9 = new JLabel("Rank  :");
+		lblNewLabel_9.setBounds(46, 409, 104, 13);
+		panel_8.add(lblNewLabel_9);
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnGenerateID.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -463,9 +464,10 @@ public class AddManageLecturer extends JFrame {
 		});
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setForeground(new Color(224, 255, 255));
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 0));
-		panel_1.setBounds(694, 24, 565, 537);
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_1.setBounds(726, 24, 666, 511);
 		panel1.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -474,78 +476,78 @@ public class AddManageLecturer extends JFrame {
 		lblNewLabel_10.setBounds(72, 89, 92, 13);
 		panel_1.add(lblNewLabel_10);
 		
-		JLabel lblNewLabel_11 = new JLabel("Tuesday  :");
-		lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_11.setBounds(72, 133, 92, 13);
-		panel_1.add(lblNewLabel_11);
-		
-		JLabel lblNewLabel_12 = new JLabel("Wednessday  :");
-		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_12.setBounds(72, 176, 92, 13);
-		panel_1.add(lblNewLabel_12);
-		
-		JLabel lblNewLabel_13 = new JLabel("Thursday  :");
-		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_13.setBounds(72, 215, 92, 13);
-		panel_1.add(lblNewLabel_13);
-		
-		JLabel lblNewLabel_14 = new JLabel("Friday  :");
-		lblNewLabel_14.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_14.setBounds(72, 256, 92, 13);
-		panel_1.add(lblNewLabel_14);
-		
-		JLabel lblNewLabel_15 = new JLabel("Satarday  :");
-		lblNewLabel_15.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_15.setBounds(72, 300, 92, 13);
-		panel_1.add(lblNewLabel_15);
-		
-		JLabel lblNewLabel_16 = new JLabel("Sunday  :");
-		lblNewLabel_16.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_16.setBounds(72, 345, 92, 13);
-		panel_1.add(lblNewLabel_16);
-		
 		txtMonday = new JTextField();
 	
-		txtMonday.setBounds(225, 86, 277, 19);
+		txtMonday.setBounds(225, 86, 297, 19);
 		panel_1.add(txtMonday);
 		txtMonday.setColumns(10);
-		
-		txtTuesday = new JTextField();
-		txtTuesday.setBounds(225, 130, 277, 19);
-		panel_1.add(txtTuesday);
-		txtTuesday.setColumns(10);
-		
-		txtWednesday = new JTextField();
-		txtWednesday.setBounds(225, 173, 277, 19);
-		panel_1.add(txtWednesday);
-		txtWednesday.setColumns(10);
-		
-		txtThursday = new JTextField();
-		txtThursday.setBounds(225, 212, 277, 19);
-		panel_1.add(txtThursday);
-		txtThursday.setColumns(10);
-		
-		txtFriday = new JTextField();
-		txtFriday.setBounds(225, 253, 277, 19);
-		panel_1.add(txtFriday);
-		txtFriday.setColumns(10);
-		
-		txtSatarday = new JTextField();
-		txtSatarday.setBounds(225, 297, 277, 19);
-		panel_1.add(txtSatarday);
-		txtSatarday.setColumns(10);
-		
-		txtSunday = new JTextField();
-		txtSunday.setBounds(225, 342, 277, 19);
-		panel_1.add(txtSunday);
-		txtSunday.setColumns(10);
 		
 		panel_9 = new JPanel();
 		panel_9.setBackground(new Color(228, 241, 254));
 		panel_9.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Active days and Hours :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 128)));
-		panel_9.setBounds(34, 0, 504, 527);
+		panel_9.setBounds(39, 21, 601, 458);
 		panel_1.add(panel_9);
 		panel_9.setLayout(null);
+		
+		JLabel lblNewLabel_16 = new JLabel("Sunday  :");
+		lblNewLabel_16.setBounds(41, 358, 92, 13);
+		panel_9.add(lblNewLabel_16);
+		lblNewLabel_16.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		JLabel lblNewLabel_15 = new JLabel("Satarday  :");
+		lblNewLabel_15.setBounds(41, 312, 92, 13);
+		panel_9.add(lblNewLabel_15);
+		lblNewLabel_15.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		JLabel lblNewLabel_14 = new JLabel("Friday  :");
+		lblNewLabel_14.setBounds(41, 265, 92, 13);
+		panel_9.add(lblNewLabel_14);
+		lblNewLabel_14.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		JLabel lblNewLabel_13 = new JLabel("Thursday  :");
+		lblNewLabel_13.setBounds(41, 217, 92, 13);
+		panel_9.add(lblNewLabel_13);
+		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		JLabel lblNewLabel_12 = new JLabel("Wednessday  :");
+		lblNewLabel_12.setBounds(41, 168, 92, 13);
+		panel_9.add(lblNewLabel_12);
+		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		JLabel lblNewLabel_11 = new JLabel("Tuesday  :");
+		lblNewLabel_11.setBounds(41, 116, 92, 13);
+		panel_9.add(lblNewLabel_11);
+		lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		txtSunday = new JTextField();
+		txtSunday.setBounds(187, 356, 300, 19);
+		panel_9.add(txtSunday);
+		txtSunday.setColumns(10);
+		
+		txtSatarday = new JTextField();
+		txtSatarday.setBounds(187, 310, 300, 19);
+		panel_9.add(txtSatarday);
+		txtSatarday.setColumns(10);
+		
+		txtFriday = new JTextField();
+		txtFriday.setBounds(187, 263, 300, 19);
+		panel_9.add(txtFriday);
+		txtFriday.setColumns(10);
+		
+		txtThursday = new JTextField();
+		txtThursday.setBounds(187, 215, 300, 19);
+		panel_9.add(txtThursday);
+		txtThursday.setColumns(10);
+		
+		txtWednesday = new JTextField();
+		txtWednesday.setBounds(187, 166, 300, 19);
+		panel_9.add(txtWednesday);
+		txtWednesday.setColumns(10);
+		
+		txtTuesday = new JTextField();
+		txtTuesday.setBounds(187, 114, 300, 19);
+		panel_9.add(txtTuesday);
+		txtTuesday.setColumns(10);
 		
 		btnNewButton_3 = new JButton("Save Details  ");
 		btnNewButton_3.setFocusTraversalKeysEnabled(false);
@@ -677,7 +679,7 @@ public class AddManageLecturer extends JFrame {
 			   refreshLecturerDetailsTable();
 			}
 		});
-		btnNewButton_3.setBounds(743, 571, 181, 48);
+		btnNewButton_3.setBounds(508, 559, 188, 48);
 		panel1.add(btnNewButton_3);
 		
 		btnNewButton_4 = new JButton("Clear  ");
@@ -707,8 +709,15 @@ public class AddManageLecturer extends JFrame {
 			}
 		});
 		btnNewButton_4.setBackground(new Color(58,83,155));
-		btnNewButton_4.setBounds(1072, 571, 161, 48);
+		btnNewButton_4.setBounds(726, 558, 188, 48);
 		panel1.add(btnNewButton_4);
+		
+		JPanel panel_11 = new JPanel();
+		panel_11.setForeground(new Color(224, 255, 255));
+		panel_11.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		panel_11.setBackground(new Color(255, 255, 255));
+		panel_11.setBounds(10, 10, 1412, 621);
+		panel1.add(panel_11);
 		
 		panel2 = new JPanel();
 		panel2.setBackground(Color.WHITE);
@@ -1408,7 +1417,7 @@ public class AddManageLecturer extends JFrame {
 				switchPannels(panel1);
 			}
 		});
-		btnNewButton.setBounds(46, 97, 207, 44);
+		btnNewButton.setBounds(82, 102, 207, 44);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("Manage Lecturer Details");
@@ -1423,7 +1432,7 @@ public class AddManageLecturer extends JFrame {
 				switchPannels(panel2);
 			}
 		});
-		btnNewButton_1.setBounds(273, 97, 233, 44);
+		btnNewButton_1.setBounds(311, 102, 233, 44);
 		contentPane.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("Manage Active Hours");
@@ -1438,7 +1447,7 @@ public class AddManageLecturer extends JFrame {
 				switchPannels(panel3);
 			}
 		});
-		btnNewButton_2.setBounds(524, 97, 218, 44);
+		btnNewButton_2.setBounds(564, 102, 218, 44);
 		contentPane.add(btnNewButton_2);
 		
 		//Header 
