@@ -38,7 +38,6 @@ public class HomePage {
 	 * @throws ClassNotFoundException 
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-		UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -71,20 +70,6 @@ public class HomePage {
 		Homeframe.setBounds(0, 0, 1370, 728);
 		Homeframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Homeframe.getContentPane().setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setForeground(new Color(255, 99, 71));
-		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		panel.setBounds(0, 0, 1365, 75);
-		Homeframe.getContentPane().add(panel);
-		
-		JTextArea txtrTimeTableManagement = new JTextArea();
-		txtrTimeTableManagement.setBackground(Color.LIGHT_GRAY);
-		txtrTimeTableManagement.setForeground(Color.BLACK);
-		txtrTimeTableManagement.setFont(new Font("Tahoma", Font.BOLD, 24));
-		txtrTimeTableManagement.setText("Timetable Management System");
-		panel.add(txtrTimeTableManagement);
 		
 		JButton locationmng_1_1 = new JButton("Generate And View Timetables");
 		locationmng_1_1.addActionListener(new ActionListener() {
@@ -167,6 +152,26 @@ public class HomePage {
 		subMng_1.setBackground(new Color(0, 0, 139));
 		subMng_1.setForeground(new Color(255, 255, 255));
 		subMng_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
+		
+		JPanel panel = new JPanel();
+		panel.setForeground(Color.WHITE);
+		panel.setBorder(new LineBorder(Color.BLUE, 2));
+		panel.setBackground(new Color(75, 119, 190));
+		panel.setBounds(0, 0, 1364, 79);
+		Homeframe.getContentPane().add(panel);
+		
+		JTextArea txtrTimeTableManagement = new JTextArea();
+		txtrTimeTableManagement.setText("Timetable Management System");
+		txtrTimeTableManagement.setForeground(Color.WHITE);
+		txtrTimeTableManagement.setFont(new Font("Tahoma", Font.BOLD, 23));
+		txtrTimeTableManagement.setEditable(false);
+		txtrTimeTableManagement.setBackground(new Color(75, 119, 190));
+		panel.add(txtrTimeTableManagement);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(228, 241, 254));
+		panel_1.setBounds(109, 129, 1157, 508);
+		Homeframe.getContentPane().add(panel_1);
 		lecDetail.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

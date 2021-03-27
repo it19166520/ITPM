@@ -56,31 +56,36 @@ public class ManageWorkingDaysHours extends JFrame {
 	
 	
 	JPanel addFramew;
-	private JTextField textField;
+	private JTextField txtmanageWorkingDays;
 	private JTable jtableShow;
 	DefaultTableModel model;
 	private JTextField txtID;
+	private JPanel panel;
+	private JTextArea txtrTimeTableManagement;
+	private JButton updatebtn;
+	private JButton deletebtn;
+	private JButton clearbtn;
+	private JLabel lblNewLabel;
+	private JLabel lblMinutes;
 	private JTextField hour;
+	private JTextField minutes;
+	private JButton load;
+	private JLabel workingDays;
+	private JCheckBox monday;
+	private JCheckBox friday;
+	private JCheckBox tuesday;
+	private JCheckBox saturday;
+	private JCheckBox wednesday;
+	private JCheckBox sunday;
+	private JCheckBox thursday;
+	private JPanel panel_2;
+	
 	/**
 	 * Launch the application.
 	 */
 	
 	public static void manageDays() {
-		try {
-			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (InstantiationException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IllegalAccessException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (UnsupportedLookAndFeelException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -93,14 +98,7 @@ public class ManageWorkingDaysHours extends JFrame {
 		});
 	}
 	
-	public void ClearFields()
-	{
-		txtID.setText(null);
-		hour.setText(null);
-		
 	
-		
-	}
 	public Connection getConnection()
 	{
 		Connection connection;
@@ -120,7 +118,7 @@ public class ManageWorkingDaysHours extends JFrame {
 		ArrayList<Model.WorkingDaysAndTime> workingList = new ArrayList<Model.WorkingDaysAndTime>();
 		Connection connection = getConnection();
 		
-		String quary= "select* from WorkingDaysHoursM";
+		String quary= "select* from WorkingDaysHours";
 		Statement st;
 		ResultSet rs;
 		
@@ -131,7 +129,7 @@ public class ManageWorkingDaysHours extends JFrame {
 			WorkingDaysAndTime workingday;
 			while(rs.next())
 			{
-				workingday = new WorkingDaysAndTime(rs.getInt("ID"),rs.getString("NumberOfWorkingDays"),rs.getString("WorkingDays"),rs.getString("WorkingHours"));
+				workingday = new WorkingDaysAndTime(rs.getInt("ID"),rs.getString("NumberOfWorkingDays"),rs.getString("WorkingDays"),rs.getString("WorkingHours"),rs.getString("WorkingMinutes"));
 				workingList.add(workingday);
 			}
 		}catch(Exception ex) {
@@ -163,7 +161,7 @@ public class ManageWorkingDaysHours extends JFrame {
 	}
 	public void fetch() {
 		try {
-			String q="select * from WorkingDaysHoursM";
+			String q="select * from WorkingDaysHours";
 			pst=connection.prepareStatement(q);
 			rs=pst.executeQuery();
 			
@@ -184,7 +182,7 @@ public class ManageWorkingDaysHours extends JFrame {
 	{
 		try {
 			
-			String refresh="select * from WorkingDaysHoursM";
+			String refresh="select * from WorkingDaysHours";
 			PreparedStatement psat= connection.prepareStatement(refresh);
 			ResultSet rs=psat.executeQuery();
 			
@@ -201,131 +199,129 @@ public class ManageWorkingDaysHours extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
 		addFramew = new JPanel();
-		addFramew.setBackground(new Color(255, 255, 255));
+		addFramew.setBackground(Color.WHITE);
 		addFramew.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(addFramew);
 		addFramew.setLayout(null);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setForeground(Color.WHITE);
-		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBorder(new LineBorder(Color.BLUE, 2));
+		panel.setBackground(new Color(75,119,190));
 		panel.setBounds(0, 0, 1364, 79);
 		addFramew.add(panel);
 		
-		JTextArea txtrTimeTableManagement = new JTextArea();
+		txtrTimeTableManagement = new JTextArea();
+		txtrTimeTableManagement.setEditable(false);
 		txtrTimeTableManagement.setText("Timetable Management System");
-		txtrTimeTableManagement.setForeground(Color.BLACK);
+		txtrTimeTableManagement.setForeground(Color.WHITE);
 		txtrTimeTableManagement.setFont(new Font("Tahoma", Font.BOLD, 23));
-		txtrTimeTableManagement.setBackground(Color.LIGHT_GRAY);
+		txtrTimeTableManagement.setBackground(new Color(75,119,190));
 		panel.add(txtrTimeTableManagement);
 		
-		textField = new JTextField();
-		textField.setText("--------------Add Working Days And Hours---------------");
-		textField.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
-		textField.setColumns(10);
-		textField.setBackground(Color.WHITE);
-		textField.setBounds(257, 90, 362, 26);
-		addFramew.add(textField);
+		txtmanageWorkingDays = new JTextField();
+		txtmanageWorkingDays.setBorder(null);
+		txtmanageWorkingDays.setEditable(false);
+		txtmanageWorkingDays.setText("--------------Manage Working Days And Hours---------------");
+		txtmanageWorkingDays.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
+		txtmanageWorkingDays.setColumns(10);
+		txtmanageWorkingDays.setBackground(Color.WHITE);
+		txtmanageWorkingDays.setBounds(187, 152, 362, 26);
+		addFramew.add(txtmanageWorkingDays);
 		
 		JLabel lblId = new JLabel("ID  :");
-		lblId.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblId.setBounds(54, 127, 219, 23);
+		lblId.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblId.setBounds(46, 211, 219, 23);
 		addFramew.add(lblId);
 		
 		JLabel l1 = new JLabel("Number of Working Days :");
-		l1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		l1.setBounds(54, 156, 237, 23);
+		l1.setFont(new Font("Dialog", Font.BOLD, 14));
+		l1.setBounds(46, 260, 237, 23);
 		addFramew.add(l1);
 		
-		JComboBox workigDaysNum = new JComboBox();
-		workigDaysNum.setBounds(395, 158, 261, 23);
-		workigDaysNum.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6","7"}));
-		addFramew.add(workigDaysNum);
-		
-		JLabel workingDays = new JLabel("Working Days :");
-		workingDays.setFont(new Font("Tahoma", Font.BOLD, 14));
-		workingDays.setBounds(54, 200, 219, 23);
-		addFramew.add(workingDays);
-		JRadioButton monday = new JRadioButton("Monday");
-		monday.setFont(new Font("Tahoma", Font.BOLD, 12));
-		monday.setBounds(395, 202, 109, 23);
-		addFramew.add(monday);
-		
-		JRadioButton tuesday = new JRadioButton("Tuesday");
-		tuesday.setFont(new Font("Tahoma", Font.BOLD, 12));
-		tuesday.setBounds(395, 241, 109, 23);
-		addFramew.add(tuesday);
-		
-		JRadioButton wednesday = new JRadioButton("Wednesday");
-		wednesday.setFont(new Font("Tahoma", Font.BOLD, 12));
-		wednesday.setBounds(395, 275, 109, 23);
-		addFramew.add(wednesday);
-		
-		JRadioButton friday = new JRadioButton("Friday");
-		friday.setFont(new Font("Tahoma", Font.BOLD, 12));
-		friday.setBounds(547, 202, 109, 23);
-		addFramew.add(friday);
-		
-		JRadioButton saturday = new JRadioButton("Saturday");
-		saturday.setFont(new Font("Tahoma", Font.BOLD, 12));
-		saturday.setBounds(547, 241, 109, 23);
-		addFramew.add(saturday);
-		
-		JRadioButton sunday = new JRadioButton("Sunday");
-		sunday.setFont(new Font("Tahoma", Font.BOLD, 12));
-		sunday.setBounds(547, 275, 109, 23);
-		addFramew.add(sunday);
-		
-		JRadioButton thursday = new JRadioButton("Thursday");
-		thursday.setFont(new Font("Tahoma", Font.BOLD, 12));
-		thursday.setBounds(395, 308, 109, 23);
-		addFramew.add(thursday);
-		
+		JComboBox txtworkigDaysNum = new JComboBox();
+		txtworkigDaysNum.setFont(new Font("Dialog", Font.BOLD, 14));
+		txtworkigDaysNum.setBounds(387, 258, 276, 26);
+		txtworkigDaysNum.setModel(new DefaultComboBoxModel(new String[] {"","1", "2", "3", "4", "5", "6","7"}));
+		addFramew.add(txtworkigDaysNum);
 		JLabel workingTimePerDay = new JLabel("Working Time Per Day :");
-		workingTimePerDay.setFont(new Font("Tahoma", Font.BOLD, 14));
-		workingTimePerDay.setBounds(54, 367, 219, 23);
+		workingTimePerDay.setFont(new Font("Dialog", Font.BOLD, 14));
+		workingTimePerDay.setBounds(46, 492, 219, 23);
 		addFramew.add(workingTimePerDay);
 		
-		JLabel newlab = new JLabel("");
-		newlab.setForeground(Color.RED);
-		newlab.setFont(new Font("Tahoma", Font.ITALIC, 13));
-		newlab.setBounds(666, 367, 552, 30);
-		addFramew.add(newlab);
+		workingDays = new JLabel("Working Days :");
+		workingDays.setFont(new Font("Dialog", Font.BOLD, 14));
+		workingDays.setBounds(46, 309, 219, 23);
+		addFramew.add(workingDays);
 		
+		monday = new JCheckBox("Monday");
+		monday.setBackground(new Color(228, 241, 254));
+		monday.setFont(new Font("Dialog", Font.BOLD, 12));
+		monday.setBounds(387, 309, 108, 25);
+		addFramew.add(monday);
+		
+		friday = new JCheckBox("Friday");
+		friday.setBackground(new Color(228, 241, 254));
+		friday.setFont(new Font("Dialog", Font.BOLD, 12));
+		friday.setBounds(555, 308, 108, 26);
+		addFramew.add(friday);
+		
+		tuesday = new JCheckBox("Tuesday");
+		tuesday.setBackground(new Color(228, 241, 254));
+		tuesday.setFont(new Font("Dialog", Font.BOLD, 12));
+		tuesday.setBounds(387, 351, 108, 23);
+		addFramew.add(tuesday);
+		
+		saturday = new JCheckBox("Saturday");
+		saturday.setBackground(new Color(228, 241, 254));
+		saturday.setFont(new Font("Dialog", Font.BOLD, 12));
+		saturday.setBounds(555, 351, 108, 23);
+		addFramew.add(saturday);
+		
+		wednesday = new JCheckBox("Wednesday");
+		wednesday.setBackground(new Color(228, 241, 254));
+		wednesday.setFont(new Font("Dialog", Font.BOLD, 12));
+		wednesday.setBounds(387, 393, 108, 23);
+		addFramew.add(wednesday);
+		
+		sunday = new JCheckBox("Sunday");
+		sunday.setBackground(new Color(228, 241, 254));
+		sunday.setFont(new Font("Dialog", Font.BOLD, 12));
+		sunday.setBounds(554, 393, 109, 23);
+		addFramew.add(sunday);
+		
+		thursday = new JCheckBox("Thursday");
+		thursday.setBackground(new Color(228, 241, 254));
+		thursday.setFont(new Font("Dialog", Font.BOLD, 12));
+		thursday.setBounds(387, 432, 108, 22);
+		addFramew.add(thursday);
+		
+	
 		hour = new JTextField();
-		hour.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(java.awt.event.KeyEvent evt) {
-					// set a pattern
-					String PATTERN = "([01]?[0-9]|2[0-4]).[0-5]";
-					Pattern patt= Pattern.compile(PATTERN);
-	;
-					Matcher match = patt.matcher(hour.getText());
-				if(!match.matches()) {
-					newlab.setText("Incorrect entered time pattern. Please fallow the given instruction!");
-				}
-				else {
-					newlab.setText("---");
-				}
-				
-			
-			}
-		});
-		hour.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				
-			}
-		});
+		hour.setFont(new Font("Dialog", Font.BOLD, 14));
 		hour.setColumns(10);
 		hour.setBackground(Color.WHITE);
-		hour.setBounds(395, 370, 261, 20);
+		hour.setBounds(453, 491, 67, 26);
 		addFramew.add(hour);
 		
+		minutes = new JTextField();
+		minutes.setFont(new Font("Dialog", Font.BOLD, 14));
+		minutes.setColumns(10);
+		minutes.setBackground(Color.WHITE);
+		minutes.setBounds(596, 493, 67, 26);
+		addFramew.add(minutes);
 		
+		lblNewLabel = new JLabel("Hours");
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblNewLabel.setBounds(387, 496, 46, 14);
+		addFramew.add(lblNewLabel);
+		
+		lblMinutes = new JLabel("Minutes");
+		lblMinutes.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblMinutes.setBounds(530, 496, 87, 14);
+		addFramew.add(lblMinutes);
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(32, 511, 1300, 164);
+		scrollPane.setBounds(721, 183, 608, 495);
 		addFramew.add(scrollPane);
 		
 		jtableShow = new JTable();
@@ -338,7 +334,7 @@ public class ManageWorkingDaysHours extends JFrame {
 				{null, null, null, null, null},
 			},
 			new String[] {
-				"ID", "Number Of Working Days", "Working Days", "Working Hours", "New column"
+				"ID", "Number Of Working Days", "Working Days", "Working Hours", "Working Minutes"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
@@ -358,115 +354,39 @@ public class ManageWorkingDaysHours extends JFrame {
 					TableModel model = jtableShow.getModel();
 					
 					txtID.setText(model.getValueAt(i,0).toString());
-					workigDaysNum.setSelectedItem(model.getValueAt(i, 1).toString());
-					String day = model.getValueAt(i, 2).toString();
 					
-						if(day.equals("Monday")) {
-							monday.setSelected(true);
-						}
-						else if(day.equals("Tuesday")) {
-							tuesday.setSelected(true);
-						}
-						else if(day.equals("Wednesday")) {
-							wednesday.setSelected(true);
-						}
-						else if(day.equals("Thursday")) {
-							thursday.setSelected(true);
-						}
-						else if(day.equals("Friday")) {
-							friday.setSelected(true);
-						}
-						else if(day.equals("Saturday")) {
-							saturday.setSelected(true);
-						}
-						else {
-							sunday.setSelected(true);
-						}
-						
+					txtworkigDaysNum.setSelectedItem(model.getValueAt(i, 1).toString());
+					
 					hour.setText(model.getValueAt(i, 3).toString());
+					
+					minutes.setText(model.getValueAt(i, 4).toString());
 				
 				
 			}
 		});
-		
+		jtableShow.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,12));
+		jtableShow.getTableHeader().setOpaque(false);
+		jtableShow.getTableHeader().setBackground(new Color(32,136,203));
+		jtableShow.getTableHeader().setForeground(new Color(255,255,255));
+		jtableShow.setSelectionBackground(new Color(107,185,240));
+
+		jtableShow.setRowHeight(25);
 		scrollPane.setViewportView(jtableShow);
 		model=new DefaultTableModel();
 		Object[] column= {"ID","Number Of Working Days","Working Days","Working Hours","Working Minutes"};
 		Object[] row=new Object[0];
 		model.setColumnIdentifiers(column);
 		
-		JButton addbtn = new JButton("Add Details");
-		addbtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			try {	
-				
-				
-				//get working days and hours
-				String query="insert into WorkingDaysHoursM(NumberOfWorkingDays,WorkingDays,WorkingHours) values(?,?,?)";                      
-				PreparedStatement pst=connection.prepareStatement(query);
-			
-				
-				//get number of working days and hours
-				String workingDay=workigDaysNum.getSelectedItem().toString();
-				pst.setString(1, workingDay);
-				
-				//get working days and hours
-				String Days="";
-				if(monday.isSelected()) {
-					Days +=monday.getText()+" ";
-				}
-				if(tuesday.isSelected()) {
-					Days +=tuesday.getText()+" ";
-				}
-				if(wednesday.isSelected()) {
-					Days +=wednesday.getText()+" ";
-				}
-				if(thursday.isSelected()) {
-					Days +=thursday.getText()+" ";
-				}
-				if(friday.isSelected()) {
-					Days +=friday.getText()+" ";
-				}
-				if(saturday.isSelected()) {
-					Days +=saturday.getText()+" ";
-				}
-			
-				if(sunday.isSelected()) {
-					Days +=sunday.getText()+" ";
-				}
-				pst.setString(2, Days);
-				
-				//get working hours
-				String WorkingTimeHoursss=hour.getText().toString();
-				pst.setString(3, WorkingTimeHoursss);
-				
-				
-				
-				
-				//Display successful massage when data was inserted to the database successfully:
-				pst.executeUpdate();
-				JOptionPane.showMessageDialog(null, "Data inserted successfully!");
-				
-				pst.close();
-				
-			}catch(Exception e1)
-			{
-				JOptionPane.showMessageDialog(null, e1);
-			}
-			  
-			   fetch();
-			}
-		});
-		addbtn.setForeground(Color.WHITE);
-		addbtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
-		addbtn.setBackground(new Color(0, 0, 128));
-		addbtn.setBounds(754, 173, 229, 40);
-		addFramew.add(addbtn);
-		
-		JButton updatebtn = new JButton("Update Details");
+		updatebtn = new JButton("Update Details");
+		updatebtn.setBackground(new Color(27, 163, 156));
 		updatebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				if(hour.getText().equals("")||minutes.getText().equals(""))
+				{
+					JOptionPane.showMessageDialog(null, "Please select the row from the table which wants to edit!");
+				}
+				else {
 			int opt = JOptionPane.showConfirmDialog(null, "Are You Sure to Update Details?","Update", JOptionPane.YES_NO_OPTION);
 			
 			if(opt ==0) {
@@ -474,16 +394,43 @@ public class ManageWorkingDaysHours extends JFrame {
 					int row = jtableShow.getSelectedRow();
 			
 						String value= (jtableShow.getModel().getValueAt(row,0).toString());
-						String sql = "update WorkingDaysHoursM set NumberOfWorkingDays=?,WorkingDays=?,WorkingHours=? where ID="+value;
+						String sql = "update WorkingDaysHours set NumberOfWorkingDays=?,WorkingDays=?,WorkingHours=?,WorkingMinutes=? where ID="+value;
 						PreparedStatement pst=connection.prepareStatement(sql);
-			
-						String wdaysn = workigDaysNum.getSelectedItem().toString();
-						pst.setString(1, wdaysn);
-			
+						
+						String day = txtworkigDaysNum.getSelectedItem().toString();
+						pst.setString(1, day);
+						
+						String Days="";
+						if(monday.isSelected()) {
+							Days +=monday.getText()+" ";
+						}
+						if(tuesday.isSelected()) {
+							Days +=tuesday.getText()+" ";
+						}
+						if(wednesday.isSelected()) {
+							Days +=wednesday.getText()+" ";
+						}
+						if(thursday.isSelected()) {
+							Days +=thursday.getText()+" ";
+						}
+						if(friday.isSelected()) {
+							Days +=friday.getText()+" ";
+						}
+						if(saturday.isSelected()) {
+							Days +=saturday.getText()+" ";
+						}
+					
+						if(sunday.isSelected()) {
+							Days +=sunday.getText()+" ";
+						}
+						pst.setString(2, Days);
 						
 						String hours = hour.getText().toString();
 						pst.setString(3, hours);
 			
+						String minute = minutes.getText().toString();
+						pst.setString(4, minute);
+						
 						pst.executeUpdate();
 
 						DefaultTableModel model = (DefaultTableModel)jtableShow.getModel();
@@ -496,15 +443,18 @@ public class ManageWorkingDaysHours extends JFrame {
 				{
 					JOptionPane.showMessageDialog(null, e5);
 				}
+				fetch();
 			}}
+			}
 		});
 		updatebtn.setForeground(Color.WHITE);
 		updatebtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
-		updatebtn.setBackground(new Color(34, 139, 34));
-		updatebtn.setBounds(754, 224, 229, 40);
+		updatebtn.setBackground(new Color(27,163,156));
+		updatebtn.setBounds(94, 551, 229, 52);
 		addFramew.add(updatebtn);
 		
-		JButton deletebtn = new JButton("Delete Details");
+		deletebtn = new JButton("Delete Details");
+		deletebtn.setBackground(new Color(210,77,87));
 		deletebtn.addActionListener(new ActionListener() {
 			
 			
@@ -516,7 +466,7 @@ public class ManageWorkingDaysHours extends JFrame {
 				int row = jtableShow.getSelectedRow();
 				
 				String value= (jtableShow.getModel().getValueAt(row,0).toString());
-				String query="DELETE FROM WorkingDaysHoursM where ID="+value;
+				String query="DELETE FROM WorkingDaysHours where ID="+value;
 				
 				PreparedStatement pst=connection.prepareStatement(query);
 				
@@ -538,27 +488,33 @@ public class ManageWorkingDaysHours extends JFrame {
 		});
 		deletebtn.setForeground(Color.WHITE);
 		deletebtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
-		deletebtn.setBackground(Color.RED);
-		deletebtn.setBounds(754, 275, 229, 40);
+		deletebtn.setBackground(new Color(210,77,87));
+		deletebtn.setBounds(403, 552, 229, 50);
 		addFramew.add(deletebtn);
 		
-		JButton clearbtn = new JButton("Clear Details");
+		clearbtn = new JButton("Clear Details");
 		clearbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ClearFields();
+				
+					txtworkigDaysNum.setSelectedIndex(-1);
+					txtID.setText(null);
+					hour.setText(null);
+					minutes.setText(null);
+					
 			}
 		});
 		clearbtn.setForeground(Color.BLACK);
 		clearbtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		clearbtn.setBackground(Color.CYAN);
-		clearbtn.setBounds(754, 350, 229, 40);
+		clearbtn.setBounds(247, 614, 229, 50);
 		addFramew.add(clearbtn);
 		
 		
 		txtID = new JTextField();
+		txtID.setFont(new Font("Dialog", Font.BOLD, 14));
 		txtID.setEditable(false);
 		txtID.setBackground(Color.WHITE);
-		txtID.setBounds(395, 127, 261, 20);
+		txtID.setBounds(387, 211, 276, 26);
 		addFramew.add(txtID);
 		txtID.setColumns(10);
 		
@@ -566,29 +522,46 @@ public class ManageWorkingDaysHours extends JFrame {
 		exitbtn.setForeground(Color.WHITE);
 		exitbtn.setFont(new Font("Tahoma", Font.BOLD, 12));
 		exitbtn.setBackground(new Color(0, 0, 205));
-		exitbtn.setBounds(1198, 90, 124, 50);
+		exitbtn.setBounds(1220, 90, 124, 50);
 		addFramew.add(exitbtn);
 		
-		JButton btnAddNewTime = new JButton("Add New Time Slot");
+		JButton btnAddNewTime = new JButton("Add New Working Days And Hours");
 		btnAddNewTime.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ManageTimeSlot hp = new ManageTimeSlot();
-				hp.manageTimeslot();
-				
-				
+			public void actionPerformed(ActionEvent arg0) {
+				AddTimeSlot working = new AddTimeSlot();
+				working.addTimeSlotFrame.setVisible(true);
+				dispose();
 			}
 		});
+	
 		btnAddNewTime.setForeground(Color.WHITE);
-		btnAddNewTime.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		btnAddNewTime.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnAddNewTime.setBackground(new Color(25, 25, 112));
-		btnAddNewTime.setBounds(1052, 354, 280, 50);
+		btnAddNewTime.setBounds(886, 90, 308, 50);
 		addFramew.add(btnAddNewTime);
 		
-		JLabel lblHintEx = new JLabel("Hint : Enter the Working Hours And Minutes ex: 9.30");
-		lblHintEx.setForeground(new Color(0, 0, 205));
-		lblHintEx.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblHintEx.setBounds(395, 401, 400, 14);
-		addFramew.add(lblHintEx);
+		load = new JButton("Load Details Table");
+		load.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				fetch();
+			}
+		});
+		load.setForeground(Color.WHITE);
+		load.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
+		load.setBackground(new Color(0, 0, 139));
+		load.setBounds(638, 90, 229, 52);
+		addFramew.add(load);
+		
+		panel_2 = new JPanel();
+		panel_2.setBackground(new Color(228, 241, 254));
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 128), 2, true));
+		panel_2.setBounds(25, 183, 662, 495);
+		addFramew.add(panel_2);
+		
+
+	
+		
+	
 		
 		
 		

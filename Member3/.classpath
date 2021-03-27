@@ -6,7 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/Sandamali/Downloads/JTattoo-1.6.13.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Sandamali/Desktop/mysql-connector-java-8.0.23.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Sandamali/Downloads/sqlite-jdbc-3.32.3.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Sandamali/Downloads/sqlite-jdbc-3.32.3-sources.jar"/>

@@ -28,7 +28,7 @@ public class HomePage2 {
 	 * @throws ClassNotFoundException 
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-		UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -59,32 +59,18 @@ public class HomePage2 {
 		wokingDayHourframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		wokingDayHourframe.getContentPane().setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setForeground(SystemColor.window);
-		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		panel.setBounds(0, 0, 1365, 79);
-		wokingDayHourframe.getContentPane().add(panel);
-		
-		JTextArea txtrTimeTableManagement = new JTextArea();
-		txtrTimeTableManagement.setBackground(Color.LIGHT_GRAY);
-		txtrTimeTableManagement.setText("Timetable Management System");
-		txtrTimeTableManagement.setForeground(Color.BLACK);
-		txtrTimeTableManagement.setFont(new Font("Tahoma", Font.BOLD, 23));
-		panel.add(txtrTimeTableManagement);
-		
 		JButton btnAddWorkingDays = new JButton("Add Working Days Hours");
 		btnAddWorkingDays.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ManageWorkingDaysHours hp = new ManageWorkingDaysHours();
-				hp.manageDays();
+				AddWorkingDays hp = new AddWorkingDays();
+				hp.addDays();
 				wokingDayHourframe.dispose();
 			}
 		});
 		btnAddWorkingDays.setForeground(Color.WHITE);
 		btnAddWorkingDays.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnAddWorkingDays.setBackground(new Color(0, 0, 139));
-		btnAddWorkingDays.setBounds(431, 238, 435, 66);
+		btnAddWorkingDays.setBounds(431, 200, 435, 66);
 		wokingDayHourframe.getContentPane().add(btnAddWorkingDays);
 		
 		JButton btnManageNotAvaillable = new JButton("Manage Not Availlable Time Allocation");
@@ -95,7 +81,7 @@ public class HomePage2 {
 		btnManageNotAvaillable.setForeground(Color.WHITE);
 		btnManageNotAvaillable.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnManageNotAvaillable.setBackground(new Color(0, 0, 139));
-		btnManageNotAvaillable.setBounds(431, 365, 435, 66);
+		btnManageNotAvaillable.setBounds(431, 427, 435, 66);
 		wokingDayHourframe.getContentPane().add(btnManageNotAvaillable);
 		
 		JButton btnManageARoom = new JButton("Manage a Room Cannot Be Recerved");
@@ -106,7 +92,7 @@ public class HomePage2 {
 		btnManageARoom.setForeground(Color.WHITE);
 		btnManageARoom.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnManageARoom.setBackground(new Color(0, 0, 139));
-		btnManageARoom.setBounds(431, 488, 435, 66);
+		btnManageARoom.setBounds(431, 542, 435, 66);
 		wokingDayHourframe.getContentPane().add(btnManageARoom);
 		
 		JButton btnNewButton = new JButton("Back To Home");
@@ -122,5 +108,39 @@ public class HomePage2 {
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setBounds(1168, 90, 154, 59);
 		wokingDayHourframe.getContentPane().add(btnNewButton);
+		
+		JButton btnManageTimeSlot = new JButton("Add And Manage Time Slot");
+		btnManageTimeSlot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AddTimeSlot working = new AddTimeSlot();
+				working.addtimeslott();
+				wokingDayHourframe.dispose();
+			}
+		});
+		btnManageTimeSlot.setForeground(Color.WHITE);
+		btnManageTimeSlot.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
+		btnManageTimeSlot.setBackground(new Color(0, 0, 139));
+		btnManageTimeSlot.setBounds(431, 310, 435, 66);
+		wokingDayHourframe.getContentPane().add(btnManageTimeSlot);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(228, 241, 254));
+		panel_1.setBounds(230, 141, 843, 522);
+		wokingDayHourframe.getContentPane().add(panel_1);
+		
+		JPanel panel = new JPanel();
+		panel.setForeground(Color.WHITE);
+		panel.setBorder(new LineBorder(Color.BLUE, 2));
+		panel.setBackground(new Color(75, 119, 190));
+		panel.setBounds(0, 0, 1364, 79);
+		wokingDayHourframe.getContentPane().add(panel);
+		
+		JTextArea txtrTimeTableManagement = new JTextArea();
+		txtrTimeTableManagement.setText("Timetable Management System");
+		txtrTimeTableManagement.setForeground(Color.WHITE);
+		txtrTimeTableManagement.setFont(new Font("Tahoma", Font.BOLD, 23));
+		txtrTimeTableManagement.setEditable(false);
+		txtrTimeTableManagement.setBackground(new Color(75, 119, 190));
+		panel.add(txtrTimeTableManagement);
 	}
 }

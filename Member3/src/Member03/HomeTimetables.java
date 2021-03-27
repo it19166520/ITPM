@@ -30,13 +30,7 @@ public class HomeTimetables {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		try {
-			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-				| UnsupportedLookAndFeelException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -66,20 +60,6 @@ public class HomeTimetables {
 		timetableMenuframe.setBounds(0, 0, 1370, 728);
 		timetableMenuframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		timetableMenuframe.getContentPane().setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setForeground(Color.WHITE);
-		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setBounds(0, 0, 1366, 79);
-		timetableMenuframe.getContentPane().add(panel);
-		
-		JTextArea txtrTimeTableManagement = new JTextArea();
-		txtrTimeTableManagement.setBackground(Color.LIGHT_GRAY);
-		txtrTimeTableManagement.setText("Timetable Management System");
-		txtrTimeTableManagement.setForeground(Color.BLACK);
-		txtrTimeTableManagement.setFont(new Font("Tahoma", Font.BOLD, 23));
-		panel.add(txtrTimeTableManagement);
 		
 		JLabel lblNewLabel = new JLabel("The Timetable Of a Particular Lecturer");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -156,8 +136,24 @@ public class HomeTimetables {
 		timetableMenuframe.getContentPane().add(scrollPane);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(224, 255, 255));
 		panel_1.setBorder(new TitledBorder(null, "View Timetable", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane.setViewportView(panel_1);
+		
+		JPanel panel = new JPanel();
+		panel.setForeground(Color.WHITE);
+		panel.setBorder(new LineBorder(Color.BLUE, 2));
+		panel.setBackground(new Color(75, 119, 190));
+		panel.setBounds(0, 0, 1364, 79);
+		timetableMenuframe.getContentPane().add(panel);
+		
+		JTextArea txtrTimeTableManagement = new JTextArea();
+		txtrTimeTableManagement.setText("Timetable Management System");
+		txtrTimeTableManagement.setForeground(Color.WHITE);
+		txtrTimeTableManagement.setFont(new Font("Tahoma", Font.BOLD, 23));
+		txtrTimeTableManagement.setEditable(false);
+		txtrTimeTableManagement.setBackground(new Color(75, 119, 190));
+		panel.add(txtrTimeTableManagement);
 	}
 
 	
