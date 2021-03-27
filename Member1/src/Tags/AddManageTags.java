@@ -303,23 +303,23 @@ public class AddManageTags extends JFrame {
 				else {
 				
 					try {
-						
-						String query="insert into Tag(TagName,TagCode,RelatedTag) values(?,?,?)";
-						PreparedStatement pstat=connection.prepareStatement(query);
-						
-						pstat.setString(1, txtTagName.getText());
-						pstat.setString(2, txtTagCode.getText());
-						
-						String RelatedT = RelatedTagComboBox.getSelectedItem().toString();
-						pstat.setString(3, RelatedT);
-						
-						//data insertion success message
-						pstat.execute();
-						JOptionPane.showMessageDialog(null, "Data inserted successfully!");
-						
-						pstat.close();
-						ClearFields();
-						
+			
+							String query="insert into Tag(TagName,TagCode,RelatedTag) values(?,?,?)";
+							PreparedStatement pstat=connection.prepareStatement(query);
+									
+							pstat.setString(1, txtTagName.getText());
+							pstat.setString(2, txtTagCode.getText());
+				
+							String RelatedT = RelatedTagComboBox.getSelectedItem().toString();
+							pstat.setString(3, RelatedT);
+									
+							//data insertion success message
+							pstat.execute();
+							JOptionPane.showMessageDialog(null, "Data inserted successfully!");
+									
+							pstat.close();
+							ClearFields();
+							
 					}
 					catch(Exception ex)
 					{
