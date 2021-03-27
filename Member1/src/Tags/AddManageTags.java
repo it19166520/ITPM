@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.text.JTextComponent;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -158,7 +159,7 @@ public class AddManageTags extends JFrame {
 	//header
 		panel_1 = new JPanel();
 		panel_1.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 26));
-		panel_1.setBorder(new LineBorder(SystemColor.textHighlight));
+		panel_1.setBorder(new LineBorder(Color.BLUE, 2));
 		panel_1.setBounds(0, 0, 1365, 75);
 		panel_1.setForeground(Color.WHITE);
 		panel_1.setBackground(new Color(75, 119, 190));
@@ -272,21 +273,31 @@ public class AddManageTags extends JFrame {
 		btnSaveTag.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				
+				//if(txtTagName.getText().trim().isEmpty() && txtTagCode.getText().trim().isEmpty() && ((String) RelatedTagComboBox.getSelectedItem()).trim().isEmpty())
 				if(txtTagName.getText().trim().isEmpty() && txtTagCode.getText().trim().isEmpty())
 				{
-					lbl_empTagName.setText("Tag Name is empty!!");
-					lbl_empTagCode.setText("Tag code is empty!!");
+					lbl_empTagName.setText("Required");
+					lbl_empTagCode.setText("Required");
+				//	lbl_empReTag.setText("Required");
+					
+					
 				}
 				
 				else if(txtTagName.getText().trim().isEmpty())
 				{
-					lbl_empTagName.setText("Tag Name is empty!!");
+					lbl_empTagName.setText("Required!!");
 				}
 				
 				else if(txtTagCode.getText().trim().isEmpty())
 				{
-					lbl_empTagCode.setText("Tag code is empty!!");
+					lbl_empTagCode.setText("Required");
 				}
+				//else if(((String) RelatedTagComboBox.getSelectedItem()).trim().isEmpty())
+				//{
+					
+				//	lbl_empReTag.setText("Required");
+				//}
 				
 				
 				else {
@@ -341,7 +352,7 @@ public class AddManageTags extends JFrame {
 		lbl_empReTag = new JLabel("");
 		lbl_empReTag.setForeground(Color.RED);
 		lbl_empReTag.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lbl_empReTag.setBounds(161, 282, 210, 25);
+		lbl_empReTag.setBounds(161, 282, 210, 17);
 		AddTagFormPanel.add(lbl_empReTag);
 	
 	//Manage Tag panel
@@ -360,7 +371,7 @@ public class AddManageTags extends JFrame {
 		scrollPane = new JScrollPane();
 		scrollPane.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		scrollPane.setBackground(Color.WHITE);
-		scrollPane.setBounds(26, 27, 644, 456);
+		scrollPane.setBounds(26, 27, 672, 456);
 		ViewTagsPanel.add(scrollPane);
 		
 		ViewTagsTable = new JTable();
@@ -409,8 +420,8 @@ public class AddManageTags extends JFrame {
 		GetTagsFormPanel = new JPanel();
 		GetTagsFormPanel.setLayout(null);
 		GetTagsFormPanel.setBorder(null);
-		GetTagsFormPanel.setBackground(new Color(197, 239, 247));
-		GetTagsFormPanel.setBounds(770, 0, 443, 494);
+		GetTagsFormPanel.setBackground(new Color(228, 241, 254));
+		GetTagsFormPanel.setBounds(750, 0, 443, 525);
 		ManageTagsPanel.add(GetTagsFormPanel);
 		
 		lblTagIDeViewForm = new JLabel("Tag ID:");
@@ -488,7 +499,7 @@ public class AddManageTags extends JFrame {
 		BtnUpdateTag.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(textviewTagName.getText().trim().isEmpty() && textViewTagCodeField.getText().trim().isEmpty())
+				if(textviewTagName.getText().trim().isEmpty() && textViewTagCodeField.getText().trim().isEmpty() &&  ((String) RelatedTagListView.getSelectedItem()).trim().isEmpty())
 				{
 					lbl_empTagName_1.setText("Tag Name is empty!!");
 					lbl_empTagCode_1.setText("Tag code is empty!!");

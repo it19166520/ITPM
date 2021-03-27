@@ -32,6 +32,7 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.border.LineBorder;
 
 public class AddManageStGrps extends JFrame {
 	
@@ -415,14 +416,14 @@ public class AddManageStGrps extends JFrame {
 		ManageStudentGrpPanel_1.setLayout(null);
 		
 		ViewStudentGroupsPanel = new JPanel();
-		ViewStudentGroupsPanel.setBounds(10, 33, 726, 450);
+		ViewStudentGroupsPanel.setBounds(10, 0, 726, 483);
 		ViewStudentGroupsPanel.setBackground(new Color(228, 241, 254));
 		ViewStudentGroupsPanel.setBorder(null);
 		ManageStudentGrpPanel_1.add(ViewStudentGroupsPanel);
 		ViewStudentGroupsPanel.setLayout(null);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 44, 694, 379);
+		scrollPane.setBounds(10, 21, 694, 402);
 		ViewStudentGroupsPanel.add(scrollPane);
 		
 		ViewStGrpsTable = new JTable();
@@ -476,7 +477,7 @@ public class AddManageStGrps extends JFrame {
 		
 		GetDetailsFormPanel = new JPanel();
 		GetDetailsFormPanel.setBounds(770, 0, 443, 483);
-		GetDetailsFormPanel.setBackground(new Color(197, 239, 247));
+		GetDetailsFormPanel.setBackground(new Color(228, 241, 254));
 		GetDetailsFormPanel.setBorder(null);
 		ManageStudentGrpPanel_1.add(GetDetailsFormPanel);
 		GetDetailsFormPanel.setLayout(null);
@@ -507,7 +508,7 @@ public class AddManageStGrps extends JFrame {
 			}
 		});
 		btnGenGID.setForeground(Color.WHITE);
-		btnGenGID.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		btnGenGID.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		btnGenGID.setFocusPainted(false);
 		btnGenGID.setBackground(new Color(31, 58, 147));
 		btnGenGID.setBounds(109, 213, 185, 30);
@@ -539,7 +540,7 @@ public class AddManageStGrps extends JFrame {
 			}
 		});
 		btnGenSubGID.setForeground(Color.WHITE);
-		btnGenSubGID.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		btnGenSubGID.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		btnGenSubGID.setFocusPainted(false);
 		btnGenSubGID.setBackground(new Color(31, 58, 147));
 		btnGenSubGID.setBounds(109, 310, 185, 30);
@@ -575,7 +576,7 @@ public class AddManageStGrps extends JFrame {
 			}
 		});
 		BtnClearView.setForeground(Color.WHITE);
-		BtnClearView.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		BtnClearView.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		BtnClearView.setFocusPainted(false);
 		BtnClearView.setBackground(new Color(31, 58, 147));
 		BtnClearView.setBounds(73, 401, 123, 30);
@@ -610,38 +611,38 @@ public class AddManageStGrps extends JFrame {
 			}
 		});
 		BtnUpdate.setForeground(Color.WHITE);
-		BtnUpdate.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		BtnUpdate.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		BtnUpdate.setFocusPainted(false);
 		BtnUpdate.setBackground(new Color(27, 163, 156));
 		BtnUpdate.setBounds(253, 401, 123, 30);
 		GetDetailsFormPanel.add(BtnUpdate);
 		
 		lblAcademicYearsemesterViewForm = new JLabel("Academic year &semester :");
-		lblAcademicYearsemesterViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		lblAcademicYearsemesterViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		lblAcademicYearsemesterViewForm.setBounds(10, 55, 209, 24);
 		GetDetailsFormPanel.add(lblAcademicYearsemesterViewForm);
 		
 		lblProgramViewForm = new JLabel("Program :");
-		lblProgramViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		lblProgramViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		lblProgramViewForm.setBounds(10, 90, 209, 24);
 		GetDetailsFormPanel.add(lblProgramViewForm);
 		
 		lblGroupNumberViewForm = new JLabel("Group Number:");
-		lblGroupNumberViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		lblGroupNumberViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		lblGroupNumberViewForm.setBounds(10, 123, 209, 24);
 		GetDetailsFormPanel.add(lblGroupNumberViewForm);
 		
 		lblSubGroupNumberViewForm = new JLabel("Sub Group Number :");
-		lblSubGroupNumberViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		lblSubGroupNumberViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		lblSubGroupNumberViewForm.setBounds(10, 167, 209, 24);
 		GetDetailsFormPanel.add(lblSubGroupNumberViewForm);
 		
 		lblGroupIdViewForm = new JLabel("Group ID :");
-		lblGroupIdViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		lblGroupIdViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		lblGroupIdViewForm.setBounds(10, 252, 209, 24);
 		GetDetailsFormPanel.add(lblGroupIdViewForm);
 		lblSubGroupIdViewForm = new JLabel("Sub Group ID :");
-		lblSubGroupIdViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		lblSubGroupIdViewForm.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		lblSubGroupIdViewForm.setBounds(10, 349, 209, 24);
 		GetDetailsFormPanel.add(lblSubGroupIdViewForm);
 		
@@ -672,14 +673,14 @@ public class AddManageStGrps extends JFrame {
 			}
 		});
 		BtnDeleteStGView.setForeground(Color.WHITE);
-		BtnDeleteStGView.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		BtnDeleteStGView.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		BtnDeleteStGView.setFocusPainted(false);
 		BtnDeleteStGView.setBackground(new Color(210, 77, 87));
 		BtnDeleteStGView.setBounds(171, 442, 123, 30);
 		GetDetailsFormPanel.add(BtnDeleteStGView);
 		
 		lblStGrpID = new JLabel("Student GroupID :");
-		lblStGrpID.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		lblStGrpID.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		lblStGrpID.setBounds(10, 20, 209, 24);
 		GetDetailsFormPanel.add(lblStGrpID);
 		
@@ -701,6 +702,7 @@ public class AddManageStGrps extends JFrame {
 	
 	//Header
 		panel_1 = new JPanel();
+		panel_1.setBorder(new LineBorder(Color.BLUE, 2));
 		panel_1.setBounds(0, 0, 1365, 75);
 		panel_1.setForeground(Color.WHITE);
 		panel_1.setBackground(new Color(75, 119, 190));
@@ -726,13 +728,13 @@ public class AddManageStGrps extends JFrame {
 		btnAddStGroup_1.setFocusPainted(false);
 		btnAddStGroup_1.setBackground(new Color(31, 58, 147));
 		btnAddStGroup_1.setForeground(Color.WHITE);
-		btnAddStGroup_1.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 16));
+		btnAddStGroup_1.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 15));
 		btnAddStGroup_1.setBounds(64, 114, 294, 38);
 		contentPane.add(btnAddStGroup_1);
 		
 		
 	//Manage Student group main button-- change panels
-		btnManageStGroup_1 = new JButton("Manage Student Group");
+		btnManageStGroup_1 = new JButton("Manage Student Groups");
 		btnManageStGroup_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -758,7 +760,7 @@ public class AddManageStGrps extends JFrame {
 		btnManageStGroup_1.setFocusPainted(false);
 		btnManageStGroup_1.setBackground(new Color(31, 58, 147));
 		btnManageStGroup_1.setForeground(Color.WHITE);
-		btnManageStGroup_1.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 16));
+		btnManageStGroup_1.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 15));
 		btnManageStGroup_1.setBounds(453, 114, 294, 38);
 		contentPane.add(btnManageStGroup_1);
 	
