@@ -29,6 +29,8 @@ import javax.swing.JCheckBox;
 import javax.swing.SpinnerNumberModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AddWorkingDays extends JFrame {
 	Connection connection = SqlServerConnection.dbConnecter();
@@ -158,17 +160,23 @@ public class AddWorkingDays extends JFrame {
 		
 		JLabel workingTimePerDay = new JLabel("Working Time Per Day :");
 		workingTimePerDay.setFont(new Font("Dialog", Font.BOLD, 14));
-		workingTimePerDay.setBounds(361, 489, 219, 23);
+		workingTimePerDay.setBounds(361, 507, 219, 23);
 		addwframe.add(workingTimePerDay);
 		
 		JLabel lblNewLabel = new JLabel("Hours");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblNewLabel.setBounds(702, 508, 46, 14);
+		lblNewLabel.setBounds(707, 511, 46, 14);
 		addwframe.add(lblNewLabel);
+		
+		JLabel labErr = new JLabel("");
+		labErr.setForeground(new Color(255, 0, 0));
+		labErr.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
+		labErr.setBounds(707, 551, 271, 23);
+		addwframe.add(labErr);
 		
 		JLabel lblMinutes = new JLabel("Minutes");
 		lblMinutes.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblMinutes.setBounds(840, 508, 87, 14);
+		lblMinutes.setBounds(842, 511, 87, 14);
 		addwframe.add(lblMinutes);
 		JButton clearbtn = new JButton("Clear Details");
 		clearbtn.addActionListener(new ActionListener() {
@@ -264,12 +272,48 @@ public class AddWorkingDays extends JFrame {
 		addwframe.add(addbtn);
 		
 		hour = new JTextField();
+		hour.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(java.awt.event.KeyEvent evt) {
+				//validate the field
+				
+				char c =evt.getKeyChar();
+				if(Character.isLetter(c)) {
+				
+				//can not able to enter in filed if enter char is not number
+				hour.setEditable(false);
+				labErr.setText("Please Enter Number Only");
+				}
+				else {
+					hour.setEditable(true);
+					labErr.setText("---");
+				}
+			}
+		});
 		hour.setColumns(10);
 		hour.setBackground(Color.WHITE);
 		hour.setBounds(752, 507, 78, 26);
 		addwframe.add(hour);
 		
 		minutes = new JTextField();
+		minutes.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(java.awt.event.KeyEvent evt) {
+				//validate the field
+				
+				char c =evt.getKeyChar();
+				if(Character.isLetter(c)) {
+				
+				//can not able to enter in filed if enter char is not number
+					minutes.setEditable(false);
+				labErr.setText("Please Enter Number Only");
+				}
+				else {
+					minutes.setEditable(true);
+					labErr.setText("---");
+				}
+			}
+		});
 		minutes.setColumns(10);
 		minutes.setBackground(Color.WHITE);
 		minutes.setBounds(900, 507, 78, 26);
@@ -283,7 +327,7 @@ public class AddWorkingDays extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("----------Add Working Days And Hours---------");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		lblNewLabel_1.setBounds(529, 187, 400, 14);
+		lblNewLabel_1.setBounds(529, 187, 400, 21);
 		addwframe.add(lblNewLabel_1);
 		
 		JButton btnViewAndManage_1 = new JButton("View And Manage Working Hours");
@@ -317,6 +361,8 @@ public class AddWorkingDays extends JFrame {
 		exitbtn.setBackground(new Color(0, 0, 205));
 		exitbtn.setBounds(1220, 84, 124, 50);
 		addwframe.add(exitbtn);
+		
+		
 		
 
 	}

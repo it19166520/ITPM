@@ -30,6 +30,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JLabel;
@@ -367,13 +368,16 @@ public class ManageWorkingDaysHours extends JFrame {
 				
 			}
 		});
+		jtableShow.setFont(new Font("Tahoma", Font.BOLD, 12));
+		jtableShow.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		jtableShow.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		jtableShow.setSelectionBackground(new Color(107,185,240));
 		jtableShow.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,12));
 		jtableShow.getTableHeader().setOpaque(false);
 		jtableShow.getTableHeader().setBackground(new Color(32,136,203));
 		jtableShow.getTableHeader().setForeground(new Color(255,255,255));
-		jtableShow.setSelectionBackground(new Color(107,185,240));
-
 		jtableShow.setRowHeight(25);
+		
 		scrollPane.setViewportView(jtableShow);
 		model=new DefaultTableModel();
 		Object[] column= {"ID","Number Of Working Days","Working Days","Working Hours","Working Minutes"};
