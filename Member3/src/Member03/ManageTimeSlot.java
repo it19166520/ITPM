@@ -21,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import DBConnection.SqlServerConnection;
 import Model.TimeSlot;
 import net.proteanit.sql.DbUtils;
 
@@ -46,7 +47,7 @@ import java.awt.Window;
 import javax.swing.ListSelectionModel;
 
 public class ManageTimeSlot extends JFrame {
-	Connection connection=null;
+	Connection connection = SqlServerConnection.dbConnecter();
 	ResultSet rs=null;
 	PreparedStatement pst=null;
 	
@@ -55,6 +56,8 @@ public class ManageTimeSlot extends JFrame {
 	private JTextField txtEndTime;
 	private JTable jTable_Display;
 	private JTextField txtID;
+	private JComboBox slot;
+	
 	DefaultTableModel model;
 	/**
 	 * Launch the application.
@@ -174,6 +177,13 @@ public class ManageTimeSlot extends JFrame {
 		}
 		
 	}
+	public void actionPerformed(ActionEvent arg0) {
+		txtID.setText(null);
+		txtStartTime.setText(null);
+		txtEndTime.setText(null);
+		slot.setSelectedIndex(-1);
+	
+	}
 	//refresh table after doing update and delete
 			public void RefreshTimeSlotTable()
 			{
@@ -194,7 +204,8 @@ public class ManageTimeSlot extends JFrame {
 			
 	public ManageTimeSlot() {
 	
-		connection = DBConnection.dbConnecter();
+		connection = SqlServerConnection.dbConnecter();
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
 		timeFrame = new JPanel();
@@ -390,6 +401,7 @@ public class ManageTimeSlot extends JFrame {
 				{
 					JOptionPane.showMessageDialog(null, e5);
 				}
+		
 				 fetch();
 			}}
 			
@@ -482,8 +494,9 @@ public class ManageTimeSlot extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				txtID.setText(null);
 				txtStartTime.setText(null);
+				slot.setSelectedIndex(-1);
 				txtEndTime.setText(null);
-				slot.setSelectedItem(null);
+				
 			
 			}
 		});

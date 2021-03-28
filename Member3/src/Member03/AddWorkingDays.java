@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
+import DBConnection.SqlServerConnection;
 import net.proteanit.sql.DbUtils;
 
 import javax.swing.JTextArea;
@@ -30,8 +31,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class AddWorkingDays extends JFrame {
-	Connection connection=null;
-
+	Connection connection = SqlServerConnection.dbConnecter();
 	private JPanel addwframe;
 	private JTextField textField;
 	private JTextField hour;
@@ -61,9 +61,10 @@ public class AddWorkingDays extends JFrame {
 		
 		hour.setText(null);
 		minutes.setText(null);
+		
 	}
 	public AddWorkingDays() {
-		connection = DBConnection.dbConnecter();
+		connection = SqlServerConnection.dbConnecter();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
@@ -172,6 +173,10 @@ public class AddWorkingDays extends JFrame {
 		JButton clearbtn = new JButton("Clear Details");
 		clearbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				hour.setText(null);
+				minutes.setText(null);
+				txtworkigDaysNum.setSelectedIndex(-1);
+				
 			}
 		});
 		clearbtn.setForeground(Color.BLACK);

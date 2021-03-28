@@ -13,6 +13,7 @@ import javax.swing.table.TableModel;
 
 import com.mysql.cj.xdevapi.PreparableStatement;
 
+import DBConnection.SqlServerConnection;
 import Model.TimeSlot;
 import Model.WorkingDaysAndTime;
 import net.proteanit.sql.DbUtils;
@@ -50,7 +51,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class ManageWorkingDaysHours extends JFrame {
-	Connection connection=null;
+	Connection connection = SqlServerConnection.dbConnecter();
 	ResultSet rs=null;
 	PreparedStatement pst=null;
 	
@@ -195,7 +196,9 @@ public class ManageWorkingDaysHours extends JFrame {
 		}
 	}
 	public ManageWorkingDaysHours() {
-		connection = DBConnection.dbConnecter();
+		
+		connection = SqlServerConnection.dbConnecter();
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
 		addFramew = new JPanel();

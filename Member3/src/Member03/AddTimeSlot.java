@@ -22,10 +22,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
+
+import DBConnection.SqlServerConnection;
+
 import javax.swing.JTextArea;
 
 public class AddTimeSlot extends JFrame {
-	Connection connection=null;
+	Connection connection = SqlServerConnection.dbConnecter();
+
 	 JPanel addTimeSlotFrame;
 	private JTextField txtID;
 	private JTextField txtStartTime;
@@ -58,7 +62,7 @@ public class AddTimeSlot extends JFrame {
 	
 	}
 	public AddTimeSlot() {
-		connection = DBConnection.dbConnecter();
+		connection = SqlServerConnection.dbConnecter();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
 		addTimeSlotFrame = new JPanel();
@@ -248,6 +252,15 @@ public class AddTimeSlot extends JFrame {
 		addTimeSlotFrame.add(exitbtn);
 		
 		JButton btnClear = new JButton("Clear Details");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtID.setText(null);
+				txtStartTime.setText(null);
+				txtEndTime.setText(null);
+				slot.setSelectedIndex(-1);
+			
+			}
+		});
 		btnClear.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		btnClear.setBackground(new Color(0, 206, 209));
 		btnClear.setBounds(726, 558, 262, 49);
