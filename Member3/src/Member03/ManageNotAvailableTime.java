@@ -200,6 +200,7 @@ public class ManageNotAvailableTime extends JFrame {
 	 * Create the frame.
 	 */
 	public ManageNotAvailableTime() {
+		connection = SqlServerConnection.dbConnecter();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
 		contentPane = new JPanel();
