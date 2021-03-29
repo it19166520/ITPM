@@ -115,6 +115,7 @@ public class HomePage {
 		Homeframe.getContentPane().add(locationmng_1);
 		locationmng_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
 		locationmng_1.setBackground(new Color(0, 0, 139));

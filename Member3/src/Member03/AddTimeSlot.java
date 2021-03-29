@@ -217,7 +217,7 @@ public class AddTimeSlot extends JFrame {
 		btnViewAndManage.setForeground(Color.WHITE);
 		btnViewAndManage.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		btnViewAndManage.setBackground(new Color(0, 0, 128));
-		btnViewAndManage.setBounds(524, 119, 262, 49);
+		btnViewAndManage.setBounds(526, 90, 262, 49);
 		addTimeSlotFrame.add(btnViewAndManage);
 		
 		JPanel panel = new JPanel();
@@ -271,5 +271,10 @@ public class AddTimeSlot extends JFrame {
 		panel_1.setBackground(new Color(228, 241, 254));
 		panel_1.setBounds(282, 182, 792, 468);
 		addTimeSlotFrame.add(panel_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("----------Add New Time Slots---------");
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		lblNewLabel_1_1.setBounds(536, 150, 400, 21);
+		addTimeSlotFrame.add(lblNewLabel_1_1);
 	}
 }

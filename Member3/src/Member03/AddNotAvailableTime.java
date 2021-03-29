@@ -98,6 +98,7 @@ public class AddNotAvailableTime extends JFrame {
 		contentPane.add(lblSelectLecturer);
 		
 		JComboBox txtLec = new JComboBox();
+		txtLec.setBackground(Color.WHITE);
 		txtLec.setModel(new DefaultComboBoxModel(new String[] {"","Mr. Senanayske", "Mrs. Gunathilake","Mr. jayarathne","Mrs. Athukorala","Ms. Susantha"}));
 		txtLec.setBounds(613, 261, 359, 33);
 		contentPane.add(txtLec);
@@ -109,6 +110,7 @@ public class AddNotAvailableTime extends JFrame {
 		contentPane.add(lblSelectGroup);
 		
 		JComboBox txtGroup = new JComboBox();
+		txtGroup.setBackground(Color.WHITE);
 		txtGroup.setModel(new DefaultComboBoxModel(new String[] {"","Y2.S2.1", "Y3.S2.2", "Y4.S1.3", "Y1.S2.4", "Y2.S1.5", "Y1.S2.6", "Y1.S2.7", "Y1.S2.8","Y1.S2.9"}));
 		txtGroup.setBounds(613, 313, 359, 33);
 		contentPane.add(txtGroup);
@@ -120,6 +122,7 @@ public class AddNotAvailableTime extends JFrame {
 		contentPane.add(lblSelectSubGroup);
 		
 		JComboBox txtSubGroup = new JComboBox();
+		txtSubGroup.setBackground(Color.WHITE);
 		txtSubGroup.setModel(new DefaultComboBoxModel(new String[] {"","1","2","3","4","5"}));
 		txtSubGroup.setBounds(613, 363, 359, 33);
 		contentPane.add(txtSubGroup);
@@ -131,6 +134,7 @@ public class AddNotAvailableTime extends JFrame {
 		contentPane.add(lblSelectSessionId);
 		
 		JComboBox txtSessionID = new JComboBox();
+		txtSessionID.setBackground(Color.WHITE);
 		txtSessionID.setModel(new DefaultComboBoxModel(new String[] {"","IT2030-OOC–Lecture–Y1.S1.IT.01–120- 2","IT2015-PAF–Lecture–Y2.S1.IT.01–120- 2","IT1530-NDM–Lecture–Y3.S1.IT.01–120- 2"}));
 		txtSessionID.setBounds(613, 420, 359, 33);
 		contentPane.add(txtSessionID);
@@ -208,6 +212,7 @@ public class AddNotAvailableTime extends JFrame {
 		contentPane.add(lblSelectDay);
 		
 		JComboBox txtDay = new JComboBox();
+		txtDay.setBackground(Color.WHITE);
 		txtDay.setModel(new DefaultComboBoxModel(new String[] {"","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"}));
 		txtDay.setBounds(613, 483, 359, 33);
 		contentPane.add(txtDay);

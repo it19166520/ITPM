@@ -76,6 +76,9 @@ public class HomePage2 {
 		JButton btnManageNotAvaillable = new JButton("Manage Not Availlable Time Allocation");
 		btnManageNotAvaillable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				AddNotAvailableTime hp = new AddNotAvailableTime();
+				hp.notavailable();
+				wokingDayHourframe.dispose();
 			}
 		});
 		btnManageNotAvaillable.setForeground(Color.WHITE);
