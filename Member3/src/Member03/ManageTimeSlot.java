@@ -423,7 +423,7 @@ public class ManageTimeSlot extends JFrame {
 		jTable_Display.getTableHeader().setOpaque(false);
 		jTable_Display.getTableHeader().setBackground(new Color(32,136,203));
 		jTable_Display.getTableHeader().setForeground(new Color(255,255,255));
-		jTable_Display.setRowHeight(25);
+		jTable_Display.setRowHeight(30);
 		jTable_Display.addMouseListener(new MouseAdapter() {
 			@Override
 		

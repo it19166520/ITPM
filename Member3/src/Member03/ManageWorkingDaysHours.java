@@ -376,7 +376,7 @@ public class ManageWorkingDaysHours extends JFrame {
 		jtableShow.getTableHeader().setOpaque(false);
 		jtableShow.getTableHeader().setBackground(new Color(32,136,203));
 		jtableShow.getTableHeader().setForeground(new Color(255,255,255));
-		jtableShow.setRowHeight(25);
+		jtableShow.setRowHeight(30);
 		
 		scrollPane.setViewportView(jtableShow);
 		model=new DefaultTableModel();
@@ -466,6 +466,11 @@ public class ManageWorkingDaysHours extends JFrame {
 			
 			
 			public void actionPerformed(ActionEvent arg0) {
+				if(hour.getText().equals("")||minutes.getText().equals(""))
+				{
+					JOptionPane.showMessageDialog(null, "Please select the row from the table which wants to Delete!");
+				}
+				else {
 				int opt = JOptionPane.showConfirmDialog(null, "Are You Sure to Delete?","Delete", JOptionPane.YES_NO_OPTION);
 				
 				if(opt ==0) {
@@ -491,7 +496,7 @@ public class ManageWorkingDaysHours extends JFrame {
 				 RefreshWorkingTable();
 				 fetch();
 			}}
-			
+			}
 		});
 		deletebtn.setForeground(Color.WHITE);
 		deletebtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
@@ -535,8 +540,8 @@ public class ManageWorkingDaysHours extends JFrame {
 		JButton btnAddNewTime = new JButton("Add New Working Days And Hours");
 		btnAddNewTime.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AddTimeSlot working = new AddTimeSlot();
-				working.addTimeSlotFrame.setVisible(true);
+				AddWorkingDays working = new AddWorkingDays();
+				working.addworkingdays();
 				dispose();
 			}
 		});

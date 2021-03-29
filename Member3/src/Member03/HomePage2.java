@@ -63,7 +63,7 @@ public class HomePage2 {
 		btnAddWorkingDays.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				AddWorkingDays hp = new AddWorkingDays();
-				hp.addDays();
+				hp.addworkingdays();
 				wokingDayHourframe.dispose();
 			}
 		});

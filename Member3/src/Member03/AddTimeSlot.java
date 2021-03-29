@@ -125,7 +125,7 @@ public class AddTimeSlot extends JFrame {
 		JLabel lblNewLabel = new JLabel("Hint : The entering time should be 24 hour format - Ex : 12:30");
 		lblNewLabel.setForeground(new Color(0, 0, 205));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblNewLabel.setBounds(577, 344, 495, 14);
+		lblNewLabel.setBounds(577, 344, 495, 30);
 		addTimeSlotFrame.add(lblNewLabel);
 		
 	
@@ -164,7 +164,7 @@ public class AddTimeSlot extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Hint : The entering time should be 24 hour format - Ex : 12:30");
 		lblNewLabel_1.setForeground(new Color(0, 0, 205));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(577, 499, 495, 14);
+		lblNewLabel_1.setBounds(577, 499, 495, 30);
 		addTimeSlotFrame.add(lblNewLabel_1);
 		
 		JButton add = new JButton("Add Details");

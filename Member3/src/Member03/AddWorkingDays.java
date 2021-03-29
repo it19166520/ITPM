@@ -42,7 +42,7 @@ public class AddWorkingDays extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void addDays() {
+	public static void addworkingdays() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
