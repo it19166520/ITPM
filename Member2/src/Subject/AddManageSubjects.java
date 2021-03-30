@@ -33,6 +33,7 @@ import java.awt.SystemColor;
 import javax.swing.border.EtchedBorder;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.border.TitledBorder;
 
 public class AddManageSubjects extends JFrame {
 
@@ -51,7 +52,6 @@ public class AddManageSubjects extends JFrame {
 	private JLabel lblNewLabel_8;
 	private JTextField txtSubName;
 	private JTextField txtSubCode;
-	private JLabel lblNewLabel_9;
 	private JButton btnNewButton_2;
 	private JButton btnNewButton_3;
 	private JButton btnLoadTable;
@@ -134,6 +134,9 @@ public class AddManageSubjects extends JFrame {
 	private JButton btnNewButton;
 	private JPanel panel_2;
 	private JPanel panel_3;
+	private JPanel panel_8;
+	private JPanel panel_9;
+	private JTextField textField;
 	
 	
 	public void refreshSubjectTable()
@@ -193,7 +196,7 @@ public class AddManageSubjects extends JFrame {
 		String[] noOflchrs = {"1", "2", "3", "4", "5"};
 		
 		SublayeredPane = new JLayeredPane();
-		SublayeredPane.setBounds(22, 145, 1343, 597);
+		SublayeredPane.setBounds(22, 145, 1467, 621);
 		contentPane.add(SublayeredPane);
 		SublayeredPane.setLayout(new CardLayout(0, 0));
 		
@@ -203,14 +206,14 @@ public class AddManageSubjects extends JFrame {
 		AddSubPanel.setLayout(null);
 		
 		panel_5 = new JPanel();
-		panel_5.setBorder(null);
+		panel_5.setBorder(new LineBorder(new Color(135, 206, 250)));
 		panel_5.setBackground(new Color(228, 241, 254));
-		panel_5.setBounds(109, 10, 1094, 577);
+		panel_5.setBounds(161, 30, 1172, 557);
 		AddSubPanel.add(panel_5);
 		panel_5.setLayout(null);
 		
 		panel_1 = new JPanel();
-		panel_1.setBounds(283, 10, 663, 536);
+		panel_1.setBounds(142, 23, 907, 510);
 		panel_5.add(panel_1);
 		panel_1.setBackground(Color.WHITE);
 		panel_1.setForeground(Color.WHITE);
@@ -222,55 +225,42 @@ public class AddManageSubjects extends JFrame {
 			public void ancestorRemoved(AncestorEvent event) {
 			}
 		});
-		panel_1.setBorder(null);
+		panel_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Add Subect Details :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 139)));
 		panel_1.setLayout(null);
-		
-		lblNewLabel_9 = new JLabel("Add Subjects ");
-		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_9.setForeground(new Color(0, 0, 0));
-		lblNewLabel_9.setBackground(new Color(0, 0, 0));
-		lblNewLabel_9.setBounds(255, 27, 126, 27);
-		panel_1.add(lblNewLabel_9);
 		
 		lblNewLabel_2 = new JLabel("Offered Semester  :");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_2.setBounds(97, 125, 194, 24);
+		lblNewLabel_2.setBounds(127, 85, 163, 24);
 		panel_1.add(lblNewLabel_2);
-		
-		//create form to get subject details from user :
-		lblNewLabel = new JLabel("Offered Year  :");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel.setBounds(97, 80, 238, 30);
-		panel_1.add(lblNewLabel);
 		
 		lblNewLabel_3 = new JLabel("Subject Name  :");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(97, 159, 194, 26);
+		lblNewLabel_3.setBounds(127, 130, 163, 26);
 		panel_1.add(lblNewLabel_3);
 		
 		lblNewLabel_4 = new JLabel("Subject Code  :");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_4.setBounds(97, 195, 194, 28);
+		lblNewLabel_4.setBounds(127, 176, 163, 28);
 		panel_1.add(lblNewLabel_4);
 		
 		lblNewLabel_5 = new JLabel("Number Of Lecturer Hours  :");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_5.setBounds(97, 251, 194, 17);
+		lblNewLabel_5.setBounds(127, 233, 244, 17);
 		panel_1.add(lblNewLabel_5);
 		
 		lblNewLabel_6 = new JLabel("Number Of Tutorial Hours  :");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_6.setBounds(97, 302, 194, 17);
+		lblNewLabel_6.setBounds(127, 283, 244, 17);
 		panel_1.add(lblNewLabel_6);
 		
 		lblNewLabel_7 = new JLabel("Number of Lab Hours  :");
 		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_7.setBounds(97, 333, 194, 28);
+		lblNewLabel_7.setBounds(127, 328, 163, 28);
 		panel_1.add(lblNewLabel_7);
 		
 		lblNewLabel_8 = new JLabel("Number of Evalution hours  :");
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_8.setBounds(97, 379, 194, 27);
+		lblNewLabel_8.setBounds(127, 379, 252, 27);
 		panel_1.add(lblNewLabel_8);
 		
 		
@@ -286,7 +276,7 @@ public class AddManageSubjects extends JFrame {
 			}
 		});
 		txtSubOffYear.setBackground(Color.WHITE);
-		txtSubOffYear.setBounds(303, 85, 238, 21);
+		txtSubOffYear.setBounds(394, 44, 350, 21);
 		panel_1.add(txtSubOffYear);
 		
 			
@@ -301,7 +291,7 @@ public class AddManageSubjects extends JFrame {
 					lblOfferedSem.setText("");
 				}
 			});
-			txtSubOffSem.setBounds(301, 121, 240, 21);
+			txtSubOffSem.setBounds(394, 88, 350, 21);
 			panel_1.add(txtSubOffSem);
 			
 			txtSubName = new JTextField();
@@ -313,7 +303,7 @@ public class AddManageSubjects extends JFrame {
 					lblSubjectName.setText("");
 				}
 			});
-			txtSubName.setBounds(301, 156, 240, 29);
+			txtSubName.setBounds(394, 133, 350, 24);
 			panel_1.add(txtSubName);
 			txtSubName.setColumns(10);
 			
@@ -326,7 +316,7 @@ public class AddManageSubjects extends JFrame {
 					lblSublectCode.setText("");
 				}
 			});
-			txtSubCode.setBounds(301, 195, 240, 27);
+			txtSubCode.setBounds(394, 180, 350, 24);
 			panel_1.add(txtSubCode);
 			txtSubCode.setColumns(10);
 			
@@ -342,7 +332,7 @@ public class AddManageSubjects extends JFrame {
 					
 				}
 			});
-			NumOfLecHours.setBounds(301, 250, 240, 21);
+			NumOfLecHours.setBounds(394, 232, 350, 21);
 			panel_1.add(NumOfLecHours);
 			
 			
@@ -357,7 +347,7 @@ public class AddManageSubjects extends JFrame {
 					lblNumOfTuteHours.setText("");
 				}
 			});
-			NumOfTuteHours.setBounds(301, 298, 240, 21);
+			NumOfTuteHours.setBounds(394, 282, 350, 21);
 			panel_1.add(NumOfTuteHours);
 			
 			
@@ -372,7 +362,7 @@ public class AddManageSubjects extends JFrame {
 					lblNumOfLabHours.setText("");
 				}
 			});
-			NumOfLabHours.setBounds(303, 338, 240, 21);
+			NumOfLabHours.setBounds(394, 333, 350, 21);
 			panel_1.add(NumOfLabHours);
 			
 					
@@ -388,13 +378,13 @@ public class AddManageSubjects extends JFrame {
 							
 						}
 					});
-					NumOfEvaltionHours.setBounds(301, 383, 240, 21);
+					NumOfEvaltionHours.setBounds(394, 383, 350, 21);
 					panel_1.add(NumOfEvaltionHours);
 					
 						
 						btnNewButton_2 = new JButton("SAVE");
 						btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-						btnNewButton_2.setBounds(97, 460, 193, 41);
+						btnNewButton_2.setBounds(127, 446, 291, 41);
 						panel_1.add(btnNewButton_2);
 						btnNewButton_2.setForeground(Color.WHITE);
 						btnNewButton_2.setBackground(new Color(27, 163, 156));
@@ -418,7 +408,7 @@ public class AddManageSubjects extends JFrame {
 								
 							}
 						});
-						btnNewButton_3.setBounds(356, 460, 185, 41);
+						btnNewButton_3.setBounds(465, 446, 279, 41);
 						panel_1.add(btnNewButton_3);
 						btnNewButton_3.setBackground(new Color(58, 83, 155));
 						
@@ -469,6 +459,30 @@ public class AddManageSubjects extends JFrame {
 						lblNumOfEvaltionHours.setFont(new Font("Tahoma", Font.BOLD, 10));
 						lblNumOfEvaltionHours.setBounds(551, 346, 79, 13);
 						panel_1.add(lblNumOfEvaltionHours);
+						
+						panel_8 = new JPanel();
+						panel_8.setBorder(new LineBorder(new Color(176, 224, 230)));
+						panel_8.setBackground(new Color(255, 255, 255));
+						panel_8.setBounds(51, 24, 799, 404);
+						panel_1.add(panel_8);
+						panel_8.setLayout(null);
+						
+						//create form to get subject details from user :
+						lblNewLabel = new JLabel("Offered Year  :");
+						lblNewLabel.setBounds(75, 20, 241, 30);
+						panel_8.add(lblNewLabel);
+						lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+						
+						textField = new JTextField();
+						textField.setBounds(703, 20, 96, 19);
+						panel_8.add(textField);
+						textField.setColumns(10);
+						
+						panel_9 = new JPanel();
+						panel_9.setBackground(new Color(255, 255, 255));
+						panel_9.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+						panel_9.setBounds(105, 10, 1284, 601);
+						AddSubPanel.add(panel_9);
 						btnNewButton_2.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
 								

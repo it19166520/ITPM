@@ -152,6 +152,8 @@ public class AddManageLecturer extends JFrame {
 	private JButton btnLoadActiveHoursDetails;
 	private JScrollPane scrollPane;
 	private JLabel onlyIndexLabel1;
+	private JPanel panel_16;
+	private JPanel panel_17;
 	
 	
 	public void refreshLecturerDetailsTable()
@@ -269,7 +271,7 @@ public class AddManageLecturer extends JFrame {
 		panel_8 = new JPanel();
 		panel_8.setForeground(new Color(255, 255, 255));
 		panel_8.setBackground(new Color(255, 255, 255));
-		panel_8.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Lecturer Details :", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 128)));
+		panel_8.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Add Lecturer Details :", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 128)));
 		panel_8.setBounds(31, 25, 631, 459);
 		panel.add(panel_8);
 		panel_8.setLayout(null);
@@ -498,7 +500,7 @@ public class AddManageLecturer extends JFrame {
 		
 		panel_9 = new JPanel();
 		panel_9.setBackground(new Color(255, 255, 255));
-		panel_9.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Active days and Hours :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 128)));
+		panel_9.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Add Active days and Hours :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 128)));
 		panel_9.setBounds(43, 25, 554, 454);
 		panel_1.add(panel_9);
 		panel_9.setLayout(null);
@@ -758,7 +760,7 @@ public class AddManageLecturer extends JFrame {
 		panel_2.setLayout(null);
 		
 		JPanel panel_13 = new JPanel();
-		panel_13.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Lecturer Details", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 139)));
+		panel_13.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Manage Lecturer Details", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 139)));
 		panel_13.setBackground(new Color(255, 255, 255));
 		panel_13.setBounds(33, 24, 539, 470);
 		panel_2.add(panel_13);
@@ -1181,125 +1183,139 @@ public class AddManageLecturer extends JFrame {
 		
 		panel_4 = new JPanel();
 		panel_4.setBackground(new Color(228,241,254));
-		panel_4.setBorder(new LineBorder(new Color(0, 0, 0), 0));
-		panel_4.setBounds(35, 10, 479, 284);
+		panel_4.setBorder(new LineBorder(new Color(135, 206, 250)));
+		panel_4.setBounds(107, 22, 545, 280);
 		panel3.add(panel_4);
 		panel_4.setLayout(null);
 		
-		lblNewLabel_2 = new JLabel("Lecturer Name:");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_2.setBounds(49, 54, 132, 16);
-		panel_4.add(lblNewLabel_2);
+		JPanel panel_15 = new JPanel();
+		panel_15.setBackground(new Color(255, 255, 255));
+		panel_15.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Lecture Details :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 139)));
+		panel_15.setBounds(36, 10, 474, 260);
+		panel_4.add(panel_15);
+		panel_15.setLayout(null);
+		
+		JLabel lblNewLabel_36 = new JLabel("You can't change Lecturer Name and Lecturer ID in here ! !");
+		lblNewLabel_36.setBounds(25, 41, 384, 13);
+		panel_15.add(lblNewLabel_36);
+		lblNewLabel_36.setForeground(new Color(255, 0, 0));
+		lblNewLabel_36.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		JLabel lblNewLabel_25 = new JLabel("Lecturer ID :");
+		lblNewLabel_25.setBounds(56, 180, 116, 13);
+		panel_15.add(lblNewLabel_25);
 		lblNewLabel_25.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_25.setBounds(49, 124, 116, 13);
-		panel_4.add(lblNewLabel_25);
-		
-		txtLecturerName3 = new JTextField();
-		txtLecturerName3.setEditable(false);
-		txtLecturerName3.setBounds(208, 51, 156, 26);
-		panel_4.add(txtLecturerName3);
-		txtLecturerName3.setColumns(10);
 		
 		txtLecturerID3 = new JTextField();
+		txtLecturerID3.setBounds(198, 175, 231, 26);
+		panel_15.add(txtLecturerID3);
 		txtLecturerID3.setEditable(false);
-		txtLecturerID3.setBounds(208, 119, 156, 26);
-		panel_4.add(txtLecturerID3);
 		txtLecturerID3.setColumns(10);
 		
-		JLabel lblNewLabel_36 = new JLabel("You can't change Lecturer Name and Lecturer ID in here !");
-		lblNewLabel_36.setForeground(new Color(255, 0, 0));
-		lblNewLabel_36.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_36.setBounds(63, 173, 318, 13);
-		panel_4.add(lblNewLabel_36);
+		lblNewLabel_2 = new JLabel("Lecturer Name:");
+		lblNewLabel_2.setBounds(56, 100, 132, 16);
+		panel_15.add(lblNewLabel_2);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		
+		txtLecturerName3 = new JTextField();
+		txtLecturerName3.setBounds(198, 97, 231, 26);
+		panel_15.add(txtLecturerName3);
+		txtLecturerName3.setEditable(false);
+		txtLecturerName3.setColumns(10);
 		
 		panel_5 = new JPanel();
 		panel_5.setBackground(new Color(228,241,254));
-		panel_5.setBorder(null);
-		panel_5.setBounds(550, 10, 503, 284);
+		panel_5.setBorder(new LineBorder(new Color(135, 206, 250)));
+		panel_5.setBounds(692, 22, 578, 280);
 		panel3.add(panel_5);
 		panel_5.setLayout(null);
 		
-		lblNewLabel_26 = new JLabel("Monday  :");
-		lblNewLabel_26.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_26.setBounds(30, 13, 110, 20);
-		panel_5.add(lblNewLabel_26);
+		panel_16 = new JPanel();
+		panel_16.setBackground(new Color(255, 255, 255));
+		panel_16.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Manage Active Hours :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 139)));
+		panel_16.setBounds(36, 12, 505, 258);
+		panel_5.add(panel_16);
+		panel_16.setLayout(null);
 		
 		lblNewLabel_27 = new JLabel("Tuesday  :");
+		lblNewLabel_27.setBounds(43, 61, 94, 20);
+		panel_16.add(lblNewLabel_27);
 		lblNewLabel_27.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_27.setBounds(30, 57, 110, 20);
-		panel_5.add(lblNewLabel_27);
-		
-		lblNewLabel_28 = new JLabel("Wednesday  :");
-		lblNewLabel_28.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_28.setBounds(30, 100, 110, 20);
-		panel_5.add(lblNewLabel_28);
 		
 		lblNewLabel_29 = new JLabel("Thursday  :");
+		lblNewLabel_29.setBounds(43, 121, 94, 29);
+		panel_16.add(lblNewLabel_29);
 		lblNewLabel_29.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_29.setBounds(30, 134, 110, 29);
-		panel_5.add(lblNewLabel_29);
-		
-		lblNewLabel_30 = new JLabel("Friday  :");
-		lblNewLabel_30.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_30.setBounds(30, 173, 110, 19);
-		panel_5.add(lblNewLabel_30);
 		
 		lblNewLabel_31 = new JLabel("Satarday  :");
+		lblNewLabel_31.setBounds(43, 190, 124, 29);
+		panel_16.add(lblNewLabel_31);
 		lblNewLabel_31.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_31.setBounds(30, 209, 110, 20);
-		panel_5.add(lblNewLabel_31);
 		
-		lblNewLabel_32 = new JLabel("Sunday  :");
-		lblNewLabel_32.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_32.setBounds(30, 247, 110, 20);
-		panel_5.add(lblNewLabel_32);
-		
-		txtMonday3 = new JTextField();
-		txtMonday3.setBounds(177, 10, 185, 27);
-		panel_5.add(txtMonday3);
-		txtMonday3.setColumns(10);
-		
-		txtTuesday3 = new JTextField();
-		txtTuesday3.setBounds(177, 54, 185, 27);
-		panel_5.add(txtTuesday3);
-		txtTuesday3.setColumns(10);
-		
-		txtWednesday3 = new JTextField();
-		txtWednesday3.setBounds(177, 100, 185, 27);
-		panel_5.add(txtWednesday3);
-		txtWednesday3.setColumns(10);
-		
-		txtThursday3 = new JTextField();
-		txtThursday3.setBounds(177, 134, 185, 32);
-		panel_5.add(txtThursday3);
-		txtThursday3.setColumns(10);
-		
-		txtFriday3 = new JTextField();
-		txtFriday3.setBounds(177, 173, 185, 26);
-		panel_5.add(txtFriday3);
-		txtFriday3.setColumns(10);
-		
-		txtSatarday3 = new JTextField();
-		txtSatarday3.setBounds(177, 209, 185, 28);
-		panel_5.add(txtSatarday3);
-		txtSatarday3.setColumns(10);
+		lblNewLabel_30 = new JLabel("Friday  :");
+		lblNewLabel_30.setBounds(43, 160, 94, 20);
+		panel_16.add(lblNewLabel_30);
+		lblNewLabel_30.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		txtSunday3 = new JTextField();
-		txtSunday3.setBounds(177, 247, 185, 27);
-		panel_5.add(txtSunday3);
+		txtSunday3.setBounds(170, 226, 292, 20);
+		panel_16.add(txtSunday3);
 		txtSunday3.setColumns(10);
+		
+		txtFriday3 = new JTextField();
+		txtFriday3.setBounds(170, 162, 292, 19);
+		panel_16.add(txtFriday3);
+		txtFriday3.setColumns(10);
+		
+		txtThursday3 = new JTextField();
+		txtThursday3.setBounds(170, 127, 292, 20);
+		panel_16.add(txtThursday3);
+		txtThursday3.setColumns(10);
+		
+		lblNewLabel_28 = new JLabel("Wednesday  :");
+		lblNewLabel_28.setBounds(43, 93, 94, 20);
+		panel_16.add(lblNewLabel_28);
+		lblNewLabel_28.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		txtWednesday3 = new JTextField();
+		txtWednesday3.setBounds(170, 93, 292, 20);
+		panel_16.add(txtWednesday3);
+		txtWednesday3.setColumns(10);
+		
+		txtTuesday3 = new JTextField();
+		txtTuesday3.setBounds(170, 63, 292, 20);
+		panel_16.add(txtTuesday3);
+		txtTuesday3.setColumns(10);
+		
+		lblNewLabel_26 = new JLabel("Monday  :");
+		lblNewLabel_26.setBounds(43, 31, 94, 20);
+		panel_16.add(lblNewLabel_26);
+		lblNewLabel_26.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		txtMonday3 = new JTextField();
+		txtMonday3.setBounds(170, 33, 292, 20);
+		panel_16.add(txtMonday3);
+		txtMonday3.setColumns(10);
+		
+		txtSatarday3 = new JTextField();
+		txtSatarday3.setBounds(170, 196, 292, 20);
+		panel_16.add(txtSatarday3);
+		txtSatarday3.setColumns(10);
+		
+		lblNewLabel_32 = new JLabel("Sunday  :");
+		lblNewLabel_32.setBounds(43, 221, 117, 27);
+		panel_16.add(lblNewLabel_32);
+		lblNewLabel_32.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		panel_6 = new JPanel();
 		panel_6.setBackground(new Color(228,241,254));
-		panel_6.setBorder(null);
-		panel_6.setBounds(245, 304, 709, 327);
+		panel_6.setBorder(new LineBorder(new Color(135, 206, 250)));
+		panel_6.setBounds(107, 312, 1163, 308);
 		panel3.add(panel_6);
 		panel_6.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(10, 68, 672, 232);
+		scrollPane_1.setBounds(82, 68, 992, 218);
 		panel_6.add(scrollPane_1);
 		
 		ActiveHoursDetailstable = new JTable();
@@ -1346,35 +1362,28 @@ public class AddManageLecturer extends JFrame {
 		});
 		scrollPane_1.setViewportView(ActiveHoursDetailstable);
 		
+		panel_17 = new JPanel();
+		panel_17.setBorder(new LineBorder(new Color(112, 128, 144)));
+		panel_17.setBackground(new Color(255, 255, 255));
+		panel_17.setBounds(38, 14, 1085, 284);
+		panel_6.add(panel_17);
+		panel_17.setLayout(null);
+		
 		btnLoadActiveHoursDetails = new JButton("Load Details");
+		btnLoadActiveHoursDetails.setBounds(873, 10, 166, 35);
+		panel_17.add(btnLoadActiveHoursDetails);
 		btnLoadActiveHoursDetails.setForeground(Color.WHITE);
 		btnLoadActiveHoursDetails.setBackground(new Color(58,83,155));
 		btnLoadActiveHoursDetails.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnLoadActiveHoursDetails.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
-				try {
-					
-					String query="select LecturerRegistrationNumber,LecturerName,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday from Lecturer";
-					PreparedStatement pst=conn.prepareStatement(query);
-					ResultSet rs=pst.executeQuery();
-					ActiveHoursDetailstable.setModel(DbUtils.resultSetToTableModel(rs));
-					
-					
-				}catch(Exception e1)
-				{
-					e1.printStackTrace();
-				}			
-				
-				
-				
-			}
-		});
-		btnLoadActiveHoursDetails.setBounds(516, 14, 166, 35);
-		panel_6.add(btnLoadActiveHoursDetails);
+		
+		lblNewLabel_17 = new JLabel("Search Your  Name In Here :");
+		lblNewLabel_17.setBounds(51, 10, 204, 13);
+		panel_17.add(lblNewLabel_17);
+		lblNewLabel_17.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		ActiveHoursComboBox = new JComboBox();
+		ActiveHoursComboBox.setBounds(51, 24, 190, 21);
+		panel_17.add(ActiveHoursComboBox);
 		ActiveHoursComboBox.setBackground(Color.WHITE);
 		ActiveHoursComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1416,13 +1425,27 @@ public class AddManageLecturer extends JFrame {
 				
 			}
 		});
-		ActiveHoursComboBox.setBounds(10, 37, 149, 21);
-		panel_6.add(ActiveHoursComboBox);
-		
-		lblNewLabel_17 = new JLabel("Enter Your Name In Here :");
-		lblNewLabel_17.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_17.setBounds(10, 14, 176, 13);
-		panel_6.add(lblNewLabel_17);
+		btnLoadActiveHoursDetails.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				try {
+					
+					String query="select LecturerRegistrationNumber,LecturerName,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday from Lecturer";
+					PreparedStatement pst=conn.prepareStatement(query);
+					ResultSet rs=pst.executeQuery();
+					ActiveHoursDetailstable.setModel(DbUtils.resultSetToTableModel(rs));
+					
+					
+				}catch(Exception e1)
+				{
+					e1.printStackTrace();
+				}			
+				
+				
+				
+			}
+		});
 		
 		btnNewButton_10 = new JButton("Update");
 		btnNewButton_10.setForeground(Color.WHITE);
@@ -1455,7 +1478,7 @@ public class AddManageLecturer extends JFrame {
 			}
 			
 		});
-		btnNewButton_10.setBounds(1111, 236, 158, 45);
+		btnNewButton_10.setBounds(1280, 281, 172, 45);
 		panel3.add(btnNewButton_10);
 		
 		btnNewButton_9 = new JButton("Clear All");
@@ -1479,13 +1502,13 @@ public class AddManageLecturer extends JFrame {
 			}
 		});
 		btnNewButton_9.setBackground(new Color(58,83,155));
-		btnNewButton_9.setBounds(1113, 305, 156, 45);
+		btnNewButton_9.setBounds(1282, 347, 170, 45);
 		panel3.add(btnNewButton_9);
 		
 		JPanel panel_10 = new JPanel();
-		panel_10.setBorder(new LineBorder(new Color(0, 0, 0), 0));
+		panel_10.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		panel_10.setBackground(Color.WHITE);
-		panel_10.setBounds(0, 10, 1091, 621);
+		panel_10.setBounds(0, 10, 1462, 621);
 		panel3.add(panel_10);
 		panel_10.setLayout(null);
 		
