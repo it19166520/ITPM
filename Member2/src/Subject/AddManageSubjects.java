@@ -3,6 +3,9 @@ package Subject;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.sql.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -135,6 +138,7 @@ public class AddManageSubjects extends JFrame {
 	private JPanel panel_8;
 	private JPanel panel_9;
 	private JPanel panel_6;
+	private JLabel InvalidSubCode;
 	
 	
 	public void refreshSubjectTable()
@@ -240,6 +244,8 @@ public class AddManageSubjects extends JFrame {
 						btnNewButton_3.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
 								
+								InvalidSubCode.setText("");
+								
 								txtSubOffYear.setSelectedIndex(-1);
 								txtSubOffSem.setSelectedIndex(-1);
 								txtSubName.setText("  ");
@@ -256,54 +262,6 @@ public class AddManageSubjects extends JFrame {
 						btnNewButton_3.setBounds(414, 486, 298, 41);
 						panel_1.add(btnNewButton_3);
 						btnNewButton_3.setBackground(new Color(58, 83, 155));
-						
-						lblOfferedYear = new JLabel("");
-						lblOfferedYear.setForeground(Color.RED);
-						lblOfferedYear.setFont(new Font("Tahoma", Font.BOLD, 10));
-						lblOfferedYear.setBounds(551, 89, 79, 13);
-						panel_1.add(lblOfferedYear);
-						
-						lblOfferedSem = new JLabel("");
-						lblOfferedSem.setForeground(Color.RED);
-						lblOfferedSem.setFont(new Font("Tahoma", Font.BOLD, 10));
-						lblOfferedSem.setBounds(551, 125, 79, 13);
-						panel_1.add(lblOfferedSem);
-						
-						lblSubjectName = new JLabel("");
-						lblSubjectName.setFont(new Font("Tahoma", Font.BOLD, 10));
-						lblSubjectName.setForeground(Color.RED);
-						lblSubjectName.setBounds(551, 159, 79, 13);
-						panel_1.add(lblSubjectName);
-						
-						lblSublectCode = new JLabel("");
-						lblSublectCode.setForeground(Color.RED);
-						lblSublectCode.setFont(new Font("Tahoma", Font.BOLD, 10));
-						lblSublectCode.setBounds(551, 195, 79, 13);
-						panel_1.add(lblSublectCode);
-						
-						lblNumOfLecHours = new JLabel("");
-						lblNumOfLecHours.setFont(new Font("Tahoma", Font.BOLD, 10));
-						lblNumOfLecHours.setForeground(Color.RED);
-						lblNumOfLecHours.setBounds(551, 233, 79, 13);
-						panel_1.add(lblNumOfLecHours);
-						
-						lblNumOfTuteHours = new JLabel("");
-						lblNumOfTuteHours.setFont(new Font("Tahoma", Font.BOLD, 10));
-						lblNumOfTuteHours.setForeground(Color.RED);
-						lblNumOfTuteHours.setBounds(551, 272, 79, 13);
-						panel_1.add(lblNumOfTuteHours);
-						
-						lblNumOfLabHours = new JLabel("");
-						lblNumOfLabHours.setForeground(Color.RED);
-						lblNumOfLabHours.setFont(new Font("Tahoma", Font.BOLD, 10));
-						lblNumOfLabHours.setBounds(551, 306, 79, 13);
-						panel_1.add(lblNumOfLabHours);
-						
-						lblNumOfEvaltionHours = new JLabel("");
-						lblNumOfEvaltionHours.setForeground(Color.RED);
-						lblNumOfEvaltionHours.setFont(new Font("Tahoma", Font.BOLD, 10));
-						lblNumOfEvaltionHours.setBounds(551, 346, 79, 13);
-						panel_1.add(lblNumOfEvaltionHours);
 						
 						panel_8 = new JPanel();
 						panel_8.setBorder(new LineBorder(new Color(135, 206, 250)));
@@ -389,6 +347,36 @@ public class AddManageSubjects extends JFrame {
 										
 										//To release the label after filling the field:
 										lblSublectCode.setText("");
+										
+										InvalidSubCode.setText("");
+										
+										String PATTERN ="([A-Z][A-Z][0-9][0-9][0-9][0-9])";
+										
+										
+										Pattern patt = Pattern.compile(PATTERN);
+										
+										
+										Matcher match = patt.matcher(txtSubCode.getText());
+										
+										
+										if(!match.matches())
+										{
+											InvalidSubCode.setText("Incorrect Format! "+ '\n' + "( Ex:IT3020 , EN3090 )");
+										}
+										else if(match.matches()) {
+											
+											InvalidSubCode.setText("Correct Format !" );
+											
+											
+										}
+										
+										else
+										{
+											InvalidSubCode.setText("");
+											
+										}
+										
+										
 									}
 								});
 								txtSubCode.setColumns(10);
@@ -453,6 +441,59 @@ public class AddManageSubjects extends JFrame {
 									lblNewLabel_21.setForeground(new Color(0, 0, 205));
 									lblNewLabel_21.setBounds(243, 406, 74, 17);
 									panel_8.add(lblNewLabel_21);
+									
+									InvalidSubCode = new JLabel("");
+									InvalidSubCode.setForeground(Color.RED);
+									InvalidSubCode.setBounds(422, 219, 245, 17);
+									panel_8.add(InvalidSubCode);
+									
+									lblOfferedSem = new JLabel("");
+									lblOfferedSem.setBounds(588, 115, 79, 13);
+									panel_8.add(lblOfferedSem);
+									lblOfferedSem.setForeground(Color.RED);
+									lblOfferedSem.setFont(new Font("Tahoma", Font.BOLD, 10));
+									
+									lblSublectCode = new JLabel("");
+									lblSublectCode.setBounds(588, 222, 79, 13);
+									panel_8.add(lblSublectCode);
+									lblSublectCode.setForeground(Color.RED);
+									lblSublectCode.setFont(new Font("Tahoma", Font.BOLD, 10));
+									
+									lblOfferedYear = new JLabel("");
+									lblOfferedYear.setBounds(588, 60, 79, 13);
+									panel_8.add(lblOfferedYear);
+									lblOfferedYear.setForeground(Color.RED);
+									lblOfferedYear.setFont(new Font("Tahoma", Font.BOLD, 10));
+									
+									lblSubjectName = new JLabel("");
+									lblSubjectName.setBounds(588, 166, 79, 13);
+									panel_8.add(lblSubjectName);
+									lblSubjectName.setFont(new Font("Tahoma", Font.BOLD, 10));
+									lblSubjectName.setForeground(Color.RED);
+									
+									lblNumOfLecHours = new JLabel("");
+									lblNumOfLecHours.setBounds(588, 276, 79, 13);
+									panel_8.add(lblNumOfLecHours);
+									lblNumOfLecHours.setFont(new Font("Tahoma", Font.BOLD, 10));
+									lblNumOfLecHours.setForeground(Color.RED);
+									
+									lblNumOfTuteHours = new JLabel("");
+									lblNumOfTuteHours.setBounds(588, 330, 79, 13);
+									panel_8.add(lblNumOfTuteHours);
+									lblNumOfTuteHours.setFont(new Font("Tahoma", Font.BOLD, 10));
+									lblNumOfTuteHours.setForeground(Color.RED);
+									
+									lblNumOfLabHours = new JLabel("");
+									lblNumOfLabHours.setBounds(588, 381, 79, 13);
+									panel_8.add(lblNumOfLabHours);
+									lblNumOfLabHours.setForeground(Color.RED);
+									lblNumOfLabHours.setFont(new Font("Tahoma", Font.BOLD, 10));
+									
+									lblNumOfEvaltionHours = new JLabel("");
+									lblNumOfEvaltionHours.setBounds(588, 429, 79, 13);
+									panel_8.add(lblNumOfEvaltionHours);
+									lblNumOfEvaltionHours.setForeground(Color.RED);
+									lblNumOfEvaltionHours.setFont(new Font("Tahoma", Font.BOLD, 10));
 									txtSubOffSem.addKeyListener(new KeyAdapter() {
 										@Override
 										public void keyReleased(KeyEvent e) {
@@ -596,6 +637,8 @@ public class AddManageSubjects extends JFrame {
 									}catch(Exception e1)
 									{
 										e1.printStackTrace();
+										JOptionPane.showMessageDialog(null, "Enterd Subject Code is allready in the system !");
+										
 									}
 								
 								//call "refreshSubjectTable" method to refresh the table after doing any changes:

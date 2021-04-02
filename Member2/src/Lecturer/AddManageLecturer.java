@@ -154,6 +154,14 @@ public class AddManageLecturer extends JFrame {
 	private JLabel onlyIndexLabel1;
 	private JPanel panel_16;
 	private JPanel panel_17;
+	private JLabel lblNewLabel_37;
+	private JLabel InvalidMonday;
+	private JLabel InvalidSatarday;
+	private JLabel InvalidFriday;
+	private JLabel InvalidSunday;
+	private JLabel InvalidTuesday;
+	private JLabel InvalidWednesday;
+	private JLabel InvalidThursday;
 	
 	
 	public void refreshLecturerDetailsTable()
@@ -336,7 +344,7 @@ public class AddManageLecturer extends JFrame {
 		
 		lblLecturerID = new JLabel("");
 		lblLecturerID.setForeground(Color.RED);
-		lblLecturerID.setBounds(210, 282, 91, 13);
+		lblLecturerID.setBounds(210, 295, 91, 13);
 		panel_8.add(lblLecturerID);
 		
 		lblLevel = new JLabel("");
@@ -387,6 +395,17 @@ public class AddManageLecturer extends JFrame {
 					//set error massage :
 					onlyIndexLabel.setText("*Invalid ID! Hint:ID cannot have more than 6 digits!");
 				}
+				else if(txtLecturerID.getText().length()<5)
+				{
+					//canit able to enter in text field if entered number length is greater than 6
+					txtLecturerID.setEditable(false);
+					//set error massage :
+					onlyIndexLabel.setText("*Invalid ID! Hint:ID must have 6 digits!");
+				}
+				
+				
+				
+				
 				else if(txtLecturerID.getText().length()==5)
 				{
 					
@@ -525,7 +544,7 @@ public class AddManageLecturer extends JFrame {
 		panel_9.add(lblNewLabel_13);
 		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
-		JLabel lblNewLabel_12 = new JLabel("Wednessday  :");
+		JLabel lblNewLabel_12 = new JLabel("Wednesday  :");
 		lblNewLabel_12.setBounds(81, 168, 92, 13);
 		panel_9.add(lblNewLabel_12);
 		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -536,36 +555,89 @@ public class AddManageLecturer extends JFrame {
 		lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		txtSunday = new JTextField();
+		txtSunday.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				
+				
+			}
+		});
 		txtSunday.setBounds(212, 356, 300, 19);
 		panel_9.add(txtSunday);
 		txtSunday.setColumns(10);
 		
 		txtSatarday = new JTextField();
+		txtSatarday.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				
+			}
+		});
 		txtSatarday.setBounds(212, 310, 300, 19);
 		panel_9.add(txtSatarday);
 		txtSatarday.setColumns(10);
 		
 		txtFriday = new JTextField();
+		txtFriday.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+			
+				
+				
+			}
+		});
 		txtFriday.setBounds(212, 263, 300, 19);
 		panel_9.add(txtFriday);
 		txtFriday.setColumns(10);
 		
 		txtThursday = new JTextField();
+		txtThursday.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+			
+			}
+		});
 		txtThursday.setBounds(212, 215, 300, 19);
 		panel_9.add(txtThursday);
 		txtThursday.setColumns(10);
 		
 		txtWednesday = new JTextField();
+		txtWednesday.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+			
+				
+				
+			}
+		});
 		txtWednesday.setBounds(212, 166, 300, 19);
 		panel_9.add(txtWednesday);
 		txtWednesday.setColumns(10);
 		
 		txtTuesday = new JTextField();
+		txtTuesday.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+			
+			
+			}
+		});
 		txtTuesday.setBounds(212, 114, 300, 19);
 		panel_9.add(txtTuesday);
 		txtTuesday.setColumns(10);
 		
 		txtMonday = new JTextField();
+		txtMonday.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+		
+				
+			}
+		});
 		txtMonday.setBounds(215, 65, 297, 19);
 		panel_9.add(txtMonday);
 		txtMonday.setColumns(10);
@@ -574,6 +646,45 @@ public class AddManageLecturer extends JFrame {
 		lblNewLabel_10.setBounds(81, 67, 92, 13);
 		panel_9.add(lblNewLabel_10);
 		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		lblNewLabel_37 = new JLabel("example : 11.00 a.m - 1.00 p.m");
+		lblNewLabel_37.setBounds(215, 42, 297, 13);
+		panel_9.add(lblNewLabel_37);
+		
+		InvalidMonday = new JLabel("");
+		InvalidMonday.setForeground(Color.RED);
+		InvalidMonday.setBounds(407, 91, 105, 13);
+		panel_9.add(InvalidMonday);
+		
+		InvalidTuesday = new JLabel("");
+		InvalidTuesday.setForeground(Color.RED);
+		InvalidTuesday.setBounds(407, 137, 105, 19);
+		panel_9.add(InvalidTuesday);
+		
+		InvalidWednesday = new JLabel("");
+		InvalidWednesday.setForeground(Color.RED);
+		InvalidWednesday.setBounds(407, 192, 105, 13);
+		panel_9.add(InvalidWednesday);
+		
+		InvalidThursday = new JLabel("");
+		InvalidThursday.setForeground(Color.RED);
+		InvalidThursday.setBounds(407, 240, 105, 13);
+		panel_9.add(InvalidThursday);
+		
+		InvalidFriday = new JLabel("");
+		InvalidFriday.setForeground(Color.RED);
+		InvalidFriday.setBounds(407, 287, 105, 13);
+		panel_9.add(InvalidFriday);
+		
+		InvalidSatarday = new JLabel("");
+		InvalidSatarday.setForeground(Color.RED);
+		InvalidSatarday.setBounds(407, 333, 105, 13);
+		panel_9.add(InvalidSatarday);
+		
+		InvalidSunday = new JLabel("");
+		InvalidSunday.setForeground(Color.RED);
+		InvalidSunday.setBounds(407, 385, 105, 13);
+		panel_9.add(InvalidSunday);
 		
 		JPanel panel_11 = new JPanel();
 		panel_11.setForeground(new Color(224, 255, 255));
@@ -592,6 +703,9 @@ public class AddManageLecturer extends JFrame {
 		btnNewButton_4.setForeground(Color.WHITE);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				onlyIndexLabel.setText("");
 				
 				txtLecturerName.setText("  ");
 				txtFaculty.setSelectedIndex(-1);
@@ -740,6 +854,7 @@ public class AddManageLecturer extends JFrame {
 			}catch(Exception e1)
 			{
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Entered Lecturer ID is already in the system!" + '\n' + "  Check Your ID and try again!");
 			}
 				
 			   refreshLecturerDetailsTable();
