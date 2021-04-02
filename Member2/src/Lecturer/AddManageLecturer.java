@@ -162,6 +162,14 @@ public class AddManageLecturer extends JFrame {
 	private JLabel InvalidTuesday;
 	private JLabel InvalidWednesday;
 	private JLabel InvalidThursday;
+	private JLabel InvalidWednesday2;
+	private JLabel InvalidThursday2;
+	private JLabel InvalidFriday2;
+	private JLabel InvalidSatarday2;
+	private JLabel InvalidSunday2;
+	private JLabel InvalidTuesday2;
+	private JLabel InvalidMonday2;
+	private JLabel lblNewLabel_38;
 	
 	
 	public void refreshLecturerDetailsTable()
@@ -287,11 +295,11 @@ public class AddManageLecturer extends JFrame {
 		btnGenerateID = new JButton("Generate ID");
 		btnGenerateID.setFocusTraversalKeysEnabled(false);
 		btnGenerateID.setFocusPainted(false);
-		btnGenerateID.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnGenerateID.setForeground(Color.WHITE);
-		btnGenerateID.setBounds(312, 349, 171, 44);
+		btnGenerateID.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnGenerateID.setForeground(new Color(255, 255, 255));
+		btnGenerateID.setBounds(287, 349, 182, 44);
 		panel_8.add(btnGenerateID);
-		btnGenerateID.setBackground(new Color(58, 83, 155));
+		btnGenerateID.setBackground(new Color(30, 144, 255));
 		
 		lblNewLabel = new JLabel("Lecturer Name :");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -559,6 +567,31 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtSunday.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidSunday.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidSunday.setText("Correct Format !");
+				}
+				
+				else
+				{
+					InvalidSunday.setText("");
+					
+				}
+				
+				
 				
 				
 			}
@@ -572,6 +605,30 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtSatarday.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidSatarday.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidSatarday.setText("Correct Format !");
+				}
+				
+				else
+				{
+					InvalidSatarday.setText(null);
+					
+				}
+				
 				
 			}
 		});
@@ -584,7 +641,29 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 			
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
 				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtFriday.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidFriday.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidFriday.setText("Correct Format !");
+				}
+				
+				else
+				{
+					InvalidFriday.setText("");
+					
+				}
 				
 			}
 		});
@@ -596,6 +675,33 @@ public class AddManageLecturer extends JFrame {
 		txtThursday.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
+				
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtThursday.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidThursday.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidThursday.setText("Correct Format !");
+				}
+				
+				else
+				{
+					InvalidThursday.setText(null);
+					
+				}
+				
+				
+				
 			
 			}
 		});
@@ -607,6 +713,32 @@ public class AddManageLecturer extends JFrame {
 		txtWednesday.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
+				
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtWednesday.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidWednesday.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidWednesday.setText("Correct Format !");
+				}
+				
+				else
+				{
+					InvalidWednesday.setText(null);
+					
+				}
+				
+				
 				
 			
 				
@@ -621,6 +753,30 @@ public class AddManageLecturer extends JFrame {
 		txtTuesday.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
+				
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtTuesday.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidTuesday.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidTuesday.setText("Correct Format !");
+				}
+				
+				else
+				{
+					InvalidTuesday.setText(null);
+					
+				}
 			
 			
 			}
@@ -634,8 +790,31 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				
-		
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
 				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtMonday.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidMonday.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidMonday.setText("Correct Format !");
+					
+				}
+				
+				else
+				{
+					InvalidMonday.setText("");
+					
+				}
+						
 			}
 		});
 		txtMonday.setBounds(215, 65, 297, 19);
@@ -647,8 +826,10 @@ public class AddManageLecturer extends JFrame {
 		panel_9.add(lblNewLabel_10);
 		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
-		lblNewLabel_37 = new JLabel("example : 11.00 a.m - 1.00 p.m");
-		lblNewLabel_37.setBounds(215, 42, 297, 13);
+		lblNewLabel_37 = new JLabel("Example :    11.00 a.m - 1.00 p.m    OR   \" - \" mark for free days");
+		lblNewLabel_37.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblNewLabel_37.setForeground(new Color(0, 128, 0));
+		lblNewLabel_37.setBounds(199, 32, 332, 13);
 		panel_9.add(lblNewLabel_37);
 		
 		InvalidMonday = new JLabel("");
@@ -690,7 +871,7 @@ public class AddManageLecturer extends JFrame {
 		panel_11.setForeground(new Color(224, 255, 255));
 		panel_11.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		panel_11.setBackground(new Color(255, 255, 255));
-		panel_11.setBounds(10, 10, 1412, 621);
+		panel_11.setBounds(10, 10, 1412, 610);
 		panel1.add(panel_11);
 		panel_11.setLayout(null);
 		
@@ -703,6 +884,15 @@ public class AddManageLecturer extends JFrame {
 		btnNewButton_4.setForeground(Color.WHITE);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				InvalidMonday.setText("");
+				InvalidTuesday.setText("");
+				InvalidWednesday.setText("");
+				InvalidThursday.setText("");
+				InvalidFriday.setText("");
+				InvalidSatarday.setText("");
+				InvalidSunday.setText("");
 				
 				
 				onlyIndexLabel.setText("");
@@ -728,12 +918,12 @@ public class AddManageLecturer extends JFrame {
 		btnNewButton_4.setBackground(new Color(58,83,155));
 		
 		btnNewButton_3 = new JButton("Save Details  ");
-		btnNewButton_3.setBounds(528, 548, 208, 48);
+		btnNewButton_3.setBounds(527, 548, 208, 48);
 		panel_11.add(btnNewButton_3);
 		btnNewButton_3.setFocusTraversalKeysEnabled(false);
 		btnNewButton_3.setFocusPainted(false);
 		btnNewButton_3.setForeground(Color.WHITE);
-		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_3.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -870,7 +1060,7 @@ public class AddManageLecturer extends JFrame {
 		panel_2 = new JPanel();
 		panel_2.setBackground(new Color(228,241,254));
 		panel_2.setBorder(new LineBorder(new Color(135, 206, 250)));
-		panel_2.setBounds(21, 27, 600, 518);
+		panel_2.setBounds(26, 27, 595, 518);
 		panel2.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -887,11 +1077,11 @@ public class AddManageLecturer extends JFrame {
 		lblNewLabel_33.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		btnNewButton_5 = new JButton("Generate ID");
-		btnNewButton_5.setBounds(266, 374, 167, 39);
+		btnNewButton_5.setBounds(251, 374, 171, 39);
 		panel_13.add(btnNewButton_5);
-		btnNewButton_5.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_5.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_5.setForeground(Color.WHITE);
-		btnNewButton_5.setBackground(new Color(58,83,155));
+		btnNewButton_5.setBackground(new Color(30, 144, 255));
 		
 		txtRank2 = new JTextField();
 		txtRank2.setBounds(188, 423, 326, 19);
@@ -1123,7 +1313,8 @@ public class AddManageLecturer extends JFrame {
 		LecturerDetailsComboBox.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel lblNewLabel_35 = new JLabel("Select Your Name In Here :");
-		lblNewLabel_35.setBounds(36, 30, 170, 13);
+		lblNewLabel_35.setForeground(new Color(0, 128, 0));
+		lblNewLabel_35.setBounds(25, 30, 181, 13);
 		panel_14.add(lblNewLabel_35);
 		lblNewLabel_35.setBackground(new Color(255, 255, 255));
 		lblNewLabel_35.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -1197,28 +1388,28 @@ public class AddManageLecturer extends JFrame {
 		panel2.add(textArea);
 		
 		JPanel panel_12 = new JPanel();
-		panel_12.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		panel_12.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		panel_12.setBackground(Color.WHITE);
 		panel_12.setBounds(10, 10, 1427, 621);
 		panel2.add(panel_12);
 		panel_12.setLayout(null);
 		
 		btnNewButton_6 = new JButton("Update Details");
-		btnNewButton_6.setBounds(368, 545, 208, 48);
+		btnNewButton_6.setBounds(368, 553, 208, 45);
 		panel_12.add(btnNewButton_6);
 		btnNewButton_6.setForeground(Color.WHITE);
 		btnNewButton_6.setBackground(new Color(27,163,156));
 		btnNewButton_6.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		btnNewButton_7 = new JButton("Delete Details");
-		btnNewButton_7.setBounds(788, 545, 211, 45);
+		btnNewButton_7.setBounds(788, 553, 211, 45);
 		panel_12.add(btnNewButton_7);
 		btnNewButton_7.setForeground(Color.WHITE);
 		btnNewButton_7.setBackground(new Color(210,77,87));
 		btnNewButton_7.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		btnNewButton_8 = new JButton("Clear All");
-		btnNewButton_8.setBounds(586, 543, 192, 48);
+		btnNewButton_8.setBounds(586, 553, 192, 45);
 		panel_12.add(btnNewButton_8);
 		btnNewButton_8.setBackground(new Color(58,83,155));
 		btnNewButton_8.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -1299,19 +1490,20 @@ public class AddManageLecturer extends JFrame {
 		panel_4 = new JPanel();
 		panel_4.setBackground(new Color(228,241,254));
 		panel_4.setBorder(new LineBorder(new Color(135, 206, 250)));
-		panel_4.setBounds(107, 22, 545, 280);
+		panel_4.setBounds(47, 22, 582, 286);
 		panel3.add(panel_4);
 		panel_4.setLayout(null);
 		
 		JPanel panel_15 = new JPanel();
 		panel_15.setBackground(new Color(255, 255, 255));
 		panel_15.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Lecture Details :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 139)));
-		panel_15.setBounds(36, 10, 474, 260);
+		panel_15.setBounds(36, 10, 511, 266);
 		panel_4.add(panel_15);
 		panel_15.setLayout(null);
 		
-		JLabel lblNewLabel_36 = new JLabel("You can't change Lecturer Name and Lecturer ID in here ! !");
-		lblNewLabel_36.setBounds(25, 41, 384, 13);
+		JLabel lblNewLabel_36 = new JLabel("You can't change Lecturer Name and Lecturer ID in here ! ! !");
+		lblNewLabel_36.setBackground(new Color(0, 0, 0));
+		lblNewLabel_36.setBounds(75, 41, 384, 13);
 		panel_15.add(lblNewLabel_36);
 		lblNewLabel_36.setForeground(new Color(255, 0, 0));
 		lblNewLabel_36.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -1322,7 +1514,7 @@ public class AddManageLecturer extends JFrame {
 		lblNewLabel_25.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		txtLecturerID3 = new JTextField();
-		txtLecturerID3.setBounds(198, 175, 231, 26);
+		txtLecturerID3.setBounds(198, 175, 263, 26);
 		panel_15.add(txtLecturerID3);
 		txtLecturerID3.setEditable(false);
 		txtLecturerID3.setColumns(10);
@@ -1333,7 +1525,7 @@ public class AddManageLecturer extends JFrame {
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		txtLecturerName3 = new JTextField();
-		txtLecturerName3.setBounds(198, 97, 231, 26);
+		txtLecturerName3.setBounds(198, 97, 263, 26);
 		panel_15.add(txtLecturerName3);
 		txtLecturerName3.setEditable(false);
 		txtLecturerName3.setColumns(10);
@@ -1341,14 +1533,14 @@ public class AddManageLecturer extends JFrame {
 		panel_5 = new JPanel();
 		panel_5.setBackground(new Color(228,241,254));
 		panel_5.setBorder(new LineBorder(new Color(135, 206, 250)));
-		panel_5.setBounds(692, 22, 578, 280);
+		panel_5.setBounds(638, 22, 593, 286);
 		panel3.add(panel_5);
 		panel_5.setLayout(null);
 		
 		panel_16 = new JPanel();
 		panel_16.setBackground(new Color(255, 255, 255));
 		panel_16.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Manage Active Hours :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 139)));
-		panel_16.setBounds(36, 12, 505, 258);
+		panel_16.setBounds(36, 12, 525, 264);
 		panel_5.add(panel_16);
 		panel_16.setLayout(null);
 		
@@ -1373,17 +1565,112 @@ public class AddManageLecturer extends JFrame {
 		lblNewLabel_30.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		txtSunday3 = new JTextField();
-		txtSunday3.setBounds(170, 226, 292, 20);
+		txtSunday3.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtSunday3.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidSunday2.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidSunday2.setText("Correct Format !");
+					
+				}
+				
+				else
+				{
+					InvalidSunday2.setText("");
+					
+				}
+				
+				
+			}
+		});
+		txtSunday3.setBounds(170, 226, 312, 20);
 		panel_16.add(txtSunday3);
 		txtSunday3.setColumns(10);
 		
 		txtFriday3 = new JTextField();
-		txtFriday3.setBounds(170, 162, 292, 19);
+		txtFriday3.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtFriday3.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidFriday2.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidFriday2.setText("Correct Format !");
+					
+				}
+				
+				else
+				{
+					InvalidFriday2.setText("");
+					
+				}
+				
+			}
+		});
+		txtFriday3.setBounds(170, 162, 312, 19);
 		panel_16.add(txtFriday3);
 		txtFriday3.setColumns(10);
 		
 		txtThursday3 = new JTextField();
-		txtThursday3.setBounds(170, 127, 292, 20);
+		txtThursday3.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtThursday3.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidThursday2.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidThursday2.setText("Correct Format !");
+					
+				}
+				
+				else
+				{
+					InvalidThursday2.setText("");
+					
+				}
+				
+				
+			}
+		});
+		txtThursday3.setBounds(170, 127, 312, 20);
 		panel_16.add(txtThursday3);
 		txtThursday3.setColumns(10);
 		
@@ -1393,12 +1680,78 @@ public class AddManageLecturer extends JFrame {
 		lblNewLabel_28.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		txtWednesday3 = new JTextField();
-		txtWednesday3.setBounds(170, 93, 292, 20);
+		txtWednesday3.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtWednesday3.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidWednesday2.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidWednesday2.setText("Correct Format !");
+					
+				}
+				
+				else
+				{
+					InvalidWednesday2.setText("");
+					
+				}
+				
+				
+				
+			}
+		});
+		txtWednesday3.setBounds(170, 93, 312, 20);
 		panel_16.add(txtWednesday3);
 		txtWednesday3.setColumns(10);
 		
 		txtTuesday3 = new JTextField();
-		txtTuesday3.setBounds(170, 63, 292, 20);
+		txtTuesday3.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtTuesday3.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidTuesday2.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidTuesday2.setText("Correct Format !");
+					
+				}
+				
+				else
+				{
+					InvalidTuesday2.setText("");
+					
+				}
+				
+				
+				
+			}
+		});
+		txtTuesday3.setBounds(170, 63, 312, 20);
 		panel_16.add(txtTuesday3);
 		txtTuesday3.setColumns(10);
 		
@@ -1408,12 +1761,76 @@ public class AddManageLecturer extends JFrame {
 		lblNewLabel_26.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		txtMonday3 = new JTextField();
-		txtMonday3.setBounds(170, 33, 292, 20);
+		txtMonday3.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtMonday3.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidMonday2.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidMonday2.setText("Correct Format !");
+					
+				}
+				
+				else
+				{
+					InvalidMonday2.setText("");
+					
+				}
+				
+				
+				
+			}
+		});
+		txtMonday3.setBounds(170, 33, 312, 20);
 		panel_16.add(txtMonday3);
 		txtMonday3.setColumns(10);
 		
 		txtSatarday3 = new JTextField();
-		txtSatarday3.setBounds(170, 196, 292, 20);
+		txtSatarday3.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				
+				
+				Pattern patt = Pattern.compile(PATTERN);
+				
+				
+				Matcher match = patt.matcher(txtSatarday3.getText());
+				
+				
+				if(!match.matches())
+				{
+					InvalidSatarday2.setText("Incorrect Format !");
+				}
+				else if(match.matches()) {
+					
+					InvalidSatarday2.setText("Correct Format !");
+					
+				}
+				
+				else
+				{
+					InvalidSatarday2.setText("");
+					
+				}
+				
+			}
+		});
+		txtSatarday3.setBounds(170, 196, 312, 20);
 		panel_16.add(txtSatarday3);
 		txtSatarday3.setColumns(10);
 		
@@ -1422,18 +1839,67 @@ public class AddManageLecturer extends JFrame {
 		panel_16.add(lblNewLabel_32);
 		lblNewLabel_32.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
+		InvalidMonday2 = new JLabel("");
+		InvalidMonday2.setFont(new Font("Tahoma", Font.BOLD, 9));
+		InvalidMonday2.setForeground(Color.RED);
+		InvalidMonday2.setBounds(391, 48, 91, 20);
+		panel_16.add(InvalidMonday2);
+		
+		InvalidTuesday2 = new JLabel("");
+		InvalidTuesday2.setFont(new Font("Tahoma", Font.BOLD, 9));
+		InvalidTuesday2.setForeground(Color.RED);
+		InvalidTuesday2.setBounds(391, 78, 91, 17);
+		panel_16.add(InvalidTuesday2);
+		
+		InvalidWednesday2 = new JLabel("");
+		InvalidWednesday2.setFont(new Font("Tahoma", Font.BOLD, 9));
+		InvalidWednesday2.setForeground(Color.RED);
+		InvalidWednesday2.setBounds(391, 113, 91, 13);
+		panel_16.add(InvalidWednesday2);
+		
+		InvalidThursday2 = new JLabel("");
+		InvalidThursday2.setFont(new Font("Tahoma", Font.BOLD, 9));
+		InvalidThursday2.setForeground(Color.RED);
+		InvalidThursday2.setBounds(391, 149, 91, 13);
+		panel_16.add(InvalidThursday2);
+		
+		InvalidFriday2 = new JLabel("");
+		InvalidFriday2.setFont(new Font("Tahoma", Font.BOLD, 9));
+		InvalidFriday2.setForeground(Color.RED);
+		InvalidFriday2.setBounds(391, 172, 91, 29);
+		panel_16.add(InvalidFriday2);
+		
+		InvalidSatarday2 = new JLabel("");
+		InvalidSatarday2.setFont(new Font("Tahoma", Font.BOLD, 9));
+		InvalidSatarday2.setForeground(Color.RED);
+		InvalidSatarday2.setBounds(391, 211, 91, 20);
+		panel_16.add(InvalidSatarday2);
+		
+		InvalidSunday2 = new JLabel("");
+		InvalidSunday2.setFont(new Font("Tahoma", Font.BOLD, 9));
+		InvalidSunday2.setForeground(Color.RED);
+		InvalidSunday2.setBounds(391, 241, 91, 17);
+		panel_16.add(InvalidSunday2);
+		
+		lblNewLabel_38 = new JLabel("Example :  11.00 a.m - 1.00 p.m    OR    \" - \" mark for free days");
+		lblNewLabel_38.setForeground(new Color(0, 128, 0));
+		lblNewLabel_38.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblNewLabel_38.setBounds(153, 10, 329, 20);
+		panel_16.add(lblNewLabel_38);
+		
 		panel_6 = new JPanel();
 		panel_6.setBackground(new Color(228,241,254));
 		panel_6.setBorder(new LineBorder(new Color(135, 206, 250)));
-		panel_6.setBounds(107, 312, 1163, 308);
+		panel_6.setBounds(47, 312, 1184, 308);
 		panel3.add(panel_6);
 		panel_6.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(82, 68, 992, 218);
+		scrollPane_1.setBounds(82, 68, 1028, 218);
 		panel_6.add(scrollPane_1);
 		
 		ActiveHoursDetailstable = new JTable();
+		ActiveHoursDetailstable.setFont(new Font("Tahoma", Font.BOLD, 10));
 		ActiveHoursDetailstable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -1480,24 +1946,25 @@ public class AddManageLecturer extends JFrame {
 		panel_17 = new JPanel();
 		panel_17.setBorder(new LineBorder(new Color(112, 128, 144)));
 		panel_17.setBackground(new Color(255, 255, 255));
-		panel_17.setBounds(38, 14, 1085, 284);
+		panel_17.setBounds(38, 14, 1108, 284);
 		panel_6.add(panel_17);
 		panel_17.setLayout(null);
 		
 		btnLoadActiveHoursDetails = new JButton("Load Details");
-		btnLoadActiveHoursDetails.setBounds(873, 10, 166, 35);
+		btnLoadActiveHoursDetails.setBounds(908, 10, 166, 35);
 		panel_17.add(btnLoadActiveHoursDetails);
 		btnLoadActiveHoursDetails.setForeground(Color.WHITE);
 		btnLoadActiveHoursDetails.setBackground(new Color(58,83,155));
 		btnLoadActiveHoursDetails.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		lblNewLabel_17 = new JLabel("Search Your  Name In Here :");
-		lblNewLabel_17.setBounds(51, 10, 204, 13);
+		lblNewLabel_17.setForeground(new Color(0, 0, 205));
+		lblNewLabel_17.setBounds(45, 10, 210, 13);
 		panel_17.add(lblNewLabel_17);
 		lblNewLabel_17.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		ActiveHoursComboBox = new JComboBox();
-		ActiveHoursComboBox.setBounds(51, 24, 190, 21);
+		ActiveHoursComboBox.setBounds(45, 24, 196, 21);
 		panel_17.add(ActiveHoursComboBox);
 		ActiveHoursComboBox.setBackground(Color.WHITE);
 		ActiveHoursComboBox.addActionListener(new ActionListener() {
@@ -1562,7 +2029,7 @@ public class AddManageLecturer extends JFrame {
 			}
 		});
 		
-		btnNewButton_10 = new JButton("Update");
+		btnNewButton_10 = new JButton("Update Details");
 		btnNewButton_10.setForeground(Color.WHITE);
 		btnNewButton_10.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnNewButton_10.setBackground(new Color(27,163,156));
@@ -1593,15 +2060,35 @@ public class AddManageLecturer extends JFrame {
 			}
 			
 		});
-		btnNewButton_10.setBounds(1280, 281, 172, 45);
+		btnNewButton_10.setBounds(1241, 273, 211, 48);
 		panel3.add(btnNewButton_10);
 		
+		JPanel panel_10 = new JPanel();
+		panel_10.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		panel_10.setBackground(Color.WHITE);
+		panel_10.setBounds(10, 10, 1452, 621);
+		panel3.add(panel_10);
+		panel_10.setLayout(null);
+		
 		btnNewButton_9 = new JButton("Clear All");
+		btnNewButton_9.setBounds(1233, 315, 209, 48);
+		panel_10.add(btnNewButton_9);
 		btnNewButton_9.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnNewButton_9.setForeground(Color.WHITE);
 		btnNewButton_9.setBorderPainted(false);
 		btnNewButton_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				InvalidMonday2.setText("");
+				InvalidTuesday2.setText("");
+				InvalidWednesday2.setText("");
+				InvalidThursday2.setText("");
+				InvalidFriday2.setText("");
+				InvalidSatarday2.setText("");
+				InvalidSunday2.setText("");
+				
+				
+				
 				
 				txtLecturerName3.setText("  ");
 				txtLecturerID3.setText("  ");
@@ -1617,21 +2104,12 @@ public class AddManageLecturer extends JFrame {
 			}
 		});
 		btnNewButton_9.setBackground(new Color(58,83,155));
-		btnNewButton_9.setBounds(1282, 347, 170, 45);
-		panel3.add(btnNewButton_9);
 		
-		JPanel panel_10 = new JPanel();
-		panel_10.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel_10.setBackground(Color.WHITE);
-		panel_10.setBounds(0, 10, 1462, 621);
-		panel3.add(panel_10);
-		panel_10.setLayout(null);
-		
-		btnNewButton = new JButton("ADD");
+		btnNewButton = new JButton("ADD Details");
 		btnNewButton.setFocusPainted(false);
 		btnNewButton.setFocusTraversalKeysEnabled(false);
 		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnNewButton.setBackground(new Color(58, 83, 155));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1687,6 +2165,13 @@ public class AddManageLecturer extends JFrame {
 		lblNewLabel_34.setFont(new Font("Tahoma", Font.BOLD, 26));
 		lblNewLabel_34.setBounds(516, 21, 660, 44);
 		panel_7.add(lblNewLabel_34);
+		
+		JButton btnNewButton_11 = new JButton("Back To Home");
+		btnNewButton_11.setBackground(new Color(30, 144, 255));
+		btnNewButton_11.setForeground(new Color(255, 255, 255));
+		btnNewButton_11.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnNewButton_11.setBounds(1356, 102, 174, 44);
+		contentPane.add(btnNewButton_11);
 		
 		refreshLecturerDetailsTable();
 		refreshActiveHoursTable();
