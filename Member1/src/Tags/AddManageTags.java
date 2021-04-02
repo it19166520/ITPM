@@ -324,7 +324,8 @@ public class AddManageTags extends JFrame {
 							}
 							catch(Exception ex)
 							{
-								ex.printStackTrace();
+								//ex.printStackTrace();
+								JOptionPane.showMessageDialog(null, "A tag with this code already exists!!");
 							}
 						}
 				

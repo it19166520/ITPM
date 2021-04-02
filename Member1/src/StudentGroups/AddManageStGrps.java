@@ -322,7 +322,8 @@ public class AddManageStGrps extends JFrame {
 				}
 				catch(Exception e1)
 				{
-					e1.printStackTrace();
+					//e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "A Student Group with this ID already exists!!");
 				}
 				
 				
