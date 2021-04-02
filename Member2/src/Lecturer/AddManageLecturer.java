@@ -1255,9 +1255,14 @@ public class AddManageLecturer extends JFrame {
 		
 		LecDetailstable = new JTable();
 		LecDetailstable.setFont(new Font("Tahoma", Font.BOLD, 12));
-		LecDetailstable.setShowHorizontalLines(false);
-		LecDetailstable.setRowHeight(20);
-		LecDetailstable.setBackground(Color.WHITE);
+		LecDetailstable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		LecDetailstable.setSelectionBackground(new Color(107,185,240));
+		LecDetailstable.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,12));
+		LecDetailstable.getTableHeader().setOpaque(false);
+		LecDetailstable.getTableHeader().setBackground(new Color(32,136,203));
+		LecDetailstable.getTableHeader().setForeground(new Color(255,255,255,255));
+		LecDetailstable.setRowHeight(30);
+		
 		LecDetailstable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -1899,7 +1904,15 @@ public class AddManageLecturer extends JFrame {
 		panel_6.add(scrollPane_1);
 		
 		ActiveHoursDetailstable = new JTable();
-		ActiveHoursDetailstable.setFont(new Font("Tahoma", Font.BOLD, 10));
+		ActiveHoursDetailstable.setFont(new Font("Tahoma", Font.BOLD, 12));
+		ActiveHoursDetailstable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		ActiveHoursDetailstable.setSelectionBackground(new Color(107,185,240));
+		ActiveHoursDetailstable.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,12));
+		ActiveHoursDetailstable.getTableHeader().setOpaque(false);
+		ActiveHoursDetailstable.getTableHeader().setBackground(new Color(32,136,203));
+		ActiveHoursDetailstable.getTableHeader().setForeground(new Color(255,255,255,255));
+		ActiveHoursDetailstable.setRowHeight(30);
+		
 		ActiveHoursDetailstable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

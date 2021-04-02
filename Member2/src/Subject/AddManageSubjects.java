@@ -7,23 +7,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 
 import DBConnection.SqlServerConnection;
 import net.proteanit.sql.DbUtils;
 
-import javax.swing.JLayeredPane;
 import java.awt.CardLayout;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.border.LineBorder;
@@ -210,12 +202,12 @@ public class AddManageSubjects extends JFrame {
 		panel_5 = new JPanel();
 		panel_5.setBorder(new LineBorder(new Color(135, 206, 250)));
 		panel_5.setBackground(new Color(228, 241, 254));
-		panel_5.setBounds(161, 30, 1172, 557);
+		panel_5.setBounds(281, 30, 942, 581);
 		AddSubPanel.add(panel_5);
 		panel_5.setLayout(null);
 		
 		panel_1 = new JPanel();
-		panel_1.setBounds(178, 10, 837, 537);
+		panel_1.setBounds(57, 10, 822, 561);
 		panel_5.add(panel_1);
 		panel_1.setBackground(Color.WHITE);
 		panel_1.setForeground(Color.WHITE);
@@ -227,46 +219,13 @@ public class AddManageSubjects extends JFrame {
 			public void ancestorRemoved(AncestorEvent event) {
 			}
 		});
-		panel_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Add Subect Details :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 139)));
+		panel_1.setBorder(new LineBorder(new Color(135, 206, 250)));
 		panel_1.setLayout(null);
-					
-						
-						btnNewButton_2 = new JButton("SAVE");
-						btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-						btnNewButton_2.setBounds(112, 486, 292, 41);
-						panel_1.add(btnNewButton_2);
-						btnNewButton_2.setForeground(Color.WHITE);
-						btnNewButton_2.setBackground(new Color(27, 163, 156));
-						
-						btnNewButton_3 = new JButton("CLEAR");
-						btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 15));
-						btnNewButton_3.setForeground(Color.WHITE);
-						btnNewButton_3.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								
-								InvalidSubCode.setText("");
-								
-								txtSubOffYear.setSelectedIndex(-1);
-								txtSubOffSem.setSelectedIndex(-1);
-								txtSubName.setText("  ");
-								txtSubCode.setText("  ");
-								NumOfLecHours.setSelectedIndex(-1);
-								NumOfTuteHours.setSelectedIndex(-1);
-								NumOfLabHours.setSelectedIndex(-1);
-								NumOfEvaltionHours.setSelectedIndex(-1);
-								
-								
-								
-							}
-						});
-						btnNewButton_3.setBounds(414, 486, 298, 41);
-						panel_1.add(btnNewButton_3);
-						btnNewButton_3.setBackground(new Color(58, 83, 155));
 						
 						panel_8 = new JPanel();
-						panel_8.setBorder(new LineBorder(new Color(135, 206, 250)));
+						panel_8.setBorder(new TitledBorder(null, "Add Subject Details", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 139)));
 						panel_8.setBackground(new Color(255, 255, 255));
-						panel_8.setBounds(49, 26, 736, 452);
+						panel_8.setBounds(38, 22, 744, 517);
 						panel_1.add(panel_8);
 						panel_8.setLayout(null);
 						
@@ -494,6 +453,144 @@ public class AddManageSubjects extends JFrame {
 									panel_8.add(lblNumOfEvaltionHours);
 									lblNumOfEvaltionHours.setForeground(Color.RED);
 									lblNumOfEvaltionHours.setFont(new Font("Tahoma", Font.BOLD, 10));
+									
+										
+										btnNewButton_2 = new JButton("SAVE");
+										btnNewButton_2.setBounds(66, 461, 292, 41);
+										panel_8.add(btnNewButton_2);
+										btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+										btnNewButton_2.setForeground(Color.WHITE);
+										btnNewButton_2.setBackground(new Color(27, 163, 156));
+										
+										btnNewButton_3 = new JButton("CLEAR");
+										btnNewButton_3.setBounds(369, 461, 298, 41);
+										panel_8.add(btnNewButton_3);
+										btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 15));
+										btnNewButton_3.setForeground(Color.WHITE);
+										btnNewButton_3.addActionListener(new ActionListener() {
+											public void actionPerformed(ActionEvent e) {
+												
+												InvalidSubCode.setText("");
+												
+												txtSubOffYear.setSelectedIndex(-1);
+												txtSubOffSem.setSelectedIndex(-1);
+												txtSubName.setText("  ");
+												txtSubCode.setText("  ");
+												NumOfLecHours.setSelectedIndex(-1);
+												NumOfTuteHours.setSelectedIndex(-1);
+												NumOfLabHours.setSelectedIndex(-1);
+												NumOfEvaltionHours.setSelectedIndex(-1);
+												
+												
+												
+											}
+										});
+										btnNewButton_3.setBackground(new Color(58, 83, 155));
+										btnNewButton_2.addActionListener(new ActionListener() {
+											public void actionPerformed(ActionEvent e) {
+												
+												//To check weather the feilds are required or not:
+												
+												if(((String) txtSubOffYear.getSelectedItem()).trim().isEmpty() && ((String) txtSubOffSem.getSelectedItem()).trim().isEmpty() && txtSubName.getText().trim().isEmpty() && txtSubCode.getText().trim().isEmpty() && ((String) NumOfLecHours.getSelectedItem()).trim().isEmpty() && ((String) NumOfTuteHours.getSelectedItem()).trim().isEmpty() && ((String) NumOfLabHours.getSelectedItem()).trim().isEmpty() && ((String)NumOfEvaltionHours.getSelectedItem()).trim().isEmpty())
+												{
+													
+													lblOfferedYear.setText("*required");
+													lblOfferedSem.setText("*required");
+													lblSubjectName.setText("*required");
+													lblSublectCode.setText("*required");
+													lblNumOfLecHours.setText("*required");
+													lblNumOfTuteHours.setText("*required");
+													lblNumOfLabHours.setText("*required");
+													lblNumOfEvaltionHours.setText("*required");
+												}
+												else if(((String) txtSubOffYear.getSelectedItem()).trim().isEmpty())
+												{
+													lblOfferedYear.setText("*required");
+												}
+												else if(((String) txtSubOffSem.getSelectedItem()).trim().isEmpty()) {
+													
+													lblOfferedSem.setText("*required");
+												}
+												else if(txtSubName.getText().trim().isEmpty()) {
+													
+													lblSubjectName.setText("*required");
+												}
+												else if(txtSubCode.getText().trim().isEmpty())
+												{
+													lblSublectCode.setText("*required");
+												}
+												else if(((String) NumOfLecHours.getSelectedItem()).trim().isEmpty())
+												{
+													lblNumOfLecHours.setText("*required");
+												}
+												else if(((String) NumOfTuteHours.getSelectedItem()).trim().isEmpty()) 
+												{
+													lblNumOfTuteHours.setText("*required");
+												}
+												else if(((String) NumOfLabHours.getSelectedItem()).trim().isEmpty()) {
+													
+													lblNumOfLabHours.setText("*required");
+												}
+												else if(((String)NumOfEvaltionHours.getSelectedItem()).trim().isEmpty()) {
+													
+													lblNumOfEvaltionHours.setText("*required");
+												}
+												else
+												  //Get Subject Details from the user and store the details in the database:
+												
+												 try {
+														
+														String query="insert into subjects (OfferedYear,OfferedSem,SubjectName,SublectCode,NumOfLecHours,NumOfTuteHours,NumOfLabHours,NumOfEvaltionHours) values (?,?,?,?,?,?,?,?)";                      
+														PreparedStatement pst=conn.prepareStatement(query);
+														
+														//get year details from the user by using  JComboBox :
+														String OffYear=txtSubOffYear.getSelectedItem().toString();
+														pst.setString(1, OffYear);
+														
+														//get semester details from user by using JComboBox:
+														String OffSem=txtSubOffSem.getSelectedItem().toString();
+														pst.setString(2, OffSem);
+														
+														//get Subject name and subject code from text fields:
+														pst.setString(3, txtSubName.getText());
+														pst.setString(4, txtSubCode.getText());
+														
+														//get Number of lecturer hours from user by using JComboBox:
+														String LecHours=NumOfLecHours.getSelectedItem().toString();
+														pst.setString(5, LecHours);
+														
+														//get Number of Tutorial hours from user by using JComboBox:
+														String TuteHours=NumOfTuteHours.getSelectedItem().toString();
+														pst.setString(6, TuteHours);
+														
+														//get Number of lab hours from user by using JComboBox:
+														String LabHours=NumOfLabHours.getSelectedItem().toString();
+														pst.setString(7, LabHours);
+														
+														//get Number of Evalution Hours from by using JComboBox:
+														String EvaHours=NumOfEvaltionHours.getSelectedItem().toString();
+														pst.setString(8, EvaHours);
+														
+														
+														//Display successful massage when data was inserted to the database successfully:
+														pst.execute();
+														JOptionPane.showMessageDialog(null, "Data inserted successfully!");
+														
+														pst.close();
+														
+														
+													}catch(Exception e1)
+													{
+														e1.printStackTrace();
+														JOptionPane.showMessageDialog(null, "Enterd Subject Code is allready in the system !");
+														
+													}
+												
+												//call "refreshSubjectTable" method to refresh the table after doing any changes:
+												 refreshSubjectTable();
+												 
+											}
+										});
 									txtSubOffSem.addKeyListener(new KeyAdapter() {
 										@Override
 										public void keyReleased(KeyEvent e) {
@@ -539,113 +636,8 @@ public class AddManageSubjects extends JFrame {
 						panel_9 = new JPanel();
 						panel_9.setBackground(new Color(255, 255, 255));
 						panel_9.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-						panel_9.setBounds(48, 10, 1395, 601);
+						panel_9.setBounds(48, 10, 1395, 611);
 						AddSubPanel.add(panel_9);
-						btnNewButton_2.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								
-								//To check weather the feilds are required or not:
-								
-								if(((String) txtSubOffYear.getSelectedItem()).trim().isEmpty() && ((String) txtSubOffSem.getSelectedItem()).trim().isEmpty() && txtSubName.getText().trim().isEmpty() && txtSubCode.getText().trim().isEmpty() && ((String) NumOfLecHours.getSelectedItem()).trim().isEmpty() && ((String) NumOfTuteHours.getSelectedItem()).trim().isEmpty() && ((String) NumOfLabHours.getSelectedItem()).trim().isEmpty() && ((String)NumOfEvaltionHours.getSelectedItem()).trim().isEmpty())
-								{
-									
-									lblOfferedYear.setText("*required");
-									lblOfferedSem.setText("*required");
-									lblSubjectName.setText("*required");
-									lblSublectCode.setText("*required");
-									lblNumOfLecHours.setText("*required");
-									lblNumOfTuteHours.setText("*required");
-									lblNumOfLabHours.setText("*required");
-									lblNumOfEvaltionHours.setText("*required");
-								}
-								else if(((String) txtSubOffYear.getSelectedItem()).trim().isEmpty())
-								{
-									lblOfferedYear.setText("*required");
-								}
-								else if(((String) txtSubOffSem.getSelectedItem()).trim().isEmpty()) {
-									
-									lblOfferedSem.setText("*required");
-								}
-								else if(txtSubName.getText().trim().isEmpty()) {
-									
-									lblSubjectName.setText("*required");
-								}
-								else if(txtSubCode.getText().trim().isEmpty())
-								{
-									lblSublectCode.setText("*required");
-								}
-								else if(((String) NumOfLecHours.getSelectedItem()).trim().isEmpty())
-								{
-									lblNumOfLecHours.setText("*required");
-								}
-								else if(((String) NumOfTuteHours.getSelectedItem()).trim().isEmpty()) 
-								{
-									lblNumOfTuteHours.setText("*required");
-								}
-								else if(((String) NumOfLabHours.getSelectedItem()).trim().isEmpty()) {
-									
-									lblNumOfLabHours.setText("*required");
-								}
-								else if(((String)NumOfEvaltionHours.getSelectedItem()).trim().isEmpty()) {
-									
-									lblNumOfEvaltionHours.setText("*required");
-								}
-								else
-								  //Get Subject Details from the user and store the details in the database:
-								
-								 try {
-										
-										String query="insert into subjects (OfferedYear,OfferedSem,SubjectName,SublectCode,NumOfLecHours,NumOfTuteHours,NumOfLabHours,NumOfEvaltionHours) values (?,?,?,?,?,?,?,?)";                      
-										PreparedStatement pst=conn.prepareStatement(query);
-										
-										//get year details from the user by using  JComboBox :
-										String OffYear=txtSubOffYear.getSelectedItem().toString();
-										pst.setString(1, OffYear);
-										
-										//get semester details from user by using JComboBox:
-										String OffSem=txtSubOffSem.getSelectedItem().toString();
-										pst.setString(2, OffSem);
-										
-										//get Subject name and subject code from text fields:
-										pst.setString(3, txtSubName.getText());
-										pst.setString(4, txtSubCode.getText());
-										
-										//get Number of lecturer hours from user by using JComboBox:
-										String LecHours=NumOfLecHours.getSelectedItem().toString();
-										pst.setString(5, LecHours);
-										
-										//get Number of Tutorial hours from user by using JComboBox:
-										String TuteHours=NumOfTuteHours.getSelectedItem().toString();
-										pst.setString(6, TuteHours);
-										
-										//get Number of lab hours from user by using JComboBox:
-										String LabHours=NumOfLabHours.getSelectedItem().toString();
-										pst.setString(7, LabHours);
-										
-										//get Number of Evalution Hours from by using JComboBox:
-										String EvaHours=NumOfEvaltionHours.getSelectedItem().toString();
-										pst.setString(8, EvaHours);
-										
-										
-										//Display successful massage when data was inserted to the database successfully:
-										pst.execute();
-										JOptionPane.showMessageDialog(null, "Data inserted successfully!");
-										
-										pst.close();
-										
-										
-									}catch(Exception e1)
-									{
-										e1.printStackTrace();
-										JOptionPane.showMessageDialog(null, "Enterd Subject Code is allready in the system !");
-										
-									}
-								
-								//call "refreshSubjectTable" method to refresh the table after doing any changes:
-								 refreshSubjectTable();
-								 
-							}
-						});
 		
 		ManageSubPanel = new JPanel();
 		ManageSubPanel.setBackground(new Color(255, 255, 255));
@@ -785,7 +777,15 @@ public class AddManageSubjects extends JFrame {
 		scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		table = new JTable();
-		table.setRowHeight(18);
+		table.setFont(new Font("Tahoma", Font.BOLD, 12));
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setSelectionBackground(new Color(107,185,240));
+		table.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,12));
+		table.getTableHeader().setOpaque(false);
+		table.getTableHeader().setBackground(new Color(32,136,203));
+		table.getTableHeader().setForeground(new Color(255,255,255,255));
+		table.setRowHeight(30);
+		
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -1041,6 +1041,13 @@ public class AddManageSubjects extends JFrame {
 		lblNewLabel_34.setFont(new Font("Tahoma", Font.BOLD, 26));
 		lblNewLabel_34.setBounds(516, 21, 660, 44);
 		panel_7.add(lblNewLabel_34);
+		
+		JButton btnNewButton_7 = new JButton("Back To Home");
+		btnNewButton_7.setForeground(new Color(255, 255, 255));
+		btnNewButton_7.setBackground(new Color(30, 144, 255));
+		btnNewButton_7.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNewButton_7.setBounds(1349, 95, 166, 44);
+		contentPane.add(btnNewButton_7);
 		refreshSubjectTable();
 		fillSubjectCobmoBox();
 		

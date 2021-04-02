@@ -504,6 +504,14 @@ public class Sessions extends JFrame {
 		panel_3.add(scrollPane);
 		
 		table = new JTable();
+		table.setFont(new Font("Tahoma", Font.BOLD, 12));
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setSelectionBackground(new Color(107,185,240));
+		table.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,12));
+		table.getTableHeader().setOpaque(false);
+		table.getTableHeader().setBackground(new Color(32,136,203));
+		table.getTableHeader().setForeground(new Color(255,255,255,255));
+		table.setRowHeight(30);
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
