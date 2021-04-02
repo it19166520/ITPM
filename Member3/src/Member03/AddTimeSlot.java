@@ -137,7 +137,7 @@ public class AddTimeSlot extends JFrame {
 		
 		JComboBox slot = new JComboBox();
 		slot.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		slot.setModel(new DefaultComboBoxModel(new String[] {"Select","1 Hour", "30 Minutes"}));
+		slot.setModel(new DefaultComboBoxModel(new String[] {" ","1 Hour", "30 Minutes"}));
 		slot.setBackground(Color.WHITE);
 		slot.setBounds(577, 392, 245, 33);
 		addTimeSlotFrame.add(slot);

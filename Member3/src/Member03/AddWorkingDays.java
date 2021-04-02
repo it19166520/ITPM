@@ -38,6 +38,7 @@ public class AddWorkingDays extends JFrame {
 	private JTextField textField;
 	private JTextField hour;
 	private JTextField minutes;
+	private JTextField txtworkigDaysNum;
 
 	/**
 	 * Launch the application.
@@ -98,49 +99,49 @@ public class AddWorkingDays extends JFrame {
 		
 		JLabel l1 = new JLabel("Number of Working Days :");
 		l1.setFont(new Font("Dialog", Font.BOLD, 14));
-		l1.setBounds(361, 290, 237, 23);
+		l1.setBounds(361, 471, 237, 23);
 		addwframe.add(l1);
 		
 		JLabel workingDays = new JLabel("Working Days :");
 		workingDays.setFont(new Font("Dialog", Font.BOLD, 14));
-		workingDays.setBounds(361, 338, 219, 23);
+		workingDays.setBounds(361, 303, 219, 23);
 		addwframe.add(workingDays);
 		
 		
 		
 		JCheckBox monday = new JCheckBox("Monday");
 		monday.setFont(new Font("Dialog", Font.BOLD, 12));
-		monday.setBounds(702, 338, 108, 25);
+		monday.setBounds(702, 303, 108, 25);
 		addwframe.add(monday);
 		
 		JCheckBox tuesday = new JCheckBox("Tuesday");
 		tuesday.setFont(new Font("Dialog", Font.BOLD, 12));
-		tuesday.setBounds(702, 380, 108, 23);
+		tuesday.setBounds(702, 339, 108, 23);
 		addwframe.add(tuesday);
 		
 		JCheckBox wednesday = new JCheckBox("Wednesday");
 		wednesday.setFont(new Font("Dialog", Font.BOLD, 12));
-		wednesday.setBounds(702, 422, 108, 23);
+		wednesday.setBounds(702, 380, 108, 23);
 		addwframe.add(wednesday);
 		
 		JCheckBox thursday = new JCheckBox("Thursday");
 		thursday.setFont(new Font("Dialog", Font.BOLD, 12));
-		thursday.setBounds(702, 461, 108, 22);
+		thursday.setBounds(702, 422, 108, 22);
 		addwframe.add(thursday);
 		
 		JCheckBox saturday = new JCheckBox("Saturday");
 		saturday.setFont(new Font("Dialog", Font.BOLD, 12));
-		saturday.setBounds(870, 380, 108, 23);
+		saturday.setBounds(869, 339, 108, 23);
 		addwframe.add(saturday);
 		
 		JCheckBox sunday = new JCheckBox("Sunday");
 		sunday.setFont(new Font("Dialog", Font.BOLD, 12));
-		sunday.setBounds(869, 422, 109, 23);
+		sunday.setBounds(869, 380, 109, 23);
 		addwframe.add(sunday);
 		
 		JCheckBox friday = new JCheckBox("Friday");
 		friday.setFont(new Font("Dialog", Font.BOLD, 12));
-		friday.setBounds(870, 337, 108, 26);
+		friday.setBounds(870, 302, 108, 26);
 		addwframe.add(friday);
 		
 		textField = new JTextField();
@@ -151,39 +152,49 @@ public class AddWorkingDays extends JFrame {
 		textField.setBounds(702, 244, 276, 25);
 		addwframe.add(textField);
 		
-		JComboBox txtworkigDaysNum = new JComboBox();
-		txtworkigDaysNum.setFont(new Font("Dialog", Font.BOLD, 12));
-		txtworkigDaysNum.setModel(new DefaultComboBoxModel(new String[] {"","1", "2", "3", "4", "5", "6","7"}));
-
-		txtworkigDaysNum.setBounds(702, 290, 276, 25);
-		addwframe.add(txtworkigDaysNum);
-		
 		JLabel workingTimePerDay = new JLabel("Working Time Per Day :");
 		workingTimePerDay.setFont(new Font("Dialog", Font.BOLD, 14));
-		workingTimePerDay.setBounds(361, 507, 219, 23);
+		workingTimePerDay.setBounds(361, 540, 219, 23);
 		addwframe.add(workingTimePerDay);
+		
+		txtworkigDaysNum = new JTextField();
+		txtworkigDaysNum.setForeground(Color.BLACK);
+		txtworkigDaysNum.setFont(new Font("Tahoma", Font.BOLD, 12));
+		txtworkigDaysNum.setBackground(Color.WHITE);
+		txtworkigDaysNum.setEditable(false);
+		txtworkigDaysNum.setBounds(702, 474, 78, 26);
+		addwframe.add(txtworkigDaysNum);
+		txtworkigDaysNum.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Hours");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblNewLabel.setBounds(707, 511, 46, 14);
+		lblNewLabel.setBounds(784, 544, 46, 14);
 		addwframe.add(lblNewLabel);
 		
 		JLabel labErr = new JLabel("");
 		labErr.setForeground(new Color(255, 0, 0));
 		labErr.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
-		labErr.setBounds(707, 551, 271, 23);
+		labErr.setBounds(707, 571, 271, 23);
 		addwframe.add(labErr);
 		
 		JLabel lblMinutes = new JLabel("Minutes");
 		lblMinutes.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblMinutes.setBounds(842, 511, 87, 14);
+		lblMinutes.setBounds(920, 544, 87, 14);
 		addwframe.add(lblMinutes);
 		JButton clearbtn = new JButton("Clear Details");
 		clearbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				hour.setText(null);
 				minutes.setText(null);
-				txtworkigDaysNum.setSelectedIndex(-1);
+				txtworkigDaysNum.setText(null);
+				monday.setSelected(false);
+				tuesday.setSelected(false);
+				wednesday.setSelected(false);
+				thursday.setSelected(false);
+				friday.setSelected(false);
+				saturday.setSelected(false);
+				sunday.setSelected(false);
+
 				
 			}
 		});
@@ -198,7 +209,7 @@ public class AddWorkingDays extends JFrame {
 		addbtn.setBackground(new Color(58,83,155));
 		addbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(hour.getText().equals("")||txtworkigDaysNum.getSelectedItem().equals("")||minutes.getText().equals(""))
+				if(hour.getText().equals("")||txtworkigDaysNum.getText().equals("")||minutes.getText().equals(""))
 				{
 					JOptionPane.showMessageDialog(null, "Please Fill Compleate Information");
 				}
@@ -212,32 +223,32 @@ public class AddWorkingDays extends JFrame {
 			
 				
 				//get number of working days and hours
-				String workingDay=txtworkigDaysNum.getSelectedItem().toString();
+				String workingDay=txtworkigDaysNum.getText().toString();
 				pst.setString(1, workingDay);
 				
 				//get working days and hours
 				String Days="";
 				if(monday.isSelected()) {
-					Days +=monday.getText()+" ";
+					Days +=monday.getText()+" , ";
 				}
 				if(tuesday.isSelected()) {
-					Days +=tuesday.getText()+" ";
+					Days +=tuesday.getText()+" , ";
 				}
 				if(wednesday.isSelected()) {
-					Days +=wednesday.getText()+" ";
+					Days +=wednesday.getText()+" , ";
 				}
 				if(thursday.isSelected()) {
-					Days +=thursday.getText()+" ";
+					Days +=thursday.getText()+" , ";
 				}
 				if(friday.isSelected()) {
-					Days +=friday.getText()+" ";
+					Days +=friday.getText()+" , ";
 				}
 				if(saturday.isSelected()) {
-					Days +=saturday.getText()+" ";
+					Days +=saturday.getText()+" , ";
 				}
 			
 				if(sunday.isSelected()) {
-					Days +=sunday.getText()+" ";
+					Days +=sunday.getText()+" , ";
 				}
 				pst.setString(2, Days);
 				
@@ -292,7 +303,7 @@ public class AddWorkingDays extends JFrame {
 		});
 		hour.setColumns(10);
 		hour.setBackground(Color.WHITE);
-		hour.setBounds(752, 507, 78, 26);
+		hour.setBounds(702, 540, 78, 26);
 		addwframe.add(hour);
 		
 		minutes = new JTextField();
@@ -316,13 +327,52 @@ public class AddWorkingDays extends JFrame {
 		});
 		minutes.setColumns(10);
 		minutes.setBackground(Color.WHITE);
-		minutes.setBounds(900, 507, 78, 26);
+		minutes.setBounds(840, 540, 78, 26);
 		addwframe.add(minutes);
+		
+		JButton calculate = new JButton("Calculate");
+		calculate.addActionListener(new ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				int tot = 0;
+				if(monday.isSelected()) {
+					tot = tot+1;
+				}
+				if(tuesday.isSelected()) {
+					tot = tot+1;
+				}
+				if(wednesday.isSelected()) {
+					tot = tot+1;
+				}
+				if(thursday.isSelected()) {
+					tot = tot+1;
+				}
+				if(friday.isSelected()) {
+					tot = tot+1;
+				}
+				if(saturday.isSelected()) {
+					tot = tot+1;
+				}
+				if(sunday.isSelected()) {
+					tot = tot+1;
+				}
+				
+				txtworkigDaysNum.setText(Integer.toString(tot));
+				tot = Integer.parseInt(txtworkigDaysNum.getText());
+				
+			
+			}
+			
+		});
+		calculate.setForeground(Color.WHITE);
+		calculate.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
+		calculate.setBackground(new Color(58, 83, 155));
+		calculate.setBounds(784, 467, 193, 39);
+		addwframe.add(calculate);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(228, 241, 254));
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 128), 2, true));
-		panel_1.setBounds(275, 219, 848, 459);
+		panel_1.setBounds(275, 219, 821, 459);
 		addwframe.add(panel_1);
 		
 		JLabel lblNewLabel_1 = new JLabel("----------Add Working Days And Hours---------");

@@ -56,7 +56,7 @@ public class ManageRoomCannotBeReserved extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void mngRoom() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -241,6 +241,17 @@ public class ManageRoomCannotBeReserved extends JFrame {
 				
 			}
 		});
+		
+		jtable_show.setFont(new Font("Tahoma", Font.BOLD, 12));
+		jtable_show.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		jtable_show.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		jtable_show.setSelectionBackground(new Color(107,185,240));
+		jtable_show.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,12));
+		jtable_show.getTableHeader().setOpaque(false);
+		jtable_show.getTableHeader().setBackground(new Color(32,136,203));
+		jtable_show.getTableHeader().setForeground(new Color(255,255,255));
+		jtable_show.setRowHeight(30);
+
 		jtable_show.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null},
@@ -481,9 +492,13 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		clearbtn.setBounds(817, 389, 229, 50);
 		contentPane.add(clearbtn);
 		
-		JButton btnAddNewNot = new JButton("Add New Not Available Time Allocation");
+		JButton btnAddNewNot = new JButton("Add New Room Cannot Be Reserved");
 		btnAddNewNot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				AddCannotReservedRoom rm= new AddCannotReservedRoom();
+				rm.addRoom();
+				dispose();
+				
 			}
 		});
 		btnAddNewNot.setForeground(Color.WHITE);
@@ -494,7 +509,12 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		
 		JButton exitbtn = new JButton("Exit\r\n");
 		exitbtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+			contentPane= new JPanel();
+			if (JOptionPane.showConfirmDialog(contentPane,"Conform if you want to exit !","System",
+					JOptionPane.YES_NO_CANCEL_OPTION)==JOptionPane.YES_NO_OPTION) {
+				System.exit(0);
+			}
 			}
 		});
 		exitbtn.setForeground(Color.WHITE);
@@ -510,7 +530,7 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		txtmanageRoomDetails.setColumns(10);
 		txtmanageRoomDetails.setBorder(null);
 		txtmanageRoomDetails.setBackground(Color.WHITE);
-		txtmanageRoomDetails.setBounds(248, 87, 450, 26);
+		txtmanageRoomDetails.setBounds(230, 89, 450, 26);
 		contentPane.add(txtmanageRoomDetails);
 		
 		JPanel panel_2 = new JPanel();

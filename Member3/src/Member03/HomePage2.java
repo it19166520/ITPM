@@ -90,6 +90,9 @@ public class HomePage2 {
 		JButton btnManageARoom = new JButton("Manage a Room Cannot Be Recerved");
 		btnManageARoom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				AddCannotReservedRoom mn = new AddCannotReservedRoom();
+				mn.addRoom();
+				wokingDayHourframe.dispose();
 			}
 		});
 		btnManageARoom.setForeground(Color.WHITE);

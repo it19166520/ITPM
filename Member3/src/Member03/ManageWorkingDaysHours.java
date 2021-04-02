@@ -81,6 +81,9 @@ public class ManageWorkingDaysHours extends JFrame {
 	private JCheckBox sunday;
 	private JCheckBox thursday;
 	private JPanel panel_2;
+	private JTextField txtworkigDaysNum;
+	private JButton calculate;
+	private JLabel labErr;
 	
 	/**
 	 * Launch the application.
@@ -166,7 +169,6 @@ public class ManageWorkingDaysHours extends JFrame {
 			String q="select * from WorkingDaysHours";
 			pst=connection.prepareStatement(q);
 			rs=pst.executeQuery();
-			
 			jtableShow.setModel(DbUtils.resultSetToTableModel(rs));
 
 			
@@ -240,13 +242,15 @@ public class ManageWorkingDaysHours extends JFrame {
 		
 		JLabel l1 = new JLabel("Number of Working Days :");
 		l1.setFont(new Font("Dialog", Font.BOLD, 14));
-		l1.setBounds(46, 260, 237, 23);
+		l1.setBounds(45, 435, 237, 23);
 		addFramew.add(l1);
 		
-		JComboBox txtworkigDaysNum = new JComboBox();
+		txtworkigDaysNum = new JTextField();
 		txtworkigDaysNum.setFont(new Font("Dialog", Font.BOLD, 14));
-		txtworkigDaysNum.setBounds(387, 258, 276, 26);
-		txtworkigDaysNum.setModel(new DefaultComboBoxModel(new String[] {"","1", "2", "3", "4", "5", "6","7"}));
+		txtworkigDaysNum.setEditable(false);
+		txtworkigDaysNum.setColumns(10);
+		txtworkigDaysNum.setBackground(Color.WHITE);
+		txtworkigDaysNum.setBounds(387, 435, 77, 29);
 		addFramew.add(txtworkigDaysNum);
 		JLabel workingTimePerDay = new JLabel("Working Time Per Day :");
 		workingTimePerDay.setFont(new Font("Dialog", Font.BOLD, 14));
@@ -255,74 +259,126 @@ public class ManageWorkingDaysHours extends JFrame {
 		
 		workingDays = new JLabel("Working Days :");
 		workingDays.setFont(new Font("Dialog", Font.BOLD, 14));
-		workingDays.setBounds(46, 309, 219, 23);
+		workingDays.setBounds(46, 265, 219, 23);
 		addFramew.add(workingDays);
 		
 		monday = new JCheckBox("Monday");
 		monday.setBackground(new Color(228, 241, 254));
 		monday.setFont(new Font("Dialog", Font.BOLD, 12));
-		monday.setBounds(387, 309, 108, 25);
+		monday.setBounds(387, 265, 108, 25);
 		addFramew.add(monday);
 		
 		friday = new JCheckBox("Friday");
 		friday.setBackground(new Color(228, 241, 254));
 		friday.setFont(new Font("Dialog", Font.BOLD, 12));
-		friday.setBounds(555, 308, 108, 26);
+		friday.setBounds(555, 264, 108, 26);
 		addFramew.add(friday);
 		
 		tuesday = new JCheckBox("Tuesday");
 		tuesday.setBackground(new Color(228, 241, 254));
 		tuesday.setFont(new Font("Dialog", Font.BOLD, 12));
-		tuesday.setBounds(387, 351, 108, 23);
+		tuesday.setBounds(387, 307, 108, 23);
 		addFramew.add(tuesday);
 		
 		saturday = new JCheckBox("Saturday");
 		saturday.setBackground(new Color(228, 241, 254));
 		saturday.setFont(new Font("Dialog", Font.BOLD, 12));
-		saturday.setBounds(555, 351, 108, 23);
+		saturday.setBounds(555, 307, 108, 23);
 		addFramew.add(saturday);
 		
 		wednesday = new JCheckBox("Wednesday");
 		wednesday.setBackground(new Color(228, 241, 254));
 		wednesday.setFont(new Font("Dialog", Font.BOLD, 12));
-		wednesday.setBounds(387, 393, 108, 23);
+		wednesday.setBounds(387, 349, 108, 23);
 		addFramew.add(wednesday);
 		
 		sunday = new JCheckBox("Sunday");
 		sunday.setBackground(new Color(228, 241, 254));
 		sunday.setFont(new Font("Dialog", Font.BOLD, 12));
-		sunday.setBounds(554, 393, 109, 23);
+		sunday.setBounds(554, 349, 109, 23);
 		addFramew.add(sunday);
 		
 		thursday = new JCheckBox("Thursday");
 		thursday.setBackground(new Color(228, 241, 254));
 		thursday.setFont(new Font("Dialog", Font.BOLD, 12));
-		thursday.setBounds(387, 432, 108, 22);
+		thursday.setBounds(387, 388, 108, 22);
 		addFramew.add(thursday);
 		
 	
 		hour = new JTextField();
+		hour.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(java.awt.event.KeyEvent evt) {
+				//validate the field
+				String PATTERN = "[0-24]";
+				Pattern patt= Pattern.compile(PATTERN);
+;
+				Matcher match = patt.matcher(hour.getText());
+			if(!match.matches()) {
+				labErr.setText("Incorrect entered value!");
+			}
+			else {
+				labErr.setText("---");
+			}
+			
+				char c =evt.getKeyChar();
+				if(Character.isLetter(c)) {
+				
+				//can not able to enter in filed if enter char is not number
+				hour.setEditable(false);
+				labErr.setText("Please Enter Only Numbers For Hours!");
+				}
+				else {
+					hour.setEditable(true);
+					labErr.setText("---");
+				}
+			}
+		});
 		hour.setFont(new Font("Dialog", Font.BOLD, 14));
 		hour.setColumns(10);
 		hour.setBackground(Color.WHITE);
-		hour.setBounds(453, 491, 67, 26);
+		hour.setBounds(387, 491, 77, 26);
 		addFramew.add(hour);
 		
 		minutes = new JTextField();
+		minutes.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(java.awt.event.KeyEvent evt) {
+				//validate the field
+				
+				char c =evt.getKeyChar();
+				if(Character.isLetter(c)) {
+				
+				//can not able to enter in filed if enter char is not number
+				hour.setEditable(false);
+				labErr.setText("Please Enter Only Numbers For Munites!");
+				}
+				else {
+					hour.setEditable(true);
+					labErr.setText("---");
+				}
+			}
+		});
 		minutes.setFont(new Font("Dialog", Font.BOLD, 14));
 		minutes.setColumns(10);
 		minutes.setBackground(Color.WHITE);
-		minutes.setBounds(596, 493, 67, 26);
+		minutes.setBounds(536, 491, 67, 26);
 		addFramew.add(minutes);
 		
 		lblNewLabel = new JLabel("Hours");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblNewLabel.setBounds(387, 496, 46, 14);
+		lblNewLabel.setBounds(474, 496, 46, 14);
 		addFramew.add(lblNewLabel);
+		
+		labErr = new JLabel("");
+		labErr.setForeground(Color.RED);
+		labErr.setFont(new Font("Dialog", Font.BOLD, 12));
+		labErr.setBounds(387, 521, 280, 21);
+		addFramew.add(labErr);
 		
 		lblMinutes = new JLabel("Minutes");
 		lblMinutes.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblMinutes.setBounds(530, 496, 87, 14);
+		lblMinutes.setBounds(613, 496, 87, 14);
 		addFramew.add(lblMinutes);
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(721, 183, 608, 495);
@@ -359,13 +415,41 @@ public class ManageWorkingDaysHours extends JFrame {
 					
 					txtID.setText(model.getValueAt(i,0).toString());
 					
-					txtworkigDaysNum.setSelectedItem(model.getValueAt(i, 1).toString());
+					txtworkigDaysNum.setText(model.getValueAt(i, 1).toString());
 					
 					hour.setText(model.getValueAt(i, 3).toString());
 					
 					minutes.setText(model.getValueAt(i, 4).toString());
 				
-				
+					String days=model.getValueAt(i, 2).toString();
+						if(days == "monday")
+						{
+							monday.setSelected(true);
+						}
+						if(days == "tuesday")
+						{
+							tuesday.setSelected(true);
+						}
+						if(days == "wednesday")
+						{
+							wednesday.setSelected(true);
+						}
+						if(days == "thursday")
+						{
+							thursday.setSelected(true);
+						}
+						if(days == "friday")
+						{
+							friday.setSelected(true);
+						}
+						if(days == "saturday")
+						{
+							saturday.setSelected(true);
+						}
+						if(days == "sunday")
+						{
+							sunday.setSelected(true);
+						}
 			}
 		});
 		jtableShow.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -404,31 +488,31 @@ public class ManageWorkingDaysHours extends JFrame {
 						String sql = "update WorkingDaysHours set NumberOfWorkingDays=?,WorkingDays=?,WorkingHours=?,WorkingMinutes=? where ID="+value;
 						PreparedStatement pst=connection.prepareStatement(sql);
 						
-						String day = txtworkigDaysNum.getSelectedItem().toString();
+						String day = txtworkigDaysNum.getText().toString();
 						pst.setString(1, day);
 						
 						String Days="";
 						if(monday.isSelected()) {
-							Days +=monday.getText()+" ";
+							Days +=monday.getText()+" , ";
 						}
 						if(tuesday.isSelected()) {
-							Days +=tuesday.getText()+" ";
+							Days +=tuesday.getText()+" , ";
 						}
 						if(wednesday.isSelected()) {
-							Days +=wednesday.getText()+" ";
+							Days +=wednesday.getText()+" , ";
 						}
 						if(thursday.isSelected()) {
-							Days +=thursday.getText()+" ";
+							Days +=thursday.getText()+" , ";
 						}
 						if(friday.isSelected()) {
-							Days +=friday.getText()+" ";
+							Days +=friday.getText()+" , ";
 						}
 						if(saturday.isSelected()) {
-							Days +=saturday.getText()+" ";
+							Days +=saturday.getText()+" , ";
 						}
 					
 						if(sunday.isSelected()) {
-							Days +=sunday.getText()+" ";
+							Days +=sunday.getText()+" , ";
 						}
 						pst.setString(2, Days);
 						
@@ -508,11 +592,17 @@ public class ManageWorkingDaysHours extends JFrame {
 		clearbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-					txtworkigDaysNum.setSelectedIndex(-1);
+					txtworkigDaysNum.setText(null);
 					txtID.setText(null);
 					hour.setText(null);
 					minutes.setText(null);
-					
+					monday.setSelected(false);
+					tuesday.setSelected(false);
+					wednesday.setSelected(false);
+					thursday.setSelected(false);
+					friday.setSelected(false);
+					saturday.setSelected(false);
+					sunday.setSelected(false);
 			}
 		});
 		clearbtn.setForeground(Color.BLACK);
@@ -558,6 +648,42 @@ public class ManageWorkingDaysHours extends JFrame {
 				fetch();
 			}
 		});
+		
+		calculate = new JButton("Calculate");
+		calculate.addActionListener(new ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				int tot = 0;
+				if(monday.isSelected()) {
+					tot = tot+1;
+				}
+				if(tuesday.isSelected()) {
+					tot = tot+1;
+				}
+				if(wednesday.isSelected()) {
+					tot = tot+1;
+				}
+				if(thursday.isSelected()) {
+					tot = tot+1;
+				}
+				if(friday.isSelected()) {
+					tot = tot+1;
+				}
+				if(saturday.isSelected()) {
+					tot = tot+1;
+				}
+				if(sunday.isSelected()) {
+					tot = tot+1;
+				}
+				
+				txtworkigDaysNum.setText(Integer.toString(tot));
+				tot = Integer.parseInt(txtworkigDaysNum.getText());
+			}
+		});
+		calculate.setForeground(Color.WHITE);
+		calculate.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
+		calculate.setBackground(new Color(58, 83, 155));
+		calculate.setBounds(474, 427, 193, 39);
+		addFramew.add(calculate);
 		load.setForeground(Color.WHITE);
 		load.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		load.setBackground(new Color(0, 0, 139));

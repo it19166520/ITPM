@@ -246,6 +246,7 @@ public class ManageNotAvailableTime extends JFrame {
 		contentPane.add(lblTimePeriod);
 		
 		txtStartTime = new JTextField();
+		txtStartTime.setFont(new Font("Dialog", Font.BOLD, 11));
 		txtStartTime.addKeyListener(new KeyAdapter() {
 			@Override
 			//Validate the field
@@ -274,6 +275,7 @@ public class ManageNotAvailableTime extends JFrame {
 		contentPane.add(to);
 		
 		txtEndTime = new JTextField();
+		txtEndTime.setFont(new Font("Dialog", Font.BOLD, 11));
 		txtEndTime.addKeyListener(new KeyAdapter() {
 			@Override
 
@@ -299,32 +301,37 @@ public class ManageNotAvailableTime extends JFrame {
 		contentPane.add(txtEndTime);
 		
 		txtDay = new JComboBox();
+		txtDay.setBackground(Color.WHITE);
 		txtDay.setModel(new DefaultComboBoxModel(new String[] {"","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"}));
 		txtDay.setBounds(367, 362, 359, 33);
 		contentPane.add(txtDay);
 		
 		txtSessionID = new JComboBox();
+		txtSessionID.setBackground(Color.WHITE);
 		txtSessionID.setModel(new DefaultComboBoxModel(new String[] {"","IT2030-OOC–Lecture–Y1.S1.IT.01–120- 2","IT2015-PAF–Lecture–Y2.S1.IT.01–120- 2","IT1530-NDM–Lecture–Y3.S1.IT.01–120- 2"}));
 		txtSessionID.setBounds(367, 318, 359, 33);
 		contentPane.add(txtSessionID);
 		
 		txtSubGroup = new JComboBox();
+		txtSubGroup.setBackground(Color.WHITE);
 		txtSubGroup.setModel(new DefaultComboBoxModel(new String[] {"","1","2","3","4","5"}));
 		txtSubGroup.setBounds(367, 274, 359, 33);
 		contentPane.add(txtSubGroup);
 		
 		txtGroup = new JComboBox();
+		txtGroup.setBackground(Color.WHITE);
 		txtGroup.setModel(new DefaultComboBoxModel(new String[] {"","Y2.S2.1", "Y3.S2.2", "Y4.S1.3", "Y1.S2.4", "Y2.S1.5", "Y1.S2.6", "Y1.S2.7", "Y1.S2.8","Y1.S2.9"}));
 		txtGroup.setBounds(367, 230, 359, 33);
 		contentPane.add(txtGroup);
 		
 		txtLec = new JComboBox();
+		txtLec.setBackground(Color.WHITE);
 		txtLec.setModel(new DefaultComboBoxModel(new String[] {"","Mr. Senanayske", "Mrs. Gunathilake","Mr. jayarathne","Mrs. Athukorala","Ms. Susantha"}));
 		txtLec.setBounds(367, 186, 359, 33);
 		contentPane.add(txtLec);
 		
 		txtID = new JTextField();
-		txtID.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtID.setFont(new Font("Dialog", Font.BOLD, 11));
 		txtID.setEditable(false);
 		txtID.setColumns(10);
 		txtID.setBackground(Color.WHITE);
