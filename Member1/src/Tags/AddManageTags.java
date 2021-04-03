@@ -29,9 +29,12 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.JComboBox;
 import java.awt.SystemColor;
+import java.awt.Window;
+
 import javax.swing.JSpinner;
 
 import DBConnection.DBConnection;
+import Home.StudentGroupManagement;
 import net.proteanit.sql.DbUtils;
 
 import javax.swing.JTable;
@@ -82,6 +85,7 @@ public class AddManageTags extends JFrame {
 	private JLabel lbl_empReTag;
 	private JLabel lbl_empTagName_1;
 	private JLabel lbl_empTagCode_1;
+	private JButton btnBack;
 	
 	
 
@@ -649,6 +653,21 @@ public class AddManageTags extends JFrame {
 		btnManageTags.setForeground(Color.WHITE);
 		btnManageTags.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 16));
 		contentPane.add(btnManageTags);
+		
+		btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				StudentGroupManagement home = new StudentGroupManagement();
+				home.Show();
+			}
+		});
+		btnBack.setForeground(Color.WHITE);
+		btnBack.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 16));
+		btnBack.setFocusPainted(false);
+		btnBack.setBackground(Color.BLACK);
+		btnBack.setBounds(1146, 86, 177, 38);
+		contentPane.add(btnBack);
 	
 		
 		

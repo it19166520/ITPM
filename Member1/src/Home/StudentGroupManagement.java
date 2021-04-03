@@ -115,6 +115,14 @@ public class StudentGroupManagement {
 		
 		
 		
+		
+		
+	}
+
+	public void Show() {
+		// TODO Auto-generated method stub
+		JFrame ho = this.frame;
+		ho.show();
 	}
 
 }
