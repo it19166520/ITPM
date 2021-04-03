@@ -21,9 +21,12 @@ import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.JComboBox;
 import java.awt.SystemColor;
 import javax.swing.JSpinner;
@@ -227,14 +230,8 @@ public class AddManageTags extends JFrame {
 		AddTagFormPanel.add(txtTagName);
 		txtTagName.setColumns(10);
 		
+		//--------//
 		txtTagCode = new JTextField();
-		txtTagCode.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				lbl_empTagCode.setText("");
-				
-			}
-		});
 		txtTagCode.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		txtTagCode.setColumns(10);
 		txtTagCode.setBounds(136, 174, 235, 23);
@@ -279,7 +276,7 @@ public class AddManageTags extends JFrame {
 				{
 					lbl_empTagName.setText("Required");
 					lbl_empTagCode.setText("Required");
-				//	lbl_empReTag.setText("Required");
+					lbl_empReTag.setText("Required");
 					
 					
 				}
@@ -295,8 +292,7 @@ public class AddManageTags extends JFrame {
 				}
 				//else if(((String) RelatedTagComboBox.getSelectedItem()).trim().isEmpty())
 				//{
-					
-				//	lbl_empReTag.setText("Required");
+					//lbl_empReTag.setText("Required");
 				//}
 				
 				
@@ -374,7 +370,7 @@ public class AddManageTags extends JFrame {
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
-		scrollPane.setBackground(Color.WHITE);
+		//scrollPane.setBackground(Color.WHITE);
 		scrollPane.setBounds(26, 27, 672, 456);
 		ViewTagsPanel.add(scrollPane);
 		
@@ -382,8 +378,14 @@ public class AddManageTags extends JFrame {
 		ViewTagsTable.setRowHeight(18);
 		ViewTagsTable.setBorder(null);
 		ViewTagsTable.setShowHorizontalLines(false);
-		ViewTagsTable.setBackground(Color.WHITE);
-		ViewTagsTable.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		//ViewTagsTable.setBackground(Color.WHITE);
+		ViewTagsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		ViewTagsTable.setSelectionBackground(new Color(107,185,240));
+		ViewTagsTable.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
+		ViewTagsTable.getTableHeader().setOpaque(false);
+		ViewTagsTable.getTableHeader().setBackground(new Color(32,236,203));
+		ViewTagsTable.setForeground(new Color(255,255,255));
+		ViewTagsTable.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		
 	//fetch clicked data into a form
 		ViewTagsTable.addMouseListener(new MouseAdapter() {
