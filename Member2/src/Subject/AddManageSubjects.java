@@ -1059,7 +1059,10 @@ public class AddManageSubjects extends JFrame {
 		btnNewButton_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				HomePage sub = new HomePage();
+				sub.show();
+						
+						
 			}
 		});
 		btnNewButton_7.setForeground(new Color(255, 255, 255));

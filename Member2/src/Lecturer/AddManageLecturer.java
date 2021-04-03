@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 
 import DBConnection.SqlServerConnection;
+import Home.HomePage;
 import net.proteanit.sql.DbUtils;
 
 import java.awt.Color;
@@ -2188,6 +2189,14 @@ public class AddManageLecturer extends JFrame {
 		panel_7.add(lblNewLabel_34);
 		
 		JButton btnNewButton_11 = new JButton("Back To Home");
+		btnNewButton_11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				HomePage sub = new HomePage();
+				sub.show();
+				
+			}
+		});
 		btnNewButton_11.setBackground(new Color(30, 144, 255));
 		btnNewButton_11.setForeground(new Color(255, 255, 255));
 		btnNewButton_11.setFont(new Font("Tahoma", Font.BOLD, 15));
