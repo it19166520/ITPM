@@ -313,6 +313,7 @@ public class AddManageLecturer extends JFrame {
 		
 		txtCampus = new JComboBox(campus);
 		txtCampus.setBackground(Color.WHITE);
+		txtCampus.setModel(new DefaultComboBoxModel(new String[] {"Malabe", "Metro", "Matara", "Kandy", "Kurunagala", "Jaffna"}));
 		txtCampus.setSelectedIndex(-1);
 		txtCampus.setFont(new Font("Tahoma", Font.BOLD, 10));
 		txtCampus.setBounds(210, 175, 360, 21);
@@ -370,6 +371,7 @@ public class AddManageLecturer extends JFrame {
 		txtFaculty.setBounds(212, 87, 358, 21);
 		panel_8.add(txtFaculty);
 		txtFaculty.setBackground(Color.WHITE);
+		txtFaculty.setModel(new DefaultComboBoxModel(new String[] {"Faculty of Computing", "Faculty of Engineering", "Faculty of Business", "Faculty of Medicine", "Faculty of Archtecture", "Faculty of Humanties & Sciences", "Faculty of Graduate Studies and Research"}));
 		txtFaculty.setSelectedIndex(-1);
 		txtFaculty.setFont(new Font("Tahoma", Font.BOLD, 10));
 		
@@ -377,12 +379,14 @@ public class AddManageLecturer extends JFrame {
 		txtDepartment.setBounds(210, 133, 360, 21);
 		panel_8.add(txtDepartment);
 		txtDepartment.setBackground(Color.WHITE);
+		txtDepartment.setModel(new DefaultComboBoxModel(new String[] {"Department of Information Technology", "Department of Computer Systems Engineering", "Department of Computer Science & Software Engineering", "Department of Business Management", "Department of Business Management", "Department of nursing", "Department of Archtecture"}));
 		txtDepartment.setSelectedIndex(-1);
 		txtDepartment.setFont(new Font("Tahoma", Font.BOLD, 10));
 		
 		txtBuilding = new JComboBox(buildingNumber);
 		txtBuilding.setBounds(210, 219, 360, 21);
 		panel_8.add(txtBuilding);
+		txtBuilding.setModel(new DefaultComboBoxModel(new String[] {"New building", "D-block", "Engineering Building", "Business Management Building", "nursing Building", "Archtecture Building"}));
 		txtBuilding.setSelectedIndex(-1);
 		txtBuilding.setBackground(Color.WHITE);
 		txtBuilding.setFont(new Font("Tahoma", Font.BOLD, 10));
@@ -1099,6 +1103,7 @@ public class AddManageLecturer extends JFrame {
 		txtFaculty2.setBounds(188, 134, 326, 21);
 		panel_13.add(txtFaculty2);
 		txtFaculty2.setBackground(Color.WHITE);
+		txtFaculty2.setModel(new DefaultComboBoxModel(new String[] {"Faculty of Computing", "Faculty of Engineering", "Faculty of Business", "Faculty of Medicine", "Faculty of Archtecture", "Faculty of Humanties & Sciences", "Faculty of Graduate Studies and Research"}));
 		txtFaculty2.setSelectedIndex(-1);
 		txtFaculty2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
@@ -1185,6 +1190,7 @@ public class AddManageLecturer extends JFrame {
 		txtBuilding2 = new JComboBox(buildingNumber);
 		txtBuilding2.setBounds(188, 261, 326, 21);
 		panel_13.add(txtBuilding2);
+		txtBuilding2.setModel(new DefaultComboBoxModel(new String[] {"New building", "D-block", "Engineering Building", "Business Management Building", "nursing Building", "Archtecture Building"}));
 		txtBuilding2.setSelectedIndex(-1);
 		txtBuilding2.setBackground(Color.WHITE);
 		txtBuilding2.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -1192,6 +1198,7 @@ public class AddManageLecturer extends JFrame {
 		txtCampus2 = new JComboBox(campus);
 		txtCampus2.setBounds(188, 218, 326, 21);
 		panel_13.add(txtCampus2);
+		txtCampus2.setModel(new DefaultComboBoxModel(new String[] {"Malabe", "Metro", "Matara", "Kandy", "Kurunagala", "Jaffna"}));
 		txtCampus2.setSelectedIndex(-1);
 		txtCampus2.setBackground(Color.WHITE);
 		txtCampus2.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -1199,6 +1206,7 @@ public class AddManageLecturer extends JFrame {
 		txtDepartment2 = new JComboBox(department);
 		txtDepartment2.setBounds(188, 175, 326, 21);
 		panel_13.add(txtDepartment2);
+		txtDepartment2.setModel(new DefaultComboBoxModel(new String[] {"Department of Information Technology", "Department of Computer Systems Engineering", "Department of Computer Science & Software Engineering", "Department of Business Management", "Department of Business Management", "Department of nursing", "Department of Archtecture"}));
 		txtDepartment2.setSelectedIndex(-1);
 		txtDepartment2.setBackground(Color.WHITE);
 		txtDepartment2.setFont(new Font("Tahoma", Font.BOLD, 11));

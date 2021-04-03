@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 
 import DBConnection.SqlServerConnection;
+import Home.HomePage;
 import net.proteanit.sql.DbUtils;
 
 import java.awt.CardLayout;
@@ -275,6 +276,7 @@ public class AddManageSubjects extends JFrame {
 								NumOfEvaltionHours.setBounds(340, 404, 327, 21);
 								panel_8.add(NumOfEvaltionHours);
 								NumOfEvaltionHours.setBackground(Color.WHITE);
+								NumOfEvaltionHours.setModel(new DefaultComboBoxModel(new String[] {"1 hour", "2 hours", "3 hours", "4 hours", "5 hours"}));
 								NumOfEvaltionHours.setSelectedIndex(-1);
 								
 								
@@ -282,6 +284,7 @@ public class AddManageSubjects extends JFrame {
 								NumOfLabHours.setBounds(340, 353, 327, 21);
 								panel_8.add(NumOfLabHours);
 								NumOfLabHours.setBackground(Color.WHITE);
+								NumOfLabHours.setModel(new DefaultComboBoxModel(new String[] {"1 hour", "2 hours", "3 hours", "4 hours", "5 hours"}));
 								NumOfLabHours.setSelectedIndex(-1);
 								
 								
@@ -289,12 +292,14 @@ public class AddManageSubjects extends JFrame {
 								NumOfTuteHours.setBounds(340, 301, 327, 21);
 								panel_8.add(NumOfTuteHours);
 								NumOfTuteHours.setBackground(Color.WHITE);
+								NumOfTuteHours.setModel(new DefaultComboBoxModel(new String[] {"1 hour", "2 hours", "3 hours", "4 hours", "5 hours"}));
 								NumOfTuteHours.setSelectedIndex(-1);
 								
 								NumOfLecHours = new JComboBox(noOflchrs);
 								NumOfLecHours.setBounds(340, 245, 327, 21);
 								panel_8.add(NumOfLecHours);
 								NumOfLecHours.setBackground(Color.WHITE);
+								NumOfLecHours.setModel(new DefaultComboBoxModel(new String[] {"1 hour", "2 hours", "3 hours", "4 hours", "5 hours"}));
 								NumOfLecHours.setSelectedIndex(-1);
 								
 								txtSubCode = new JTextField();
@@ -359,12 +364,14 @@ public class AddManageSubjects extends JFrame {
 									txtSubOffSem.setBounds(340, 84, 327, 21);
 									panel_8.add(txtSubOffSem);
 									txtSubOffSem.setBackground(Color.WHITE);
+									txtSubOffSem.setModel(new DefaultComboBoxModel(new String[] {"1 st Semester", "2 nd Semester"}));
 									txtSubOffSem.setSelectedIndex(-1);
 									
 									
 									txtSubOffYear = new JComboBox(offeredyear);
 									txtSubOffYear.setBounds(340, 29, 327, 21);
 									panel_8.add(txtSubOffYear);
+									txtSubOffYear.setModel(new DefaultComboBoxModel(new String[] {"1 st Year", "2 nd Year", "3 rd Year", "4 th Year"}));
 									txtSubOffYear.setSelectedIndex(-1);
 									txtSubOffYear.addKeyListener(new KeyAdapter() {
 										@Override
@@ -707,6 +714,7 @@ public class AddManageSubjects extends JFrame {
 		txtSubOffYear2.setBounds(243, 74, 286, 21);
 		panel.add(txtSubOffYear2);
 		txtSubOffYear2.setBackground(Color.WHITE);
+		txtSubOffYear2.setModel(new DefaultComboBoxModel(new String[] {"1 st Year", "2 nd Year", "3 rd Year", "4 th Year"}));
 		txtSubOffYear2.setSelectedIndex(-1);
 		
 		txtSubID = new JTextField();
@@ -718,6 +726,7 @@ public class AddManageSubjects extends JFrame {
 		txtSubOffSem2.setBounds(243, 122, 286, 21);
 		panel.add(txtSubOffSem2);
 		txtSubOffSem2.setBackground(Color.WHITE);
+		txtSubOffSem2.setModel(new DefaultComboBoxModel(new String[] {"1 st Semester", "2 nd Semester"}));
 		txtSubOffSem2.setSelectedIndex(-1);
 		
 		txtSubName2 = new JTextField();
@@ -734,12 +743,14 @@ public class AddManageSubjects extends JFrame {
 		txtNumOfLecH2.setBounds(243, 270, 286, 21);
 		panel.add(txtNumOfLecH2);
 		txtNumOfLecH2.setBackground(Color.WHITE);
+		txtNumOfLecH2.setModel(new DefaultComboBoxModel(new String[] {"1 hour", "2 hours", "3 hours", "4 hours", "5 hours"}));
 		txtNumOfLecH2.setSelectedIndex(-1);
 		
 		txtNumOfTuteH2 = new JComboBox(noOflchrs);
 		txtNumOfTuteH2.setBounds(243, 326, 286, 21);
 		panel.add(txtNumOfTuteH2);
 		txtNumOfTuteH2.setBackground(Color.WHITE);
+		txtNumOfTuteH2.setModel(new DefaultComboBoxModel(new String[] {"1 hour", "2 hours", "3 hours", "4 hours", "5 hours"}));
 		txtNumOfTuteH2.setSelectedIndex(-1);
 		
 		
@@ -747,6 +758,7 @@ public class AddManageSubjects extends JFrame {
 		txtNumOfLabH2.setBounds(243, 377, 286, 21);
 		panel.add(txtNumOfLabH2);
 		txtNumOfLabH2.setBackground(Color.WHITE);
+		txtNumOfLabH2.setModel(new DefaultComboBoxModel(new String[] {"1 hour", "2 hours", "3 hours", "4 hours", "5 hours"}));
 		txtNumOfLabH2.setSelectedIndex(-1);
 		
 		
@@ -754,6 +766,7 @@ public class AddManageSubjects extends JFrame {
 		txtNumOfEvaH2.setBounds(243, 426, 286, 21);
 		panel.add(txtNumOfEvaH2);
 		txtNumOfEvaH2.setBackground(Color.WHITE);
+		txtNumOfEvaH2.setModel(new DefaultComboBoxModel(new String[] {"1 hour", "2 hours", "3 hours", "4 hours", "5 hours"}));
 		txtNumOfEvaH2.setSelectedIndex(-1);
 		
 		
@@ -1043,6 +1056,12 @@ public class AddManageSubjects extends JFrame {
 		panel_7.add(lblNewLabel_34);
 		
 		JButton btnNewButton_7 = new JButton("Back To Home");
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
 		btnNewButton_7.setForeground(new Color(255, 255, 255));
 		btnNewButton_7.setBackground(new Color(30, 144, 255));
 		btnNewButton_7.setFont(new Font("Tahoma", Font.BOLD, 14));
