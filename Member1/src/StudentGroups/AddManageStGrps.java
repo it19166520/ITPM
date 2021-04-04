@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import DBConnection.DBConnection;
+import Home.HomePage;
 import Home.StudentGroupManagement;
 import net.proteanit.sql.DbUtils;
 
@@ -814,7 +815,10 @@ public class AddManageStGrps extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				StudentGroupManagement home = new StudentGroupManagement();
+				/*StudentGroupManagement myhome = new StudentGroupManagement();
+				myhome.Show();*/
+				
+				HomePage home = new HomePage();
 				home.Show();
 			}
 		});

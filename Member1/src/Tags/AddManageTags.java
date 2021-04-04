@@ -34,6 +34,7 @@ import java.awt.Window;
 import javax.swing.JSpinner;
 
 import DBConnection.DBConnection;
+import Home.HomePage;
 import Home.StudentGroupManagement;
 import net.proteanit.sql.DbUtils;
 
@@ -661,7 +662,10 @@ public class AddManageTags extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				StudentGroupManagement home = new StudentGroupManagement();
+				/*StudentGroupManagement myhome = new StudentGroupManagement();
+				myhome.Show();*/
+				
+				HomePage home = new HomePage();
 				home.Show();
 			}
 		});
