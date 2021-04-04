@@ -379,16 +379,16 @@ public class AddManageTags extends JFrame {
 		ViewTagsPanel.add(scrollPane);
 		
 		ViewTagsTable = new JTable();
-		ViewTagsTable.setRowHeight(18);
-		ViewTagsTable.setBorder(null);
-		ViewTagsTable.setShowHorizontalLines(false);
+		ViewTagsTable.setRowHeight(30);
+		//ViewTagsTable.setBorder(new LineBorder(new Color(0,0,0),2));
+		//ViewTagsTable.setShowHorizontalLines(false);
 		//ViewTagsTable.setBackground(Color.WHITE);
 		ViewTagsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		ViewTagsTable.setSelectionBackground(new Color(107,185,240));
 		ViewTagsTable.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		ViewTagsTable.getTableHeader().setOpaque(false);
+		ViewTagsTable.getTableHeader().setForeground(new Color(255,255,255));
 		ViewTagsTable.getTableHeader().setBackground(new Color(32,236,203));
-		ViewTagsTable.setForeground(new Color(255,255,255));
 		ViewTagsTable.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		
 	//fetch clicked data into a form
@@ -655,6 +655,7 @@ public class AddManageTags extends JFrame {
 		contentPane.add(btnManageTags);
 		
 		btnBack = new JButton("Back");
+		btnBack.setBorder(new LineBorder(new Color(64, 64, 64)));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
