@@ -234,7 +234,7 @@ public class AddManageTags extends JFrame {
 		AddTagFormPanel.add(txtTagName);
 		txtTagName.setColumns(10);
 		
-		//--------//
+	
 		txtTagCode = new JTextField();
 		txtTagCode.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		txtTagCode.setColumns(10);
@@ -280,9 +280,7 @@ public class AddManageTags extends JFrame {
 				{
 					lbl_empTagName.setText("Required");
 					lbl_empTagCode.setText("Required");
-					lbl_empReTag.setText("Required");
-					
-					
+					//lbl_empReTag.setText("Required");
 				}
 				
 				else if(txtTagName.getText().trim().isEmpty())
@@ -303,6 +301,10 @@ public class AddManageTags extends JFrame {
 				else {
 					 	
 							try {
+								
+									lbl_empTagName.setText("");
+									lbl_empTagCode.setText("");
+									lbl_empReTag.setText("");
 					
 									String query="insert into Tag(TagName,TagCode,RelatedTag) values(?,?,?)";
 									PreparedStatement pstat=connection.prepareStatement(query);
@@ -355,7 +357,7 @@ public class AddManageTags extends JFrame {
 		
 		lbl_empReTag = new JLabel("");
 		lbl_empReTag.setForeground(Color.RED);
-		lbl_empReTag.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lbl_empReTag.setFont(new Font("Tahoma", Font.ITALIC, 14));
 		lbl_empReTag.setBounds(161, 282, 210, 17);
 		AddTagFormPanel.add(lbl_empReTag);
 	
@@ -375,7 +377,7 @@ public class AddManageTags extends JFrame {
 		scrollPane = new JScrollPane();
 		scrollPane.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		//scrollPane.setBackground(Color.WHITE);
-		scrollPane.setBounds(26, 27, 672, 456);
+		scrollPane.setBounds(22, 11, 694, 472);
 		ViewTagsPanel.add(scrollPane);
 		
 		ViewTagsTable = new JTable();

@@ -59,7 +59,7 @@ public class StudentGroupManagement {
 		frame.getContentPane().setLayout(null);
 		
 		panel = new JPanel();
-		panel.setBorder(new LineBorder(SystemColor.textHighlight));
+		panel.setBorder(new LineBorder(Color.BLUE, 2));
 		panel.setBounds(0, 0, 1365, 75);
 		panel.setForeground(Color.WHITE);
 		panel.setBackground(new Color(75, 119, 190));
@@ -120,7 +120,7 @@ public class StudentGroupManagement {
 	}
 
 	public void Show() {
-		// TODO Auto-generated method stub
+		
 		JFrame ho = this.frame;
 		ho.show();
 	}

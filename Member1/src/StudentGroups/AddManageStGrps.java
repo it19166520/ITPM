@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import DBConnection.DBConnection;
+import Home.StudentGroupManagement;
 import net.proteanit.sql.DbUtils;
 
 import javax.swing.JLayeredPane;
@@ -29,6 +30,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
@@ -87,6 +89,9 @@ public class AddManageStGrps extends JFrame {
 	private JTextField textViewStGrpID;
 	private JTextField ViewGrpNumbertxt;
 	private JTextField ViewSubGrpNotxt;
+	private JLabel lblemp_grpID;
+	private JLabel lblemp_SubgrpID;
+	private JButton btnBack;
 
 	/**
 	 * Launch the application.
@@ -289,44 +294,65 @@ public class AddManageStGrps extends JFrame {
 		btnSaveAdd = new JButton("Save");
 		btnSaveAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				try {
-					
-					String query1 = "insert into StudentGroups(AcademicYrSem,Program,GroupNo,SubGroupNo,GroupID,SubGroupID) values(?,?,?,?,?,?)";
-					PreparedStatement pstat=connection.prepareStatement(query1);
-					
-					String AcYrSem = AcademicYrSemList.getSelectedItem().toString();
-					pstat.setString(1, AcYrSem);
-					
-					String prog = ProgramListCB.getSelectedItem().toString();
-					pstat.setString(2, prog);
-					
-					String gpSpinner = GroupNoSpinner.getValue().toString();
-					pstat.setString(3, gpSpinner);
-					
-					String subgpSpinner = SubGroupNoSpinner.getValue().toString();
-					pstat.setString(4, subgpSpinner);
-					
-					//get generated group id and sub group id
-					pstat.setString(5, GrpID.getText());
-					pstat.setString(6, SubGrpID.getText());
-					
-					//data insertion success message
-					pstat.execute();
-					JOptionPane.showMessageDialog(null, "Data inserted successfully!");
-					
-					pstat.close();
-					ClearFields();
-					
-					
-				}
-				catch(Exception e1)
+			
+				if(GrpID.getText().trim().isEmpty() && SubGrpID.getText().trim().isEmpty())
 				{
-					//e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "A Student Group with this ID already exists!!");
+					lblemp_grpID.setText("Please generate the group ID");
+					lblemp_SubgrpID.setText("Please generate the sub group ID");
 				}
 				
+				else if(GrpID.getText().trim().isEmpty())
+				{
+					lblemp_grpID.setText("Please generate the group ID");
+				}
 				
+				else if(SubGrpID.getText().trim().isEmpty())
+				{
+					lblemp_SubgrpID.setText("Please generate the sub group ID");
+				}
+			
+				else {
+					
+						lblemp_grpID.setText("");
+						lblemp_SubgrpID.setText("");
+				
+					try {
+						
+						String query1 = "insert into StudentGroups(AcademicYrSem,Program,GroupNo,SubGroupNo,GroupID,SubGroupID) values(?,?,?,?,?,?)";
+						PreparedStatement pstat=connection.prepareStatement(query1);
+						
+						String AcYrSem = AcademicYrSemList.getSelectedItem().toString();
+						pstat.setString(1, AcYrSem);
+						
+						String prog = ProgramListCB.getSelectedItem().toString();
+						pstat.setString(2, prog);
+						
+						String gpSpinner = GroupNoSpinner.getValue().toString();
+						pstat.setString(3, gpSpinner);
+						
+						String subgpSpinner = SubGroupNoSpinner.getValue().toString();
+						pstat.setString(4, subgpSpinner);
+						
+						//get generated group id and sub group id
+						pstat.setString(5, GrpID.getText());
+						pstat.setString(6, SubGrpID.getText());
+						
+						//data insertion success message
+						pstat.execute();
+						JOptionPane.showMessageDialog(null, "Data inserted successfully!");
+						
+						pstat.close();
+						ClearFields();
+						
+						
+					}
+					catch(Exception e1)
+					{
+						//e1.printStackTrace();
+						JOptionPane.showMessageDialog(null, "A Student Group with this ID already exists!!");
+					}
+				
+				}
 			}
 				
 			
@@ -408,6 +434,18 @@ public class AddManageStGrps extends JFrame {
 		btnGenerateSubGID.setBounds(662, 248, 220, 38);
 		AddFormPanel.add(btnGenerateSubGID);
 		
+		lblemp_grpID = new JLabel("");
+		lblemp_grpID.setFont(new Font("Tahoma", Font.ITALIC, 12));
+		lblemp_grpID.setForeground(Color.RED);
+		lblemp_grpID.setBounds(662, 208, 220, 14);
+		AddFormPanel.add(lblemp_grpID);
+		
+		lblemp_SubgrpID = new JLabel("");
+		lblemp_SubgrpID.setForeground(Color.RED);
+		lblemp_SubgrpID.setFont(new Font("Tahoma", Font.ITALIC, 12));
+		lblemp_SubgrpID.setBounds(662, 364, 220, 14);
+		AddFormPanel.add(lblemp_SubgrpID);
+		
 		
 		
 	//manage student groups panel
@@ -424,15 +462,19 @@ public class AddManageStGrps extends JFrame {
 		ViewStudentGroupsPanel.setLayout(null);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 21, 694, 402);
+		scrollPane.setBackground(Color.WHITE);
+		scrollPane.setBounds(10, 21, 694, 451);
 		ViewStudentGroupsPanel.add(scrollPane);
 		
 		ViewStGrpsTable = new JTable();
-		ViewStGrpsTable.setRowHeight(18);
-		ViewStGrpsTable.setBorder(null);
-		ViewStGrpsTable.setShowHorizontalLines(false);
-		ViewStGrpsTable.setBackground(Color.WHITE);
-		ViewStGrpsTable.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
+		ViewStGrpsTable.setRowHeight(30);
+		ViewStGrpsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		ViewStGrpsTable.setSelectionBackground(new Color(107,185,240));
+		ViewStGrpsTable.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
+		ViewStGrpsTable.getTableHeader().setOpaque(false);
+		ViewStGrpsTable.getTableHeader().setForeground(new Color(255,255,255));
+		ViewStGrpsTable.getTableHeader().setBackground(new Color(32,236,203));
+		ViewStGrpsTable.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		
 	//fetch data after selecting
 		ViewStGrpsTable.addMouseListener(new MouseAdapter() {
@@ -764,6 +806,22 @@ public class AddManageStGrps extends JFrame {
 		btnManageStGroup_1.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 15));
 		btnManageStGroup_1.setBounds(453, 114, 294, 38);
 		contentPane.add(btnManageStGroup_1);
+		
+		btnBack = new JButton("Back");
+		btnBack.setForeground(Color.WHITE);
+		btnBack.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 16));
+		btnBack.setFocusPainted(false);
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				StudentGroupManagement home = new StudentGroupManagement();
+				home.Show();
+			}
+		});
+		btnBack.setBorder(new LineBorder(new Color(64, 64, 64)));
+		btnBack.setBackground(Color.BLACK);
+		btnBack.setBounds(1126, 86, 161, 38);
+		contentPane.add(btnBack);
 	
 		
 		
