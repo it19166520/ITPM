@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import DBConnection.DBConnection;
+import Home.HomePage;
 import net.proteanit.sql.DbUtils;
 
 import javax.swing.JFrame;
@@ -17,6 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BarChart extends JFrame {
 	
@@ -36,6 +40,7 @@ public class BarChart extends JFrame {
 	public static  JTextField textRegRooms;
 	private JPanel panelChart;
 	public static JTextField textRegLecs;
+	private JButton backbtn2;
 
 	/**
 	 * Launch the application.
@@ -113,6 +118,7 @@ public class BarChart extends JFrame {
 		textRegLecs.setHorizontalAlignment(SwingConstants.CENTER);
 		textRegLecs.setFont(new Font("Tahoma", Font.BOLD, 31));
 		textRegLecs.setEditable(false);
+		textRegLecs.setBackground(new Color(228, 241, 254));
 		textRegLecs.setBounds(44, 79, 172, 102);
 		panel.add(textRegLecs);
 		textRegLecs.setColumns(10);
@@ -121,6 +127,7 @@ public class BarChart extends JFrame {
 		textRegStudents.setHorizontalAlignment(SwingConstants.CENTER);
 		textRegStudents.setFont(new Font("Tahoma", Font.BOLD, 30));
 		textRegStudents.setEditable(false);
+		textRegStudents.setBackground(new Color(228, 241, 254));
 		textRegStudents.setColumns(10);
 		textRegStudents.setBounds(366, 79, 172, 102);
 		panel.add(textRegStudents);
@@ -129,6 +136,7 @@ public class BarChart extends JFrame {
 		textRegSubjs.setHorizontalAlignment(SwingConstants.CENTER);
 		textRegSubjs.setFont(new Font("Tahoma", Font.BOLD, 30));
 		textRegSubjs.setEditable(false);
+		textRegSubjs.setBackground(new Color(228, 241, 254));
 		textRegSubjs.setColumns(10);
 		textRegSubjs.setBounds(710, 79, 172, 102);
 		panel.add(textRegSubjs);
@@ -137,6 +145,7 @@ public class BarChart extends JFrame {
 		textRegRooms.setHorizontalAlignment(SwingConstants.CENTER);
 		textRegRooms.setFont(new Font("Tahoma", Font.BOLD, 30));
 		textRegRooms.setEditable(false);
+		textRegRooms.setBackground(new Color(228, 241, 254));
 		textRegRooms.setColumns(10);
 		textRegRooms.setBounds(1023, 79, 172, 102);
 		panel.add(textRegRooms);
@@ -145,6 +154,20 @@ public class BarChart extends JFrame {
 		panelChart.setBounds(330, 221, 631, 392);
 		panel.add(panelChart);
 		panelChart.setLayout(null);
+		
+		backbtn2 = new JButton("Back");
+		backbtn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HomePage home1 = new HomePage();
+				home1.Show();
+			}
+		});
+		backbtn2.setForeground(Color.WHITE);
+		backbtn2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		backbtn2.setFocusPainted(false);
+		backbtn2.setBackground(Color.BLACK);
+		backbtn2.setBounds(1153, 616, 146, 36);
+		panel.add(backbtn2);
 		
 	}
 

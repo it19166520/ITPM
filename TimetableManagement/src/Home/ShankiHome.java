@@ -191,4 +191,12 @@ public class ShankiHome {
 		frame.getContentPane().add(btnStatistic);
 	}
 
+	public void Show() {
+		
+		JFrame ho=this.frame;
+		ho.show();
+		
+	}
+	
+	
 }

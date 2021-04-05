@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import DBConnection.DBConnection;
+import Home.HomePage;
+import Home.ShankiHome;
 import net.proteanit.sql.DbUtils;
 
 import javax.swing.JTextPane;
@@ -55,6 +57,7 @@ public class Location extends JFrame {
 	String roomtype;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JButton btnManageLoc;
+	private JButton backbtn;
 	
 
 	/**
@@ -265,6 +268,29 @@ public class Location extends JFrame {
 		btnManageLoc.setBackground(new Color(27, 163, 156));
 		btnManageLoc.setBounds(1067, 92, 252, 40);
 		contentPane.add(btnManageLoc);
+		
+		backbtn = new JButton("Back");
+		backbtn.setForeground(Color.WHITE);
+		backbtn.setFont(new Font("Tahoma", Font.BOLD, 12));
+		backbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*ShankiHome home=new ShankiHome();
+				home.Show();*/
+				
+				HomePage home1 = new HomePage();
+				home1.Show();
+			
+			
+			}
+			
+		});
+		backbtn.setBackground(Color.WHITE);
+		backbtn.setFont(new Font("Leelawadee UI Semilight",Font.BOLD,16));
+		backbtn.setFocusPainted(false);
+		backbtn.setBackground(Color.black);
+		backbtn.setBounds(1067,550,185,41);
+		contentPane.add(backbtn);
+		
 		
 		
 	}

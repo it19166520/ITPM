@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableModel;
 
 import DBConnection.DBConnection;
+import Home.HomePage;
+import Home.ShankiHome;
 import net.proteanit.sql.DbUtils;
 
 import javax.swing.JTextPane;
@@ -58,6 +60,7 @@ public class ManageLocation extends JFrame {
 	
 	String roomtype;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JButton backbtn2;
 
 	/**
 	 * Launch the application.
@@ -214,11 +217,13 @@ public class ManageLocation extends JFrame {
 		contentPane.add(textViewCapacity);
 		
 		TablePanel = new JPanel();
+		TablePanel.setBackground(new Color(240, 248, 255));
 		TablePanel.setBounds(143, 122, 886, 292);
 		contentPane.add(TablePanel);
 		TablePanel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setFocusable(false);
 		scrollPane.setBounds(32, 11, 794, 270);
 		TablePanel.add(scrollPane);
 		
@@ -226,6 +231,12 @@ public class ManageLocation extends JFrame {
 		tableLocation.setRowHeight(18);
 		tableLocation.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 14));
 		tableLocation.setBackground(Color.WHITE);
+		tableLocation.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,12));
+		tableLocation.getTableHeader().setOpaque(false);
+		tableLocation.getTableHeader().setBackground(new Color(32,136,203));
+		tableLocation.getTableHeader().setForeground(new Color(255,255,255));
+		tableLocation.setRowHeight(30);
+		
 		
 		tableLocation.addMouseListener(new MouseAdapter() {
 			@Override
@@ -384,6 +395,25 @@ public class ManageLocation extends JFrame {
 		lblManage.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblManage.setBounds(515, 86, 342, 40);
 		contentPane.add(lblManage);
+		
+		backbtn2 = new JButton("Back");
+		backbtn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*ShankiHome home=new ShankiHome();
+				home.Show();*/
+				
+				HomePage home1 = new HomePage();
+				home1.Show();
+				
+				
+			}
+		});
+		backbtn2.setForeground(Color.WHITE);
+		backbtn2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		backbtn2.setFocusPainted(false);
+		backbtn2.setBackground(Color.BLACK);
+		backbtn2.setBounds(1117, 613, 146, 36);
+		contentPane.add(backbtn2);
 		
 		
 		
