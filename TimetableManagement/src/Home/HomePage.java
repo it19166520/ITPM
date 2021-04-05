@@ -297,10 +297,6 @@ public class HomePage {
 		btnStatistic.setBackground(new Color(0, 0, 137));
 		btnStatistic.setBounds(663, 368, 435, 66);
 		panel_1.add(btnStatistic);
-		lecDetail.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		
 	}
 	
