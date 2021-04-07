@@ -242,7 +242,7 @@ public class AddManageTags extends JFrame {
 		txtTagCode.setBounds(136, 174, 235, 23);
 		AddTagFormPanel.add(txtTagCode);
 		
-		String[] RelatedTagList = {"Lecture" , "Tutorial", "Laboratory","Evaluation"};
+		String[] RelatedTagList = {"Lecture" , "Tutorial", "Laboratory","Evaluation","Practicals"};
 		RelatedTagComboBox = new JComboBox(RelatedTagList);
 		RelatedTagComboBox.addKeyListener(new KeyAdapter() {
 			@Override

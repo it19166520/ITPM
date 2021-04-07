@@ -128,6 +128,8 @@ public class AddManageStGrps extends JFrame {
 			SubGrpID.setText(null);
 			AcademicYrSemList.setSelectedIndex(-1);
 			ProgramListCB.setSelectedIndex(-1);
+			GroupNoSpinner.setValue(0);
+			SubGroupNoSpinner.setValue(0);
 			
 			//clear fields of manage student groups panel form 
 			AcYrSemViewList.setSelectedIndex(-1);
