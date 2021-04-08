@@ -224,9 +224,9 @@ public class AddManageSubjects extends JFrame {
 		panel_1.setLayout(null);
 						
 						panel_8 = new JPanel();
-						panel_8.setBorder(new TitledBorder(null, "Add Subject Details", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 139)));
+						panel_8.setBorder(new LineBorder(new Color(0, 191, 255)));
 						panel_8.setBackground(new Color(255, 255, 255));
-						panel_8.setBounds(38, 22, 744, 517);
+						panel_8.setBounds(38, 36, 744, 515);
 						panel_1.add(panel_8);
 						panel_8.setLayout(null);
 						
@@ -493,6 +493,12 @@ public class AddManageSubjects extends JFrame {
 											}
 										});
 										btnNewButton_3.setBackground(new Color(58, 83, 155));
+										
+										JLabel lblNewLabel_22 = new JLabel("-  Add New Subject  -");
+										lblNewLabel_22.setBounds(331, 10, 198, 13);
+										panel_1.add(lblNewLabel_22);
+										lblNewLabel_22.setForeground(new Color(0, 0, 205));
+										lblNewLabel_22.setFont(new Font("Tahoma", Font.BOLD, 14));
 										btnNewButton_2.addActionListener(new ActionListener() {
 											public void actionPerformed(ActionEvent e) {
 												
@@ -718,6 +724,7 @@ public class AddManageSubjects extends JFrame {
 		txtSubOffYear2.setSelectedIndex(-1);
 		
 		txtSubID = new JTextField();
+		txtSubID.setEditable(false);
 		txtSubID.setBounds(243, 29, 286, 19);
 		panel.add(txtSubID);
 		txtSubID.setColumns(10);
@@ -735,6 +742,10 @@ public class AddManageSubjects extends JFrame {
 		txtSubName2.setColumns(10);
 		
 		txtSubCode2 = new JTextField();
+		txtSubCode2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		txtSubCode2.setBounds(243, 218, 286, 21);
 		panel.add(txtSubCode2);
 		txtSubCode2.setColumns(10);
