@@ -21,7 +21,7 @@ public class DBConnection {
 			
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			conn = DriverManager.getConnection(url,username,password);
-			JOptionPane.showMessageDialog(null,"Connection Successfull !");
+			//JOptionPane.showMessageDialog(null,"Connection Successfull !");
 			return conn;
 			
 			
