@@ -31,6 +31,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.border.TitledBorder;
 
 public class AddWorkingDays extends JFrame {
 	Connection connection = SqlServerConnection.dbConnecter();
@@ -64,7 +65,7 @@ public class AddWorkingDays extends JFrame {
 		
 		hour.setText(null);
 		minutes.setText(null);
-		
+		txtworkigDaysNum.setText(null);
 	}
 	public AddWorkingDays() {
 		connection = SqlServerConnection.dbConnecter();
@@ -94,54 +95,54 @@ public class AddWorkingDays extends JFrame {
 		
 		JLabel lblId = new JLabel("ID  :");
 		lblId.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblId.setBounds(361, 244, 219, 23);
+		lblId.setBounds(361, 230, 219, 23);
 		addwframe.add(lblId);
 		
 		JLabel l1 = new JLabel("Number of Working Days :");
 		l1.setFont(new Font("Dialog", Font.BOLD, 14));
-		l1.setBounds(361, 471, 237, 23);
+		l1.setBounds(361, 467, 237, 23);
 		addwframe.add(l1);
 		
 		JLabel workingDays = new JLabel("Working Days :");
 		workingDays.setFont(new Font("Dialog", Font.BOLD, 14));
-		workingDays.setBounds(361, 303, 219, 23);
+		workingDays.setBounds(361, 287, 219, 23);
 		addwframe.add(workingDays);
 		
 		
 		
 		JCheckBox monday = new JCheckBox("Monday");
 		monday.setFont(new Font("Dialog", Font.BOLD, 12));
-		monday.setBounds(702, 303, 108, 25);
+		monday.setBounds(702, 287, 108, 25);
 		addwframe.add(monday);
 		
 		JCheckBox tuesday = new JCheckBox("Tuesday");
 		tuesday.setFont(new Font("Dialog", Font.BOLD, 12));
-		tuesday.setBounds(702, 339, 108, 23);
+		tuesday.setBounds(702, 327, 108, 23);
 		addwframe.add(tuesday);
 		
 		JCheckBox wednesday = new JCheckBox("Wednesday");
 		wednesday.setFont(new Font("Dialog", Font.BOLD, 12));
-		wednesday.setBounds(702, 380, 108, 23);
+		wednesday.setBounds(702, 367, 108, 23);
 		addwframe.add(wednesday);
 		
 		JCheckBox thursday = new JCheckBox("Thursday");
 		thursday.setFont(new Font("Dialog", Font.BOLD, 12));
-		thursday.setBounds(702, 422, 108, 22);
+		thursday.setBounds(702, 405, 108, 22);
 		addwframe.add(thursday);
 		
 		JCheckBox saturday = new JCheckBox("Saturday");
 		saturday.setFont(new Font("Dialog", Font.BOLD, 12));
-		saturday.setBounds(869, 339, 108, 23);
+		saturday.setBounds(870, 327, 108, 23);
 		addwframe.add(saturday);
 		
 		JCheckBox sunday = new JCheckBox("Sunday");
 		sunday.setFont(new Font("Dialog", Font.BOLD, 12));
-		sunday.setBounds(869, 380, 109, 23);
+		sunday.setBounds(869, 367, 109, 23);
 		addwframe.add(sunday);
 		
 		JCheckBox friday = new JCheckBox("Friday");
 		friday.setFont(new Font("Dialog", Font.BOLD, 12));
-		friday.setBounds(870, 302, 108, 26);
+		friday.setBounds(869, 286, 108, 26);
 		addwframe.add(friday);
 		
 		textField = new JTextField();
@@ -149,7 +150,7 @@ public class AddWorkingDays extends JFrame {
 		textField.setEditable(false);
 		textField.setColumns(10);
 		textField.setBackground(Color.WHITE);
-		textField.setBounds(702, 244, 276, 25);
+		textField.setBounds(702, 230, 276, 25);
 		addwframe.add(textField);
 		
 		JLabel workingTimePerDay = new JLabel("Working Time Per Day :");
@@ -162,9 +163,15 @@ public class AddWorkingDays extends JFrame {
 		txtworkigDaysNum.setFont(new Font("Tahoma", Font.BOLD, 12));
 		txtworkigDaysNum.setBackground(Color.WHITE);
 		txtworkigDaysNum.setEditable(false);
-		txtworkigDaysNum.setBounds(702, 474, 78, 26);
+		txtworkigDaysNum.setBounds(702, 467, 78, 26);
 		addwframe.add(txtworkigDaysNum);
 		txtworkigDaysNum.setColumns(10);
+		
+		JLabel lb = new JLabel("");
+		lb.setForeground(Color.RED);
+		lb.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lb.setBounds(702, 504, 128, 19);
+		addwframe.add(lb);
 		
 		JLabel lblNewLabel = new JLabel("Hours");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
@@ -198,6 +205,12 @@ public class AddWorkingDays extends JFrame {
 				
 			}
 		});
+		
+		JLabel daylb = new JLabel("");
+		daylb.setForeground(Color.RED);
+		daylb.setFont(new Font("Tahoma", Font.BOLD, 13));
+		daylb.setBounds(985, 540, 108, 23);
+		addwframe.add(daylb);
 		clearbtn.setForeground(Color.BLACK);
 		clearbtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		clearbtn.setBackground(Color.CYAN);
@@ -208,7 +221,24 @@ public class AddWorkingDays extends JFrame {
 		addbtn = new JButton("Add Details");
 		addbtn.setBackground(new Color(58,83,155));
 		addbtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(java.awt.event.ActionEvent eve) {
+				
+				if(txtworkigDaysNum.getText().trim().isEmpty() ) {
+					lb.setText("*Required");
+				}
+				else
+				{
+					lb.setText(" ");
+				}
+				
+				if(hour.getText().trim().isEmpty()|| minutes.getText().trim().isEmpty() ) {
+					daylb.setText("*Required");
+				}
+				else
+				{
+					daylb.setText(" ");
+				}
+				
 				if(hour.getText().equals("")||txtworkigDaysNum.getText().equals("")||minutes.getText().equals(""))
 				{
 					JOptionPane.showMessageDialog(null, "Please Fill Compleate Information");
@@ -283,6 +313,7 @@ public class AddWorkingDays extends JFrame {
 		addwframe.add(addbtn);
 		
 		hour = new JTextField();
+		hour.setFont(new Font("Tahoma", Font.BOLD, 12));
 		hour.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -307,6 +338,7 @@ public class AddWorkingDays extends JFrame {
 		addwframe.add(hour);
 		
 		minutes = new JTextField();
+		minutes.setFont(new Font("Tahoma", Font.BOLD, 12));
 		minutes.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -366,19 +398,14 @@ public class AddWorkingDays extends JFrame {
 		calculate.setForeground(Color.WHITE);
 		calculate.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		calculate.setBackground(new Color(58, 83, 155));
-		calculate.setBounds(784, 467, 193, 39);
+		calculate.setBounds(785, 459, 193, 39);
 		addwframe.add(calculate);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(228, 241, 254));
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 128), 2, true));
-		panel_1.setBounds(275, 219, 821, 459);
+		panel_1.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 128), 2), "Add Working Days And Hours", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 128)));
+		panel_1.setBounds(293, 186, 776, 492);
 		addwframe.add(panel_1);
-		
-		JLabel lblNewLabel_1 = new JLabel("----------Add Working Days And Hours---------");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		lblNewLabel_1.setBounds(529, 187, 400, 21);
-		addwframe.add(lblNewLabel_1);
 		
 		JButton btnViewAndManage_1 = new JButton("View And Manage Working Hours");
 		btnViewAndManage_1.addActionListener(new ActionListener() {
@@ -411,6 +438,20 @@ public class AddWorkingDays extends JFrame {
 		exitbtn.setBackground(new Color(0, 0, 205));
 		exitbtn.setBounds(1220, 84, 124, 50);
 		addwframe.add(exitbtn);
+		
+		JButton btnBackToHome = new JButton("Back To Home");
+		btnBackToHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HomePage p = new HomePage();
+			    p.Homeframe.setVisible(true);
+			    dispose();
+			}
+		});
+		btnBackToHome.setForeground(Color.WHITE);
+		btnBackToHome.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		btnBackToHome.setBackground(new Color(25, 25, 112));
+		btnBackToHome.setBounds(1086, 85, 124, 49);
+		addwframe.add(btnBackToHome);
 		
 		
 		

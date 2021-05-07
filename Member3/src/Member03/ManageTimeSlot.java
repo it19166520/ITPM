@@ -219,13 +219,19 @@ public class ManageTimeSlot extends JFrame {
 		JLabel StartTime = new JLabel("Start Time    :");
 		StartTime.setFont(new Font("Tahoma", Font.BOLD, 13));
 		StartTime.setForeground(Color.BLACK);
-		StartTime.setBounds(36, 291, 125, 22);
+		StartTime.setBounds(39, 267, 125, 22);
 		timeFrame.add(StartTime);
+		
+		JLabel lbstart = new JLabel("");
+		lbstart.setForeground(Color.RED);
+		lbstart.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lbstart.setBounds(210, 297, 128, 19);
+		timeFrame.add(lbstart);
 		
 		JLabel newlab = new JLabel("");
 		newlab.setFont(new Font("Tahoma", Font.ITALIC, 13));
 		newlab.setForeground(Color.RED);
-		newlab.setBounds(462, 291, 552, 30);
+		newlab.setBounds(465, 267, 552, 30);
 		timeFrame.add(newlab);
 
 		txtStartTime = new JTextField();
@@ -254,41 +260,47 @@ public class ManageTimeSlot extends JFrame {
 		txtID.setBackground(new Color(255, 255, 255));
 		txtID.setEditable(false);
 		txtID.setColumns(10);
-		txtID.setBounds(207, 219, 245, 33);
+		txtID.setBounds(210, 195, 245, 33);
 		timeFrame.add(txtID);
 		txtStartTime.setColumns(10);
-		txtStartTime.setBounds(207, 288, 245, 33);
+		txtStartTime.setBounds(210, 264, 245, 33);
 		timeFrame.add(txtStartTime);
 		
 		JLabel slabb = new JLabel("");
 		slabb.setForeground(Color.RED);
 		slabb.setFont(new Font("Tahoma", Font.ITALIC, 13));
-		slabb.setBounds(457, 446, 557, 30);
+		slabb.setBounds(460, 422, 557, 30);
 		timeFrame.add(slabb);
 		
 		JLabel lblNewLabel = new JLabel("Hint : The entering time should be 24 hour format - Ex : 12:30");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel.setForeground(new Color(0, 0, 205));
-		lblNewLabel.setBounds(207, 332, 495, 14);
+		lblNewLabel.setBounds(210, 312, 495, 22);
 		timeFrame.add(lblNewLabel);
+		
+		JLabel lbslot = new JLabel("");
+		lbslot.setForeground(Color.RED);
+		lbslot.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lbslot.setBounds(210, 389, 128, 19);
+		timeFrame.add(lbslot);
 		
 		JLabel duration = new JLabel("Time Slot Duration   :");
 		duration.setFont(new Font("Tahoma", Font.BOLD, 13));
 		duration.setForeground(Color.BLACK);
-		duration.setBounds(36, 383, 164, 22);
+		duration.setBounds(39, 359, 164, 22);
 		timeFrame.add(duration);
 		
 		JComboBox slot = new JComboBox();
 		slot.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		slot.setBackground(new Color(255, 255, 255));
 		slot.setModel(new DefaultComboBoxModel(new String[] {"","1 Hour", "30 Minutes"}));
-		slot.setBounds(207, 380, 245, 33);
+		slot.setBounds(210, 356, 245, 33);
 		timeFrame.add(slot);
 		
 		JLabel endTime = new JLabel("End Time    :");
 		endTime.setFont(new Font("Tahoma", Font.BOLD, 13));
 		endTime.setForeground(Color.BLACK);
-		endTime.setBounds(36, 446, 89, 22);
+		endTime.setBounds(39, 422, 89, 22);
 		timeFrame.add(endTime);
 		
 		txtEndTime = new JTextField();
@@ -311,14 +323,20 @@ public class ManageTimeSlot extends JFrame {
 			}
 			}
 		});
+		
+		JLabel lbend = new JLabel("");
+		lbend.setForeground(Color.RED);
+		lbend.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lbend.setBounds(210, 452, 128, 19);
+		timeFrame.add(lbend);
 		txtEndTime.setColumns(10);
-		txtEndTime.setBounds(207, 443, 245, 33);
+		txtEndTime.setBounds(210, 419, 245, 33);
 		timeFrame.add(txtEndTime);
 		
 		JLabel lblNewLabel_1 = new JLabel("Hint : The entering time should be 24 hour format - Ex : 12:30");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_1.setForeground(new Color(0, 0, 205));
-		lblNewLabel_1.setBounds(207, 487, 495, 14);
+		lblNewLabel_1.setBounds(210, 463, 495, 22);
 		timeFrame.add(lblNewLabel_1);
 		
 		JButton update = new JButton("Update Details");
@@ -327,6 +345,34 @@ public class ManageTimeSlot extends JFrame {
 		update.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		update.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(txtStartTime.getText().trim().isEmpty() ) {
+					lbstart.setText("*Required");
+				}
+				else
+				{
+					lbstart.setText(" ");
+				}
+				
+				if(txtEndTime.getText().trim().isEmpty() ) {
+					lbend.setText("*Required");
+				}
+				else
+				{
+					lbend.setText(" ");
+				}
+			
+				if(((String) slot.getSelectedItem()).trim().isEmpty() ) {
+					lbslot.setText("*Required");
+				}
+				else
+				{
+					lbslot.setText(" ");
+				}
+				if(txtStartTime.getText().equals("")||slot.getSelectedItem().equals("")||txtEndTime.getText().equals(""))
+				{
+					JOptionPane.showMessageDialog(null, "Please Fill Compleate Information");
+				}
+				else {
 				int opt = JOptionPane.showConfirmDialog(null, "Are You Sure to Update Details?","Update", JOptionPane.YES_NO_OPTION);
 				
 				if(opt ==0) {
@@ -365,10 +411,10 @@ public class ManageTimeSlot extends JFrame {
 			}
 			
 				
-				
+				}
 			}
 		});
-		update.setBounds(109, 531, 207, 49);
+		update.setBounds(112, 507, 207, 49);
 		timeFrame.add(update);
 		
 		JButton delete = new JButton("Delete Details");
@@ -406,12 +452,12 @@ public class ManageTimeSlot extends JFrame {
 			}}
 			
 		});
-		delete.setBounds(373, 531, 207, 49);
+		delete.setBounds(376, 507, 207, 49);
 		timeFrame.add(delete);
 		
 		JScrollPane scrol = new JScrollPane();
 		
-		scrol.setBounds(688, 174, 656, 504);
+		scrol.setBounds(691, 150, 656, 504);
 		timeFrame.add(scrol);
 		
 		jTable_Display = new JTable();
@@ -500,7 +546,7 @@ public class ManageTimeSlot extends JFrame {
 			
 			}
 		});
-		btnClear.setBounds(231, 610, 207, 49);
+		btnClear.setBounds(234, 586, 207, 49);
 		timeFrame.add(btnClear);
 		
 		JButton exitbtn = new JButton("Exit\r\n");
@@ -534,7 +580,7 @@ public class ManageTimeSlot extends JFrame {
 		btnNewButton.setBounds(1082, 90, 124, 49);
 		timeFrame.add(btnNewButton);
 		JLabel id = new JLabel("ID    :");
-		id.setBounds(36, 224, 39, 19);
+		id.setBounds(39, 200, 39, 19);
 		timeFrame.add(id);
 		id.setFont(new Font("Tahoma", Font.BOLD, 13));
 		id.setForeground(Color.BLACK);
@@ -553,11 +599,6 @@ public class ManageTimeSlot extends JFrame {
 		txtrTimeTableManagement.setEditable(false);
 		txtrTimeTableManagement.setBackground(new Color(75, 119, 190));
 		panel.add(txtrTimeTableManagement);
-		
-		JLabel lblNewLabel_2 = new JLabel("----------------Add Time Slot---------------");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		lblNewLabel_2.setBounds(164, 148, 288, 14);
-		timeFrame.add(lblNewLabel_2);
 		
 		JButton btnLoadTable = new JButton("Load Table ");
 		btnLoadTable.addActionListener(new ActionListener() {
@@ -588,8 +629,8 @@ public class ManageTimeSlot extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(228, 241, 254));
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 128), 2));
-		panel_1.setBounds(10, 174, 625, 505);
+		panel_1.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 128), 2, true), "Manage Time Slots", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 128)));
+		panel_1.setBounds(13, 150, 625, 504);
 		timeFrame.add(panel_1);
 		
 		

@@ -26,6 +26,7 @@ import javax.swing.border.LineBorder;
 import DBConnection.SqlServerConnection;
 
 import javax.swing.JTextArea;
+import javax.swing.border.TitledBorder;
 
 public class AddTimeSlot extends JFrame {
 	Connection connection = SqlServerConnection.dbConnecter();
@@ -74,7 +75,7 @@ public class AddTimeSlot extends JFrame {
 		JLabel id = new JLabel("ID    :");
 		id.setForeground(Color.BLACK);
 		id.setFont(new Font("Dialog", Font.BOLD, 14));
-		id.setBounds(406, 236, 39, 19);
+		id.setBounds(405, 214, 39, 19);
 		addTimeSlotFrame.add(id);
 		
 		txtID = new JTextField();
@@ -82,20 +83,20 @@ public class AddTimeSlot extends JFrame {
 		txtID.setEditable(false);
 		txtID.setColumns(10);
 		txtID.setBackground(Color.WHITE);
-		txtID.setBounds(577, 231, 245, 33);
+		txtID.setBounds(576, 209, 245, 33);
 		addTimeSlotFrame.add(txtID);
 		
 		JLabel newlabb = new JLabel("");
 		newlabb.setForeground(Color.RED);
 		newlabb.setFont(new Font("Tahoma", Font.ITALIC, 13));
-		newlabb.setBounds(832, 303, 477, 30);
+		newlabb.setBounds(831, 281, 477, 30);
 		addTimeSlotFrame.add(newlabb);
 		
 		txtStartTime = new JTextField();
 		txtStartTime.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtStartTime.setColumns(10);
 		txtStartTime.setBackground(Color.WHITE);
-		txtStartTime.setBounds(577, 300, 245, 33);
+		txtStartTime.setBounds(576, 278, 245, 33);
 		addTimeSlotFrame.add(txtStartTime);
 		txtStartTime.addKeyListener(new KeyAdapter() {
 			@Override
@@ -119,57 +120,99 @@ public class AddTimeSlot extends JFrame {
 		JLabel StartTime = new JLabel("Start Time    :");
 		StartTime.setForeground(Color.BLACK);
 		StartTime.setFont(new Font("Dialog", Font.BOLD, 14));
-		StartTime.setBounds(406, 303, 125, 22);
+		StartTime.setBounds(405, 281, 125, 22);
 		addTimeSlotFrame.add(StartTime);
 		
 		JLabel lblNewLabel = new JLabel("Hint : The entering time should be 24 hour format - Ex : 12:30");
 		lblNewLabel.setForeground(new Color(0, 0, 205));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblNewLabel.setBounds(577, 344, 495, 30);
+		lblNewLabel.setBounds(576, 330, 495, 30);
 		addTimeSlotFrame.add(lblNewLabel);
 		
 	
 		JLabel duration = new JLabel("Time Slot Duration   :");
 		duration.setForeground(Color.BLACK);
 		duration.setFont(new Font("Dialog", Font.BOLD, 14));
-		duration.setBounds(406, 395, 164, 22);
+		duration.setBounds(405, 389, 164, 22);
 		addTimeSlotFrame.add(duration);
+		
+		JLabel slotlb = new JLabel("");
+		slotlb.setForeground(Color.RED);
+		slotlb.setFont(new Font("Tahoma", Font.BOLD, 13));
+		slotlb.setBounds(576, 422, 138, 14);
+		addTimeSlotFrame.add(slotlb);
 		
 		JComboBox slot = new JComboBox();
 		slot.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		slot.setModel(new DefaultComboBoxModel(new String[] {" ","1 Hour", "30 Minutes"}));
 		slot.setBackground(Color.WHITE);
-		slot.setBounds(577, 392, 245, 33);
+		slot.setBounds(576, 385, 245, 33);
 		addTimeSlotFrame.add(slot);
 		
 		JLabel endTime = new JLabel("End Time    :");
 		endTime.setForeground(Color.BLACK);
 		endTime.setFont(new Font("Dialog", Font.BOLD, 14));
-		endTime.setBounds(406, 458, 89, 22);
+		endTime.setBounds(405, 457, 89, 22);
 		addTimeSlotFrame.add(endTime);
 		
 		txtEndTime = new JTextField();
 		txtEndTime.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtEndTime.setColumns(10);
 		txtEndTime.setBackground(Color.WHITE);
-		txtEndTime.setBounds(577, 455, 245, 33);
+		txtEndTime.setBounds(576, 453, 245, 33);
 		addTimeSlotFrame.add(txtEndTime);
+		
+		JLabel lbstart = new JLabel("");
+		lbstart.setForeground(Color.RED);
+		lbstart.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lbstart.setBounds(576, 316, 138, 14);
+		addTimeSlotFrame.add(lbstart);
+		
+		JLabel lbend = new JLabel("");
+		lbend.setForeground(Color.RED);
+		lbend.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lbend.setBounds(576, 491, 138, 14);
+		addTimeSlotFrame.add(lbend);
 		
 		JLabel slabbb = new JLabel("");
 		slabbb.setForeground(Color.RED);
 		slabbb.setFont(new Font("Tahoma", Font.ITALIC, 13));
-		slabbb.setBounds(827, 458, 495, 30);
+		slabbb.setBounds(827, 457, 495, 30);
 		addTimeSlotFrame.add(slabbb);
 		
 		JLabel lblNewLabel_1 = new JLabel("Hint : The entering time should be 24 hour format - Ex : 12:30");
 		lblNewLabel_1.setForeground(new Color(0, 0, 205));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(577, 499, 495, 30);
+		lblNewLabel_1.setBounds(576, 503, 495, 30);
 		addTimeSlotFrame.add(lblNewLabel_1);
 		
 		JButton add = new JButton("Add Details");
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				if(txtStartTime.getText().trim().isEmpty() ) {
+					lbstart.setText("*Required");
+				}
+				else
+				{
+					lbstart.setText(" ");
+				}
+				
+				if(txtEndTime.getText().trim().isEmpty() ) {
+					lbend.setText("*Required");
+				}
+				else
+				{
+					lbend.setText(" ");
+				}
+			
+				if(((String) slot.getSelectedItem()).trim().isEmpty() ) {
+					slotlb.setText("*Required");
+				}
+				else
+				{
+					slotlb.setText(" ");
+				}
 				
 				if(txtStartTime.getText().equals("")||txtEndTime.getText().equals(""))
 				{
@@ -203,7 +246,7 @@ public class AddTimeSlot extends JFrame {
 		add.setForeground(Color.WHITE);
 		add.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		add.setBackground(new Color(58,83,155));
-		add.setBounds(362, 558, 262, 49);
+		add.setBounds(363, 558, 262, 49);
 		addTimeSlotFrame.add(add);
 		
 		JButton btnViewAndManage = new JButton("View And Manage Time Slot");
@@ -267,14 +310,23 @@ public class AddTimeSlot extends JFrame {
 		addTimeSlotFrame.add(btnClear);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 128), 2, true));
+		panel_1.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 128), 2, true), "Add New Time Slot", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 128)));
 		panel_1.setBackground(new Color(228, 241, 254));
-		panel_1.setBounds(282, 182, 792, 468);
+		panel_1.setBounds(282, 170, 792, 475);
 		addTimeSlotFrame.add(panel_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("----------Add New Time Slots---------");
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		lblNewLabel_1_1.setBounds(536, 150, 400, 21);
-		addTimeSlotFrame.add(lblNewLabel_1_1);
+		JButton btnBackToHome = new JButton("Back To Home");
+		btnBackToHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HomePage p = new HomePage();
+			    p.Homeframe.setVisible(true);
+			    dispose();
+			}
+		});
+		btnBackToHome.setForeground(Color.WHITE);
+		btnBackToHome.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		btnBackToHome.setBackground(new Color(25, 25, 112));
+		btnBackToHome.setBounds(1080, 90, 124, 49);
+		addTimeSlotFrame.add(btnBackToHome);
 	}
 }

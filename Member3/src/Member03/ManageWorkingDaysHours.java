@@ -50,6 +50,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JRadioButton;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.border.TitledBorder;
 
 public class ManageWorkingDaysHours extends JFrame {
 	Connection connection = SqlServerConnection.dbConnecter();
@@ -58,7 +59,6 @@ public class ManageWorkingDaysHours extends JFrame {
 	
 	
 	JPanel addFramew;
-	private JTextField txtmanageWorkingDays;
 	private JTable jtableShow;
 	DefaultTableModel model;
 	private JTextField txtID;
@@ -224,16 +224,6 @@ public class ManageWorkingDaysHours extends JFrame {
 		txtrTimeTableManagement.setFont(new Font("Tahoma", Font.BOLD, 23));
 		txtrTimeTableManagement.setBackground(new Color(75,119,190));
 		panel.add(txtrTimeTableManagement);
-		
-		txtmanageWorkingDays = new JTextField();
-		txtmanageWorkingDays.setBorder(null);
-		txtmanageWorkingDays.setEditable(false);
-		txtmanageWorkingDays.setText("--------------Manage Working Days And Hours---------------");
-		txtmanageWorkingDays.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
-		txtmanageWorkingDays.setColumns(10);
-		txtmanageWorkingDays.setBackground(Color.WHITE);
-		txtmanageWorkingDays.setBounds(187, 152, 362, 26);
-		addFramew.add(txtmanageWorkingDays);
 		
 		JLabel lblId = new JLabel("ID  :");
 		lblId.setFont(new Font("Dialog", Font.BOLD, 14));
@@ -620,18 +610,18 @@ public class ManageWorkingDaysHours extends JFrame {
 		addFramew.add(txtID);
 		txtID.setColumns(10);
 		
-		JButton exitbtn = new JButton("Exit\r\n");
+		JButton exitbtn = new JButton("Back To Home\r\n");
 		exitbtn.setForeground(Color.WHITE);
 		exitbtn.setFont(new Font("Tahoma", Font.BOLD, 12));
 		exitbtn.setBackground(new Color(0, 0, 205));
 		exitbtn.setBounds(1220, 90, 124, 50);
 		addFramew.add(exitbtn);
 		
-		JButton btnAddNewTime = new JButton("Add New Working Days And Hours");
+		JButton btnAddNewTime = new JButton("Add Time Slot Of The Timetable");
 		btnAddNewTime.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AddWorkingDays working = new AddWorkingDays();
-				working.addworkingdays();
+				AddTimeSlot working = new AddTimeSlot();
+				working.addtimeslott();
 				dispose();
 			}
 		});
@@ -639,7 +629,7 @@ public class ManageWorkingDaysHours extends JFrame {
 		btnAddNewTime.setForeground(Color.WHITE);
 		btnAddNewTime.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnAddNewTime.setBackground(new Color(25, 25, 112));
-		btnAddNewTime.setBounds(886, 90, 308, 50);
+		btnAddNewTime.setBounds(915, 90, 279, 50);
 		addFramew.add(btnAddNewTime);
 		
 		load = new JButton("Load Details Table");
@@ -687,31 +677,20 @@ public class ManageWorkingDaysHours extends JFrame {
 		load.setForeground(Color.WHITE);
 		load.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		load.setBackground(new Color(0, 0, 139));
-		load.setBounds(638, 90, 229, 52);
+		load.setBounds(676, 88, 229, 52);
 		addFramew.add(load);
 		
 		panel_2 = new JPanel();
 		panel_2.setBackground(new Color(228, 241, 254));
-		panel_2.setBorder(new LineBorder(new Color(0, 0, 128), 2, true));
-		panel_2.setBounds(25, 183, 662, 495);
-		addFramew.add(panel_2);
-		
-
-	
-		
-	
-		
-		
-		
-		
+		panel_2.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 128), 2, true), "Manage Working Days And Hours", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 128)));
+		panel_2.setBounds(25, 176, 662, 502);
+		addFramew.add(panel_2);		
 	
 		exitbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				addFramew= new JPanel();
-				if (JOptionPane.showConfirmDialog(addFramew,"Conform if you want to exit !","System",
-						JOptionPane.YES_NO_CANCEL_OPTION)==JOptionPane.YES_NO_OPTION) {
-					System.exit(0);
-				}
+				HomePage2 hp = new HomePage2();
+				hp.wokingDayHourframe.setVisible(true);
+				dispose();
 			}
 		});
 	}

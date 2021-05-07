@@ -90,8 +90,8 @@ public class HomePage {
 		Homeframe.getContentPane().add(btnWorkingDaysHours);
 		btnWorkingDaysHours.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				HomePage2 working = new HomePage2();
-				working.wokingDayHourframe.setVisible(true);
+				HomePage2 hp = new HomePage2();
+				hp.wokingDayHourframe.setVisible(true);;
 				Homeframe.dispose();
 			}
 		});

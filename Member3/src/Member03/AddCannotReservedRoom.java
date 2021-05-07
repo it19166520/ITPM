@@ -27,6 +27,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextArea;
+import javax.swing.border.TitledBorder;
 
 public class AddCannotReservedRoom extends JFrame {
 	Connection connection = SqlServerConnection.dbConnecter();
@@ -70,7 +71,7 @@ public class AddCannotReservedRoom extends JFrame {
 		contentPane.add(id);
 		
 		txtID = new JTextField();
-		txtID.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtID.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtID.setEditable(false);
 		txtID.setColumns(10);
 		txtID.setBackground(Color.WHITE);
@@ -84,7 +85,7 @@ public class AddCannotReservedRoom extends JFrame {
 		contentPane.add(lblSelectTheRoom);
 		
 		JComboBox txtRoom = new JComboBox();
-		txtRoom.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtRoom.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtRoom.setBackground(Color.WHITE);
 		txtRoom.setModel(new DefaultComboBoxModel(new String[] {"","A501","F501","B502","N3B-PcLab","A3B-PcLab","C3B-PcLab"}));
 		txtRoom.setBounds(574, 260, 356, 33);
@@ -97,7 +98,7 @@ public class AddCannotReservedRoom extends JFrame {
 		contentPane.add(lblSelectTheDay);
 		
 		JComboBox txtDay = new JComboBox();
-		txtDay.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtDay.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtDay.setBackground(Color.WHITE);
 		txtDay.setModel(new DefaultComboBoxModel(new String[] {"","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"}));
 		txtDay.setBounds(574, 323, 356, 33);
@@ -135,7 +136,7 @@ public class AddCannotReservedRoom extends JFrame {
 				}
 			});
 
-		txtStartTime.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtStartTime.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtStartTime.setColumns(10);
 		txtStartTime.setBackground(Color.WHITE);
 		txtStartTime.setBounds(574, 386, 356, 33);
@@ -179,7 +180,7 @@ public class AddCannotReservedRoom extends JFrame {
 			}
 		});
 
-		txtEnd.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtEnd.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtEnd.setColumns(10);
 		txtEnd.setBackground(Color.WHITE);
 		txtEnd.setBounds(574, 483, 356, 33);
@@ -290,14 +291,40 @@ public class AddCannotReservedRoom extends JFrame {
 		contentPane.add(add);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 128), 2, true));
+		panel_1.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 128), 2, true), "Add A Room Cannot Be Reserved", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 128)));
 		panel_1.setBackground(new Color(228, 241, 254));
-		panel_1.setBounds(278, 174, 792, 504);
+		panel_1.setBounds(303, 163, 792, 515);
 		contentPane.add(panel_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("----------Add A Room Details Which Cannot Be Reserved---------");
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		lblNewLabel_1_1.setBounds(456, 150, 454, 21);
-		contentPane.add(lblNewLabel_1_1);
+		JButton btnBackToHome = new JButton("Back To Home");
+		btnBackToHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				HomePage p = new HomePage();
+			    p.Homeframe.setVisible(true);
+			    dispose();
+			}
+		});
+		btnBackToHome.setForeground(Color.WHITE);
+		btnBackToHome.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
+		btnBackToHome.setBackground(new Color(25, 25, 112));
+		btnBackToHome.setBounds(1076, 91, 124, 49);
+		contentPane.add(btnBackToHome);
+		
+		JButton exitbtn = new JButton("Exit\r\n");
+		exitbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				contentPane= new JPanel();
+				if (JOptionPane.showConfirmDialog(contentPane,"Conform if you want to exit !","System",
+						JOptionPane.YES_NO_CANCEL_OPTION)==JOptionPane.YES_NO_OPTION) {
+					System.exit(0);
+				}
+			}
+		});
+		exitbtn.setForeground(Color.WHITE);
+		exitbtn.setFont(new Font("Tahoma", Font.BOLD, 12));
+		exitbtn.setBackground(new Color(0, 0, 205));
+		exitbtn.setBounds(1220, 90, 124, 50);
+		contentPane.add(exitbtn);
 	}
 }

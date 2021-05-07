@@ -41,6 +41,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
 
 public class ManageNotAvailableTime extends JFrame {
 	Connection connection = SqlServerConnection.dbConnecter();
@@ -78,7 +80,6 @@ public class ManageNotAvailableTime extends JFrame {
 	private JButton clearbtn;
 	private JButton exitbtn;
 	private JButton btnAddNewNot;
-	private JTextField txtmanageNotAvailable;
 
 	/**
 	 * Launch the application.
@@ -242,7 +243,7 @@ public class ManageNotAvailableTime extends JFrame {
 		lblTimePeriod = new JLabel("Time Period :");
 		lblTimePeriod.setForeground(Color.BLACK);
 		lblTimePeriod.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblTimePeriod.setBounds(124, 408, 143, 19);
+		lblTimePeriod.setBounds(123, 382, 143, 19);
 		contentPane.add(lblTimePeriod);
 		
 		txtStartTime = new JTextField();
@@ -266,12 +267,12 @@ public class ManageNotAvailableTime extends JFrame {
 		});
 		txtStartTime.setColumns(10);
 		txtStartTime.setBackground(Color.WHITE);
-		txtStartTime.setBounds(367, 406, 78, 26);
+		txtStartTime.setBounds(366, 380, 78, 26);
 		contentPane.add(txtStartTime);
 		
 		to = new JLabel("To");
 		to.setFont(new Font("Dialog", Font.BOLD, 14));
-		to.setBounds(455, 410, 39, 14);
+		to.setBounds(454, 384, 39, 14);
 		contentPane.add(to);
 		
 		txtEndTime = new JTextField();
@@ -297,37 +298,37 @@ public class ManageNotAvailableTime extends JFrame {
 		
 		txtEndTime.setColumns(10);
 		txtEndTime.setBackground(Color.WHITE);
-		txtEndTime.setBounds(504, 406, 78, 26);
+		txtEndTime.setBounds(503, 380, 78, 26);
 		contentPane.add(txtEndTime);
 		
 		txtDay = new JComboBox();
 		txtDay.setBackground(Color.WHITE);
 		txtDay.setModel(new DefaultComboBoxModel(new String[] {"","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"}));
-		txtDay.setBounds(367, 362, 359, 33);
+		txtDay.setBounds(366, 336, 359, 33);
 		contentPane.add(txtDay);
 		
 		txtSessionID = new JComboBox();
 		txtSessionID.setBackground(Color.WHITE);
 		txtSessionID.setModel(new DefaultComboBoxModel(new String[] {"","IT2030-OOC–Lecture–Y1.S1.IT.01–120- 2","IT2015-PAF–Lecture–Y2.S1.IT.01–120- 2","IT1530-NDM–Lecture–Y3.S1.IT.01–120- 2"}));
-		txtSessionID.setBounds(367, 318, 359, 33);
+		txtSessionID.setBounds(366, 292, 359, 33);
 		contentPane.add(txtSessionID);
 		
 		txtSubGroup = new JComboBox();
 		txtSubGroup.setBackground(Color.WHITE);
 		txtSubGroup.setModel(new DefaultComboBoxModel(new String[] {"","1","2","3","4","5"}));
-		txtSubGroup.setBounds(367, 274, 359, 33);
+		txtSubGroup.setBounds(366, 248, 359, 33);
 		contentPane.add(txtSubGroup);
 		
 		txtGroup = new JComboBox();
 		txtGroup.setBackground(Color.WHITE);
 		txtGroup.setModel(new DefaultComboBoxModel(new String[] {"","Y2.S2.1", "Y3.S2.2", "Y4.S1.3", "Y1.S2.4", "Y2.S1.5", "Y1.S2.6", "Y1.S2.7", "Y1.S2.8","Y1.S2.9"}));
-		txtGroup.setBounds(367, 230, 359, 33);
+		txtGroup.setBounds(366, 204, 359, 33);
 		contentPane.add(txtGroup);
 		
 		txtLec = new JComboBox();
 		txtLec.setBackground(Color.WHITE);
 		txtLec.setModel(new DefaultComboBoxModel(new String[] {"","Mr. Senanayske", "Mrs. Gunathilake","Mr. jayarathne","Mrs. Athukorala","Ms. Susantha"}));
-		txtLec.setBounds(367, 186, 359, 33);
+		txtLec.setBounds(366, 160, 359, 33);
 		contentPane.add(txtLec);
 		
 		txtID = new JTextField();
@@ -335,55 +336,55 @@ public class ManageNotAvailableTime extends JFrame {
 		txtID.setEditable(false);
 		txtID.setColumns(10);
 		txtID.setBackground(Color.WHITE);
-		txtID.setBounds(367, 142, 359, 33);
+		txtID.setBounds(366, 116, 359, 33);
 		contentPane.add(txtID);
 		
 		labErr = new JLabel("");
 		labErr.setForeground(Color.RED);
 		labErr.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
-		labErr.setBounds(367, 435, 422, 26);
+		labErr.setBounds(366, 409, 422, 26);
 		contentPane.add(labErr);
 		
 		lblNewLabel = new JLabel("Hint : The entering time should be 24 hour format - Ex : 12:30");
 		lblNewLabel.setForeground(new Color(0, 0, 205));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblNewLabel.setBounds(367, 458, 495, 30);
+		lblNewLabel.setBounds(366, 432, 495, 30);
 		contentPane.add(lblNewLabel);
 		
 		lblSelectDay = new JLabel("Select Day  :");
 		lblSelectDay.setForeground(Color.BLACK);
 		lblSelectDay.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblSelectDay.setBounds(124, 367, 143, 19);
+		lblSelectDay.setBounds(123, 341, 143, 19);
 		contentPane.add(lblSelectDay);
 		
 		lblSelectSessionId = new JLabel("Select Session ID  :");
 		lblSelectSessionId.setForeground(Color.BLACK);
 		lblSelectSessionId.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblSelectSessionId.setBounds(124, 323, 143, 19);
+		lblSelectSessionId.setBounds(123, 297, 143, 19);
 		contentPane.add(lblSelectSessionId);
 		
 		lblSelectSubGroup = new JLabel("Select Sub Group   :");
 		lblSelectSubGroup.setForeground(Color.BLACK);
 		lblSelectSubGroup.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblSelectSubGroup.setBounds(124, 279, 143, 19);
+		lblSelectSubGroup.setBounds(123, 253, 143, 19);
 		contentPane.add(lblSelectSubGroup);
 		
 		lblSelectGroup = new JLabel("Select Group   :");
 		lblSelectGroup.setForeground(Color.BLACK);
 		lblSelectGroup.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblSelectGroup.setBounds(124, 235, 143, 19);
+		lblSelectGroup.setBounds(123, 209, 143, 19);
 		contentPane.add(lblSelectGroup);
 		
 		lblSelectLecturer = new JLabel("Select Lecturer  :");
 		lblSelectLecturer.setForeground(Color.BLACK);
 		lblSelectLecturer.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblSelectLecturer.setBounds(124, 193, 143, 19);
+		lblSelectLecturer.setBounds(123, 167, 143, 19);
 		contentPane.add(lblSelectLecturer);
 		
 		id = new JLabel("ID    :");
 		id.setForeground(Color.BLACK);
 		id.setFont(new Font("Dialog", Font.BOLD, 14));
-		id.setBounds(124, 148, 39, 19);
+		id.setBounds(123, 122, 39, 19);
 		contentPane.add(id);
 		
 		JScrollPane scrol = new JScrollPane();
@@ -432,7 +433,7 @@ public class ManageNotAvailableTime extends JFrame {
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				true, true, true, true, false, true, true, true
+				false, true, true, true, false, true, true, true
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
@@ -509,7 +510,7 @@ public class ManageNotAvailableTime extends JFrame {
 		updatebtn.setForeground(Color.WHITE);
 		updatebtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		updatebtn.setBackground(new Color(27, 163, 156));
-		updatebtn.setBounds(800, 246, 229, 52);
+		updatebtn.setBounds(814, 246, 229, 52);
 		contentPane.add(updatebtn);
 		
 		deletebtn = new JButton("Delete Details");
@@ -546,7 +547,7 @@ public class ManageNotAvailableTime extends JFrame {
 		deletebtn.setForeground(Color.WHITE);
 		deletebtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		deletebtn.setBackground(new Color(210, 77, 87));
-		deletebtn.setBounds(800, 331, 229, 50);
+		deletebtn.setBounds(814, 331, 229, 50);
 		contentPane.add(deletebtn);
 		
 		clearbtn = new JButton("Clear Details");
@@ -566,7 +567,7 @@ public class ManageNotAvailableTime extends JFrame {
 		clearbtn.setForeground(Color.BLACK);
 		clearbtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		clearbtn.setBackground(Color.CYAN);
-		clearbtn.setBounds(800, 419, 229, 50);
+		clearbtn.setBounds(814, 419, 229, 50);
 		contentPane.add(clearbtn);
 		
 		JButton load = new JButton("Load Details Table");
@@ -578,13 +579,13 @@ public class ManageNotAvailableTime extends JFrame {
 		load.setForeground(Color.WHITE);
 		load.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		load.setBackground(new Color(0, 0, 139));
-		load.setBounds(800, 160, 229, 52);
+		load.setBounds(814, 160, 229, 52);
 		contentPane.add(load);
 		
 		panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(0, 0, 128), 2, true));
+		panel_2.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 128), 2, true), "Manage Not Available Time Allocation", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 128)));
 		panel_2.setBackground(new Color(228, 241, 254));
-		panel_2.setBounds(67, 123, 727, 365);
+		panel_2.setBounds(62, 90, 732, 389);
 		contentPane.add(panel_2);
 		
 		exitbtn = new JButton("Exit\r\n");
@@ -617,15 +618,5 @@ public class ManageNotAvailableTime extends JFrame {
 		btnAddNewNot.setBackground(new Color(25, 25, 112));
 		btnAddNewNot.setBounds(1040, 79, 308, 50);
 		contentPane.add(btnAddNewNot);
-		
-		txtmanageNotAvailable = new JTextField();
-		txtmanageNotAvailable.setText("--------------Manage Not Available Times---------------");
-		txtmanageNotAvailable.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
-		txtmanageNotAvailable.setEditable(false);
-		txtmanageNotAvailable.setColumns(10);
-		txtmanageNotAvailable.setBorder(null);
-		txtmanageNotAvailable.setBackground(Color.WHITE);
-		txtmanageNotAvailable.setBounds(258, 90, 362, 26);
-		contentPane.add(txtmanageNotAvailable);
 	}
 }

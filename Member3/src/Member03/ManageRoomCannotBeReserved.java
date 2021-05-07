@@ -41,6 +41,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.border.TitledBorder;
 
 public class ManageRoomCannotBeReserved extends JFrame {
 	Connection connection = SqlServerConnection.dbConnecter();
@@ -51,7 +52,6 @@ public class ManageRoomCannotBeReserved extends JFrame {
 	private JTextField txtID;
 	private JTextField txtStartTime;
 	private JTextField txtEnd;
-	private JTextField txtmanageRoomDetails;
 
 	/**
 	 * Launch the application.
@@ -195,27 +195,27 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		JLabel lblSelectTheRoom = new JLabel("Select The Room  :");
 		lblSelectTheRoom.setForeground(Color.BLACK);
 		lblSelectTheRoom.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblSelectTheRoom.setBounds(115, 206, 164, 22);
+		lblSelectTheRoom.setBounds(116, 192, 164, 22);
 		contentPane.add(lblSelectTheRoom);
 		
 		JComboBox txtRoom = new JComboBox();
 		txtRoom.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtRoom.setModel(new DefaultComboBoxModel(new String[] {"","A501","F501","B502","N3B-PcLab","A3B-PcLab","C3B-PcLab"}));
 		txtRoom.setBackground(Color.WHITE);
-		txtRoom.setBounds(330, 202, 356, 33);
+		txtRoom.setBounds(331, 188, 356, 33);
 		contentPane.add(txtRoom);
 		
 		JLabel lblSelectTheDay = new JLabel("Select The Day  :");
 		lblSelectTheDay.setForeground(Color.BLACK);
 		lblSelectTheDay.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblSelectTheDay.setBounds(115, 262, 164, 22);
+		lblSelectTheDay.setBounds(116, 248, 164, 22);
 		contentPane.add(lblSelectTheDay);
 		
 		JComboBox txtDay = new JComboBox();
 		txtDay.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtDay.setModel(new DefaultComboBoxModel(new String[] {"","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"}));
 		txtDay.setBackground(Color.WHITE);
-		txtDay.setBounds(330, 258, 356, 33);
+		txtDay.setBounds(331, 244, 356, 33);
 		contentPane.add(txtDay);
 		
 		JScrollPane scrol = new JScrollPane();
@@ -273,7 +273,7 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		JLabel id = new JLabel("ID    :");
 		id.setForeground(Color.BLACK);
 		id.setFont(new Font("Dialog", Font.BOLD, 14));
-		id.setBounds(119, 156, 39, 19);
+		id.setBounds(120, 142, 39, 19);
 		contentPane.add(id);
 		
 		txtID = new JTextField();
@@ -281,26 +281,26 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		txtID.setEditable(false);
 		txtID.setColumns(10);
 		txtID.setBackground(Color.WHITE);
-		txtID.setBounds(330, 150, 356, 33);
+		txtID.setBounds(331, 136, 356, 33);
 		contentPane.add(txtID);
 		
 		
 		JLabel StartTime = new JLabel("Start Time    :");
 		StartTime.setForeground(Color.BLACK);
 		StartTime.setFont(new Font("Dialog", Font.BOLD, 14));
-		StartTime.setBounds(115, 315, 125, 22);
+		StartTime.setBounds(116, 301, 125, 22);
 		contentPane.add(StartTime);
 		
 		JLabel newlabb = new JLabel("");
 		newlabb.setForeground(Color.RED);
 		newlabb.setFont(new Font("Tahoma", Font.ITALIC, 13));
-		newlabb.setBounds(330, 340, 477, 30);
+		newlabb.setBounds(331, 326, 477, 30);
 		contentPane.add(newlabb);
 		
 		JLabel slabbb = new JLabel("");
 		slabbb.setForeground(Color.RED);
 		slabbb.setFont(new Font("Tahoma", Font.ITALIC, 13));
-		slabbb.setBounds(330, 428, 495, 30);
+		slabbb.setBounds(331, 414, 495, 30);
 		contentPane.add(slabbb);
 		
 		txtStartTime = new JTextField();
@@ -324,7 +324,7 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		txtStartTime.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtStartTime.setColumns(10);
 		txtStartTime.setBackground(Color.WHITE);
-		txtStartTime.setBounds(330, 311, 356, 33);
+		txtStartTime.setBounds(331, 297, 356, 33);
 		contentPane.add(txtStartTime);
 		
 		
@@ -332,13 +332,13 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		JLabel lblNewLabel = new JLabel("Hint : The entering time should be 24 hour format - Ex : 12:30");
 		lblNewLabel.setForeground(new Color(0, 0, 205));
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblNewLabel.setBounds(330, 362, 495, 30);
+		lblNewLabel.setBounds(331, 348, 495, 30);
 		contentPane.add(lblNewLabel);
 		
 		JLabel endTime = new JLabel("End Time    :");
 		endTime.setForeground(Color.BLACK);
 		endTime.setFont(new Font("Dialog", Font.BOLD, 14));
-		endTime.setBounds(115, 407, 89, 22);
+		endTime.setBounds(116, 393, 89, 22);
 		contentPane.add(endTime);
 		
 		txtEnd = new JTextField();
@@ -362,7 +362,7 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		txtEnd.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtEnd.setColumns(10);
 		txtEnd.setBackground(Color.WHITE);
-		txtEnd.setBounds(330, 403, 356, 33);
+		txtEnd.setBounds(331, 389, 356, 33);
 		contentPane.add(txtEnd);
 		
 	
@@ -370,7 +370,7 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Hint : The entering time should be 24 hour format - Ex : 12:30");
 		lblNewLabel_1.setForeground(new Color(0, 0, 205));
 		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(330, 447, 495, 30);
+		lblNewLabel_1.setBounds(331, 433, 495, 30);
 		contentPane.add(lblNewLabel_1);
 		
 		JButton load = new JButton("Load Details Table");
@@ -523,20 +523,10 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		exitbtn.setBounds(1230, 132, 124, 50);
 		contentPane.add(exitbtn);
 		
-		txtmanageRoomDetails = new JTextField();
-		txtmanageRoomDetails.setText("--------------Manage Room Details cannot Be Reserved---------------");
-		txtmanageRoomDetails.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
-		txtmanageRoomDetails.setEditable(false);
-		txtmanageRoomDetails.setColumns(10);
-		txtmanageRoomDetails.setBorder(null);
-		txtmanageRoomDetails.setBackground(Color.WHITE);
-		txtmanageRoomDetails.setBounds(230, 89, 450, 26);
-		contentPane.add(txtmanageRoomDetails);
-		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(0, 0, 128), 2, true));
+		panel_2.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 128), 2, true), "Manage The Room Cannot Be Reserved", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 128)));
 		panel_2.setBackground(new Color(228, 241, 254));
-		panel_2.setBounds(49, 124, 738, 364);
+		panel_2.setBounds(49, 107, 738, 378);
 		contentPane.add(panel_2);
 	}
 }
