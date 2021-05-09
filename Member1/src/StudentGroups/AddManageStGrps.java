@@ -321,6 +321,8 @@ public class AddManageStGrps extends JFrame {
 				
 					try {
 						
+						//connection = DBConnection.dbConnecter();
+						
 						String query1 = "insert into StudentGroups(AcademicYrSem,Program,GroupNo,SubGroupNo,GroupID,SubGroupID) values(?,?,?,?,?,?)";
 						PreparedStatement pstat=connection.prepareStatement(query1);
 						
@@ -374,6 +376,8 @@ public class AddManageStGrps extends JFrame {
 				
 				try {
 					
+					//connection = DBConnection.dbConnecter();
+					
 					String AcYrSem = AcademicYrSemList.getSelectedItem().toString();	
 					String prog = ProgramListCB.getSelectedItem().toString();
 					String gpSpinner = GroupNoSpinner.getValue().toString();
@@ -408,6 +412,8 @@ public class AddManageStGrps extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
+					
+					//connection = DBConnection.dbConnecter();
 					
 					String AcYrSem = AcademicYrSemList.getSelectedItem().toString();	
 					String prog = ProgramListCB.getSelectedItem().toString();
@@ -485,6 +491,9 @@ public class AddManageStGrps extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				try {
+					
+					//connection = DBConnection.dbConnecter();
+					
 					int row = ViewStGrpsTable.getSelectedRow();
 					String ID2 = (ViewStGrpsTable.getModel().getValueAt(row, 0)).toString();
 					
@@ -536,6 +545,8 @@ public class AddManageStGrps extends JFrame {
 				
 				try {
 					
+					//connection = DBConnection.dbConnecter();
+					
 					String yr = AcYrSemViewList.getSelectedItem().toString();
 					String pr = ProgramViewList.getSelectedItem().toString();
 					String Gno = ViewGrpNumbertxt.getText().toString();
@@ -567,6 +578,8 @@ public class AddManageStGrps extends JFrame {
 				
 
 				try {
+					
+					//connection = DBConnection.dbConnecter();
 					
 					String yr = AcYrSemViewList.getSelectedItem().toString();
 					String pr = ProgramViewList.getSelectedItem().toString();
@@ -634,6 +647,8 @@ public class AddManageStGrps extends JFrame {
 				
 				try {
 					
+					//connection = DBConnection.dbConnecter();
+					
 					String query="update StudentGroups set AcademicYrSem='"+AcYrSemViewList.getSelectedItem()+"' , Program='"+ProgramViewList.getSelectedItem()+"' ,GroupNo='"+ViewGrpNumbertxt.getText()+"',SubGroupNo='"+ViewSubGrpNotxt.getText()+"',GroupId='"+ViewGrpID.getText()+"',SubGroupID='"+ViewSubGrpID.getText()+"'  where StGrpID='"+textViewStGrpID.getText()+"' ";                    
 					PreparedStatement psat=connection.prepareStatement(query);
 					
@@ -648,6 +663,7 @@ public class AddManageStGrps extends JFrame {
 				catch(Exception e5)
 				{
 					e5.printStackTrace();
+					JOptionPane.showMessageDialog(null, "ID with this number already in the system!!");
 				}
 				
 				
@@ -697,6 +713,8 @@ public class AddManageStGrps extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
+					
+					//connection = DBConnection.dbConnecter();
 					
 					String deletequery="delete from StudentGroups where StGrpID='"+textViewStGrpID.getText()+"'";                      
 					PreparedStatement psat=connection.prepareStatement(deletequery);
@@ -787,6 +805,8 @@ public class AddManageStGrps extends JFrame {
 				SwitchPanels(ManageStudentGrpPanel_1);
 				
 				try {
+					
+					//connection = DBConnection.dbConnecter();
 					
 					//retrieve data to a table
 					String query = "select * from StudentGroups";

@@ -15,6 +15,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import Par_con_nonOSessions.Consec_sessions;
 import StudentGroups.AddManageStGrps;
 import Tags.AddManageTags;
 
@@ -165,6 +166,13 @@ public class HomePage {
 		lecDetail.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		
 		sessionmng = new JButton("Session Management");
+		sessionmng.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFrame Consec_sessions = new Consec_sessions();
+				Consec_sessions.show();
+				
+			}
+		});
 		sessionmng.setBounds(146, 401, 435, 66);
 		Homeframe.getContentPane().add(sessionmng);
 		sessionmng.setBackground(new Color(0, 0, 139));

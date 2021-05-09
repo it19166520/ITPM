@@ -3,11 +3,12 @@ package DBConnection;
 import java.sql.*;
 import javax.swing.*;
 
+
 public class DBConnection {
 	
-	private static String url = "jdbc:sqlserver://itpmserver.database.windows.net;databaseName=ITPM(New)";
-	private static String username = "ITPM";
-	private static String password = "GProject#20";
+	private static String url = "jdbc:mysql://98.142.97.194:3306/sipnenam_itpm_remote_db_by_harsha";
+	private static String username = "sipnenam_itpm_remote_db_by_harsha";
+	private static String password = "ah21%hsaklhagA";
 	static //private static Connection con;
 	
 	
@@ -16,21 +17,24 @@ public class DBConnection {
 	Connection conn=null;
 	public static Connection dbConnecter()
 	{
+		 try {
+		        
+		        Class.forName("com.mysql.cj.jdbc.Driver"); 
+		          conn = DriverManager.getConnection(url,username, password);
+		         // System.out.println("Database connection is success!!!");
+		        
+		      }
+		      catch (Exception e) {
+		        System.out.println("Database connection is not success!!!");
+		      }
+		      
 		
-		try {
-			
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			conn = DriverManager.getConnection(url,username,password);
-			//JOptionPane.showMessageDialog(null,"Connection Successfull !");
-			return conn;
-			
-			
-			
-		}catch(Exception e){
-			JOptionPane.showMessageDialog(null,e);
-			return null;
-		}
+		 return conn;
 			
 	}
-
+	
+	
+	
+	
+	
 }
