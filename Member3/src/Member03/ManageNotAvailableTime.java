@@ -197,6 +197,98 @@ public class ManageNotAvailableTime extends JFrame {
 		}
 	}
 
+	
+	//Fill lecturers names combo box  :
+		public void FillLecturerComboBox()
+		{
+		
+			try {
+				
+				String sql="select * from Lecturer";
+				PreparedStatement pst=connection.prepareStatement(sql);
+				ResultSet rs=pst.executeQuery();
+				
+				while(rs.next())
+				{
+			
+					txtLec.addItem(rs.getString("LecturerName"));
+					
+				}
+				
+			}catch(Exception e){
+				e.printStackTrace();
+				
+			}
+		}
+		
+		//Fill Main Group names combo box  :
+		public void FillMainGroupComboBox()
+		{
+		
+			try {
+				
+				String sql="select * from StudentGroups";
+				PreparedStatement pst=connection.prepareStatement(sql);
+				ResultSet rs=pst.executeQuery();
+				
+				while(rs.next())
+				{
+			
+					txtGroup.addItem(rs.getString("GroupID"));
+					
+				}
+				
+			}catch(Exception e){
+				e.printStackTrace();
+				
+			}
+		}
+		
+		//Fill  Sub groups names combo box  :
+			public void FillSubGroupComboBox()
+			{
+			
+				try {
+					
+					String sql="select * from StudentGroups";
+					PreparedStatement pst=connection.prepareStatement(sql);
+					ResultSet rs=pst.executeQuery();
+					
+					while(rs.next())
+					{
+				
+						txtSubGroup.addItem(rs.getString("SubGroupID"));
+						
+					}
+					
+				}catch(Exception e){
+					e.printStackTrace();
+					
+				}
+			}
+
+			//Fill Session ID combo box  :
+					public void FillSessionIDComboBox()
+					{
+					
+						try {
+							
+							String sql="select * from session";
+							PreparedStatement pst=connection.prepareStatement(sql);
+							ResultSet rs=pst.executeQuery();
+							
+							while(rs.next())
+							{
+						
+								txtSessionID.addItem(rs.getString("SessionId"));
+								
+							}
+							
+						}catch(Exception e){
+							e.printStackTrace();
+							
+						}
+					}
 	/**
 	 * Create the frame.
 	 */
@@ -307,29 +399,34 @@ public class ManageNotAvailableTime extends JFrame {
 		txtDay.setBounds(366, 336, 359, 33);
 		contentPane.add(txtDay);
 		
+		
 		txtSessionID = new JComboBox();
 		txtSessionID.setBackground(Color.WHITE);
-		txtSessionID.setModel(new DefaultComboBoxModel(new String[] {"","IT2030-OOC–Lecture–Y1.S1.IT.01–120- 2","IT2015-PAF–Lecture–Y2.S1.IT.01–120- 2","IT1530-NDM–Lecture–Y3.S1.IT.01–120- 2"}));
+		txtSessionID.setModel(new DefaultComboBoxModel(new String[] {""}));
 		txtSessionID.setBounds(366, 292, 359, 33);
 		contentPane.add(txtSessionID);
+		FillSessionIDComboBox();
 		
 		txtSubGroup = new JComboBox();
 		txtSubGroup.setBackground(Color.WHITE);
-		txtSubGroup.setModel(new DefaultComboBoxModel(new String[] {"","1","2","3","4","5"}));
-		txtSubGroup.setBounds(366, 248, 359, 33);
+		txtSubGroup.setModel(new DefaultComboBoxModel(new String[] {""}));
+		txtSubGroup.setBounds(366, 248, 359, 33);	
 		contentPane.add(txtSubGroup);
+		FillSubGroupComboBox();
 		
 		txtGroup = new JComboBox();
 		txtGroup.setBackground(Color.WHITE);
-		txtGroup.setModel(new DefaultComboBoxModel(new String[] {"","Y2.S2.1", "Y3.S2.2", "Y4.S1.3", "Y1.S2.4", "Y2.S1.5", "Y1.S2.6", "Y1.S2.7", "Y1.S2.8","Y1.S2.9"}));
+		txtGroup.setModel(new DefaultComboBoxModel(new String[] {""}));
 		txtGroup.setBounds(366, 204, 359, 33);
 		contentPane.add(txtGroup);
+		FillMainGroupComboBox();
 		
 		txtLec = new JComboBox();
 		txtLec.setBackground(Color.WHITE);
-		txtLec.setModel(new DefaultComboBoxModel(new String[] {"","Mr. Senanayske", "Mrs. Gunathilake","Mr. jayarathne","Mrs. Athukorala","Ms. Susantha"}));
+		txtLec.setModel(new DefaultComboBoxModel(new String[] {""}));
 		txtLec.setBounds(366, 160, 359, 33);
 		contentPane.add(txtLec);
+		FillLecturerComboBox();
 		
 		txtID = new JTextField();
 		txtID.setFont(new Font("Dialog", Font.BOLD, 11));

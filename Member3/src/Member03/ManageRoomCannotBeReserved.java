@@ -52,7 +52,7 @@ public class ManageRoomCannotBeReserved extends JFrame {
 	private JTextField txtID;
 	private JTextField txtStartTime;
 	private JTextField txtEnd;
-
+	private JComboBox txtRoom;
 	/**
 	 * Launch the application.
 	 */
@@ -69,6 +69,28 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		});
 	}
 
+	//Fill room names combo box  :
+	public void FillRoomComboBox()
+	{
+	
+		try {
+			
+			String sql="select * from addLocation";
+			PreparedStatement pst=connection.prepareStatement(sql);
+			ResultSet rs=pst.executeQuery();
+			
+			while(rs.next())
+			{
+		
+				txtRoom.addItem(rs.getString("RoomName"));
+				
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			
+		}
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -197,14 +219,16 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		lblSelectTheRoom.setFont(new Font("Dialog", Font.BOLD, 14));
 		lblSelectTheRoom.setBounds(116, 192, 164, 22);
 		contentPane.add(lblSelectTheRoom);
+	
 		
-		JComboBox txtRoom = new JComboBox();
-		txtRoom.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		txtRoom.setModel(new DefaultComboBoxModel(new String[] {"","A501","F501","B502","N3B-PcLab","A3B-PcLab","C3B-PcLab"}));
-		txtRoom.setBackground(Color.WHITE);
+		txtRoom = new JComboBox();
+		txtRoom.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtRoom.setBounds(331, 188, 356, 33);
+		txtRoom.setBackground(Color.WHITE);
+		txtRoom.setModel(new DefaultComboBoxModel(new String[] {""}));
 		contentPane.add(txtRoom);
-		
+		FillRoomComboBox();
+
 		JLabel lblSelectTheDay = new JLabel("Select The Day  :");
 		lblSelectTheDay.setForeground(Color.BLACK);
 		lblSelectTheDay.setFont(new Font("Dialog", Font.BOLD, 14));
@@ -212,7 +236,7 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		contentPane.add(lblSelectTheDay);
 		
 		JComboBox txtDay = new JComboBox();
-		txtDay.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtDay.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtDay.setModel(new DefaultComboBoxModel(new String[] {"","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"}));
 		txtDay.setBackground(Color.WHITE);
 		txtDay.setBounds(331, 244, 356, 33);
@@ -277,7 +301,7 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		contentPane.add(id);
 		
 		txtID = new JTextField();
-		txtID.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtID.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtID.setEditable(false);
 		txtID.setColumns(10);
 		txtID.setBackground(Color.WHITE);
@@ -321,7 +345,7 @@ public class ManageRoomCannotBeReserved extends JFrame {
 			}
 			}
 		});
-		txtStartTime.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtStartTime.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtStartTime.setColumns(10);
 		txtStartTime.setBackground(Color.WHITE);
 		txtStartTime.setBounds(331, 297, 356, 33);
@@ -359,7 +383,7 @@ public class ManageRoomCannotBeReserved extends JFrame {
 			}
 			}
 		});
-		txtEnd.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtEnd.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtEnd.setColumns(10);
 		txtEnd.setBackground(Color.WHITE);
 		txtEnd.setBounds(331, 389, 356, 33);

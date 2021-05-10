@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,6 +36,7 @@ public class AddCannotReservedRoom extends JFrame {
 	private JTextField txtID;
 	private JTextField txtStartTime;
 	private JTextField txtEnd;
+	private JComboBox txtRoom;
 
 	/**
 	 * Launch the application.
@@ -51,6 +53,29 @@ public class AddCannotReservedRoom extends JFrame {
 			}
 		});
 	}
+	
+	//Fill room names combo box  :
+		public void FillRoomComboBox()
+		{
+		
+			try {
+				
+				String sql="select * from addLocation";
+				PreparedStatement pst=connection.prepareStatement(sql);
+				ResultSet rs=pst.executeQuery();
+				
+				while(rs.next())
+				{
+			
+					txtRoom.addItem(rs.getString("RoomName"));
+					
+				}
+				
+			}catch(Exception e){
+				e.printStackTrace();
+				
+			}
+		}
 
 	/**
 	 * Create the frame.
@@ -58,7 +83,8 @@ public class AddCannotReservedRoom extends JFrame {
 	public AddCannotReservedRoom() {
 		connection = SqlServerConnection.dbConnecter();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 1370, 728);		contentPane = new JPanel();
+		setBounds(0, 0, 1370, 728);		
+		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -84,12 +110,14 @@ public class AddCannotReservedRoom extends JFrame {
 		lblSelectTheRoom.setBounds(359, 264, 164, 22);
 		contentPane.add(lblSelectTheRoom);
 		
-		JComboBox txtRoom = new JComboBox();
+		txtRoom = new JComboBox();
 		txtRoom.setFont(new Font("Tahoma", Font.BOLD, 13));
-		txtRoom.setBackground(Color.WHITE);
-		txtRoom.setModel(new DefaultComboBoxModel(new String[] {"","A501","F501","B502","N3B-PcLab","A3B-PcLab","C3B-PcLab"}));
 		txtRoom.setBounds(574, 260, 356, 33);
+		txtRoom.setBackground(Color.WHITE);
+		txtRoom.setModel(new DefaultComboBoxModel(new String[] {""}));
 		contentPane.add(txtRoom);
+		FillRoomComboBox();
+
 		
 		JLabel lblSelectTheDay = new JLabel("Select The Day  :");
 		lblSelectTheDay.setForeground(Color.BLACK);
@@ -326,5 +354,7 @@ public class AddCannotReservedRoom extends JFrame {
 		exitbtn.setBackground(new Color(0, 0, 205));
 		exitbtn.setBounds(1220, 90, 124, 50);
 		contentPane.add(exitbtn);
+		
+		
 	}
 }
