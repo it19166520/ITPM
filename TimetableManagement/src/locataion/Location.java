@@ -1,13 +1,15 @@
 package locataion;
 
 import java.awt.BorderLayout;
+
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import DBConnection.DBConnection;
+import DBConnection.SqlServerConnection;
 import Home.HomePage;
 import Home.ShankiHome;
 import net.proteanit.sql.DbUtils;
@@ -89,7 +91,7 @@ public class Location extends JFrame {
 	 */
 	public Location() {
 		
-		connection = DBConnection.dbConnect();
+		connection = SqlServerConnection.dbConnecter();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);

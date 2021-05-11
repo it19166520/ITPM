@@ -1,6 +1,9 @@
 package locataion;
 
 import java.awt.BorderLayout;
+
+
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,10 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableModel;
 
-import DBConnection.DBConnection;
+import DBConnection.SqlServerConnection;
 import Home.HomePage;
 import Home.ShankiHome;
 import net.proteanit.sql.DbUtils;
+import room.MainAddRoom;
 
 import javax.swing.JTextPane;
 import java.awt.Font;
@@ -61,6 +65,7 @@ public class ManageLocation extends JFrame {
 	String roomtype;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JButton backbtn2;
+	private JButton btnAddRooms;
 
 	/**
 	 * Launch the application.
@@ -113,7 +118,7 @@ public class ManageLocation extends JFrame {
 	 */
 	public ManageLocation() {
 		
-		connection = DBConnection.dbConnect();
+		connection = SqlServerConnection.dbConnecter();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
@@ -244,9 +249,10 @@ public class ManageLocation extends JFrame {
 				
 				try {
 					int row = tableLocation.getSelectedRow();
-					String ID = (tableLocation.getModel().getValueAt(row, 0)).toString();
+					String locationID = (tableLocation.getModel().getValueAt(row, 0)).toString();
 					
-					String query = "select * from addLocation where ID= '"+ID+"'";
+				
+					String query = "select * from addLocation where locationID= '"+locationID+"'";
 					
 					PreparedStatement psat=connection.prepareStatement(query);
 					
@@ -254,7 +260,7 @@ public class ManageLocation extends JFrame {
 					
 					while(rs.next())
 					{
-						textViewID.setText(rs.getString("ID"));
+						textViewID.setText(rs.getString("locationID"));
 						textViewBName.setText(rs.getString("BuildingName"));
 						textViewRName.setText(rs.getString("RoomName"));
 						
@@ -317,7 +323,7 @@ public class ManageLocation extends JFrame {
 					
 					int row = tableLocation.getSelectedRow();
 					String value = (tableLocation.getModel().getValueAt(row, 0).toString());
-					String query = "update addLocation set BuildingName=?, RoomName=? , RoomType=? , Capacity=? where ID="+value;
+					String query = "update addLocation set BuildingName=?, RoomName=? , RoomType=? , Capacity=? where locationID="+value;
 					PreparedStatement psat=connection.prepareStatement(query);
 					
 					psat.setString(1,textViewBName.getText());
@@ -364,7 +370,7 @@ public class ManageLocation extends JFrame {
 				
 				try {
 					
-					String deletequery="delete from addLocation where ID='"+textViewID.getText()+"'";                      
+					String deletequery="delete from addLocation where locationID='"+textViewID.getText()+"'";                      
 					PreparedStatement psat=connection.prepareStatement(deletequery);
 					
 					psat.execute();
@@ -412,8 +418,23 @@ public class ManageLocation extends JFrame {
 		backbtn2.setFont(new Font("Tahoma", Font.BOLD, 12));
 		backbtn2.setFocusPainted(false);
 		backbtn2.setBackground(Color.BLACK);
-		backbtn2.setBounds(1117, 613, 146, 36);
+		backbtn2.setBounds(886, 627, 146, 36);
 		contentPane.add(backbtn2);
+		
+		btnAddRooms = new JButton("Add Rooms");
+		btnAddRooms.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				MainAddRoom main1 = new MainAddRoom();
+				main1.show();
+				
+			}
+		});
+		btnAddRooms.setForeground(Color.WHITE);
+		btnAddRooms.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnAddRooms.setBackground(new Color(27, 163, 156));
+		btnAddRooms.setBounds(1077, 624, 252, 40);
+		contentPane.add(btnAddRooms);
 		
 		
 		

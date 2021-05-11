@@ -2,6 +2,8 @@ package Home;
 
 import java.awt.EventQueue;
 
+
+
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import java.awt.Canvas;
@@ -39,11 +41,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
-import DBConnection.DBConnection;
 
-public class HomePage {
+import DBConnection.SqlServerConnection;
+
+public class HomePage extends JFrame {
+
 	
-	Connection connection=null;
 
 	private JFrame frame;
 
@@ -60,6 +63,7 @@ public class HomePage {
 	private JPanel panel;
 	private JPanel panel_1;
 	private JButton btnStatistic;
+	Connection connection;
 
 	/**
 	 * Launch the application.
@@ -95,7 +99,7 @@ public class HomePage {
 	 */
 	private void initialize() {
 		
-		connection = DBConnection.dbConnect();
+		connection = SqlServerConnection.dbConnecter();
 		
 		Homeframe = new JFrame();
 		Homeframe.getContentPane().setForeground(new Color(255, 255, 255));
@@ -144,6 +148,10 @@ public class HomePage {
 		locationmng.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		
 		studentgroups = new JButton("Student Groups Management");
+		studentgroups.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		studentgroups.setBounds(146, 169, 435, 66);
 		Homeframe.getContentPane().add(studentgroups);
 		studentgroups.setBackground(new Color(0, 0, 139));
@@ -217,6 +225,9 @@ public class HomePage {
 				barChart.show();
 				
 				try {	
+					
+					connection = SqlServerConnection.dbConnecter();
+					
 					//retreiw student group count :
 					 String query = "select count(*) AS studentGroupCount from StudentGroups";
 					 PreparedStatement psat = connection.prepareStatement(query);
@@ -247,7 +258,7 @@ public class HomePage {
 					 }
 					 
 					 //retreiw number of Subjects:
-					 String query2 = "select count(*) AS SubjectCount from Subjects";
+					 String query2 = "select count(*) AS SubjectCount from subjects";
 					 PreparedStatement psat2 = connection.prepareStatement(query2);
 					ResultSet rs2 = psat2.executeQuery();
 					 while(rs2.next())
@@ -255,20 +266,20 @@ public class HomePage {
 						 int count2 = rs2.getInt("SubjectCount");
 						 
 						 BarChart.textRegSubjs.setText(String.valueOf(count2));
-						 dataset.setValue( rs2.getInt("SubjectCount") , "count","Subjects");
+						 dataset.setValue( rs2.getInt("SubjectCount") , "count","subjects");
 						 
 					 }
 					 
 					 //retreiw number of Rooms:
 					 String query3 = "select count(*) AS LocationCount from addLocation";
 					 PreparedStatement psat3 = connection.prepareStatement(query3);
-					ResultSet rs3 = psat3.executeQuery();
+					 ResultSet rs3 = psat3.executeQuery();
 					 while(rs3.next())
 					 {
 						 int count3 = rs3.getInt("LocationCount");
 						 
 						 BarChart.textRegRooms.setText(String.valueOf(count3));
-						 dataset.setValue( rs3.getInt("LocationCount") , "count","Rooms");
+						 dataset.setValue( rs3.getInt("LocationCount") , "count","RoomName");
 						 
 					 }
 			            

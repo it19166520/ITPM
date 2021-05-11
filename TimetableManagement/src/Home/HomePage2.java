@@ -16,7 +16,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class HomePage2 {
+
+public class HomePage2 extends JFrame {
 
 	JFrame wokingDayHourframe;
 	private JButton btnAddWorkingDays;
