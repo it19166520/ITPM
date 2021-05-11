@@ -12,14 +12,21 @@ import java.awt.Window;
 import javax.swing.JSeparator;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
+import DBConnection.DBConnection;
 import Par_con_nonOSessions.Consec_sessions;
+import Par_con_nonOSessions.ThreeSessions;
 import StudentGroups.AddManageStGrps;
 import Tags.AddManageTags;
+import net.proteanit.sql.DbUtils;
 
 import java.awt.Color;
+import java.awt.Container;
+
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -28,10 +35,17 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 public class HomePage {
+	
+	Connection connection=null;
 
 	JFrame Homeframe;
 	private JButton locationmng_1_1;
@@ -168,8 +182,59 @@ public class HomePage {
 		sessionmng = new JButton("Session Management");
 		sessionmng.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JFrame Consec_sessions = new Consec_sessions();
-				Consec_sessions.show();
+				JFrame Consec_sessionspage = new Consec_sessions();
+				Consec_sessionspage.show();
+
+				try {
+					connection = DBConnection.dbConnecter();
+					
+					//retrieve data to a table
+					String query = "select * from session";
+					PreparedStatement psat = connection.prepareStatement(query);
+					ResultSet rs= psat.executeQuery();
+					
+					Consec_sessions.sessionListTable.setModel(DbUtils.resultSetToTableModel(rs));
+					
+					String query2 = "select * from getSelected";
+					PreparedStatement psat2 = connection.prepareStatement(query2);
+					ResultSet rs2= psat2.executeQuery();
+					
+					Consec_sessions.newTable.setModel(DbUtils.resultSetToTableModel(rs2));
+					
+					
+					String query3 = "select * from ConsecutiveSession";
+					PreparedStatement psat3 = connection.prepareStatement(query3);
+					ResultSet rs3= psat3.executeQuery();
+					
+					Consec_sessions.ViewConSessions.setModel(DbUtils.resultSetToTableModel(rs3));
+					
+				}
+				catch(Exception e4)
+				{
+					e4.printStackTrace();
+				}
+				
+				/*JFrame ThreeS = new ThreeSessions();
+				ThreeS.show();
+				
+				try {
+					connection = DBConnection.dbConnecter();
+					
+					JCheckBox ch=new JCheckBox();
+					//retrieve data to a table
+					String query = "select * from session";
+					PreparedStatement psat = connection.prepareStatement(query);
+					ResultSet rs= psat.executeQuery();
+					
+					ThreeSessions.sessionListTable.setModel(DbUtils.resultSetToTableModel(rs));
+					
+				}
+				catch(Exception e4)
+				{
+					e4.printStackTrace();
+				}*/
+				
+				
 				
 			}
 		});

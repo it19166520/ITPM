@@ -79,7 +79,7 @@ public class AddManageTags extends JFrame {
 	private JButton BtnDeleteTagView;
 	private JButton btnAddTags;
 	private JButton btnManageTags;
-	private JTable ViewTagsTable;
+	private JTable ViewTagsTable; //chnge later
 	private JScrollPane scrollPane;
 	private JLabel lbl_empTagName;
 	private JLabel lbl_empTagCode;
