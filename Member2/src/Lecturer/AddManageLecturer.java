@@ -176,7 +176,7 @@ public class AddManageLecturer extends JFrame {
 	private JLabel lblNewLabel_41;
 	private JLabel lblNewLabel_42;
 	
-	
+	//create a method to auto refresh the jtable after doing any modification in "Lecturer" table (Basic lecturer details) in database:
 	public void refreshLecturerDetailsTable()
 	{	
 			try {
@@ -195,6 +195,7 @@ public class AddManageLecturer extends JFrame {
 			}				
 	}
 	
+	//create a method to auto refresh the jtable after doing any modification in "Lecturer" table (Active days and hours) in database:
 	public void refreshActiveHoursTable()
 	{		
 		try {
@@ -213,7 +214,7 @@ public class AddManageLecturer extends JFrame {
 		}			
 		
 	}		
-	
+	//method to link LecturerComboBox with database:
 	public void fillLecturerComboBox()
 	{
 		try {
@@ -235,7 +236,7 @@ public class AddManageLecturer extends JFrame {
 		}
 		
 	}
-	
+	//method to fillActiveHoursComboBox with database:
 	public void fillActiveHoursComboBox()
 	{
 		try {
@@ -438,10 +439,6 @@ public class AddManageLecturer extends JFrame {
 					//set error massage :
 					onlyIndexLabel.setText("*Invalid ID! Hint:ID must have 6 digits!");
 				}
-				
-				
-				
-				
 				else if(txtLecturerID.getText().length()==5)
 				{
 					
@@ -454,9 +451,7 @@ public class AddManageLecturer extends JFrame {
 					onlyIndexLabel.setText("");
 				}
 				
-				
-				
-				
+
 				//validate LecturerID for only accept numbers :
 				
 				char c = e.getKeyChar();
@@ -687,12 +682,11 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				
+				//validate pattern of active hours in basic lecturer details interface :
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
-				
-				
+	
 				Pattern patt = Pattern.compile(PATTERN);
-				
-				
+
 				Matcher match = patt.matcher(txtSunday.getText());
 				
 				
@@ -711,10 +705,7 @@ public class AddManageLecturer extends JFrame {
 					InvalidSunday.setText("");
 					
 				}
-				
-				
-				
-				
+	
 			}
 		});
 		txtSunday.setBounds(183, 325, 305, 19);
@@ -725,7 +716,7 @@ public class AddManageLecturer extends JFrame {
 		txtSatarday.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+				//validate pattern of active hours in basic lecturer details interface :
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
 				
 				
@@ -749,8 +740,7 @@ public class AddManageLecturer extends JFrame {
 					InvalidSatarday.setText(null);
 					
 				}
-				
-				
+	
 			}
 		});
 		txtSatarday.setBounds(183, 281, 305, 19);
@@ -761,7 +751,7 @@ public class AddManageLecturer extends JFrame {
 		txtFriday.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-			
+				//validate pattern of active hours in basic lecturer details interface :
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
 				
 				
@@ -796,7 +786,7 @@ public class AddManageLecturer extends JFrame {
 		txtThursday.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+				//validate pattern of active hours in basic lecturer details interface :
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
 				
 				
@@ -820,10 +810,7 @@ public class AddManageLecturer extends JFrame {
 					InvalidThursday.setText(null);
 					
 				}
-				
-				
-				
-			
+	
 			}
 		});
 		txtThursday.setBounds(183, 199, 305, 19);
@@ -834,7 +821,7 @@ public class AddManageLecturer extends JFrame {
 		txtWednesday.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+				//validate pattern of active hours in basic lecturer details interface :
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
 				
 				
@@ -858,12 +845,6 @@ public class AddManageLecturer extends JFrame {
 					InvalidWednesday.setText(null);
 					
 				}
-				
-				
-				
-			
-				
-				
 			}
 		});
 		txtWednesday.setBounds(183, 156, 305, 19);
@@ -874,7 +855,7 @@ public class AddManageLecturer extends JFrame {
 		txtTuesday.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+				//validate pattern of active hours in basic lecturer details interface :
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
 				
 				
@@ -898,8 +879,7 @@ public class AddManageLecturer extends JFrame {
 					InvalidTuesday.setText(null);
 					
 				}
-			
-			
+
 			}
 		});
 		txtTuesday.setBounds(183, 115, 305, 19);
@@ -910,7 +890,7 @@ public class AddManageLecturer extends JFrame {
 		txtMonday.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+				//validate pattern of active hours in basic lecturer details interface :
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
 				
 				
@@ -947,7 +927,7 @@ public class AddManageLecturer extends JFrame {
 		panel_9.add(lblNewLabel_10);
 		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
-		lblNewLabel_37 = new JLabel("Example :    11.00 - 16.00  (from 00:00 to 23:59)     OR     \" - \" mark for free days.");
+		lblNewLabel_37 = new JLabel("Example :    11:00 - 16:00  (from 00:00 to 23:59)     OR     \" - \" mark for free days.");
 		lblNewLabel_37.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblNewLabel_37.setForeground(new Color(0, 128, 0));
 		lblNewLabel_37.setBounds(46, 36, 467, 13);
@@ -1039,10 +1019,7 @@ public class AddManageLecturer extends JFrame {
 					lblLevel.setText("*required");
 				}
 				else
-				
-					
-				
-				
+	
 			try {	
 				
 				Connection conn = SqlServerConnection.dbConnecter();
@@ -1114,6 +1091,7 @@ public class AddManageLecturer extends JFrame {
 			}
 				
 			   refreshLecturerDetailsTable();
+			   refreshActiveHoursTable();
 			}
 		});
 		
@@ -1221,11 +1199,11 @@ public class AddManageLecturer extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				
 				
-				//validate to only add 6 numbers only
+				//validate to only add 6 numbers:
 				
 				if(txtLecturerID2.getText().length()>5)
 				{
-					//canit able to enter in text field if entered number length is greater than 6
+					//cannot enter a number to the text fiels if entered number length is greater than 6
 					txtLecturerID2.setEditable(true);
 					//set error massage :
 					onlyIndexLabel1.setText("*Invalid ID! Hint:ID cannot have more than 6 digits!");
@@ -1241,10 +1219,7 @@ public class AddManageLecturer extends JFrame {
 					txtLecturerID2.setEditable(true);
 					onlyIndexLabel1.setText("");
 				}
-				
-				
-		
-				
+					
 			}
 		});
 		txtLecturerID2.setBounds(188, 283, 317, 19);
@@ -1294,7 +1269,7 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				//Genarete rank using lecturerId and level
+				//Generate rank using lecturerId and level :
 				try {
 					
 					String UpdatedLecId = txtLecturerID2.getText();
@@ -1369,7 +1344,7 @@ public class AddManageLecturer extends JFrame {
 		LecDetailstable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				//Select row in table and pass those details in to the form
 				try {
 					
 					Connection conn = SqlServerConnection.dbConnecter();
@@ -1406,6 +1381,7 @@ public class AddManageLecturer extends JFrame {
 				}		
 			}
 		});
+		//Retriew all the basic lecturer details to the basic lecturer details table in "manage lecturer details" Interface:
 		scrollPane.setViewportView(LecDetailstable);
 		btnLoadLecturerDetails.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1433,7 +1409,7 @@ public class AddManageLecturer extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
-					
+					//Retriew all the details of active days and hours to the active days and hours table in "manage active days and hours " Interface:
 					Connection conn = SqlServerConnection.dbConnecter();
 					
 					String query="select LecturerRegistrationNumber,LecturerName,Faculty,Department,Campus,Building,LecturerID,Level,Rank from Lecturer where LecturerName=? ";
@@ -1665,9 +1641,9 @@ public class AddManageLecturer extends JFrame {
 		txtSunday3.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+				//validate pattern of active hours 
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
-				
+			
 				
 				Pattern patt = Pattern.compile(PATTERN);
 				
@@ -1702,16 +1678,14 @@ public class AddManageLecturer extends JFrame {
 		txtFriday3.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+				//validate pattern of active hours 
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
 				
 				
 				Pattern patt = Pattern.compile(PATTERN);
-				
-				
+
 				Matcher match = patt.matcher(txtFriday3.getText());
-				
-				
+
 				if(!match.matches())
 				{
 					InvalidFriday2.setText("Incorrect Format !");
@@ -1738,16 +1712,14 @@ public class AddManageLecturer extends JFrame {
 		txtThursday3.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+				//validate pattern of active hours 
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
 				
 				
 				Pattern patt = Pattern.compile(PATTERN);
-				
-				
+
 				Matcher match = patt.matcher(txtThursday3.getText());
-				
-				
+
 				if(!match.matches())
 				{
 					InvalidThursday2.setText("Incorrect Format !");
@@ -1763,8 +1735,7 @@ public class AddManageLecturer extends JFrame {
 					InvalidThursday2.setText("");
 					
 				}
-				
-				
+
 			}
 		});
 		txtThursday3.setBounds(170, 127, 312, 20);
@@ -1780,16 +1751,13 @@ public class AddManageLecturer extends JFrame {
 		txtWednesday3.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+				//validate pattern of active hours 
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
-				
-				
+
 				Pattern patt = Pattern.compile(PATTERN);
-				
-				
+
 				Matcher match = patt.matcher(txtWednesday3.getText());
-				
-				
+
 				if(!match.matches())
 				{
 					InvalidWednesday2.setText("Incorrect Format !");
@@ -1805,9 +1773,7 @@ public class AddManageLecturer extends JFrame {
 					InvalidWednesday2.setText("");
 					
 				}
-				
-				
-				
+
 			}
 		});
 		txtWednesday3.setBounds(170, 93, 312, 20);
@@ -1818,16 +1784,13 @@ public class AddManageLecturer extends JFrame {
 		txtTuesday3.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+				//validate pattern of active hours 
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
-				
-				
+
 				Pattern patt = Pattern.compile(PATTERN);
-				
-				
+
 				Matcher match = patt.matcher(txtTuesday3.getText());
-				
-				
+
 				if(!match.matches())
 				{
 					InvalidTuesday2.setText("Incorrect Format !");
@@ -1843,9 +1806,7 @@ public class AddManageLecturer extends JFrame {
 					InvalidTuesday2.setText("");
 					
 				}
-				
-				
-				
+
 			}
 		});
 		txtTuesday3.setBounds(170, 63, 312, 20);
@@ -1861,16 +1822,13 @@ public class AddManageLecturer extends JFrame {
 		txtMonday3.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+				//validate pattern of active hours 
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
-				
-				
+
 				Pattern patt = Pattern.compile(PATTERN);
-				
-				
+
 				Matcher match = patt.matcher(txtMonday3.getText());
-				
-				
+
 				if(!match.matches())
 				{
 					InvalidMonday2.setText("Incorrect Format !");
@@ -1886,9 +1844,7 @@ public class AddManageLecturer extends JFrame {
 					InvalidMonday2.setText("");
 					
 				}
-				
-				
-				
+
 			}
 		});
 		txtMonday3.setBounds(170, 33, 312, 20);
@@ -1899,16 +1855,14 @@ public class AddManageLecturer extends JFrame {
 		txtSatarday3.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+				//validate pattern of active hours 
 				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
 				
 				
 				Pattern patt = Pattern.compile(PATTERN);
-				
-				
+
 				Matcher match = patt.matcher(txtSatarday3.getText());
-				
-				
+
 				if(!match.matches())
 				{
 					InvalidSatarday2.setText("Incorrect Format !");
@@ -2008,7 +1962,7 @@ public class AddManageLecturer extends JFrame {
 		ActiveHoursDetailstable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				//Select row from the active days and hours table and pass that details in to the form :
 				try {
 					
 					Connection conn = SqlServerConnection.dbConnecter();
@@ -2032,20 +1986,16 @@ public class AddManageLecturer extends JFrame {
 						txtFriday3.setText(rs.getString("Friday"));
 						txtSatarday3.setText(rs.getString("Satarday"));
 						txtSunday3.setText(rs.getString("Sunday"));
-						
-						
+		
 					}
 					
 					pst.close();
-					
-					
+	
 				}catch(Exception e1)
 				{
 					e1.printStackTrace();
 				}		
-				
-				
-				
+		
 			}
 		});
 		scrollPane_1.setViewportView(ActiveHoursDetailstable);
@@ -2078,7 +2028,7 @@ public class AddManageLecturer extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				//Get selected comobox value to the form :
+				//Select value from the combo box and pass that details in to the  form :
 				
 				try {
 					
@@ -2100,22 +2050,19 @@ public class AddManageLecturer extends JFrame {
 						txtFriday3.setText(rs.getString("Friday"));
 						txtSatarday3.setText(rs.getString("Satarday"));
 						txtSunday3.setText(rs.getString("Sunday"));
-						
-						
+		
 					}
 					
 					pst.close();
-					
-					
+			
 				}catch(Exception e1)
 				{
 					e1.printStackTrace();
 				}		
-				
-				
-				
+	
 			}
 		});
+		//To load active days and hours by clicking load details button
 		btnLoadActiveHoursDetails.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -2134,9 +2081,7 @@ public class AddManageLecturer extends JFrame {
 				{
 					e1.printStackTrace();
 				}			
-				
-				
-				
+
 			}
 		});
 		
@@ -2156,6 +2101,8 @@ public class AddManageLecturer extends JFrame {
 		btnNewButton_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				//To clear all the fields after entering "Clear" button :
+				//Basic lecturer details :
 				InvalidMonday2.setText("");
 				InvalidTuesday2.setText("");
 				InvalidWednesday2.setText("");
@@ -2164,9 +2111,7 @@ public class AddManageLecturer extends JFrame {
 				InvalidSatarday2.setText("");
 				InvalidSunday2.setText("");
 				
-				
-				
-				
+				//Active days and hours :
 				txtLecturerName3.setText("  ");
 				txtLecturerID3.setText("  ");
 				txtMonday3.setText("  ");
@@ -2176,8 +2121,7 @@ public class AddManageLecturer extends JFrame {
 				txtFriday3.setText("  ");
 				txtSatarday3.setText("  ");
 				txtSunday3.setText("  ");
-				
-				
+
 			}
 		});
 		btnNewButton_9.setBackground(new Color(58,83,155));
@@ -2269,7 +2213,7 @@ public class AddManageLecturer extends JFrame {
 		btnNewButton_2.setBounds(502, 95, 218, 33);
 		contentPane.add(btnNewButton_2);
 		
-		//Header 
+		//Create Header :
 		
 		panel_7 = new JPanel();
 		panel_7.setForeground(Color.WHITE);

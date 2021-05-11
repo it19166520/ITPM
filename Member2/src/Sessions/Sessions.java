@@ -858,7 +858,7 @@ public class Sessions extends JFrame {
 		lblNewLabel_16.setBounds(39, 336, 158, 13);
 		panel_2.add(lblNewLabel_16);
 		
-		lblNewLabel_17 = new JLabel("Session ID   :");
+		lblNewLabel_17 = new JLabel("Session ID  :");
 		lblNewLabel_17.setForeground(new Color(138, 43, 226));
 		lblNewLabel_17.setBackground(new Color(255, 255, 255));
 		lblNewLabel_17.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -900,9 +900,9 @@ public class Sessions extends JFrame {
 		txtStudentCountSession2.setColumns(10);
 		
 		txtSessionId2 = new JTextField();
-		txtSessionId2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		txtSessionId2.setFont(new Font("Tahoma", Font.BOLD, 12));
 		txtSessionId2.setForeground(new Color(138, 43, 226));
-		txtSessionId2.setBounds(172, 402, 256, 22);
+		txtSessionId2.setBounds(133, 402, 295, 22);
 		panel_2.add(txtSessionId2);
 		txtSessionId2.setColumns(10);
 		
@@ -978,7 +978,7 @@ public class Sessions extends JFrame {
 		OnlYNumbersStudentCount2 = new JLabel("");
 		OnlYNumbersStudentCount2.setForeground(Color.RED);
 		OnlYNumbersStudentCount2.setFont(new Font("Tahoma", Font.BOLD, 12));
-		OnlYNumbersStudentCount2.setBounds(172, 295, 199, 13);
+		OnlYNumbersStudentCount2.setBounds(172, 313, 199, 13);
 		panel_2.add(OnlYNumbersStudentCount2);
 		
 		lblNewLabel_21 = new JLabel("Click This Button To Get ID -->");
@@ -1046,8 +1046,7 @@ public class Sessions extends JFrame {
 					{
 						e1.printStackTrace();
 					}
-				
-				
+
 			}
 		});
 		scrollPane.setViewportView(table);
@@ -1134,7 +1133,7 @@ public class Sessions extends JFrame {
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//Update details :
+				//Update Session details :
 
 				  try {
 					  
@@ -1164,7 +1163,7 @@ public class Sessions extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				//Delete
+				//Delete Session details :
 				try {
 					
 					Connection conn = SqlServerConnection.dbConnecter();
@@ -1204,14 +1203,12 @@ public class Sessions extends JFrame {
 				{
 					e1.printStackTrace();
 				}
-				
-				
-				
+		
 			}
 		});
 		SessioncomboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				//Get details into the combo box and pass the selected value to the form :
                 try {
                 	
                 	Connection conn = SqlServerConnection.dbConnecter();
@@ -1241,10 +1238,7 @@ public class Sessions extends JFrame {
 				{
 					e1.printStackTrace();
 				}
-				
-				
-				
-				
+		
 			}
 		});
 		
