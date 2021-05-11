@@ -82,11 +82,11 @@ public class HomePage {
 		locationmng_1_1.setBackground(new Color(30, 144, 255));
 		locationmng_1_1.setForeground(new Color(0, 0, 0));
 		locationmng_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
-		locationmng_1_1.setBounds(769, 517, 435, 66);
+		locationmng_1_1.setBounds(803, 573, 322, 58);
 		Homeframe.getContentPane().add(locationmng_1_1);
 		
 		JButton btnWorkingDaysHours = new JButton("Working Days Hours\r\n Management");
-		btnWorkingDaysHours.setBounds(769, 401, 435, 66);
+		btnWorkingDaysHours.setBounds(996, 402, 322, 58);
 		Homeframe.getContentPane().add(btnWorkingDaysHours);
 		btnWorkingDaysHours.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -100,7 +100,7 @@ public class HomePage {
 		btnWorkingDaysHours.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		
 		JButton tagmng = new JButton("Tag Management");
-		tagmng.setBounds(769, 280, 435, 66);
+		tagmng.setBounds(994, 320, 322, 58);
 		Homeframe.getContentPane().add(tagmng);
 		tagmng.setBackground(new Color(0, 0, 139));
 		tagmng.setForeground(new Color(255, 255, 255));
@@ -111,7 +111,7 @@ public class HomePage {
 		tagmng.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		
 		JButton locationmng_1 = new JButton("Location Management");
-		locationmng_1.setBounds(769, 169, 435, 66);
+		locationmng_1.setBounds(996, 232, 322, 58);
 		Homeframe.getContentPane().add(locationmng_1);
 		locationmng_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -123,28 +123,28 @@ public class HomePage {
 		locationmng_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		
 		JButton studentgroups = new JButton("Student Groups Management");
-		studentgroups.setBounds(146, 169, 435, 66);
+		studentgroups.setBounds(592, 232, 322, 58);
 		Homeframe.getContentPane().add(studentgroups);
 		studentgroups.setBackground(new Color(0, 0, 139));
 		studentgroups.setForeground(new Color(255, 255, 255));
 		studentgroups.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		
 		JButton lecDetail = new JButton("Lecturer Details Management");
-		lecDetail.setBounds(146, 280, 435, 66);
+		lecDetail.setBounds(589, 317, 322, 58);
 		Homeframe.getContentPane().add(lecDetail);
 		lecDetail.setBackground(new Color(0, 0, 139));
 		lecDetail.setForeground(new Color(255, 255, 255));
 		lecDetail.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		
 		JButton sessionmng = new JButton("Session Management");
-		sessionmng.setBounds(146, 401, 435, 66);
+		sessionmng.setBounds(589, 404, 322, 58);
 		Homeframe.getContentPane().add(sessionmng);
 		sessionmng.setBackground(new Color(0, 0, 139));
 		sessionmng.setForeground(new Color(255, 255, 255));
 		sessionmng.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		
 		JButton subMng_1 = new JButton("Subject Management");
-		subMng_1.setBounds(146, 517, 435, 66);
+		subMng_1.setBounds(590, 489, 322, 58);
 		Homeframe.getContentPane().add(subMng_1);
 		subMng_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -153,6 +153,18 @@ public class HomePage {
 		subMng_1.setBackground(new Color(0, 0, 139));
 		subMng_1.setForeground(new Color(255, 255, 255));
 		subMng_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
+		
+		JButton btnStatistics = new JButton("Statistics");
+		btnStatistics.setForeground(Color.WHITE);
+		btnStatistics.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
+		btnStatistics.setBackground(new Color(0, 0, 139));
+		btnStatistics.setBounds(995, 488, 322, 58);
+		Homeframe.getContentPane().add(btnStatistics);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 255, 255));
+		panel_1.setBounds(555, 159, 789, 491);
+		Homeframe.getContentPane().add(panel_1);
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.WHITE);
@@ -169,10 +181,10 @@ public class HomePage {
 		txtrTimeTableManagement.setBackground(new Color(75, 119, 190));
 		panel.add(txtrTimeTableManagement);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(228, 241, 254));
-		panel_1.setBounds(109, 129, 1157, 508);
-		Homeframe.getContentPane().add(panel_1);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(HomePage.class.getResource("/Images/MicrosoftTeams-image.png")));
+		lblNewLabel.setBounds(0, 78, 1216, 611);
+		Homeframe.getContentPane().add(lblNewLabel);
 		lecDetail.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

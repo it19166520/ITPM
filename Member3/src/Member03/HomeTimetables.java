@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
+import javax.swing.ImageIcon;
 
 public class HomeTimetables {
 
@@ -63,7 +64,7 @@ public class HomeTimetables {
 		
 		JLabel lblNewLabel = new JLabel("The Timetable Of a Particular Lecturer");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setBounds(322, 306, 273, 79);
+		lblNewLabel.setBounds(640, 283, 435, 79);
 		timetableMenuframe.getContentPane().add(lblNewLabel);
 		
 		JButton locationmng_1_1 = new JButton("View The Timetable");
@@ -74,12 +75,12 @@ public class HomeTimetables {
 		locationmng_1_1.setForeground(Color.BLACK);
 		locationmng_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		locationmng_1_1.setBackground(new Color(30, 144, 255));
-		locationmng_1_1.setBounds(768, 319, 288, 52);
+		locationmng_1_1.setBounds(958, 294, 340, 52);
 		timetableMenuframe.getContentPane().add(locationmng_1_1);
 		
 		JLabel lblTheTimetableOf = new JLabel("The Timetable Of a Particular Student Group");
 		lblTheTimetableOf.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblTheTimetableOf.setBounds(322, 403, 319, 79);
+		lblTheTimetableOf.setBounds(640, 380, 362, 79);
 		timetableMenuframe.getContentPane().add(lblTheTimetableOf);
 		
 		JButton locationmng_1_1_1 = new JButton("View The Timetable");
@@ -90,12 +91,12 @@ public class HomeTimetables {
 		locationmng_1_1_1.setForeground(Color.BLACK);
 		locationmng_1_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		locationmng_1_1_1.setBackground(new Color(30, 144, 255));
-		locationmng_1_1_1.setBounds(768, 416, 288, 52);
+		locationmng_1_1_1.setBounds(958, 391, 340, 52);
 		timetableMenuframe.getContentPane().add(locationmng_1_1_1);
 		
 		JLabel lblTheTimetableOf_2 = new JLabel("The Timetable Of a Particular Room");
 		lblTheTimetableOf_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblTheTimetableOf_2.setBounds(322, 510, 319, 79);
+		lblTheTimetableOf_2.setBounds(640, 487, 396, 79);
 		timetableMenuframe.getContentPane().add(lblTheTimetableOf_2);
 		
 		JButton locationmng_1_1_1_1 = new JButton("View The Timetable");
@@ -106,7 +107,7 @@ public class HomeTimetables {
 		locationmng_1_1_1_1.setForeground(Color.BLACK);
 		locationmng_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		locationmng_1_1_1_1.setBackground(new Color(30, 144, 255));
-		locationmng_1_1_1_1.setBounds(768, 537, 288, 52);
+		locationmng_1_1_1_1.setBounds(958, 512, 340, 52);
 		timetableMenuframe.getContentPane().add(locationmng_1_1_1_1);
 		
 		JButton btnNewButton = new JButton("Back");
@@ -128,17 +129,8 @@ public class HomeTimetables {
 		locationmng_1_1_2.setForeground(new Color(255, 255, 255));
 		locationmng_1_1_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		locationmng_1_1_2.setBackground(new Color(0, 0, 128));
-		locationmng_1_1_2.setBounds(527, 169, 312, 58);
+		locationmng_1_1_2.setBounds(498, 120, 312, 58);
 		timetableMenuframe.getContentPane().add(locationmng_1_1_2);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(278, 264, 825, 379);
-		timetableMenuframe.getContentPane().add(scrollPane);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(224, 255, 255));
-		panel_1.setBorder(new TitledBorder(null, "View Timetable", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		scrollPane.setViewportView(panel_1);
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.WHITE);
@@ -154,6 +146,11 @@ public class HomeTimetables {
 		txtrTimeTableManagement.setEditable(false);
 		txtrTimeTableManagement.setBackground(new Color(75, 119, 190));
 		panel.add(txtrTimeTableManagement);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(HomeTimetables.class.getResource("/Images/How-to-make-an-effective-timetable-for-CAT-preparation.png")));
+		lblNewLabel_1.setBounds(0, 197, 614, 481);
+		timetableMenuframe.getContentPane().add(lblNewLabel_1);
 	}
 
 	

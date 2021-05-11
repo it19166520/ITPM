@@ -15,6 +15,8 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class HomePage2 {
 
@@ -70,7 +72,7 @@ public class HomePage2 {
 		btnAddWorkingDays.setForeground(Color.WHITE);
 		btnAddWorkingDays.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnAddWorkingDays.setBackground(new Color(0, 0, 139));
-		btnAddWorkingDays.setBounds(431, 200, 435, 66);
+		btnAddWorkingDays.setBounds(788, 204, 435, 66);
 		wokingDayHourframe.getContentPane().add(btnAddWorkingDays);
 		
 		JButton btnManageNotAvaillable = new JButton("Manage Not Availlable Time Allocation");
@@ -84,7 +86,7 @@ public class HomePage2 {
 		btnManageNotAvaillable.setForeground(Color.WHITE);
 		btnManageNotAvaillable.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnManageNotAvaillable.setBackground(new Color(0, 0, 139));
-		btnManageNotAvaillable.setBounds(431, 427, 435, 66);
+		btnManageNotAvaillable.setBounds(788, 439, 435, 66);
 		wokingDayHourframe.getContentPane().add(btnManageNotAvaillable);
 		
 		JButton btnManageARoom = new JButton("Manage a Room Cannot Be Recerved");
@@ -98,7 +100,7 @@ public class HomePage2 {
 		btnManageARoom.setForeground(Color.WHITE);
 		btnManageARoom.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnManageARoom.setBackground(new Color(0, 0, 139));
-		btnManageARoom.setBounds(431, 542, 435, 66);
+		btnManageARoom.setBounds(788, 553, 435, 66);
 		wokingDayHourframe.getContentPane().add(btnManageARoom);
 		
 		JButton btnNewButton = new JButton("Back To Home");
@@ -126,13 +128,8 @@ public class HomePage2 {
 		btnManageTimeSlot.setForeground(Color.WHITE);
 		btnManageTimeSlot.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 16));
 		btnManageTimeSlot.setBackground(new Color(0, 0, 139));
-		btnManageTimeSlot.setBounds(431, 310, 435, 66);
+		btnManageTimeSlot.setBounds(788, 322, 435, 66);
 		wokingDayHourframe.getContentPane().add(btnManageTimeSlot);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(228, 241, 254));
-		panel_1.setBounds(230, 141, 843, 522);
-		wokingDayHourframe.getContentPane().add(panel_1);
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.WHITE);
@@ -148,5 +145,10 @@ public class HomePage2 {
 		txtrTimeTableManagement.setEditable(false);
 		txtrTimeTableManagement.setBackground(new Color(75, 119, 190));
 		panel.add(txtrTimeTableManagement);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(HomePage2.class.getResource("/Images/How-to-make-an-effective-timetable-for-CAT-preparation.png")));
+		lblNewLabel.setBounds(10, 191, 1257, 487);
+		wokingDayHourframe.getContentPane().add(lblNewLabel);
 	}
 }
