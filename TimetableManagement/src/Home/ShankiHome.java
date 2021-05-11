@@ -1,6 +1,8 @@
 package Home;
 
 import java.awt.Color;
+
+
 import java.awt.EventQueue;
 import java.awt.Font;
 
@@ -25,17 +27,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
-import DBConnection.DBConnection;
 
-public class ShankiHome {
+import DBConnection.SqlServerConnection;
+
+public class ShankiHome extends JFrame {
+
 	
-	Connection connection=null;
 
 	private JFrame frame;
 	private JPanel panelHeader;
 	private JLabel txtrTimeTableManagement;
 	private JButton btnLocatio;
 	private JButton btnStatistic;
+	Connection connection;
 
 	/**
 	 * Launch the application.
@@ -65,7 +69,7 @@ public class ShankiHome {
 	 */
 	private void initialize() {
 		
-		connection = DBConnection.dbConnect();
+		connection = SqlServerConnection.dbConnecter();
 		
 		frame = new JFrame();
 		frame.setBounds(0, 0, 1370, 728);
@@ -160,7 +164,7 @@ public class ShankiHome {
 						 int count3 = rs3.getInt("LocationCount");
 						 
 						 BarChart.textRegRooms.setText(String.valueOf(count3));
-						 dataset.setValue( rs3.getInt("LocationCount") , "count","Rooms");
+						 dataset.setValue( rs3.getInt("LocationCount") , "count","RoomName");
 						 
 					 }
 			            
