@@ -135,7 +135,7 @@ public class addroomsNonOverLapping extends JFrame {
 		JLabel lblNewLabel = new JLabel("Manage Session rooms Non-Over Lapping Sessions");
 		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 26));
-		lblNewLabel.setBounds(31, 30, 536, 79);
+		lblNewLabel.setBounds(31, 30, 639, 79);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Select Session");

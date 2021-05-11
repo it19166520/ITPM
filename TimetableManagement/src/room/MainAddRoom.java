@@ -2,10 +2,6 @@ package room;
 
 import java.awt.BorderLayout;
 
-
-
-
-
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
@@ -107,7 +103,7 @@ public class MainAddRoom extends JFrame {
 		addconssessions.setForeground(Color.WHITE);
 		addconssessions.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		addconssessions.setBackground(new Color(0, 0, 139));
-		addconssessions.setBounds(553, 197, 435, 66);
+		addconssessions.setBounds(564, 265, 435, 66);
 		panel_1.add(addconssessions);
 		
 		JButton addparsession = new JButton("Add Parallel Session Rooms");
@@ -120,7 +116,7 @@ public class MainAddRoom extends JFrame {
 		addparsession.setForeground(Color.WHITE);
 		addparsession.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		addparsession.setBackground(new Color(0, 0, 139));
-		addparsession.setBounds(83, 60, 435, 66);
+		addparsession.setBounds(83, 102, 435, 66);
 		panel_1.add(addparsession);
 		
 		addnonoverlappingrooms = new JButton("Add Non-Overlapping Session Rooms");
@@ -136,7 +132,7 @@ public class MainAddRoom extends JFrame {
 		addnonoverlappingrooms.setForeground(Color.WHITE);
 		addnonoverlappingrooms.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		addnonoverlappingrooms.setBackground(new Color(0, 0, 139));
-		addnonoverlappingrooms.setBounds(553, 60, 435, 66);
+		addnonoverlappingrooms.setBounds(564, 102, 435, 66);
 		panel_1.add(addnonoverlappingrooms);
 		
 		JButton viewallbtn = new JButton("Dispaly Allocated Session and rooms");
@@ -150,10 +146,23 @@ public class MainAddRoom extends JFrame {
 		viewallbtn.setForeground(Color.WHITE);
 		viewallbtn.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		viewallbtn.setBackground(new Color(0, 0, 139));
-		viewallbtn.setBounds(83, 197, 435, 66);
+		viewallbtn.setBounds(83, 265, 435, 66);
 		panel_1.add(viewallbtn);
+		
+		JButton backbtn = new JButton("Back ");
+		backbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HomePage ho =new HomePage();
+				ho.Show();
+				
+				}
+		});
+		backbtn.setForeground(Color.WHITE);
+		backbtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		backbtn.setBackground(Color.BLACK);
+		backbtn.setBounds(847, 405, 185, 43);
+		panel_1.add(backbtn);
 				
 				
 	}
-
 }
