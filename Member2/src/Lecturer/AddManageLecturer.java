@@ -486,6 +486,7 @@ public class AddManageLecturer extends JFrame {
 		txtLevel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		
 		txtRank = new JTextField();
+		txtRank.setForeground(new Color(138, 43, 226));
 		txtRank.setBounds(210, 358, 332, 26);
 		panel_8.add(txtRank);
 		txtRank.setEditable(false);
@@ -517,9 +518,10 @@ public class AddManageLecturer extends JFrame {
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		JLabel lblNewLabel_9 = new JLabel("Rank  :");
+		lblNewLabel_9.setForeground(new Color(138, 43, 226));
 		lblNewLabel_9.setBounds(53, 367, 118, 13);
 		panel_8.add(lblNewLabel_9);
-		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		JLabel lblNewLabel_40 = new JLabel("Click This Button To Get Rank    -->");
 		lblNewLabel_40.setForeground(new Color(0, 128, 0));
@@ -945,7 +947,7 @@ public class AddManageLecturer extends JFrame {
 		panel_9.add(lblNewLabel_10);
 		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
-		lblNewLabel_37 = new JLabel("Example :    11.00 a.m - 1.00 p.m  (from 00:00 to 23:59)     OR     \" - \" mark for free days.");
+		lblNewLabel_37 = new JLabel("Example :    11.00 - 16.00  (from 00:00 to 23:59)     OR     \" - \" mark for free days.");
 		lblNewLabel_37.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblNewLabel_37.setForeground(new Color(0, 128, 0));
 		lblNewLabel_37.setBounds(46, 36, 467, 13);
@@ -1148,15 +1150,18 @@ public class AddManageLecturer extends JFrame {
 		btnNewButton_5.setBackground(new Color(30, 144, 255));
 		
 		txtRank2 = new JTextField();
+		txtRank2.setForeground(new Color(138, 43, 226));
+		txtRank2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtRank2.setBounds(188, 385, 317, 19);
 		panel_13.add(txtRank2);
 		txtRank2.setEditable(false);
 		txtRank2.setColumns(10);
 		
 		lblNewLabel_24 = new JLabel("Rank  :");
+		lblNewLabel_24.setForeground(new Color(138, 43, 226));
 		lblNewLabel_24.setBounds(31, 380, 103, 26);
 		panel_13.add(lblNewLabel_24);
-		lblNewLabel_24.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_24.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
  
 		txtFaculty2 = new JComboBox(faculty);
@@ -1332,19 +1337,19 @@ public class AddManageLecturer extends JFrame {
 		LecturerDetailsComboBox.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel lblNewLabel_35 = new JLabel("Select Your Name In Here :");
-		lblNewLabel_35.setForeground(new Color(0, 128, 0));
-		lblNewLabel_35.setBounds(20, 10, 181, 13);
+		lblNewLabel_35.setForeground(new Color(138, 43, 226));
+		lblNewLabel_35.setBounds(20, 21, 181, 13);
 		panel_14.add(lblNewLabel_35);
 		lblNewLabel_35.setBackground(new Color(255, 255, 255));
 		lblNewLabel_35.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		
-		btnLoadLecturerDetails = new JButton("Load Table");
+		btnLoadLecturerDetails = new JButton("Load Lecturer Details");
 		btnLoadLecturerDetails.setBounds(410, 33, 179, 26);
 		panel_14.add(btnLoadLecturerDetails);
 		btnLoadLecturerDetails.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnLoadLecturerDetails.setForeground(Color.WHITE);
-		btnLoadLecturerDetails.setBackground(new Color(58,83,155));
+		btnLoadLecturerDetails.setBackground(new Color(255, 140, 0));
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(20, 76, 569, 327);
@@ -1485,11 +1490,11 @@ public class AddManageLecturer extends JFrame {
 		btnNewButton_7.setBounds(757, 487, 211, 35);
 		panel_12.add(btnNewButton_7);
 		btnNewButton_7.setForeground(Color.WHITE);
-		btnNewButton_7.setBackground(new Color(210,77,87));
+		btnNewButton_7.setBackground(new Color(255, 0, 0));
 		btnNewButton_7.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		btnNewButton_8 = new JButton("Clear All");
-		btnNewButton_8.setBounds(555, 487, 192, 35);
+		btnNewButton_8.setBounds(559, 487, 192, 35);
 		panel_12.add(btnNewButton_8);
 		btnNewButton_8.setBackground(new Color(58,83,155));
 		btnNewButton_8.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -2053,14 +2058,14 @@ public class AddManageLecturer extends JFrame {
 		panel_17.setLayout(null);
 		
 		btnLoadActiveHoursDetails = new JButton("Load Details");
-		btnLoadActiveHoursDetails.setBounds(798, 8, 162, 19);
+		btnLoadActiveHoursDetails.setBounds(820, 8, 140, 19);
 		panel_17.add(btnLoadActiveHoursDetails);
 		btnLoadActiveHoursDetails.setForeground(Color.WHITE);
-		btnLoadActiveHoursDetails.setBackground(new Color(58,83,155));
+		btnLoadActiveHoursDetails.setBackground(new Color(255, 127, 80));
 		btnLoadActiveHoursDetails.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		lblNewLabel_17 = new JLabel("Search Your  Name In Here :");
-		lblNewLabel_17.setForeground(new Color(0, 0, 205));
+		lblNewLabel_17.setForeground(new Color(138, 43, 226));
 		lblNewLabel_17.setBounds(83, 11, 210, 13);
 		panel_17.add(lblNewLabel_17);
 		lblNewLabel_17.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -2231,7 +2236,7 @@ public class AddManageLecturer extends JFrame {
 				switchPannels(panel1);
 			}
 		});
-		btnNewButton.setBounds(48, 95, 207, 33);
+		btnNewButton.setBounds(42, 95, 207, 33);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("Manage Lecturer Details");
@@ -2246,7 +2251,7 @@ public class AddManageLecturer extends JFrame {
 				switchPannels(panel2);
 			}
 		});
-		btnNewButton_1.setBounds(265, 95, 233, 33);
+		btnNewButton_1.setBounds(259, 95, 233, 33);
 		contentPane.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("Manage Active Hours");
@@ -2261,7 +2266,7 @@ public class AddManageLecturer extends JFrame {
 				switchPannels(panel3);
 			}
 		});
-		btnNewButton_2.setBounds(508, 95, 218, 33);
+		btnNewButton_2.setBounds(502, 95, 218, 33);
 		contentPane.add(btnNewButton_2);
 		
 		//Header 
@@ -2292,7 +2297,7 @@ public class AddManageLecturer extends JFrame {
 		btnNewButton_11.setBackground(new Color(30, 144, 255));
 		btnNewButton_11.setForeground(new Color(255, 255, 255));
 		btnNewButton_11.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnNewButton_11.setBounds(1136, 95, 185, 33);
+		btnNewButton_11.setBounds(1188, 89, 158, 33);
 		contentPane.add(btnNewButton_11);
 		
 		refreshLecturerDetailsTable();

@@ -86,6 +86,8 @@ public class Sessions extends JFrame {
 	private JLabel lblReqGroupID;
 	private JLabel lblReqDuration;
 	private JLabel lblReqStudentCount;
+	private JLabel lblNewLabel_21;
+	private JLabel lblNewLabel_22;
 
 	/**
 	 * Launch the application.
@@ -427,8 +429,9 @@ public class Sessions extends JFrame {
 		panel.add(lblNewLabel_1);
 	
 		
-		btnAddSession = new Button("Add Session");
-		btnAddSession.setBackground(new Color(65, 105, 225));
+		btnAddSession = new Button("Add New Session");
+		btnAddSession.setForeground(Color.WHITE);
+		btnAddSession.setBackground(new Color(58, 83, 155));
 		btnAddSession.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnAddSession.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -436,11 +439,12 @@ public class Sessions extends JFrame {
 				SwitchPannels(AddSessionPanel);
 			}
 		});
-		btnAddSession.setBounds(37, 91, 186, 37);
+		btnAddSession.setBounds(37, 91, 200, 37);
 		contentPane.add(btnAddSession);
 		
-		btnManageSession = new Button("Manage Sessions");
-		btnManageSession.setBackground(new Color(65, 105, 225));
+		btnManageSession = new Button("Manage Session Details");
+		btnManageSession.setForeground(Color.WHITE);
+		btnManageSession.setBackground(new Color(58, 83, 155));
 		btnManageSession.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnManageSession.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -448,11 +452,11 @@ public class Sessions extends JFrame {
 				SwitchPannels(manageSessionPanel);
 			}
 		});
-		btnManageSession.setBounds(230, 91, 223, 37);
+		btnManageSession.setBounds(243, 91, 235, 37);
 		contentPane.add(btnManageSession);
 		
 		SessionlayeredPane = new JLayeredPane();
-		SessionlayeredPane.setBounds(35, 134, 1267, 547);
+		SessionlayeredPane.setBounds(37, 134, 1273, 547);
 		contentPane.add(SessionlayeredPane);
 		SessionlayeredPane.setLayout(new CardLayout(0, 0));
 		
@@ -473,7 +477,7 @@ public class Sessions extends JFrame {
 		panel_4.setLayout(null);
 		
 		panel_1 = new JPanel();
-		panel_1.setBounds(61, 32, 600, 451);
+		panel_1.setBounds(61, 42, 600, 431);
 		panel_4.add(panel_1);
 		panel_1.setBackground(new Color(255, 255, 255));
 		panel_1.setBorder(new LineBorder(new Color(30, 144, 255)));
@@ -481,42 +485,43 @@ public class Sessions extends JFrame {
 		
 		lblNewLabel = new JLabel("Lecturer Name   :");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel.setBounds(45, 31, 173, 13);
+		lblNewLabel.setBounds(55, 31, 173, 13);
 		panel_1.add(lblNewLabel);
 		
 		lblNewLabel_2 = new JLabel("Subject Code   :");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_2.setBounds(45, 70, 122, 13);
+		lblNewLabel_2.setBounds(55, 70, 122, 13);
 		panel_1.add(lblNewLabel_2);
 		
 		lblNewLabel_3 = new JLabel("Subject Name   :");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(45, 109, 122, 13);
+		lblNewLabel_3.setBounds(55, 109, 122, 13);
 		panel_1.add(lblNewLabel_3);
 		
 		lblNewLabel_4 = new JLabel("Tag   :");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_4.setBounds(45, 142, 122, 13);
+		lblNewLabel_4.setBounds(55, 144, 122, 13);
 		panel_1.add(lblNewLabel_4);
 		
 		lblNewLabel_5 = new JLabel("Group ID   :");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_5.setBounds(45, 187, 122, 13);
+		lblNewLabel_5.setBounds(55, 178, 122, 13);
 		panel_1.add(lblNewLabel_5);
 		
 		lblNewLabel_6 = new JLabel("Student Count   :");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_6.setBounds(45, 229, 122, 13);
+		lblNewLabel_6.setBounds(55, 217, 122, 13);
 		panel_1.add(lblNewLabel_6);
 		
 		lblNewLabel_7 = new JLabel("Duration   :");
 		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_7.setBounds(45, 262, 122, 13);
+		lblNewLabel_7.setBounds(53, 262, 122, 13);
 		panel_1.add(lblNewLabel_7);
 		
 		lblNewLabel_8 = new JLabel("Session ID   :");
+		lblNewLabel_8.setForeground(new Color(138, 43, 226));
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_8.setBounds(45, 334, 96, 13);
+		lblNewLabel_8.setBounds(53, 334, 96, 13);
 		panel_1.add(lblNewLabel_8);
 		
 		txtStudentCountSession = new JTextField();
@@ -549,7 +554,9 @@ public class Sessions extends JFrame {
 		txtStudentCountSession.setColumns(10);
 		
 		txtSessionId = new JTextField();
-		txtSessionId.setBounds(140, 330, 400, 23);
+		txtSessionId.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtSessionId.setForeground(new Color(138, 43, 226));
+		txtSessionId.setBounds(209, 330, 331, 23);
 		panel_1.add(txtSessionId);
 		txtSessionId.setColumns(10);
 		
@@ -574,8 +581,9 @@ public class Sessions extends JFrame {
 		panel_1.add(txtGroupIDSession);
 		
 		JButton btnNewButton = new JButton("Generate ID");
-		btnNewButton.setBackground(new Color(65, 105, 225));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBackground(new Color(30, 144, 255));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -604,7 +612,7 @@ public class Sessions extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(192, 291, 203, 29);
+		btnNewButton.setBounds(251, 291, 145, 29);
 		panel_1.add(btnNewButton);
 		
 		txtSessionDuration = new JComboBox();
@@ -612,9 +620,10 @@ public class Sessions extends JFrame {
 		txtSessionDuration.setBounds(209, 258, 329, 23);
 		panel_1.add(txtSessionDuration);
 		
-		btnNewButton_3 = new JButton("save");
-		btnNewButton_3.setBackground(new Color(60, 179, 113));
-		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnNewButton_3 = new JButton("SAVE");
+		btnNewButton_3.setForeground(Color.WHITE);
+		btnNewButton_3.setBackground(new Color(27, 163, 156));
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
@@ -717,17 +726,28 @@ public class Sessions extends JFrame {
 				
 			}
 		});
-		btnNewButton_3.setBounds(103, 400, 167, 29);
+		btnNewButton_3.setBounds(53, 376, 231, 35);
 		panel_1.add(btnNewButton_3);
 		
-		JButton btnNewButton_7 = new JButton("Clear");
-		btnNewButton_7.setBackground(new Color(30, 144, 255));
-		btnNewButton_7.setFont(new Font("Tahoma", Font.BOLD, 16));
+		JButton btnNewButton_7 = new JButton("CLEAR");
+		btnNewButton_7.setForeground(Color.WHITE);
+		btnNewButton_7.setBackground(new Color(58, 83, 155));
+		btnNewButton_7.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				txtLecturerNameSession.setSelectedIndex(-1);
+				txtSubjectCodeSession.setSelectedIndex(-1);
+				txtSubjectNameSession.setSelectedIndex(-1);
+				txtTagSession.setSelectedIndex(-1);
+				txtGroupIDSession.setSelectedIndex(-1);
+				txtStudentCountSession.setText("  ");
+				txtSessionDuration.setSelectedIndex(-1);
+				txtSessionId.setText("  ");
+				
 			}
 		});
-		btnNewButton_7.setBounds(328, 400, 167, 29);
+		btnNewButton_7.setBounds(311, 376, 231, 35);
 		panel_1.add(btnNewButton_7);
 		
 		OnlyNumberStudentCount = new JLabel("");
@@ -778,14 +798,20 @@ public class Sessions extends JFrame {
 		lblReqDuration.setBounds(468, 281, 72, 23);
 		panel_1.add(lblReqDuration);
 		
-		lblNewLabel_9 = new JLabel("- Add Sessions -");
-		lblNewLabel_9.setBounds(270, 10, 203, 15);
+		JLabel lblNewLabel_20 = new JLabel("Click This Button To Get ID  -->");
+		lblNewLabel_20.setForeground(new Color(0, 128, 0));
+		lblNewLabel_20.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_20.setBounds(53, 299, 203, 13);
+		panel_1.add(lblNewLabel_20);
+		
+		lblNewLabel_9 = new JLabel("- Add New Session -");
+		lblNewLabel_9.setBounds(283, 17, 185, 15);
 		panel_4.add(lblNewLabel_9);
-		lblNewLabel_9.setForeground(new Color(30, 144, 255));
-		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_9.setForeground(new Color(0, 0, 139));
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		manageSessionPanel = new JPanel();
-		manageSessionPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		manageSessionPanel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		manageSessionPanel.setBackground(new Color(255, 255, 255));
 		SessionlayeredPane.add(manageSessionPanel, "name_695830111868700");
 		manageSessionPanel.setLayout(null);
@@ -793,53 +819,55 @@ public class Sessions extends JFrame {
 		panel_2 = new JPanel();
 		panel_2.setBackground(new Color(255, 255, 255));
 		panel_2.setBorder(new TitledBorder(null, "Manage Session Details :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 139)));
-		panel_2.setBounds(52, 21, 464, 472);
+		panel_2.setBounds(52, 44, 468, 436);
 		manageSessionPanel.add(panel_2);
 		panel_2.setLayout(null);
 		
 		lblNewLabel_10 = new JLabel("Lecturer Name   :");
-		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_10.setBounds(39, 65, 158, 13);
+		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_10.setBounds(39, 81, 158, 13);
 		panel_2.add(lblNewLabel_10);
 		
 		lblNewLabel_11 = new JLabel("Subject Code   :");
-		lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_11.setBounds(39, 109, 158, 13);
+		lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_11.setBounds(39, 123, 158, 13);
 		panel_2.add(lblNewLabel_11);
 		
 		lblNewLabel_12 = new JLabel("Subject Name   :");
-		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_12.setBounds(39, 151, 158, 13);
+		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_12.setBounds(39, 164, 158, 13);
 		panel_2.add(lblNewLabel_12);
 		
 		lblNewLabel_13 = new JLabel("Tag   :");
-		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_13.setBounds(39, 192, 158, 13);
+		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_13.setBounds(39, 209, 158, 13);
 		panel_2.add(lblNewLabel_13);
 		
 		lblNewLabel_14 = new JLabel("Group Id   :");
-		lblNewLabel_14.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_14.setBounds(39, 237, 158, 13);
+		lblNewLabel_14.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_14.setBounds(39, 250, 158, 13);
 		panel_2.add(lblNewLabel_14);
 		
 		lblNewLabel_15 = new JLabel("Student Count   :");
-		lblNewLabel_15.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_15.setBounds(39, 278, 158, 13);
+		lblNewLabel_15.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_15.setBounds(39, 291, 158, 13);
 		panel_2.add(lblNewLabel_15);
 		
 		JLabel lblNewLabel_16 = new JLabel("Duration   :");
-		lblNewLabel_16.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_16.setBounds(39, 318, 158, 13);
+		lblNewLabel_16.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_16.setBounds(39, 336, 158, 13);
 		panel_2.add(lblNewLabel_16);
 		
 		lblNewLabel_17 = new JLabel("Session ID   :");
-		lblNewLabel_17.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_17.setBounds(23, 390, 98, 19);
+		lblNewLabel_17.setForeground(new Color(138, 43, 226));
+		lblNewLabel_17.setBackground(new Color(255, 255, 255));
+		lblNewLabel_17.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_17.setBounds(39, 404, 98, 19);
 		panel_2.add(lblNewLabel_17);
 		
 		txtLecturerSessionIndex = new JTextField();
 		txtLecturerSessionIndex.setEditable(false);
-		txtLecturerSessionIndex.setBounds(172, 26, 256, 19);
+		txtLecturerSessionIndex.setBounds(172, 36, 256, 19);
 		panel_2.add(txtLecturerSessionIndex);
 		txtLecturerSessionIndex.setColumns(10);
 		
@@ -867,16 +895,19 @@ public class Sessions extends JFrame {
 				
 			}
 		});
-		txtStudentCountSession2.setBounds(172, 276, 256, 19);
+		txtStudentCountSession2.setBounds(172, 289, 256, 19);
 		panel_2.add(txtStudentCountSession2);
 		txtStudentCountSession2.setColumns(10);
 		
 		txtSessionId2 = new JTextField();
-		txtSessionId2.setBounds(112, 387, 342, 28);
+		txtSessionId2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		txtSessionId2.setForeground(new Color(138, 43, 226));
+		txtSessionId2.setBounds(172, 402, 256, 22);
 		panel_2.add(txtSessionId2);
 		txtSessionId2.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("GenerateID");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton_1.setForeground(new Color(255, 255, 255));
 		btnNewButton_1.setBackground(new Color(30, 144, 255));
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
@@ -911,48 +942,38 @@ public class Sessions extends JFrame {
 			
 			}
 		});
-		btnNewButton_1.setBounds(153, 349, 140, 28);
+		btnNewButton_1.setBounds(231, 364, 140, 28);
 		panel_2.add(btnNewButton_1);
 		
 		lblNewLabel_18 = new JLabel("Session Index   :");
-		lblNewLabel_18.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_18.setBounds(39, 28, 128, 13);
+		lblNewLabel_18.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_18.setBounds(39, 38, 128, 13);
 		panel_2.add(lblNewLabel_18);
 		
 		txtLecturerNameSession2 = new JComboBox();
-		txtLecturerNameSession2.setBounds(172, 62, 256, 21);
+		txtLecturerNameSession2.setBounds(172, 78, 256, 21);
 		panel_2.add(txtLecturerNameSession2);
 		
 		txtSubjectCodeSession2 = new JComboBox();
-		txtSubjectCodeSession2.setBounds(172, 106, 256, 21);
+		txtSubjectCodeSession2.setBounds(172, 120, 256, 21);
 		panel_2.add(txtSubjectCodeSession2);
 		
 		txtSubjectNameSession2 = new JComboBox();
-		txtSubjectNameSession2.setBounds(172, 148, 256, 21);
+		txtSubjectNameSession2.setBounds(172, 161, 256, 21);
 		panel_2.add(txtSubjectNameSession2);
 		
 		txtTagSession2 = new JComboBox();
-		txtTagSession2.setBounds(172, 189, 256, 21);
+		txtTagSession2.setBounds(172, 206, 256, 21);
 		panel_2.add(txtTagSession2);
 		
 		txtGroupIDSession2 = new JComboBox();
-		txtGroupIDSession2.setBounds(172, 234, 256, 21);
+		txtGroupIDSession2.setBounds(172, 247, 256, 21);
 		panel_2.add(txtGroupIDSession2);
 		
 		txtSessionDuration2 = new JComboBox();
 		txtSessionDuration2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7"}));
-		txtSessionDuration2.setBounds(172, 315, 256, 21);
+		txtSessionDuration2.setBounds(172, 333, 256, 21);
 		panel_2.add(txtSessionDuration2);
-		
-		btnNewButton_4 = new JButton("Clear All");
-		btnNewButton_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_4.setForeground(new Color(255, 255, 255));
-		btnNewButton_4.setBackground(new Color(135, 206, 235));
-		btnNewButton_4.setBounds(153, 425, 140, 28);
-		panel_2.add(btnNewButton_4);
 		
 		OnlYNumbersStudentCount2 = new JLabel("");
 		OnlYNumbersStudentCount2.setForeground(Color.RED);
@@ -960,15 +981,22 @@ public class Sessions extends JFrame {
 		OnlYNumbersStudentCount2.setBounds(172, 295, 199, 13);
 		panel_2.add(OnlYNumbersStudentCount2);
 		
+		lblNewLabel_21 = new JLabel("Click This Button To Get ID -->");
+		lblNewLabel_21.setForeground(new Color(0, 128, 0));
+		lblNewLabel_21.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_21.setBounds(39, 372, 192, 13);
+		panel_2.add(lblNewLabel_21);
+		
 		panel_3 = new JPanel();
+		panel_3.setBorder(new LineBorder(new Color(0, 191, 255)));
 		panel_3.setBackground(new Color(228,241,254));
 		//panel_6.setBorder(new LineBorder(new Color(135, 206, 250)));
-		panel_3.setBounds(559, 10, 696, 492);
+		panel_3.setBounds(571, 28, 692, 463);
 		manageSessionPanel.add(panel_3);
 		panel_3.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(32, 95, 628, 331);
+		scrollPane.setBounds(43, 85, 605, 350);
 		panel_3.add(scrollPane);
 		
 		table = new JTable();
@@ -1025,36 +1053,84 @@ public class Sessions extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		panel_5 = new JPanel();
+		panel_5.setBorder(new LineBorder(new Color(192, 192, 192)));
 		panel_5.setBackground(new Color(255, 255, 255));
-		panel_5.setBounds(10, 32, 672, 445);
+		panel_5.setBounds(21, 20, 649, 433);
 		panel_3.add(panel_5);
 		panel_5.setLayout(null);
 		
 		SessioncomboBox = new JComboBox();
-		SessioncomboBox.setBounds(23, 36, 164, 21);
+		SessioncomboBox.setBounds(20, 32, 196, 21);
 		panel_5.add(SessioncomboBox);
 		
-		JButton btnNewButton_2 = new JButton("Loard All Details   :");
-		btnNewButton_2.setBackground(new Color(30, 144, 255));
-		btnNewButton_2.setBounds(485, 32, 164, 28);
+		JButton btnNewButton_2 = new JButton("Loard All Sessions");
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_2.setForeground(new Color(255, 255, 255));
+		btnNewButton_2.setBackground(new Color(255, 140, 0));
+		btnNewButton_2.setBounds(454, 28, 170, 28);
 		panel_5.add(btnNewButton_2);
 		
-		JButton btnNewButton_6 = new JButton("Delete");
-		btnNewButton_6.setForeground(new Color(255, 255, 255));
-		btnNewButton_6.setBackground(new Color(220, 20, 60));
-		btnNewButton_6.setBounds(107, 408, 186, 27);
-		panel_5.add(btnNewButton_6);
-		
-		JButton btnNewButton_5 = new JButton("Update");
-		btnNewButton_5.setForeground(new Color(255, 255, 255));
-		btnNewButton_5.setBackground(new Color(46, 139, 87));
-		btnNewButton_5.setBounds(379, 408, 191, 27);
-		panel_5.add(btnNewButton_5);
+		JLabel lblNewLabel_19 = new JLabel("Search Your Name In Here :");
+		lblNewLabel_19.setForeground(new Color(148, 0, 211));
+		lblNewLabel_19.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_19.setBounds(20, 16, 196, 13);
+		panel_5.add(lblNewLabel_19);
 		
 		JPanel panel_6 = new JPanel();
+		panel_6.setBorder(new LineBorder(new Color(0, 191, 255)));
 		panel_6.setBackground(new Color(228,241,254));
-		panel_6.setBounds(10, 10, 539, 492);
+		panel_6.setBounds(10, 28, 551, 463);
 		manageSessionPanel.add(panel_6);
+		
+		btnNewButton_4 = new JButton("CLEAR ALL");
+		btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNewButton_4.setForeground(new Color(255, 255, 255));
+		btnNewButton_4.setBounds(338, 501, 211, 33);
+		manageSessionPanel.add(btnNewButton_4);
+		btnNewButton_4.setBackground(new Color(58, 83, 155));
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				txtLecturerSessionIndex.setText("  ");
+				txtLecturerNameSession2.setSelectedIndex(-1);
+				txtSubjectCodeSession2.setSelectedIndex(-1);
+				txtSubjectNameSession2.setSelectedIndex(-1);
+				txtTagSession2.setSelectedIndex(-1);
+				txtGroupIDSession2.setSelectedIndex(-1);
+				txtStudentCountSession2.setText("  ");
+				txtSessionDuration2.setSelectedIndex(-1);
+				txtSessionId2.setText("  ");
+				
+			}
+		});
+		
+		
+		JButton btnNewButton_6 = new JButton("DELETE");
+		btnNewButton_6.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNewButton_6.setBounds(559, 501, 191, 33);
+		manageSessionPanel.add(btnNewButton_6);
+		btnNewButton_6.setForeground(new Color(255, 255, 255));
+		btnNewButton_6.setBackground(new Color(220, 20, 60));
+		
+		JButton btnNewButton_5 = new JButton("UPDATE");
+		btnNewButton_5.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNewButton_5.setBounds(760, 501, 203, 33);
+		manageSessionPanel.add(btnNewButton_5);
+		btnNewButton_5.setForeground(new Color(255, 255, 255));
+		btnNewButton_5.setBackground(new Color(46, 139, 87));
+		
+		lblNewLabel_22 = new JLabel("- Manage Session Details -");
+		lblNewLabel_22.setForeground(new Color(0, 0, 139));
+		lblNewLabel_22.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_22.setBounds(510, 0, 203, 27);
+		manageSessionPanel.add(lblNewLabel_22);
+		
+		JButton btnNewButton_8 = new JButton("Back To Home");
+		btnNewButton_8.setForeground(new Color(255, 255, 255));
+		btnNewButton_8.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnNewButton_8.setBackground(new Color(30, 144, 255));
+		btnNewButton_8.setBounds(1181, 91, 150, 33);
+		contentPane.add(btnNewButton_8);
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
