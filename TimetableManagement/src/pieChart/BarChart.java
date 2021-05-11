@@ -1,6 +1,9 @@
 package pieChart;
 
 import java.awt.BorderLayout;
+
+
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -8,7 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import DBConnection.DBConnection;
+
 import Home.HomePage;
 import net.proteanit.sql.DbUtils;
 
@@ -17,6 +20,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import DBConnection.SqlServerConnection;
+
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -24,8 +30,8 @@ import java.awt.event.ActionEvent;
 
 public class BarChart extends JFrame {
 	
-	Connection connection=null;
-	
+
+	Connection connection;
 	private JPanel panelHeader;
 	private JLabel txtrTimeTableManagement;
 
@@ -63,8 +69,7 @@ public class BarChart extends JFrame {
 	 */
 	public BarChart() {
 		
-		connection = DBConnection.dbConnect();
-		
+		connection = SqlServerConnection.dbConnecter();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
