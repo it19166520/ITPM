@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 
 
 
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
@@ -18,7 +19,7 @@ import Home.HomePage;
 import net.proteanit.sql.DbUtils;
 import room.addroomcon;
 import room.addParallel;
-import room.addrooms;
+
 import room.addroomsNonOverLapping;
 
 
@@ -96,19 +97,6 @@ public class MainAddRoom extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JButton addsessionrooms = new JButton("Add Session Rooms");
-		addsessionrooms.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				addrooms add = new addrooms();
-				add.show();
-			}
-		});
-		addsessionrooms.setBounds(54, 60, 435, 66);
-		panel_1.add(addsessionrooms);
-		addsessionrooms.setForeground(Color.WHITE);
-		addsessionrooms.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
-		addsessionrooms.setBackground(new Color(0, 0, 139));
-		
 		addconssessions = new JButton("Add Consecative Session Rooms");
 		addconssessions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -132,7 +120,7 @@ public class MainAddRoom extends JFrame {
 		addparsession.setForeground(Color.WHITE);
 		addparsession.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		addparsession.setBackground(new Color(0, 0, 139));
-		addparsession.setBounds(54, 197, 435, 66);
+		addparsession.setBounds(83, 60, 435, 66);
 		panel_1.add(addparsession);
 		
 		addnonoverlappingrooms = new JButton("Add Non-Overlapping Session Rooms");
@@ -162,7 +150,7 @@ public class MainAddRoom extends JFrame {
 		viewallbtn.setForeground(Color.WHITE);
 		viewallbtn.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		viewallbtn.setBackground(new Color(0, 0, 139));
-		viewallbtn.setBounds(293, 327, 435, 66);
+		viewallbtn.setBounds(83, 197, 435, 66);
 		panel_1.add(viewallbtn);
 				
 				

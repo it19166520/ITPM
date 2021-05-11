@@ -24,7 +24,6 @@ public class DispalyRooms extends JFrame {
 	private JButton conbtn;
 	private JButton btnNewButton_1;
 	private JButton btnNewButton_2;
-	private JButton btnNewButton_3;
 	private JPanel Con;
 	private JPanel Para;
 	private JPanel NonOver;
@@ -150,6 +149,7 @@ public class DispalyRooms extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -160,7 +160,7 @@ public class DispalyRooms extends JFrame {
 		layeredPane.setLayout(new CardLayout(0, 0));
 		
 		Con = new JPanel();
-		Con.setBackground(new Color(224, 255, 255));
+		Con.setBackground(Color.LIGHT_GRAY);
 		layeredPane.add(Con, "name_601258487500200");
 		Con.setLayout(null);
 		
@@ -246,21 +246,6 @@ public class DispalyRooms extends JFrame {
 		});
 		btnNewButton_2.setBounds(684, 88, 245, 33);
 		contentPane.add(btnNewButton_2);
-		
-		btnNewButton_3 = new JButton("Sessions");
-		btnNewButton_3.setBackground(new Color(0, 0, 128));
-		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton_3.setForeground(new Color(255, 255, 255));
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
-				SwitchPannels(Sess);
-				
-			}
-		});
-		btnNewButton_3.setBounds(1013, 92, 209, 29);
-		contentPane.add(btnNewButton_3);
 		
 		panelHeader = new JPanel();
 		panelHeader.setLayout(null);
