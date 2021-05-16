@@ -385,6 +385,43 @@ public class Consec_sessions extends JFrame {
 		Consecutive.add(lblNewLabel_2);
 		
 		btnDeleteConsecutiveSession = new JButton("Delete Consecutive Session");
+		btnDeleteConsecutiveSession.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int opt = JOptionPane.showConfirmDialog(null, "Are You Sure?","Delete", JOptionPane.YES_NO_OPTION);
+				
+				if(opt ==0) {
+					
+					
+				try {
+					
+					connection = DBConnection.dbConnecter();
+					
+					int SelectedRowIndex = ViewConSessions.getSelectedRow();
+					String ID2 = (ViewConSessions.getModel().getValueAt(SelectedRowIndex, 0)).toString();
+					
+					String deletequery="delete from ConsecutiveSession where CsessionID='"+ID2+"'";                      
+					PreparedStatement psat=connection.prepareStatement(deletequery);
+					
+					psat.execute();
+					
+					JOptionPane.showMessageDialog(null, "Concsecutive session removed Sucsessfully!");
+					
+					psat.close();
+					
+					
+				}
+				catch(Exception e3)
+				{
+					e3.printStackTrace();
+				}
+				
+				RefreshConsecTable();
+				
+			}}
+				
+			
+		});
 		btnDeleteConsecutiveSession.setForeground(Color.WHITE);
 		btnDeleteConsecutiveSession.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		btnDeleteConsecutiveSession.setFocusPainted(false);
@@ -569,6 +606,44 @@ public class Consec_sessions extends JFrame {
 		Parallel.add(lblParallelSessions);
 		
 		btnDeleteParallelSession = new JButton("Delete Parallel Session");
+		btnDeleteParallelSession.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				int opt = JOptionPane.showConfirmDialog(null, "Are You Sure ?","Delete", JOptionPane.YES_NO_OPTION);
+				
+				if(opt ==0) {
+					
+				try {
+					
+					connection = DBConnection.dbConnecter();
+					
+					int SelectedRowIndex = ViewParSessions.getSelectedRow();
+					String ID2 = (ViewParSessions.getModel().getValueAt(SelectedRowIndex, 0)).toString();
+					
+					
+					String deletequery="delete from ParallelSession where PsessionID='"+ID2+"'";                      
+					PreparedStatement psat=connection.prepareStatement(deletequery);
+					
+					psat.execute();
+					
+					JOptionPane.showMessageDialog(null, "Parallel session removed Sucsessfully!");
+					
+					psat.close();
+					
+					
+				}
+				catch(Exception e3)
+				{
+					e3.printStackTrace();
+				}
+				
+				RefreshParallelTable();
+				
+			}}
+				
+			
+		});
 		btnDeleteParallelSession.setForeground(Color.WHITE);
 		btnDeleteParallelSession.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		btnDeleteParallelSession.setFocusPainted(false);
@@ -755,6 +830,42 @@ public class Consec_sessions extends JFrame {
 		scrollPane_4.setViewportView(ViewSelectedNO);
 		
 		btnDeleteNonoverlappingSession = new JButton("Delete NonOverlapping Session");
+		btnDeleteNonoverlappingSession.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			int opt = JOptionPane.showConfirmDialog(null, "Are You Sure?","Delete", JOptionPane.YES_NO_OPTION);
+				
+				if(opt ==0) {
+					
+					
+				try {
+					
+					connection = DBConnection.dbConnecter();
+					
+					int SelectedRowIndex = ViewNOSessions.getSelectedRow();
+					String ID2 = (ViewNOSessions.getModel().getValueAt(SelectedRowIndex, 0)).toString();
+					
+					String deletequery="delete from NonOverlappingSession where NOSessionID='"+ID2+"'";                      
+					PreparedStatement psat=connection.prepareStatement(deletequery);
+					
+					psat.execute();
+					
+					JOptionPane.showMessageDialog(null, "Non overlapping session removed Sucsessfully!");
+					
+					psat.close();
+					
+					
+				}
+				catch(Exception e3)
+				{
+					e3.printStackTrace();
+				}
+				
+				RefreshNOTable();
+				
+			}}
+			
+		});
 		btnDeleteNonoverlappingSession.setForeground(Color.WHITE);
 		btnDeleteNonoverlappingSession.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		btnDeleteNonoverlappingSession.setFocusPainted(false);
