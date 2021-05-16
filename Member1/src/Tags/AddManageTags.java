@@ -391,7 +391,7 @@ public class AddManageTags extends JFrame {
 		ViewTagsTable.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		ViewTagsTable.getTableHeader().setOpaque(false);
 		ViewTagsTable.getTableHeader().setForeground(new Color(255,255,255));
-		ViewTagsTable.getTableHeader().setBackground(new Color(32,236,203));
+		ViewTagsTable.getTableHeader().setBackground(new Color(34, 167, 240));
 		ViewTagsTable.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		
 	//fetch clicked data into a form
@@ -569,6 +569,10 @@ public class AddManageTags extends JFrame {
 		BtnDeleteTagView.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				int opt = JOptionPane.showConfirmDialog(null, "Are You Sure to Delete?","Delete", JOptionPane.YES_NO_OPTION);
+				
+				if(opt ==0) {
+				
 				try {
 					
 					String deletequery="delete from Tag where TagID='"+textTagID.getText()+"'";                      
@@ -589,7 +593,7 @@ public class AddManageTags extends JFrame {
 				
 				RefreshTagsTable();
 				
-			}
+			}}
 		});
 		BtnDeleteTagView.setBounds(152, 431, 123, 30);
 		GetTagsFormPanel.add(BtnDeleteTagView);

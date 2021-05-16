@@ -90,6 +90,9 @@ public class Consec_sessions extends JFrame {
 	private JLabel lblNonOverlappingSessions;
 	private JTable ViewSelectedNO;
 	private JScrollPane scrollPane_4;
+	private JButton btnDeleteConsecutiveSession;
+	private JButton btnDeleteParallelSession;
+	private JButton btnDeleteNonoverlappingSession;
 	
 
 	/**
@@ -232,7 +235,7 @@ public class Consec_sessions extends JFrame {
 		sessionListTable.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		sessionListTable.getTableHeader().setOpaque(false);
 		sessionListTable.getTableHeader().setForeground(Color.WHITE);
-		sessionListTable.getTableHeader().setBackground(new Color(44, 62, 80));
+		sessionListTable.getTableHeader().setBackground(new Color(34, 167, 240));
 		sessionListTable.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		sessionListTable.setRowSelectionAllowed(true);
 		scrollPane.setViewportView(sessionListTable);
@@ -305,7 +308,7 @@ public class Consec_sessions extends JFrame {
 		ViewConSessions.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		ViewConSessions.getTableHeader().setOpaque(false);
 		ViewConSessions.getTableHeader().setForeground(Color.WHITE);
-		ViewConSessions.getTableHeader().setBackground(new Color(44, 62, 80));
+		ViewConSessions.getTableHeader().setBackground(new Color(34, 167, 240));
 		ViewConSessions.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		scrollPaneViewConsec.setViewportView(ViewConSessions);
 		
@@ -350,12 +353,17 @@ public class Consec_sessions extends JFrame {
 		
 		newTable = new JTable();
 		newTable.setRowHeight(30);
+		newTable.setBorder(new LineBorder(Color.BLUE));
+		newTable.setUpdateSelectionOnSort(false);
+		newTable.setSelectionForeground(Color.WHITE);
+		newTable.setGridColor(Color.LIGHT_GRAY);
+		newTable.setRowHeight(30);
 		newTable.setBackground(Color.WHITE);
 		newTable.setSelectionBackground(new Color(176, 224, 230));
 		newTable.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		newTable.getTableHeader().setOpaque(false);
 		newTable.getTableHeader().setForeground(Color.WHITE);
-		newTable.getTableHeader().setBackground(new Color(44, 62, 80));
+		newTable.getTableHeader().setBackground(new Color(34, 167, 240));
 		newTable.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		scrollPaneNew.setViewportView(newTable);
 		
@@ -376,6 +384,14 @@ public class Consec_sessions extends JFrame {
 		lblNewLabel_2.setBounds(10, 291, 215, 14);
 		Consecutive.add(lblNewLabel_2);
 		
+		btnDeleteConsecutiveSession = new JButton("Delete Consecutive Session");
+		btnDeleteConsecutiveSession.setForeground(Color.WHITE);
+		btnDeleteConsecutiveSession.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
+		btnDeleteConsecutiveSession.setFocusPainted(false);
+		btnDeleteConsecutiveSession.setBackground(new Color(210, 77, 87));
+		btnDeleteConsecutiveSession.setBounds(10, 375, 203, 26);
+		Consecutive.add(btnDeleteConsecutiveSession);
+		
 		//---------------------------------------------Parallel panel----------------------------------------------------------------------------//
 		
 		Parallel = new JPanel();
@@ -392,13 +408,17 @@ public class Consec_sessions extends JFrame {
 		
 		
 		sessionListTablePa = new JTable();
+		sessionListTablePa.setBorder(new LineBorder(Color.BLUE));
+		sessionListTablePa.setUpdateSelectionOnSort(false);
+		sessionListTablePa.setSelectionForeground(Color.WHITE);
+		sessionListTablePa.setGridColor(Color.LIGHT_GRAY);
 		sessionListTablePa.setRowHeight(30);
 		sessionListTablePa.setBackground(Color.WHITE);
 		sessionListTablePa.setSelectionBackground(new Color(176, 224, 230));
 		sessionListTablePa.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		sessionListTablePa.getTableHeader().setOpaque(false);
 		sessionListTablePa.getTableHeader().setForeground(Color.WHITE);
-		sessionListTablePa.getTableHeader().setBackground(new Color(44, 62, 80));
+		sessionListTablePa.getTableHeader().setBackground(new Color(34, 167, 240));
 		sessionListTablePa.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		scrollPane1.setViewportView(sessionListTablePa);
 		
@@ -498,13 +518,17 @@ public class Consec_sessions extends JFrame {
 		Parallel.add(scrollPaneViewparallel);
 		
 		ViewParSessions = new JTable();
+		ViewParSessions.setBorder(new LineBorder(Color.BLUE));
+		ViewParSessions.setUpdateSelectionOnSort(false);
+		ViewParSessions.setSelectionForeground(Color.WHITE);
+		ViewParSessions.setGridColor(Color.LIGHT_GRAY);
 		ViewParSessions.setRowHeight(30);
 		ViewParSessions.setBackground(Color.WHITE);
 		ViewParSessions.setSelectionBackground(new Color(176, 224, 230));
 		ViewParSessions.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		ViewParSessions.getTableHeader().setOpaque(false);
 		ViewParSessions.getTableHeader().setForeground(Color.WHITE);
-		ViewParSessions.getTableHeader().setBackground(new Color(44, 62, 80));
+		ViewParSessions.getTableHeader().setBackground(new Color(34, 167, 240));
 		ViewParSessions.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		scrollPaneViewparallel.setViewportView(ViewParSessions);
 		
@@ -513,6 +537,18 @@ public class Consec_sessions extends JFrame {
 		Parallel.add(scrollPaneParallel);
 		
 		ViewSelectedParallel = new JTable();
+		ViewSelectedParallel.setBorder(new LineBorder(Color.BLUE));
+		ViewSelectedParallel.setUpdateSelectionOnSort(false);
+		ViewSelectedParallel.setSelectionForeground(Color.WHITE);
+		ViewSelectedParallel.setGridColor(Color.LIGHT_GRAY);
+		ViewSelectedParallel.setRowHeight(30);
+		ViewSelectedParallel.setBackground(Color.WHITE);
+		ViewSelectedParallel.setSelectionBackground(new Color(176, 224, 230));
+		ViewSelectedParallel.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
+		ViewSelectedParallel.getTableHeader().setOpaque(false);
+		ViewSelectedParallel.getTableHeader().setForeground(Color.WHITE);
+		ViewSelectedParallel.getTableHeader().setBackground(new Color(34, 167, 240));
+		ViewSelectedParallel.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		scrollPaneParallel.setViewportView(ViewSelectedParallel);
 		
 		lblNewLabel_3 = new JLabel("CTRL+select rows to add as Parallel");
@@ -532,6 +568,14 @@ public class Consec_sessions extends JFrame {
 		lblParallelSessions.setBounds(484, 371, 183, 17);
 		Parallel.add(lblParallelSessions);
 		
+		btnDeleteParallelSession = new JButton("Delete Parallel Session");
+		btnDeleteParallelSession.setForeground(Color.WHITE);
+		btnDeleteParallelSession.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
+		btnDeleteParallelSession.setFocusPainted(false);
+		btnDeleteParallelSession.setBackground(new Color(210, 77, 87));
+		btnDeleteParallelSession.setBounds(10, 351, 203, 26);
+		Parallel.add(btnDeleteParallelSession);
+		
 		
 		
 		
@@ -550,14 +594,17 @@ public class Consec_sessions extends JFrame {
 		NonOverlapping.add(scrollPane2);
 		
 		sessionListTableNo = new JTable();
-		sessionListTableNo.setBorder(null);
+		sessionListTableNo.setBorder(new LineBorder(Color.BLUE));
+		sessionListTableNo.setUpdateSelectionOnSort(false);
+		sessionListTableNo.setSelectionForeground(Color.WHITE);
+		sessionListTableNo.setGridColor(Color.LIGHT_GRAY);
 		sessionListTableNo.setRowHeight(30);
 		sessionListTableNo.setBackground(Color.WHITE);
 		sessionListTableNo.setSelectionBackground(new Color(176, 224, 230));
 		sessionListTableNo.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		sessionListTableNo.getTableHeader().setOpaque(false);
 		sessionListTableNo.getTableHeader().setForeground(Color.WHITE);
-		sessionListTableNo.getTableHeader().setBackground(new Color(44, 62, 80));
+		sessionListTableNo.getTableHeader().setBackground(new Color(34, 167, 240));
 		sessionListTableNo.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		scrollPane2.setViewportView(sessionListTableNo);
 		
@@ -615,7 +662,7 @@ public class Consec_sessions extends JFrame {
 		btnAddNOsessionbtn.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
 		btnAddNOsessionbtn.setFocusPainted(false);
 		btnAddNOsessionbtn.setBackground(new Color(58, 83, 155));
-		btnAddNOsessionbtn.setBounds(10, 309, 240, 31);
+		btnAddNOsessionbtn.setBounds(10, 298, 240, 31);
 		NonOverlapping.add(btnAddNOsessionbtn);
 		
 		btnViewNoSessions = new JButton("View Selected");
@@ -654,18 +701,21 @@ public class Consec_sessions extends JFrame {
 		scrollPaneViewNo = new JScrollPane();
 		scrollPaneViewNo.setBorder(null);
 		scrollPaneViewNo.setBackground(Color.WHITE);
-		scrollPaneViewNo.setBounds(41, 378, 1231, 169);
+		scrollPaneViewNo.setBounds(41, 391, 1231, 156);
 		NonOverlapping.add(scrollPaneViewNo);
 		
 		ViewNOSessions = new JTable();
-		ViewNOSessions.setBorder(null);
+		ViewNOSessions.setBorder(new LineBorder(Color.BLUE));
+		ViewNOSessions.setUpdateSelectionOnSort(false);
+		ViewNOSessions.setSelectionForeground(Color.WHITE);
+		ViewNOSessions.setGridColor(Color.LIGHT_GRAY);
 		ViewNOSessions.setRowHeight(30);
 		ViewNOSessions.setBackground(Color.WHITE);
 		ViewNOSessions.setSelectionBackground(new Color(176, 224, 230));
 		ViewNOSessions.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		ViewNOSessions.getTableHeader().setOpaque(false);
 		ViewNOSessions.getTableHeader().setForeground(Color.WHITE);
-		ViewNOSessions.getTableHeader().setBackground(new Color(44, 62, 80));
+		ViewNOSessions.getTableHeader().setBackground(new Color(34, 167, 240));
 		ViewNOSessions.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		scrollPaneViewNo.setViewportView(ViewNOSessions);
 		
@@ -691,7 +741,26 @@ public class Consec_sessions extends JFrame {
 		NonOverlapping.add(scrollPane_4);
 		
 		ViewSelectedNO = new JTable();
+		ViewSelectedNO.setBorder(new LineBorder(Color.BLUE));
+		ViewSelectedNO.setUpdateSelectionOnSort(false);
+		ViewSelectedNO.setSelectionForeground(Color.WHITE);
+		ViewSelectedNO.setGridColor(Color.LIGHT_GRAY);
+		ViewSelectedNO.setRowHeight(30);
+		ViewSelectedNO.setBackground(Color.WHITE);
+		ViewSelectedNO.setSelectionBackground(new Color(176, 224, 230));
+		ViewSelectedNO.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
+		ViewSelectedNO.getTableHeader().setOpaque(false);
+		ViewSelectedNO.getTableHeader().setForeground(Color.WHITE);
+		ViewSelectedNO.getTableHeader().setBackground(new Color(34, 167, 240));
 		scrollPane_4.setViewportView(ViewSelectedNO);
+		
+		btnDeleteNonoverlappingSession = new JButton("Delete NonOverlapping Session");
+		btnDeleteNonoverlappingSession.setForeground(Color.WHITE);
+		btnDeleteNonoverlappingSession.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
+		btnDeleteNonoverlappingSession.setFocusPainted(false);
+		btnDeleteNonoverlappingSession.setBackground(new Color(210, 77, 87));
+		btnDeleteNonoverlappingSession.setBounds(10, 354, 203, 26);
+		NonOverlapping.add(btnDeleteNonoverlappingSession);
 		
 		
 		

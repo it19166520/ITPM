@@ -482,7 +482,7 @@ public class AddManageStGrps extends JFrame {
 		ViewStGrpsTable.getTableHeader().setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		ViewStGrpsTable.getTableHeader().setOpaque(false);
 		ViewStGrpsTable.getTableHeader().setForeground(new Color(255,255,255));
-		ViewStGrpsTable.getTableHeader().setBackground(new Color(32,236,203));
+		ViewStGrpsTable.getTableHeader().setBackground(new Color(34, 167, 240));
 		ViewStGrpsTable.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 12));
 		
 	//fetch data after selecting
@@ -712,6 +712,9 @@ public class AddManageStGrps extends JFrame {
 		BtnDeleteStGView.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				int opt = JOptionPane.showConfirmDialog(null, "Are You Sure to Delete?","Delete", JOptionPane.YES_NO_OPTION);
+				
+				if(opt ==0) {
 				try {
 					
 					//connection = DBConnection.dbConnecter();
@@ -734,7 +737,7 @@ public class AddManageStGrps extends JFrame {
 				
 				RefreshStGroupsTable();
 				
-			}
+			}}
 		});
 		BtnDeleteStGView.setForeground(Color.WHITE);
 		BtnDeleteStGView.setFont(new Font("Leelawadee UI Semilight", Font.BOLD, 13));
