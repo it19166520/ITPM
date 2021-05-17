@@ -109,8 +109,10 @@ public class ManageWorkingDaysHours extends JFrame {
 		Connection connection;
 		
 		try{
-			connection = DriverManager.getConnection("jdbc:sqlserver://itpmserver.database.windows.net;databaseName=ITPM(New)");
-			return connection;
+			  String url = "jdbc:mysql://98.142.97.194:3306/sipnenam_itpm_remote_db_by_harsha";		
+			  String userName = "sipnenam_itpm_remote_db_by_harsha";
+			  String password = "ah21%hsaklhagA";
+			  connection = DriverManager.getConnection(url,userName, password);			return connection;
 		}
 		catch(Exception ex) {
 			ex.printStackTrace();
@@ -166,6 +168,8 @@ public class ManageWorkingDaysHours extends JFrame {
 	}
 	public void fetch() {
 		try {
+			connection = SqlServerConnection.dbConnecter();
+
 			String q="select * from WorkingDaysHours";
 			pst=connection.prepareStatement(q);
 			rs=pst.executeQuery();
@@ -299,6 +303,8 @@ public class ManageWorkingDaysHours extends JFrame {
 		hour.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(java.awt.event.KeyEvent evt) {
+				Connection connection = SqlServerConnection.dbConnecter();
+
 				//validate the field
 				String PATTERN = "[0-24]";
 				Pattern patt= Pattern.compile(PATTERN);
@@ -472,6 +478,8 @@ public class ManageWorkingDaysHours extends JFrame {
 			
 			if(opt ==0) {
 				try {
+					connection = SqlServerConnection.dbConnecter();
+
 					int row = jtableShow.getSelectedRow();
 			
 						String value= (jtableShow.getModel().getValueAt(row,0).toString());
@@ -549,6 +557,8 @@ public class ManageWorkingDaysHours extends JFrame {
 				
 				if(opt ==0) {
 				try {
+				connection = SqlServerConnection.dbConnecter();
+
 				int row = jtableShow.getSelectedRow();
 				
 				String value= (jtableShow.getModel().getValueAt(row,0).toString());

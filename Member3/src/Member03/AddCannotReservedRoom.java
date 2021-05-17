@@ -279,12 +279,15 @@ public class AddCannotReservedRoom extends JFrame {
 		JButton add = new JButton("Add Details");
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				if(txtStartTime.getText().equals("")||txtEnd.getText().equals("")||txtRoom.getSelectedItem().equals("")||txtDay.getSelectedItem().equals(""))
 				{
 					JOptionPane.showMessageDialog(null, "Please Fill Compleate Information");
 				}
 				else {
 				try {
+					connection = SqlServerConnection.dbConnecter();
+
 					String query="INSERT INTO `RoomCannotBeReserved` (`Room`, `Day`,`StartTime`, `EndTime`) VALUES(?,?,?,?)";                      
 					PreparedStatement pst=connection.prepareStatement(query);
 					

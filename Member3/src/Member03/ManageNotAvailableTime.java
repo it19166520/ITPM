@@ -101,8 +101,11 @@ public class ManageNotAvailableTime extends JFrame {
 		Connection connection;
 		
 		try{
-			connection = DriverManager.getConnection("jdbc:sqlserver://itpmserver.database.windows.net;databaseName=ITPM(New)");
-			return connection;
+			  String url = "jdbc:mysql://98.142.97.194:3306/sipnenam_itpm_remote_db_by_harsha";		
+			  String userName = "sipnenam_itpm_remote_db_by_harsha";
+			  String password = "ah21%hsaklhagA";
+			  connection = DriverManager.getConnection(url,userName, password);		
+			  return connection;
 		}
 		catch(Exception ex) {
 			ex.printStackTrace();
@@ -163,6 +166,8 @@ public class ManageNotAvailableTime extends JFrame {
 	}
 	public void fetch() {
 		try {
+			connection = SqlServerConnection.dbConnecter();
+
 			String q="select * from NotAvailableTimeAllocation";
 			pst=connection.prepareStatement(q);
 			rs=pst.executeQuery();
@@ -272,7 +277,8 @@ public class ManageNotAvailableTime extends JFrame {
 					{
 					
 						try {
-							
+							connection = SqlServerConnection.dbConnecter();
+
 							String sql="select * from session";
 							PreparedStatement pst=connection.prepareStatement(sql);
 							ResultSet rs=pst.executeQuery();
@@ -550,13 +556,15 @@ public class ManageNotAvailableTime extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(txtStartTime.getText().equals("")||txtLec.getSelectedItem().equals("")||txtSubGroup.getSelectedItem().equals("")||txtGroup.getSelectedItem().equals("")||txtDay.getSelectedItem().equals("")||txtSessionID.getSelectedItem().equals("")||txtEndTime.getText().equals(""))
 				{
-					JOptionPane.showMessageDialog(null, "Please select the row from the table which wants to edit!");
+					JOptionPane.showMessageDialog(null, "Please Fill Compleate Information!");
 				}
 				else {
 			int opt = JOptionPane.showConfirmDialog(null, "Are You Sure to Update Details?","Update", JOptionPane.YES_NO_OPTION);
 			
 			if(opt ==0) {
 				try {
+					connection = SqlServerConnection.dbConnecter();
+
 					int row = jtable_show.getSelectedRow();
 			
 						String value= (jtable_show.getModel().getValueAt(row,0).toString());
@@ -618,6 +626,9 @@ public class ManageNotAvailableTime extends JFrame {
 					
 					if(opt ==0) {
 					try {
+						
+					connection = SqlServerConnection.dbConnecter();
+
 					int row = jtable_show.getSelectedRow();
 					
 					String value= (jtable_show.getModel().getValueAt(row,0).toString());

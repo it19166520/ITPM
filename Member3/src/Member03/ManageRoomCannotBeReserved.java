@@ -99,7 +99,10 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		Connection connection;
 		
 		try{
-			connection = DriverManager.getConnection("jdbc:sqlserver://itpmserver.database.windows.net;databaseName=ITPM(New)");
+			String url = "jdbc:mysql://98.142.97.194:3306/sipnenam_itpm_remote_db_by_harsha";		
+			String userName = "sipnenam_itpm_remote_db_by_harsha";
+		    String password = "ah21%hsaklhagA";
+			connection = DriverManager.getConnection(url,userName, password);		
 			return connection;
 		}
 		catch(Exception ex) {
@@ -155,6 +158,8 @@ public class ManageRoomCannotBeReserved extends JFrame {
 	}
 	public void fetch() {
 		try {
+			connection = SqlServerConnection.dbConnecter();
+
 			String q="select * from RoomCannotBeReserved";
 			pst=connection.prepareStatement(q);
 			rs=pst.executeQuery();
@@ -421,6 +426,9 @@ public class ManageRoomCannotBeReserved extends JFrame {
 			
 			if(opt ==0) {
 				try {
+					
+					connection = SqlServerConnection.dbConnecter();
+
 					int row = jtable_show.getSelectedRow();
 			
 						String value= (jtable_show.getModel().getValueAt(row,0).toString());
@@ -471,6 +479,8 @@ public class ManageRoomCannotBeReserved extends JFrame {
 				
 				if(opt ==0) {
 				try {
+				connection = SqlServerConnection.dbConnecter();
+
 				int row = jtable_show.getSelectedRow();
 				
 				String value= (jtable_show.getModel().getValueAt(row,0).toString());

@@ -81,7 +81,10 @@ public class ManageTimeSlot extends JFrame {
 		Connection connection;
 		
 		try{
-			connection = DriverManager.getConnection("jdbc:sqlserver://itpmserver.database.windows.net;databaseName=ITPM(New)");
+			  String url = "jdbc:mysql://98.142.97.194:3306/sipnenam_itpm_remote_db_by_harsha";		
+			  String userName = "sipnenam_itpm_remote_db_by_harsha";
+			  String password = "ah21%hsaklhagA";
+			  connection = DriverManager.getConnection(url,userName, password);
 			return connection;
 		}
 		catch(Exception ex) {
@@ -164,6 +167,8 @@ public class ManageTimeSlot extends JFrame {
 
 	public void fetch() {
 		try {
+			connection = SqlServerConnection.dbConnecter();
+
 			String q="select * from TimeSlot";
 			pst=connection.prepareStatement(q);
 			rs=pst.executeQuery();
@@ -177,12 +182,12 @@ public class ManageTimeSlot extends JFrame {
 		}
 		
 	}
-	public void actionPerformed(ActionEvent arg0) {
+	public void clear() {
 		txtID.setText(null);
 		txtStartTime.setText(null);
 		txtEndTime.setText(null);
 		slot.setSelectedIndex(-1);
-	
+		
 	}
 	//refresh table after doing update and delete
 			public void RefreshTimeSlotTable()
@@ -235,7 +240,7 @@ public class ManageTimeSlot extends JFrame {
 		timeFrame.add(newlab);
 
 		txtStartTime = new JTextField();
-		txtStartTime.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtStartTime.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtStartTime.setBackground(new Color(255, 255, 255));
 		txtStartTime.addKeyListener(new KeyAdapter() {
 			@Override
@@ -256,7 +261,7 @@ public class ManageTimeSlot extends JFrame {
 		});
 		
 		txtID = new JTextField();
-		txtID.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtID.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtID.setBackground(new Color(255, 255, 255));
 		txtID.setEditable(false);
 		txtID.setColumns(10);
@@ -290,8 +295,8 @@ public class ManageTimeSlot extends JFrame {
 		duration.setBounds(39, 359, 164, 22);
 		timeFrame.add(duration);
 		
-		JComboBox slot = new JComboBox();
-		slot.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		slot = new JComboBox();
+		slot.setFont(new Font("Tahoma", Font.BOLD, 13));
 		slot.setBackground(new Color(255, 255, 255));
 		slot.setModel(new DefaultComboBoxModel(new String[] {"","1 Hour", "30 Minutes"}));
 		slot.setBounds(210, 356, 245, 33);
@@ -304,7 +309,7 @@ public class ManageTimeSlot extends JFrame {
 		timeFrame.add(endTime);
 		
 		txtEndTime = new JTextField();
-		txtEndTime.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtEndTime.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtEndTime.setBackground(new Color(255, 255, 255));
 		txtEndTime.addKeyListener(new KeyAdapter() {
 			@Override
@@ -360,7 +365,7 @@ public class ManageTimeSlot extends JFrame {
 				{
 					lbend.setText(" ");
 				}
-			
+				
 				if(((String) slot.getSelectedItem()).trim().isEmpty() ) {
 					lbslot.setText("*Required");
 				}
@@ -377,6 +382,9 @@ public class ManageTimeSlot extends JFrame {
 				
 				if(opt ==0) {
 				try {
+					
+				connection = SqlServerConnection.dbConnecter();
+
 				int row = jTable_Display.getSelectedRow();
 				
 				String value= (jTable_Display.getModel().getValueAt(row,0).toString());
@@ -408,6 +416,7 @@ public class ManageTimeSlot extends JFrame {
 				//to refresh the table after updating
 				 RefreshTimeSlotTable();
 				 fetch();
+				 clear();
 			}
 			
 				
@@ -429,6 +438,9 @@ public class ManageTimeSlot extends JFrame {
 				
 				if(opt ==0) {
 				try {
+					
+				connection = SqlServerConnection.dbConnecter();
+
 				int row = jTable_Display.getSelectedRow();
 				
 				String value= (jTable_Display.getModel().getValueAt(row,0).toString());
@@ -449,6 +461,7 @@ public class ManageTimeSlot extends JFrame {
 				}
 		
 				 fetch();
+				 clear();
 			}}
 			
 		});
@@ -476,6 +489,8 @@ public class ManageTimeSlot extends JFrame {
 				public void mouseClicked(MouseEvent e) {
 					
 					try {
+						connection = SqlServerConnection.dbConnecter();
+
 						int row = jTable_Display.getSelectedRow();
 						String ID2 = (jTable_Display.getModel().getValueAt(row, 0)).toString();
 						
@@ -568,9 +583,9 @@ public class ManageTimeSlot extends JFrame {
 		JButton btnNewButton = new JButton("Back");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				HomePage2 worki = new HomePage2();
-				
-				dispose();
+				HomePage2 p = new HomePage2();
+			    p.wokingDayHourframe.setVisible(true);
+			    dispose();
 				
 			}
 		});

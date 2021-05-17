@@ -245,7 +245,8 @@ public class AddWorkingDays extends JFrame {
 				}
 				else {
 			try {	
-				
+				connection = SqlServerConnection.dbConnecter();
+
 				
 				//get working days and hours
 				String query="insert into WorkingDaysHours(NumberOfWorkingDays,WorkingDays,WorkingHours,WorkingMinutes) values(?,?,?,?)";                      

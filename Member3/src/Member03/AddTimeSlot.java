@@ -31,7 +31,7 @@ import javax.swing.border.TitledBorder;
 public class AddTimeSlot extends JFrame {
 	Connection connection = SqlServerConnection.dbConnecter();
 
-	 JPanel addTimeSlotFrame;
+	JPanel addTimeSlotFrame;
 	private JTextField txtID;
 	private JTextField txtStartTime;
 	private JTextField txtEndTime;
@@ -59,8 +59,8 @@ public class AddTimeSlot extends JFrame {
 		txtID.setText(null);
 		txtStartTime.setText(null);
 		txtEndTime.setText(null);
-		slot.setSelectedItem(-1);
-	
+		slot.setSelectedIndex(-1);
+		
 	}
 	public AddTimeSlot() {
 		connection = SqlServerConnection.dbConnecter();
@@ -93,7 +93,7 @@ public class AddTimeSlot extends JFrame {
 		addTimeSlotFrame.add(newlabb);
 		
 		txtStartTime = new JTextField();
-		txtStartTime.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtStartTime.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtStartTime.setColumns(10);
 		txtStartTime.setBackground(Color.WHITE);
 		txtStartTime.setBounds(576, 278, 245, 33);
@@ -142,12 +142,13 @@ public class AddTimeSlot extends JFrame {
 		slotlb.setBounds(576, 422, 138, 14);
 		addTimeSlotFrame.add(slotlb);
 		
-		JComboBox slot = new JComboBox();
-		slot.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		slot.setModel(new DefaultComboBoxModel(new String[] {" ","1 Hour", "30 Minutes"}));
+		slot = new JComboBox();
+		slot.setFont(new Font("Tahoma", Font.BOLD, 13));
+		slot.setModel(new DefaultComboBoxModel(new String[] {"","1 Hour", "30 Minutes"}));
 		slot.setBackground(Color.WHITE);
 		slot.setBounds(576, 385, 245, 33);
 		addTimeSlotFrame.add(slot);
+	
 		
 		JLabel endTime = new JLabel("End Time    :");
 		endTime.setForeground(Color.BLACK);
@@ -156,7 +157,7 @@ public class AddTimeSlot extends JFrame {
 		addTimeSlotFrame.add(endTime);
 		
 		txtEndTime = new JTextField();
-		txtEndTime.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtEndTime.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtEndTime.setColumns(10);
 		txtEndTime.setBackground(Color.WHITE);
 		txtEndTime.setBounds(576, 453, 245, 33);
@@ -188,7 +189,7 @@ public class AddTimeSlot extends JFrame {
 		
 		JButton add = new JButton("Add Details");
 		add.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(java.awt.event.ActionEvent eve) {
 				
 				if(txtStartTime.getText().trim().isEmpty() ) {
 					lbstart.setText("*Required");
@@ -214,12 +215,16 @@ public class AddTimeSlot extends JFrame {
 					slotlb.setText(" ");
 				}
 				
-				if(txtStartTime.getText().equals("")||txtEndTime.getText().equals(""))
+				if(txtStartTime.getText().equals("")||slot.getSelectedItem().equals("")||txtEndTime.getText().equals(""))
 				{
 					JOptionPane.showMessageDialog(null, "Please Fill Compleate Information");
 				}
+			
+
 				else {
 				try {
+					connection = SqlServerConnection.dbConnecter();
+
 					String query="insert into TimeSlot(startTime,Duration,endTime) values(?,?,?)";                      
 					PreparedStatement pst=connection.prepareStatement(query);
 					
@@ -239,9 +244,9 @@ public class AddTimeSlot extends JFrame {
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
-				clear();
 				
-			}}
+				}
+			}
 		});
 		add.setForeground(Color.WHITE);
 		add.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
@@ -318,8 +323,8 @@ public class AddTimeSlot extends JFrame {
 		JButton btnBackToHome = new JButton("Back To Home");
 		btnBackToHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				HomePage p = new HomePage();
-			    p.Homeframe.setVisible(true);
+				HomePage2 p = new HomePage2();
+			    p.wokingDayHourframe.setVisible(true);
 			    dispose();
 			}
 		});

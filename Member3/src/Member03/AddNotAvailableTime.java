@@ -160,8 +160,9 @@ public class AddNotAvailableTime extends JFrame {
 			txtEndTime.setText(null);
 			txtLec.setSelectedIndex(-1);
 			txtGroup.setSelectedIndex(-1);
-			
+			txtSubGroup.setSelectedIndex(-1);
 			txtDay.setSelectedIndex(-1);
+			txtSessionID.setSelectedIndex(-1);
 		}
 	public AddNotAvailableTime() {
 		connection = SqlServerConnection.dbConnecter();
@@ -273,6 +274,7 @@ public class AddNotAvailableTime extends JFrame {
 		contentPane.add(labErr);
 		
 		txtStartTime = new JTextField();
+		txtStartTime.setFont(new Font("Tahoma", Font.BOLD, 11));
 		txtStartTime.addKeyListener(new KeyAdapter() {
 			@Override
 			//Validate the field
@@ -302,6 +304,7 @@ public class AddNotAvailableTime extends JFrame {
 		contentPane.add(to);
 		
 		txtEndTime = new JTextField();
+		txtEndTime.setFont(new Font("Tahoma", Font.BOLD, 11));
 		txtEndTime.setColumns(10);
 		txtEndTime.setBackground(Color.WHITE);
 		txtEndTime.setBounds(761, 500, 78, 26);
@@ -338,7 +341,7 @@ public class AddNotAvailableTime extends JFrame {
 		lblSelectDay.setBounds(370, 453, 143, 19);
 		contentPane.add(lblSelectDay);
 		
-		JComboBox txtDay = new JComboBox();
+		txtDay = new JComboBox();
 		txtDay.setBackground(Color.WHITE);
 		txtDay.setModel(new DefaultComboBoxModel(new String[] {"","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"}));
 		txtDay.setBounds(613, 448, 359, 33);
@@ -418,8 +421,11 @@ public class AddNotAvailableTime extends JFrame {
 				{
 					JOptionPane.showMessageDialog(null, "Please Fill Compleate Information");
 				}
+				
 				else {
 				try {
+					connection = SqlServerConnection.dbConnecter();
+
 					String query="INSERT INTO `NotAvailableTimeAllocation` (`Lecturer`, `Group`, `SubGroup`, `SessionID`, `Day`, `StartTime`, `EndTime`) VALUES(?,?,?,?,?,?,?)";                      
 					PreparedStatement pst=connection.prepareStatement(query);
 					
@@ -450,11 +456,11 @@ public class AddNotAvailableTime extends JFrame {
 					
 					pst.close();
 				}catch(Exception e) {
-					JOptionPane.showMessageDialog(null, e);
+					e.printStackTrace();				}
 				}
-				}
-				clear();
+				
 			}
+		
 		});
 		add.setForeground(Color.WHITE);
 		add.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
