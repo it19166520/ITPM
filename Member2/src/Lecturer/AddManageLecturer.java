@@ -175,6 +175,7 @@ public class AddManageLecturer extends JFrame {
 	private JLabel txtOnlyLetters;
 	private JLabel lblNewLabel_41;
 	private JLabel lblNewLabel_42;
+	private JLabel ValidateLecID;
 	
 	//create a method to auto refresh the jtable after doing any modification in "Lecturer" table (Basic lecturer details) in database:
 	public void refreshLecturerDetailsTable()
@@ -683,7 +684,7 @@ public class AddManageLecturer extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				
 				//validate pattern of active hours in basic lecturer details interface :
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 	
 				Pattern patt = Pattern.compile(PATTERN);
 
@@ -717,7 +718,7 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//validate pattern of active hours in basic lecturer details interface :
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 				
 				
 				Pattern patt = Pattern.compile(PATTERN);
@@ -752,7 +753,7 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//validate pattern of active hours in basic lecturer details interface :
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 				
 				
 				Pattern patt = Pattern.compile(PATTERN);
@@ -787,7 +788,7 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//validate pattern of active hours in basic lecturer details interface :
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 				
 				
 				Pattern patt = Pattern.compile(PATTERN);
@@ -822,7 +823,7 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//validate pattern of active hours in basic lecturer details interface :
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 				
 				
 				Pattern patt = Pattern.compile(PATTERN);
@@ -856,7 +857,7 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//validate pattern of active hours in basic lecturer details interface :
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 				
 				
 				Pattern patt = Pattern.compile(PATTERN);
@@ -891,8 +892,8 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//validate pattern of active hours in basic lecturer details interface :
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
-				
+			
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 				
 				Pattern patt = Pattern.compile(PATTERN);
 				
@@ -927,7 +928,7 @@ public class AddManageLecturer extends JFrame {
 		panel_9.add(lblNewLabel_10);
 		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
-		lblNewLabel_37 = new JLabel("Example :    11:00 - 16:00  (from 00:00 to 23:59)     OR     \" - \" mark for free days.");
+		lblNewLabel_37 = new JLabel("Example :    11:00-16:00  (from 00:00 to 23:59)     OR   type  \" free\"  for free days.");
 		lblNewLabel_37.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblNewLabel_37.setForeground(new Color(0, 128, 0));
 		lblNewLabel_37.setBounds(46, 36, 467, 13);
@@ -977,49 +978,8 @@ public class AddManageLecturer extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				//To check weather the feilds are required or not:
-				
-				if(txtLecturerName.getText().trim().isEmpty() && ((String) txtFaculty.getSelectedItem()).trim().isEmpty() && ((String) txtDepartment.getSelectedItem()).trim().isEmpty() && ((String) txtCampus.getSelectedItem()).trim().isEmpty() && ((String) txtBuilding.getSelectedItem()).trim().isEmpty() && txtLecturerID.getText().trim().isEmpty() && ((String) txtLevel.getSelectedItem()).trim().isEmpty())
-				{
-					
-					lblLecturerName.setText("*required");
-					lblFaculty.setText("*required");
-					lblDepartment.setText("*required");
-					lblCampus.setText("*required");
-					lblBuilding.setText("*required");
-					lblLecturerID.setText("*required");
-					lblLevel.setText("*required");
-					
-				}
-				else if(txtLecturerName.getText().trim().isEmpty())
-				{
-					lblLecturerName.setText("*required");
-				}
-				else if(((String) txtFaculty.getSelectedItem()).trim().isEmpty()) {
-					
-					lblFaculty.setText("*required");
-				}
-				else if(((String) txtDepartment.getSelectedItem()).trim().isEmpty()) {
-					
-					lblDepartment.setText("*required");
-				}
-				else if(((String) txtCampus.getSelectedItem()).trim().isEmpty())
-				{
-					lblCampus.setText("*required");
-				}
-				else if(((String) txtBuilding.getSelectedItem()).trim().isEmpty())
-				{
-					lblBuilding.setText("*required");
-				}
-				else if(txtLecturerID.getText().trim().isEmpty()) 
-				{
-					lblLecturerID.setText("*required");
-				}
-				else if(((String) txtLevel.getSelectedItem()).trim().isEmpty()) {
-					
-					lblLevel.setText("*required");
-				}
-				else
-	
+	if(!(txtLecturerName.getText().trim().isEmpty()) && txtFaculty.getSelectedIndex() != -1 && txtDepartment.getSelectedIndex() != -1 && txtCampus.getSelectedIndex() != -1 && txtBuilding.getSelectedIndex() != -1 && !(txtLecturerID.getText().trim().isEmpty()) && txtLevel.getSelectedIndex() != -1 && !(txtRank.getText().trim().isEmpty()) && !(txtMonday.getText().trim().isEmpty()) && !(txtTuesday.getText().trim().isEmpty()) && !(txtWednesday.getText().trim().isEmpty()) && !(txtThursday.getText().trim().isEmpty()) && !(txtFriday.getText().trim().isEmpty()) && !(txtSatarday.getText().trim().isEmpty()) && !(txtSunday.getText().trim().isEmpty())) {						
+		
 			try {	
 				
 				Connection conn = SqlServerConnection.dbConnecter();
@@ -1092,6 +1052,14 @@ public class AddManageLecturer extends JFrame {
 				
 			   refreshLecturerDetailsTable();
 			   refreshActiveHoursTable();
+			   
+			}else {
+				
+
+					JOptionPane.showMessageDialog(null, "Please Fill All The required Fields!");
+			}
+			
+		
 			}
 		});
 		
@@ -1201,24 +1169,50 @@ public class AddManageLecturer extends JFrame {
 				
 				//validate to only add 6 numbers:
 				
-				if(txtLecturerID2.getText().length()>5)
+				
+				if(txtLecturerID2.getText().length()>=6)
 				{
-					//cannot enter a number to the text fiels if entered number length is greater than 6
-					txtLecturerID2.setEditable(true);
+					//canit able to enter in text field if entered number length is greater than 6
+					txtLecturerID2.setEditable(false);
 					//set error massage :
-					onlyIndexLabel1.setText("*Invalid ID! Hint:ID cannot have more than 6 digits!");
+					ValidateLecID.setText("*Invalid ID! Hint:ID cannot have more than 6 digits!");
+				}
+				else if(txtLecturerID2.getText().length()<5)
+				{
+					//canit able to enter in text field if entered number length is greater than 6
+					txtLecturerID2.setEditable(false);
+					//set error massage :
+					ValidateLecID.setText("*Invalid ID! Hint:ID must have 6 digits!");
 				}
 				else if(txtLecturerID2.getText().length()==5)
 				{
 					
 					txtLecturerID2.setEditable(true);
-					onlyIndexLabel1.setText("*Valid ID!");
+					ValidateLecID.setText("*Valid ID!");
 				}
 				else {
 					
 					txtLecturerID2.setEditable(true);
-					onlyIndexLabel1.setText("");
+					ValidateLecID.setText("");
 				}
+				
+
+				//validate LecturerID for only accept numbers :
+				
+				char c = e.getKeyChar();
+				if(Character.isLetter(c)) {
+					
+					//canit able to enter in text field if entered char is not a number
+					txtLecturerID2.setEditable(false);
+					//set error massage :
+					ValidateLecID.setText("*Please Enter Numarical value!");
+					
+				}else {
+					
+					txtLecturerID2.setEditable(true);
+					
+				}
+				
 					
 			}
 		});
@@ -1265,9 +1259,17 @@ public class AddManageLecturer extends JFrame {
 		onlyIndexLabel1 = new JLabel("");
 		onlyIndexLabel1.setBounds(188, 326, 328, 13);
 		panel_13.add(onlyIndexLabel1);
+		
+		ValidateLecID = new JLabel("");
+		ValidateLecID.setForeground(Color.RED);
+		ValidateLecID.setFont(new Font("Tahoma", Font.BOLD, 11));
+		ValidateLecID.setBounds(188, 303, 317, 13);
+		panel_13.add(ValidateLecID);
 		btnNewButton_5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				if(!(txtLecturerID2.getText().trim().isEmpty()) && txtLevel2.getSelectedIndex() != -1) {	
 				
 				//Generate rank using lecturerId and level :
 				try {
@@ -1282,6 +1284,11 @@ public class AddManageLecturer extends JFrame {
 					{
 						e1.printStackTrace();
 					}	
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Please Fill All The required Fields!");
+				}
+	
 			}
 		});
 		btnNewButton_5.addActionListener(new ActionListener() {
@@ -1530,6 +1537,8 @@ public class AddManageLecturer extends JFrame {
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				if(!(txtLecturerName2.getText().trim().isEmpty()) && txtFaculty2.getSelectedIndex() != -1 && txtDepartment2.getSelectedIndex() != -1 && txtCampus2.getSelectedIndex() != -1 && txtBuilding2.getSelectedIndex() != -1 && !(txtLecturerID2.getText().trim().isEmpty()) && txtLevel2.getSelectedIndex() != -1 && !(txtRank2.getText().trim().isEmpty())) {						
+				
 				//Update Inserted data into the table :
 				
 				  try {
@@ -1551,6 +1560,11 @@ public class AddManageLecturer extends JFrame {
 						e1.printStackTrace();
 					}
 				  refreshLecturerDetailsTable();
+				  
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Please Fill All The required Fields!");
+				}
 			}
 		});
 		
@@ -1642,7 +1656,7 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//validate pattern of active hours 
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 			
 				
 				Pattern patt = Pattern.compile(PATTERN);
@@ -1679,7 +1693,7 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//validate pattern of active hours 
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 				
 				
 				Pattern patt = Pattern.compile(PATTERN);
@@ -1713,7 +1727,7 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//validate pattern of active hours 
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 				
 				
 				Pattern patt = Pattern.compile(PATTERN);
@@ -1752,7 +1766,7 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//validate pattern of active hours 
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 
 				Pattern patt = Pattern.compile(PATTERN);
 
@@ -1785,7 +1799,7 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//validate pattern of active hours 
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 
 				Pattern patt = Pattern.compile(PATTERN);
 
@@ -1823,7 +1837,7 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//validate pattern of active hours 
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 
 				Pattern patt = Pattern.compile(PATTERN);
 
@@ -1856,7 +1870,7 @@ public class AddManageLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//validate pattern of active hours 
-				String PATTERN ="([0-2][0-3]:[0-5][0-9]-[0-2][0-3]:[0-5][0-9] || [-])" ;
+				 String PATTERN ="[0-9]{2}[:][0-9]{2}[-][0-9]{2}[:][0-9]{2}|[a-zA-Z]{1,10}";
 				
 				
 				Pattern patt = Pattern.compile(PATTERN);
@@ -1932,7 +1946,7 @@ public class AddManageLecturer extends JFrame {
 		InvalidSunday2.setBounds(391, 241, 91, 17);
 		panel_16.add(InvalidSunday2);
 		
-		lblNewLabel_38 = new JLabel("Example :  11.00 a.m - 1.00 p.m    OR    \" - \" mark for free days");
+		lblNewLabel_38 = new JLabel("Example :  11:00 - 1:00    OR   type  \" free \"  for free days");
 		lblNewLabel_38.setForeground(new Color(0, 128, 0));
 		lblNewLabel_38.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblNewLabel_38.setBounds(153, 10, 329, 20);
@@ -2142,7 +2156,10 @@ public class AddManageLecturer extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				//Update Active hours details :
-				
+
+			if(!(txtMonday3.getText().trim().isEmpty()) && !(txtTuesday3.getText().trim().isEmpty()) && !(txtWednesday3.getText().trim().isEmpty()) && !(txtThursday3.getText().trim().isEmpty()) && !(txtFriday3.getText().trim().isEmpty()) && !(txtSatarday3.getText().trim().isEmpty()) && !(txtSunday3.getText().trim().isEmpty())) {				
+					
+			
 				  try {
 					  
 					  Connection conn = SqlServerConnection.dbConnecter();
@@ -2163,7 +2180,11 @@ public class AddManageLecturer extends JFrame {
 					}
 				  
 				  refreshActiveHoursTable();
-	
+			
+			}else {
+				
+				JOptionPane.showMessageDialog(null, "Please Fill All The required Fields!");
+			}
 			}
 			
 		});

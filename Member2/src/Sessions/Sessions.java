@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+
 import java.awt.SystemColor;
 
 import javax.swing.border.EmptyBorder;
@@ -22,6 +23,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.border.TitledBorder;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class Sessions extends JFrame {
 
@@ -88,6 +91,7 @@ public class Sessions extends JFrame {
 	private JLabel lblReqStudentCount;
 	private JLabel lblNewLabel_21;
 	private JLabel lblNewLabel_22;
+	private JLabel lblNewLabel_24;
 
 	/**
 	 * Launch the application.
@@ -203,52 +207,7 @@ public class Sessions extends JFrame {
 		}
 	}
 	
-	//Fill SubjectCode Combo Box in Add Session Interface:
-	public void FillSubjectCodeComboBox()
-	{
-		Connection conn = SqlServerConnection.dbConnecter();
-		
-		try {
-			
-			String query="select * from subjects";
-			PreparedStatement pst=conn.prepareStatement(query);
-			ResultSet rs=pst.executeQuery();
-			
-			while(rs.next())
-			{
-		
-				txtSubjectCodeSession.addItem(rs.getString("SublectCode"));
-				
-			}
-			
-		}catch(Exception e){
-			e.printStackTrace();
-			
-		}
-	}
-	//Fill SubjectCode Combo Box in Manage Session Details Interface:
-	public void FillSubjectCodeComboBox2()
-	{
-		Connection conn = SqlServerConnection.dbConnecter();
-		
-		try {
-			
-			String query="select * from subjects";
-			PreparedStatement pst=conn.prepareStatement(query);
-			ResultSet rs=pst.executeQuery();
-			
-			while(rs.next())
-			{
-		
-				txtSubjectCodeSession2.addItem(rs.getString("SublectCode"));
-				
-			}
-			
-		}catch(Exception e){
-			e.printStackTrace();
-			
-		}
-	}
+
 	
 	//Fill subject name combo box in Add Session Interface:
 	public void FillSubjectNameComboBox()
@@ -296,55 +255,7 @@ public class Sessions extends JFrame {
 			
 		}
 	}
-	
-	//Fill  Group id combo box In add Session Interface:
-	public void FillGroupIdComboBox()
-	{
-		Connection conn = SqlServerConnection.dbConnecter();
-		
-		try {
-			
-			String query="select * from StudentGroups";
-			PreparedStatement pst=conn.prepareStatement(query);
-			ResultSet rs=pst.executeQuery();
-			
-			while(rs.next())
-			{
-		
-				txtGroupIDSession.addItem(rs.getString("GroupID"));
-				
-			}
-			
-		}catch(Exception e){
-			e.printStackTrace();
-			
-		}
-	}
-	//Fill  Group id combo box In Manage Session Details Interface:
-	public void FillGroupIdComboBox2()
-	{
-		Connection conn = SqlServerConnection.dbConnecter();
-		
-		try {
-			
-			String query="select * from StudentGroups";
-			PreparedStatement pst=conn.prepareStatement(query);
-			ResultSet rs=pst.executeQuery();
-			
-			while(rs.next())
-			{
-		
-				txtGroupIDSession2.addItem(rs.getString("GroupID"));
-				
-			}
-			
-		}catch(Exception e){
-			e.printStackTrace();
-			
-		}
-	}
-	
-	//Fill tag combo box In Add Session Interface :
+	//Fill tag combo box In Add Session Details Interface :
 	public void FillTagComboBox()
 	{
 		Connection conn = SqlServerConnection.dbConnecter();
@@ -368,6 +279,57 @@ public class Sessions extends JFrame {
 		}
 	}
 	
+	
+	//Fill  Group id combo box In add Session Interface:
+	public void FillGroupIdComboBox()
+	{
+		
+		Connection conn = SqlServerConnection.dbConnecter();
+		
+	try {
+			
+			String query="select * from StudentGroups";
+			PreparedStatement pst=conn.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			
+			
+			while(rs.next())
+			{
+		
+				txtGroupIDSession.addItem(rs.getString("GroupID"));
+				txtGroupIDSession.addItem(rs.getString("SubGroupID"));
+			
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			
+		}
+	}
+	//Fill  Group id combo box In Manage Session Details Interface:
+	public void FillGroupIdComboBox2()
+	{
+		Connection conn = SqlServerConnection.dbConnecter();
+		
+		try {
+			
+			String query="select * from StudentGroups";
+			PreparedStatement pst=conn.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			
+			while(rs.next())
+			{
+		
+				txtGroupIDSession2.addItem(rs.getString("GroupID"));
+				txtGroupIDSession2.addItem(rs.getString("SubGroupID"));
+				
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			
+		}
+	}
+		
 	//Fill tag combo box In Manage Session Details Interface :
 	public void FillTagComboBox2()
 	{
@@ -484,44 +446,44 @@ public class Sessions extends JFrame {
 		panel_1.setLayout(null);
 		
 		lblNewLabel = new JLabel("Lecturer Name   :");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel.setBounds(55, 31, 173, 13);
 		panel_1.add(lblNewLabel);
 		
 		lblNewLabel_2 = new JLabel("Subject Code   :");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_2.setBounds(55, 70, 122, 13);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(55, 109, 122, 13);
 		panel_1.add(lblNewLabel_2);
 		
 		lblNewLabel_3 = new JLabel("Subject Name   :");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(55, 109, 122, 13);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_3.setBounds(55, 70, 122, 13);
 		panel_1.add(lblNewLabel_3);
 		
 		lblNewLabel_4 = new JLabel("Tag   :");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_4.setBounds(55, 144, 122, 13);
 		panel_1.add(lblNewLabel_4);
 		
-		lblNewLabel_5 = new JLabel("Group ID   :");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_5.setBounds(55, 178, 122, 13);
+		lblNewLabel_5 = new JLabel("GroupID/Sub-GroupID :");
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_5.setBounds(55, 202, 173, 13);
 		panel_1.add(lblNewLabel_5);
 		
 		lblNewLabel_6 = new JLabel("Student Count   :");
-		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_6.setBounds(55, 217, 122, 13);
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_6.setBounds(55, 235, 122, 13);
 		panel_1.add(lblNewLabel_6);
 		
 		lblNewLabel_7 = new JLabel("Duration   :");
-		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_7.setBounds(53, 262, 122, 13);
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel_7.setBounds(55, 275, 122, 13);
 		panel_1.add(lblNewLabel_7);
 		
 		lblNewLabel_8 = new JLabel("Session ID   :");
 		lblNewLabel_8.setForeground(new Color(138, 43, 226));
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_8.setBounds(53, 334, 96, 13);
+		lblNewLabel_8.setBounds(55, 347, 96, 13);
 		panel_1.add(lblNewLabel_8);
 		
 		txtStudentCountSession = new JTextField();
@@ -549,14 +511,14 @@ public class Sessions extends JFrame {
 				
 			}
 		});
-		txtStudentCountSession.setBounds(209, 213, 331, 23);
+		txtStudentCountSession.setBounds(209, 231, 331, 23);
 		panel_1.add(txtStudentCountSession);
 		txtStudentCountSession.setColumns(10);
 		
 		txtSessionId = new JTextField();
 		txtSessionId.setFont(new Font("Tahoma", Font.BOLD, 11));
 		txtSessionId.setForeground(new Color(138, 43, 226));
-		txtSessionId.setBounds(209, 330, 331, 23);
+		txtSessionId.setBounds(209, 343, 331, 23);
 		panel_1.add(txtSessionId);
 		txtSessionId.setColumns(10);
 		
@@ -565,11 +527,41 @@ public class Sessions extends JFrame {
 		panel_1.add(txtLecturerNameSession);
 		
 		txtSubjectCodeSession = new JComboBox();
-		txtSubjectCodeSession.setBounds(209, 66, 331, 23);
+		txtSubjectCodeSession.setBounds(209, 105, 331, 23);
 		panel_1.add(txtSubjectCodeSession);
 		
 		txtSubjectNameSession = new JComboBox();
-		txtSubjectNameSession.setBounds(209, 105, 331, 23);
+		txtSubjectNameSession.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				
+				try {
+					
+					Connection conn = SqlServerConnection.dbConnecter();
+					
+					String query = "select SublectCode from subjects where SubjectName='"+txtSubjectNameSession.getSelectedItem()+"'"; 
+					PreparedStatement pst=conn.prepareStatement(query);
+					ResultSet rs=pst.executeQuery();
+					txtSubjectCodeSession.removeAllItems();
+					
+					while(rs.next())
+					{
+				
+						txtSubjectCodeSession.addItem(rs.getString("SublectCode"));
+						
+					}
+					
+					conn.close();
+					
+					
+				}catch(Exception e1) {
+					
+					e1.printStackTrace();
+				}
+				
+				
+			}
+		});
+		txtSubjectNameSession.setBounds(209, 66, 331, 23);
 		panel_1.add(txtSubjectNameSession);
 		
 		txtTagSession = new JComboBox();
@@ -577,7 +569,7 @@ public class Sessions extends JFrame {
 		panel_1.add(txtTagSession);
 		
 		txtGroupIDSession = new JComboBox();
-		txtGroupIDSession.setBounds(209, 174, 331, 23);
+		txtGroupIDSession.setBounds(209, 198, 331, 23);
 		panel_1.add(txtGroupIDSession);
 		
 		JButton btnNewButton = new JButton("Generate ID");
@@ -587,6 +579,9 @@ public class Sessions extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				
+				if(txtLecturerNameSession.getSelectedIndex() != -1 && txtSubjectCodeSession.getSelectedIndex() != -1 && txtSubjectNameSession.getSelectedIndex() != -1 && txtTagSession.getSelectedIndex() != -1 && txtGroupIDSession.getSelectedIndex() != -1 && !(txtStudentCountSession.getText().trim().isEmpty()) && txtSessionDuration.getSelectedIndex() != -1) {
 				
 				try {
 					
@@ -608,16 +603,19 @@ public class Sessions extends JFrame {
 					e1.printStackTrace();
 				}
 				
-				
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Please Fill All The required Fields!");
+				}
 				
 			}
 		});
-		btnNewButton.setBounds(251, 291, 145, 29);
+		btnNewButton.setBounds(251, 304, 145, 29);
 		panel_1.add(btnNewButton);
 		
 		txtSessionDuration = new JComboBox();
 		txtSessionDuration.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6"}));
-		txtSessionDuration.setBounds(209, 258, 329, 23);
+		txtSessionDuration.setBounds(209, 271, 329, 23);
 		panel_1.add(txtSessionDuration);
 		
 		btnNewButton_3 = new JButton("SAVE");
@@ -629,50 +627,13 @@ public class Sessions extends JFrame {
 			
 				//Check whether the feilds are empty or not
 				
-				if(((String) txtLecturerNameSession.getSelectedItem()).trim().isEmpty() && ((String) txtSubjectCodeSession.getSelectedItem()).trim().isEmpty() && ((String) txtSubjectNameSession.getSelectedItem()).trim().isEmpty() && ((String) txtTagSession.getSelectedItem()).trim().isEmpty() && ((String) txtGroupIDSession.getSelectedItem()).trim().isEmpty() && txtStudentCountSession.getText().trim().isEmpty() && ((String) txtSessionDuration.getSelectedItem()).trim().isEmpty())
-				{
-					
-					lblReqLecName.setText("*required");
-					lblReqSubjectCode.setText("*required");
-					lblReqSubjectName.setText("*required");
-					lblReqTag.setText("*required");
-					lblReqGroupID.setText("*required");
-					lblReqStudentCount.setText("*required");
-					lblReqDuration.setText("*required");
-					
-				}
-				else if(((String) txtLecturerNameSession.getSelectedItem()).trim().isEmpty())
-				{
-					lblReqLecName.setText("*required");
-				}
-				else if(((String) txtSubjectCodeSession.getSelectedItem()).trim().isEmpty()) {
-					
-					lblReqSubjectCode.setText("*required");
-				}
-				else if(((String) txtSubjectNameSession.getSelectedItem()).trim().isEmpty())
-				{
-					lblReqSubjectName.setText("*required");
-				}
-				else if(((String) txtTagSession.getSelectedItem()).trim().isEmpty()) 
-				{
-					lblReqTag.setText("*required");
-				}
-				else if(((String) txtGroupIDSession.getSelectedItem()).trim().isEmpty()) {
-					
-					lblReqGroupID.setText("*required");
-				}
-				else if(txtStudentCountSession.getText().trim().isEmpty())
-				{
-					lblReqStudentCount.setText("*required");
-				}
-				else if(((String)txtSessionDuration.getSelectedItem()).trim().isEmpty()) {
-					
-					lblReqDuration.setText("*required");
-				}
-				else
-					//Insert data into Session table :
+
+				if(txtLecturerNameSession.getSelectedIndex() != -1 && txtSubjectCodeSession.getSelectedIndex() != -1 && txtSubjectNameSession.getSelectedIndex() != -1 && txtTagSession.getSelectedIndex() != -1 && txtGroupIDSession.getSelectedIndex() != -1 && !(txtStudentCountSession.getText().trim().isEmpty()) && txtSessionDuration.getSelectedIndex() != -1 && txtSessionId.getText().trim().isEmpty()) {
+				
+				
 				 try {
-					 
+					 //Insert Data into Session Table
+				
 				
 					 Connection conn = SqlServerConnection.dbConnecter();
 						
@@ -720,10 +681,15 @@ public class Sessions extends JFrame {
 					}catch(Exception e1)
 					{
 						e1.printStackTrace();
+						 
 					}
 				 
 				 refreshSessionTable();
+
+			}else {
 				
+				 JOptionPane.showMessageDialog(null, "Please Fill All The required Fields!");
+			}
 			}
 		});
 		btnNewButton_3.setBounds(53, 376, 231, 35);
@@ -753,7 +719,7 @@ public class Sessions extends JFrame {
 		OnlyNumberStudentCount = new JLabel("");
 		OnlyNumberStudentCount.setFont(new Font("Tahoma", Font.BOLD, 12));
 		OnlyNumberStudentCount.setForeground(Color.RED);
-		OnlyNumberStudentCount.setBounds(209, 235, 203, 13);
+		OnlyNumberStudentCount.setBounds(209, 255, 203, 13);
 		panel_1.add(OnlyNumberStudentCount);
 		
 		lblReqLecName = new JLabel("");
@@ -765,44 +731,50 @@ public class Sessions extends JFrame {
 		lblReqSubjectCode = new JLabel("");
 		lblReqSubjectCode.setForeground(Color.RED);
 		lblReqSubjectCode.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblReqSubjectCode.setBounds(468, 92, 70, 13);
+		lblReqSubjectCode.setBounds(470, 126, 70, 13);
 		panel_1.add(lblReqSubjectCode);
 		
 		lblReqSubjectName = new JLabel("");
 		lblReqSubjectName.setForeground(Color.RED);
 		lblReqSubjectName.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblReqSubjectName.setBounds(468, 130, 72, 13);
+		lblReqSubjectName.setBounds(468, 92, 72, 13);
 		panel_1.add(lblReqSubjectName);
 		
 		lblReqTag = new JLabel("");
 		lblReqTag.setForeground(Color.RED);
 		lblReqTag.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblReqTag.setBounds(468, 161, 72, 13);
+		lblReqTag.setBounds(541, 144, 49, 13);
 		panel_1.add(lblReqTag);
 		
 		lblReqGroupID = new JLabel("");
 		lblReqGroupID.setForeground(Color.RED);
 		lblReqGroupID.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblReqGroupID.setBounds(468, 200, 72, 13);
+		lblReqGroupID.setBounds(468, 218, 72, 13);
 		panel_1.add(lblReqGroupID);
 		
 		lblReqStudentCount = new JLabel("");
 		lblReqStudentCount.setForeground(Color.RED);
 		lblReqStudentCount.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblReqStudentCount.setBounds(468, 235, 72, 23);
+		lblReqStudentCount.setBounds(468, 255, 72, 13);
 		panel_1.add(lblReqStudentCount);
 		
 		lblReqDuration = new JLabel("");
 		lblReqDuration.setForeground(Color.RED);
 		lblReqDuration.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblReqDuration.setBounds(468, 281, 72, 23);
+		lblReqDuration.setBounds(468, 293, 72, 23);
 		panel_1.add(lblReqDuration);
 		
 		JLabel lblNewLabel_20 = new JLabel("Click This Button To Get ID  -->");
 		lblNewLabel_20.setForeground(new Color(0, 128, 0));
 		lblNewLabel_20.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_20.setBounds(53, 299, 203, 13);
+		lblNewLabel_20.setBounds(55, 320, 203, 13);
 		panel_1.add(lblNewLabel_20);
+		
+		JLabel lblNewLabel_23 = new JLabel("Select \"SUB-GROUP ID\" if it is a practicle session. Select \"GROUP ID\" if it is a lectuer or tutorial session.");
+		lblNewLabel_23.setForeground(new Color(255, 69, 0));
+		lblNewLabel_23.setFont(new Font("Tahoma", Font.BOLD, 10));
+		lblNewLabel_23.setBounds(38, 169, 528, 23);
+		panel_1.add(lblNewLabel_23);
 		
 		lblNewLabel_9 = new JLabel("- Add New Session -");
 		lblNewLabel_9.setBounds(283, 17, 185, 15);
@@ -830,12 +802,12 @@ public class Sessions extends JFrame {
 		
 		lblNewLabel_11 = new JLabel("Subject Code   :");
 		lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_11.setBounds(39, 123, 158, 13);
+		lblNewLabel_11.setBounds(39, 164, 158, 13);
 		panel_2.add(lblNewLabel_11);
 		
 		lblNewLabel_12 = new JLabel("Subject Name   :");
 		lblNewLabel_12.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_12.setBounds(39, 164, 158, 13);
+		lblNewLabel_12.setBounds(39, 126, 158, 13);
 		panel_2.add(lblNewLabel_12);
 		
 		lblNewLabel_13 = new JLabel("Tag   :");
@@ -843,9 +815,9 @@ public class Sessions extends JFrame {
 		lblNewLabel_13.setBounds(39, 209, 158, 13);
 		panel_2.add(lblNewLabel_13);
 		
-		lblNewLabel_14 = new JLabel("Group Id   :");
-		lblNewLabel_14.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_14.setBounds(39, 250, 158, 13);
+		lblNewLabel_14 = new JLabel("GroupId/Sub-GroupID :");
+		lblNewLabel_14.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_14.setBounds(37, 250, 160, 13);
 		panel_2.add(lblNewLabel_14);
 		
 		lblNewLabel_15 = new JLabel("Student Count   :");
@@ -914,7 +886,7 @@ public class Sessions extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				
+				if(txtLecturerNameSession2.getSelectedIndex() != -1 && txtSubjectCodeSession2.getSelectedIndex() != -1 && txtSubjectNameSession2.getSelectedIndex() != -1 && txtTagSession2.getSelectedIndex() != -1 && txtGroupIDSession2.getSelectedIndex() != -1 && !(txtStudentCountSession2.getText().trim().isEmpty()) && txtSessionDuration2.getSelectedIndex() != -1 ) {
 				//Generete Rank using Lecturer ID and level :
 				try {
 					
@@ -933,7 +905,10 @@ public class Sessions extends JFrame {
 				{
 					e1.printStackTrace();
 				}
-				
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Please Fill All The required Fields!");
+				}
 				
 			}
 		});
@@ -955,11 +930,41 @@ public class Sessions extends JFrame {
 		panel_2.add(txtLecturerNameSession2);
 		
 		txtSubjectCodeSession2 = new JComboBox();
-		txtSubjectCodeSession2.setBounds(172, 120, 256, 21);
+		txtSubjectCodeSession2.setBounds(172, 161, 256, 21);
 		panel_2.add(txtSubjectCodeSession2);
 		
 		txtSubjectNameSession2 = new JComboBox();
-		txtSubjectNameSession2.setBounds(172, 161, 256, 21);
+		txtSubjectNameSession2.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				
+				try {
+					
+					Connection conn = SqlServerConnection.dbConnecter();
+					
+					String query = "select SublectCode from subjects where SubjectName='"+txtSubjectNameSession2.getSelectedItem()+"'"; 
+					PreparedStatement pst=conn.prepareStatement(query);
+					ResultSet rs=pst.executeQuery();
+					txtSubjectCodeSession2.removeAllItems();
+					
+					while(rs.next())
+					{
+				
+						txtSubjectCodeSession2.addItem(rs.getString("SublectCode"));
+						
+					}
+					
+					conn.close();
+					
+					
+				}catch(Exception e1) {
+					
+					e1.printStackTrace();
+				}
+				
+				
+			}
+		});
+		txtSubjectNameSession2.setBounds(172, 123, 256, 21);
 		panel_2.add(txtSubjectNameSession2);
 		
 		txtTagSession2 = new JComboBox();
@@ -986,6 +991,12 @@ public class Sessions extends JFrame {
 		lblNewLabel_21.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_21.setBounds(39, 372, 192, 13);
 		panel_2.add(lblNewLabel_21);
+		
+		lblNewLabel_24 = new JLabel("Select \"SUB-GROUP ID\" if it is a practicle session. Select \"GROUP ID\" if it is a lectuer or tutorial session.");
+		lblNewLabel_24.setForeground(new Color(255, 69, 0));
+		lblNewLabel_24.setFont(new Font("Tahoma", Font.BOLD, 8));
+		lblNewLabel_24.setBounds(27, 227, 412, 22);
+		panel_2.add(lblNewLabel_24);
 		
 		panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 191, 255)));
@@ -1069,7 +1080,7 @@ public class Sessions extends JFrame {
 		btnNewButton_2.setBounds(454, 28, 170, 28);
 		panel_5.add(btnNewButton_2);
 		
-		JLabel lblNewLabel_19 = new JLabel("Search Your Name In Here :");
+		JLabel lblNewLabel_19 = new JLabel("Search Session ID In Here :");
 		lblNewLabel_19.setForeground(new Color(148, 0, 211));
 		lblNewLabel_19.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_19.setBounds(20, 16, 196, 13);
@@ -1134,6 +1145,8 @@ public class Sessions extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				//Update Session details :
+				
+				if(txtLecturerNameSession2.getSelectedIndex() != -1 && txtSubjectCodeSession2.getSelectedIndex() != -1 && txtSubjectNameSession2.getSelectedIndex() != -1 && txtTagSession2.getSelectedIndex() != -1 && txtGroupIDSession2.getSelectedIndex() != -1 && !(txtStudentCountSession2.getText().trim().isEmpty()) && txtSessionDuration2.getSelectedIndex() != -1 && txtSessionId2.getText().trim().isEmpty()) {
 
 				  try {
 					  
@@ -1156,6 +1169,12 @@ public class Sessions extends JFrame {
 				
 				  refreshSessionTable();
 				
+				}else {
+					
+
+						JOptionPane.showMessageDialog(null, "Please Fill All The required Fields!");
+					
+				}
 				
 			}
 		});
@@ -1247,14 +1266,14 @@ public class Sessions extends JFrame {
 		
 		//Call Fill combo box methods in Add Session Details Interafce:
 		FillLecturerNameComboBox();
-		FillSubjectCodeComboBox();
+	
 		FillSubjectNameComboBox();
 		FillGroupIdComboBox();
 		FillTagComboBox();
 		
 		//Call Fill combo box methods in Manage Session Details Interafce:
 		FillLecturerNameComboBox2();
-		FillSubjectCodeComboBox2();
+	
 		FillSubjectNameComboBox2();
 		FillGroupIdComboBox2();
 		FillTagComboBox2();

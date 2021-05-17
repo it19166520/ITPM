@@ -507,52 +507,8 @@ public class AddManageSubjects extends JFrame {
 											public void actionPerformed(ActionEvent e) {
 												
 												//To check weather the feilds are required or not:
-												
-												if(((String) txtSubOffYear.getSelectedItem()).trim().isEmpty() && ((String) txtSubOffSem.getSelectedItem()).trim().isEmpty() && txtSubName.getText().trim().isEmpty() && txtSubCode.getText().trim().isEmpty() && ((String) NumOfLecHours.getSelectedItem()).trim().isEmpty() && ((String) NumOfTuteHours.getSelectedItem()).trim().isEmpty() && ((String) NumOfLabHours.getSelectedItem()).trim().isEmpty() && ((String)NumOfEvaltionHours.getSelectedItem()).trim().isEmpty())
-												{
-													
-													lblOfferedYear.setText("*required");
-													lblOfferedSem.setText("*required");
-													lblSubjectName.setText("*required");
-													lblSublectCode.setText("*required");
-													lblNumOfLecHours.setText("*required");
-													lblNumOfTuteHours.setText("*required");
-													lblNumOfLabHours.setText("*required");
-													lblNumOfEvaltionHours.setText("*required");
-												}
-												else if(((String) txtSubOffYear.getSelectedItem()).trim().isEmpty())
-												{
-													lblOfferedYear.setText("*required");
-												}
-												else if(((String) txtSubOffSem.getSelectedItem()).trim().isEmpty()) {
-													
-													lblOfferedSem.setText("*required");
-												}
-												else if(txtSubName.getText().trim().isEmpty()) {
-													
-													lblSubjectName.setText("*required");
-												}
-												else if(txtSubCode.getText().trim().isEmpty())
-												{
-													lblSublectCode.setText("*required");
-												}
-												else if(((String) NumOfLecHours.getSelectedItem()).trim().isEmpty())
-												{
-													lblNumOfLecHours.setText("*required");
-												}
-												else if(((String) NumOfTuteHours.getSelectedItem()).trim().isEmpty()) 
-												{
-													lblNumOfTuteHours.setText("*required");
-												}
-												else if(((String) NumOfLabHours.getSelectedItem()).trim().isEmpty()) {
-													
-													lblNumOfLabHours.setText("*required");
-												}
-												else if(((String)NumOfEvaltionHours.getSelectedItem()).trim().isEmpty()) {
-													
-													lblNumOfEvaltionHours.setText("*required");
-												}
-												else
+												if(txtSubOffYear.getSelectedIndex() != -1 && txtSubOffSem.getSelectedIndex() != -1 && !(txtSubName.getText().trim().isEmpty()) && !(txtSubCode.getText().trim().isEmpty()) && NumOfLecHours.getSelectedIndex() != -1 &&  NumOfTuteHours.getSelectedIndex() != -1 &&  NumOfLabHours.getSelectedIndex() != -1 &&  NumOfEvaltionHours.getSelectedIndex() != -1) {
+								
 												  //Get Subject Details from the user and store the details in the database:(Insert)
 												
 												 try {
@@ -607,7 +563,10 @@ public class AddManageSubjects extends JFrame {
 												
 												//call "refreshSubjectTable" method to refresh the table after doing any changes:
 												 refreshSubjectTable();
-												 
+												}else {
+													
+													JOptionPane.showMessageDialog(null, "Please Fill All The required Fields!");
+												}
 											}
 										});
 									txtSubOffSem.addKeyListener(new KeyAdapter() {
@@ -799,6 +758,9 @@ public class AddManageSubjects extends JFrame {
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				
+				if(txtSubOffYear2.getSelectedIndex() != -1 && txtSubOffSem2.getSelectedIndex() != -1 && !(txtSubName2.getText().trim().isEmpty()) && !(txtSubCode2.getText().trim().isEmpty()) && txtNumOfLecH2.getSelectedIndex() != -1 &&  txtNumOfTuteH2.getSelectedIndex() != -1 &&  txtNumOfLabH2.getSelectedIndex() != -1 &&  txtNumOfEvaH2.getSelectedIndex() != -1) {
+				
 				//Update details :
 
 				  try {
@@ -823,6 +785,10 @@ public class AddManageSubjects extends JFrame {
 				//To refresh the table after updating details :
 				  refreshSubjectTable();
 				
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Please Fill All The required Fields!");
+				} 
 			}
 		});
 		btnLoadTable.addActionListener(new ActionListener() {
