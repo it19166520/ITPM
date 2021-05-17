@@ -2,9 +2,11 @@ package room;
 
 import java.awt.BorderLayout;
 
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,11 +30,13 @@ import javax.swing.border.EmptyBorder;
 import DBConnection.SqlServerConnection;
 
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextArea;
+
 
 
 public class MainAddRoom extends JFrame {
@@ -41,6 +45,7 @@ public class MainAddRoom extends JFrame {
 	Connection connection;
 	private JButton addconssessions;
 	private JButton addnonoverlappingrooms;
+
 
 	/**
 	 * Launch the application.
@@ -65,6 +70,7 @@ public class MainAddRoom extends JFrame {
 		
 		connection = SqlServerConnection.dbConnecter();
 		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
 		contentPane = new JPanel();
@@ -72,6 +78,9 @@ public class MainAddRoom extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+	
+		
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.WHITE);
@@ -89,7 +98,8 @@ public class MainAddRoom extends JFrame {
 		panel.add(txtrTimeTableManagement);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(90, 157, 1139, 507);
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setBounds(617, 183, 640, 383);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -103,7 +113,7 @@ public class MainAddRoom extends JFrame {
 		addconssessions.setForeground(Color.WHITE);
 		addconssessions.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		addconssessions.setBackground(new Color(0, 0, 139));
-		addconssessions.setBounds(564, 265, 435, 66);
+		addconssessions.setBounds(128, 183, 389, 44);
 		panel_1.add(addconssessions);
 		
 		JButton addparsession = new JButton("Add Parallel Session Rooms");
@@ -116,7 +126,7 @@ public class MainAddRoom extends JFrame {
 		addparsession.setForeground(Color.WHITE);
 		addparsession.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		addparsession.setBackground(new Color(0, 0, 139));
-		addparsession.setBounds(83, 102, 435, 66);
+		addparsession.setBounds(128, 45, 389, 44);
 		panel_1.add(addparsession);
 		
 		addnonoverlappingrooms = new JButton("Add Non-Overlapping Session Rooms");
@@ -132,10 +142,10 @@ public class MainAddRoom extends JFrame {
 		addnonoverlappingrooms.setForeground(Color.WHITE);
 		addnonoverlappingrooms.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		addnonoverlappingrooms.setBackground(new Color(0, 0, 139));
-		addnonoverlappingrooms.setBounds(564, 102, 435, 66);
+		addnonoverlappingrooms.setBounds(128, 258, 389, 44);
 		panel_1.add(addnonoverlappingrooms);
 		
-		JButton viewallbtn = new JButton("Dispaly Allocated Session and rooms");
+		JButton viewallbtn = new JButton("Display Allocated Session and rooms");
 		viewallbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DispalyRooms dis = new DispalyRooms();
@@ -146,7 +156,7 @@ public class MainAddRoom extends JFrame {
 		viewallbtn.setForeground(Color.WHITE);
 		viewallbtn.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		viewallbtn.setBackground(new Color(0, 0, 139));
-		viewallbtn.setBounds(83, 265, 435, 66);
+		viewallbtn.setBounds(128, 114, 389, 44);
 		panel_1.add(viewallbtn);
 		
 		JButton backbtn = new JButton("Back ");
@@ -160,8 +170,13 @@ public class MainAddRoom extends JFrame {
 		backbtn.setForeground(Color.WHITE);
 		backbtn.setFont(new Font("Tahoma", Font.BOLD, 14));
 		backbtn.setBackground(Color.BLACK);
-		backbtn.setBounds(847, 405, 185, 43);
+		backbtn.setBounds(470, 326, 142, 32);
 		panel_1.add(backbtn);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(MainAddRoom.class.getResource("/Images/back.jpg")));
+		lblNewLabel.setBounds(0, 79, 1354, 610);
+		contentPane.add(lblNewLabel);
 				
 				
 	}

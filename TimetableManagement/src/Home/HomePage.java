@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import java.awt.Canvas;
@@ -231,7 +232,7 @@ public class HomePage extends JFrame {
 					//retreiw student group count :
 					 String query = "select count(*) AS studentGroupCount from StudentGroups";
 					 PreparedStatement psat = connection.prepareStatement(query);
-					ResultSet rs = psat.executeQuery();
+					 ResultSet rs = psat.executeQuery();
 					
 					DefaultCategoryDataset dataset=new DefaultCategoryDataset();
 					
