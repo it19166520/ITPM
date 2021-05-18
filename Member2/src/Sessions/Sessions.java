@@ -123,7 +123,7 @@ public class Sessions extends JFrame {
 			
 		
 			
-			String query="select * from session";
+			String query="select SessionIndex,LecturerNameSession,SubjectCodeSession,SubjectNameSession,TagSession,GroupIDSession,StudentCountSession,SessionDuration,SessionId from session";
 			PreparedStatement pst=conn.prepareStatement(query);
 			ResultSet rs=pst.executeQuery();
 			table.setModel(DbUtils.resultSetToTableModel(rs));
