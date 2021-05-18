@@ -363,7 +363,7 @@ public class ManageSessionWithDay extends JFrame {
 		load.setForeground(Color.WHITE);
 		load.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		load.setBackground(new Color(0, 0, 139));
-		load.setBounds(795, 210, 229, 52);
+		load.setBounds(795, 170, 229, 52);
 		contentPane.add(load);
 		
 		JButton updatebtn = new JButton("Update Details");
@@ -382,7 +382,8 @@ public class ManageSessionWithDay extends JFrame {
 				String day = txtDaycom.getSelectedItem().toString();
 				String startT=txtStart.getText();
 				String endT= txtEnd.getText();
-	try {
+				
+				try {
 					
 					connection = SqlServerConnection.dbConnecter();
 
@@ -426,7 +427,7 @@ public class ManageSessionWithDay extends JFrame {
 		updatebtn.setForeground(Color.WHITE);
 		updatebtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		updatebtn.setBackground(new Color(27, 163, 156));
-		updatebtn.setBounds(800, 317, 229, 52);
+		updatebtn.setBounds(795, 251, 229, 52);
 		contentPane.add(updatebtn);
 		
 		JButton clearbtn = new JButton("Clear Details");
@@ -495,5 +496,40 @@ public class ManageSessionWithDay extends JFrame {
 		table.getTableHeader().setBackground(new Color(32,136,203));
 		table.getTableHeader().setForeground(new Color(255,255,255));
 		table.setRowHeight(30);
+		
+		JButton deletebtn = new JButton("Delete Details");
+		deletebtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		
+				try {
+					
+					connection = SqlServerConnection.dbConnecter();
+
+						String query="update session set date='', startingTime='', endTime= '' where SessionId=?";                      
+						PreparedStatement pst=connection.prepareStatement(query);
+
+				
+						String ee=sessionIDcom.getText().toString();
+						pst.setString(1, ee);
+						
+				
+						
+						pst.execute();
+						JOptionPane.showMessageDialog(null, "Data Deleted successfully!");
+						
+					
+			
+				}catch(Exception e5)
+				{
+					JOptionPane.showMessageDialog(null, e5);
+				}
+				fetch();
+			}
+		});
+		deletebtn.setForeground(Color.WHITE);
+		deletebtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
+		deletebtn.setBackground(new Color(210, 77, 87));
+		deletebtn.setBounds(795, 332, 229, 50);
+		contentPane.add(deletebtn);
 	}
 }
