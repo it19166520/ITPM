@@ -55,7 +55,7 @@ public class AddCannotReservedRoom extends JFrame {
 	}
 	
 	//Fill room names combo box  :
-		public void FillRoomComboBox()
+		public void FillRoomComboBox(Connection connection)
 		{
 		
 			try {
@@ -116,7 +116,7 @@ public class AddCannotReservedRoom extends JFrame {
 		txtRoom.setBackground(Color.WHITE);
 		txtRoom.setModel(new DefaultComboBoxModel(new String[] {""}));
 		contentPane.add(txtRoom);
-		FillRoomComboBox();
+		FillRoomComboBox(connection);
 
 		
 		JLabel lblSelectTheDay = new JLabel("Select The Day  :");

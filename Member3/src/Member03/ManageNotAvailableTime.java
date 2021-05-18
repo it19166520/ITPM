@@ -98,12 +98,13 @@ public class ManageNotAvailableTime extends JFrame {
 	}
 	public Connection getConnection()
 	{
+		
 		Connection connection;
 		
 		try{
-			  String url = "jdbc:mysql://98.142.97.194:3306/sipnenam_itpm_remote_db_by_harsha";		
-			  String userName = "sipnenam_itpm_remote_db_by_harsha";
-			  String password = "ah21%hsaklhagA";
+			  String url = "jdbc:mysql://151.106.114.2:3306/u271442347_itpm_db_H";
+			  String userName = "u271442347_CTgiPK";
+			  String password = "mzgdt9ezV";
 			  connection = DriverManager.getConnection(url,userName, password);		
 			  return connection;
 		}

@@ -62,7 +62,7 @@ public class AddNotAvailableTime extends JFrame {
 
 	
 	//Fill lecturers names combo box  :
-	public void FillLecturerComboBox()
+	public void FillLecturerComboBox(Connection connection)
 	{
 	
 		try {
@@ -85,7 +85,7 @@ public class AddNotAvailableTime extends JFrame {
 	}
 	
 	//Fill Main Group names combo box  :
-	public void FillMainGroupComboBox()
+	public void FillMainGroupComboBox(Connection connection)
 	{
 	
 		try {
@@ -108,7 +108,7 @@ public class AddNotAvailableTime extends JFrame {
 	}
 	
 	//Fill  Sub groups names combo box  :
-		public void FillSubGroupComboBox()
+		public void FillSubGroupComboBox(Connection connection)
 		{
 		
 			try {
@@ -131,7 +131,7 @@ public class AddNotAvailableTime extends JFrame {
 		}
 
 		//Fill Session ID combo box  :
-				public void FillSessionIDComboBox()
+				public void FillSessionIDComboBox(Connection connection)
 				{
 				
 					try {
@@ -206,7 +206,7 @@ public class AddNotAvailableTime extends JFrame {
 		txtLec.setModel(new DefaultComboBoxModel(new String[] {""}));
 		txtLec.setBounds(613, 226, 359, 33);
 		contentPane.add(txtLec);
-		FillLecturerComboBox();
+		FillLecturerComboBox(connection);
 		
 		
 		JLabel lblSelectGroup = new JLabel("Select Group   :");
@@ -220,7 +220,7 @@ public class AddNotAvailableTime extends JFrame {
 		txtGroup.setModel(new DefaultComboBoxModel(new String[] {""}));
 		txtGroup.setBounds(613, 278, 359, 33);
 		contentPane.add(txtGroup);
-		FillMainGroupComboBox();
+		FillMainGroupComboBox(connection);
 		
 		
 		JLabel grplb = new JLabel("");
@@ -240,7 +240,7 @@ public class AddNotAvailableTime extends JFrame {
 		txtSubGroup.setModel(new DefaultComboBoxModel(new String[] {""}));
 		txtSubGroup.setBounds(613, 333, 359, 33);
 		contentPane.add(txtSubGroup);
-		FillSubGroupComboBox();
+		FillSubGroupComboBox(connection);
 		
 		JLabel grplb_1 = new JLabel("");
 		grplb_1.setForeground(Color.RED);
@@ -265,7 +265,7 @@ public class AddNotAvailableTime extends JFrame {
 		txtSessionID.setModel(new DefaultComboBoxModel(new String[] {""}));
 		txtSessionID.setBounds(613, 390, 359, 33);
 		contentPane.add(txtSessionID);
-		FillSessionIDComboBox();
+		FillSessionIDComboBox(connection);
 		
 		JLabel labErr = new JLabel("");
 		labErr.setForeground(Color.RED);
