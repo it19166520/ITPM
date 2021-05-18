@@ -33,6 +33,7 @@ import javax.swing.border.TitledBorder;
 
 public class AddManageSubjects extends JFrame {
 
+	Connection conn = SqlServerConnection.dbConnecter();
 	private JPanel contentPane;
 	private JPanel ManageSubPanel;
 	private JPanel AddSubPanel;
@@ -52,34 +53,6 @@ public class AddManageSubjects extends JFrame {
 	private JButton btnNewButton_3;
 	private JButton btnLoadTable;
 	private JTable table;
-	
-	
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddManageSubjects frame = new AddManageSubjects();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	public void switchPanel(JPanel panel) {
-		
-		SublayeredPane.removeAll();
-		SublayeredPane.add(panel);
-		SublayeredPane.repaint();
-		SublayeredPane.revalidate();
-	}
-	
-	//Connection connection=null;
 	private JButton btnNewButton_4;
 	private JButton btnNewButton_5;
 	private JLabel lblNewLabel_1;
@@ -97,11 +70,6 @@ public class AddManageSubjects extends JFrame {
 	private JComboBox SubjectComboBox;
 	private JComboBox txtSubOffYear;
 	private JComboBox txtSubOffSem;
-	
-	
-	
-	//Connection connection=null;
-	Connection conn = SqlServerConnection.dbConnecter();
 	private JComboBox NumOfLecHours;
 	private JComboBox NumOfEvaltionHours;
 	private JComboBox NumOfTuteHours;
@@ -133,12 +101,34 @@ public class AddManageSubjects extends JFrame {
 	private JLabel InvalidSubCode;
 	private JLabel lblNewLabel_24;
 	
-	
-	public void refreshSubjectTable()
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AddManageSubjects frame = new AddManageSubjects();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	public void switchPanel(JPanel panel) {
+		
+		SublayeredPane.removeAll();
+		SublayeredPane.add(panel);
+		SublayeredPane.repaint();
+		SublayeredPane.revalidate();
+	}
+
+	public void refreshSubjectTable(Connection conn)
 	{
 		try {
-			
-			Connection conn = SqlServerConnection.dbConnecter();
 			
 			String query="select * from subjects";
 			PreparedStatement pst=conn.prepareStatement(query);
@@ -152,12 +142,10 @@ public class AddManageSubjects extends JFrame {
 		}
 	}
 	
-	public void fillSubjectCobmoBox() {
+	public void fillSubjectCobmoBox(Connection conn) {
 		
 
 		try {
-			
-			Connection conn = SqlServerConnection.dbConnecter();
 			
 			String query="select * from subjects";
 			PreparedStatement pst=conn.prepareStatement(query);
@@ -562,7 +550,7 @@ public class AddManageSubjects extends JFrame {
 													}
 												
 												//call "refreshSubjectTable" method to refresh the table after doing any changes:
-												 refreshSubjectTable();
+												 refreshSubjectTable(conn);
 												}else {
 													
 													JOptionPane.showMessageDialog(null, "Please Fill All The required Fields!");
@@ -752,7 +740,7 @@ public class AddManageSubjects extends JFrame {
 				}
 			
 				//To refresh the table after deleting details :
-				refreshSubjectTable();	
+				refreshSubjectTable(conn);	
 			}
 		});
 		btnNewButton_4.addActionListener(new ActionListener() {
@@ -783,7 +771,7 @@ public class AddManageSubjects extends JFrame {
 					}
 				  
 				//To refresh the table after updating details :
-				  refreshSubjectTable();
+				  refreshSubjectTable(conn);
 				
 				}else {
 					
@@ -1071,8 +1059,8 @@ public class AddManageSubjects extends JFrame {
 		btnNewButton_7.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton_7.setBounds(1162, 95, 184, 34);
 		contentPane.add(btnNewButton_7);
-		refreshSubjectTable();
-		fillSubjectCobmoBox();
+		refreshSubjectTable(conn);
+		fillSubjectCobmoBox(conn);
 		
 		
 	}

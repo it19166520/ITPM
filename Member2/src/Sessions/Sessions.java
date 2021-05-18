@@ -121,7 +121,7 @@ public class Sessions extends JFrame {
 	{
 		try {
 			
-			Connection conn = SqlServerConnection.dbConnecter();
+		
 			
 			String query="select * from session";
 			PreparedStatement pst=conn.prepareStatement(query);
@@ -137,12 +137,11 @@ public class Sessions extends JFrame {
 		
 	}
 	
-	public void fillSessionCobmoBox() {
+	public void fillSessionCobmoBox(Connection conn) {
 		
 
 		try {
 			
-			Connection conn = SqlServerConnection.dbConnecter();
 			
 			String query="select * from session";
 			PreparedStatement pst=conn.prepareStatement(query);
@@ -160,9 +159,9 @@ public class Sessions extends JFrame {
 	}
 	
 	//Fill Lecturer Name Combo Box in Add session Interface:
-	public void FillLecturerNameComboBox()
+	public void FillLecturerNameComboBox(Connection conn)
 	{
-		Connection conn = SqlServerConnection.dbConnecter();
+		
 		
 		try {
 			
@@ -184,9 +183,9 @@ public class Sessions extends JFrame {
 	}
 	
 	//Fill Lecturer Name Combo Box in Manage session Interface:
-	public void FillLecturerNameComboBox2()
+	public void FillLecturerNameComboBox2(Connection conn)
 	{
-		Connection conn = SqlServerConnection.dbConnecter();
+	
 		
 		try {
 			
@@ -210,9 +209,9 @@ public class Sessions extends JFrame {
 
 	
 	//Fill subject name combo box in Add Session Interface:
-	public void FillSubjectNameComboBox()
+	public void FillSubjectNameComboBox(Connection conn)
 	{
-		Connection conn = SqlServerConnection.dbConnecter();
+		
 		
 		try {
 			
@@ -233,9 +232,9 @@ public class Sessions extends JFrame {
 		}
 	}
 	//Fill subject name combo box in Manage Session Details Interface:
-	public void FillSubjectNameComboBox2()
+	public void FillSubjectNameComboBox2(Connection conn)
 	{
-		Connection conn = SqlServerConnection.dbConnecter();
+		
 		
 		try {
 			
@@ -256,9 +255,9 @@ public class Sessions extends JFrame {
 		}
 	}
 	//Fill tag combo box In Add Session Details Interface :
-	public void FillTagComboBox()
+	public void FillTagComboBox(Connection conn)
 	{
-		Connection conn = SqlServerConnection.dbConnecter();
+		
 		
 		try {
 			
@@ -281,10 +280,10 @@ public class Sessions extends JFrame {
 	
 	
 	//Fill  Group id combo box In add Session Interface:
-	public void FillGroupIdComboBox()
+	public void FillGroupIdComboBox(Connection conn)
 	{
 		
-		Connection conn = SqlServerConnection.dbConnecter();
+	
 		
 	try {
 			
@@ -306,9 +305,8 @@ public class Sessions extends JFrame {
 		}
 	}
 	//Fill  Group id combo box In Manage Session Details Interface:
-	public void FillGroupIdComboBox2()
+	public void FillGroupIdComboBox2(Connection conn)
 	{
-		Connection conn = SqlServerConnection.dbConnecter();
 		
 		try {
 			
@@ -331,9 +329,9 @@ public class Sessions extends JFrame {
 	}
 		
 	//Fill tag combo box In Manage Session Details Interface :
-	public void FillTagComboBox2()
+	public void FillTagComboBox2(Connection conn)
 	{
-		Connection conn = SqlServerConnection.dbConnecter();
+		
 		
 		try {
 			
@@ -358,9 +356,9 @@ public class Sessions extends JFrame {
 	 * Create the frame.
 	 */
 	public Sessions() {
-		//connection = SqlServerConnection.dbConnecter();
 		
 		Connection conn = SqlServerConnection.dbConnecter();
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1370, 728);
 		contentPane = new JPanel();
@@ -628,7 +626,7 @@ public class Sessions extends JFrame {
 				//Check whether the feilds are empty or not
 				
 
-				if(txtLecturerNameSession.getSelectedIndex() != -1 && txtSubjectCodeSession.getSelectedIndex() != -1 && txtSubjectNameSession.getSelectedIndex() != -1 && txtTagSession.getSelectedIndex() != -1 && txtGroupIDSession.getSelectedIndex() != -1 && !(txtStudentCountSession.getText().trim().isEmpty()) && txtSessionDuration.getSelectedIndex() != -1 && txtSessionId.getText().trim().isEmpty()) {
+				if(txtLecturerNameSession.getSelectedIndex() != -1 && txtSubjectCodeSession.getSelectedIndex() != -1 && txtSubjectNameSession.getSelectedIndex() != -1 && txtTagSession.getSelectedIndex() != -1 && txtGroupIDSession.getSelectedIndex() != -1 && !(txtStudentCountSession.getText().trim().isEmpty()) && txtSessionDuration.getSelectedIndex() != -1) {
 				
 				
 				 try {
@@ -1146,7 +1144,7 @@ public class Sessions extends JFrame {
 				
 				//Update Session details :
 				
-				if(txtLecturerNameSession2.getSelectedIndex() != -1 && txtSubjectCodeSession2.getSelectedIndex() != -1 && txtSubjectNameSession2.getSelectedIndex() != -1 && txtTagSession2.getSelectedIndex() != -1 && txtGroupIDSession2.getSelectedIndex() != -1 && !(txtStudentCountSession2.getText().trim().isEmpty()) && txtSessionDuration2.getSelectedIndex() != -1 && txtSessionId2.getText().trim().isEmpty()) {
+				if(txtLecturerNameSession2.getSelectedIndex() != -1 && txtSubjectCodeSession2.getSelectedIndex() != -1 && txtSubjectNameSession2.getSelectedIndex() != -1 && txtTagSession2.getSelectedIndex() != -1 && txtGroupIDSession2.getSelectedIndex() != -1 && !(txtStudentCountSession2.getText().trim().isEmpty()) && txtSessionDuration2.getSelectedIndex() != -1 ) {
 
 				  try {
 					  
@@ -1262,21 +1260,21 @@ public class Sessions extends JFrame {
 		});
 		
 		refreshSessionTable();
-		fillSessionCobmoBox();
+		fillSessionCobmoBox(conn);
 		
 		//Call Fill combo box methods in Add Session Details Interafce:
-		FillLecturerNameComboBox();
+		FillLecturerNameComboBox(conn);
 	
-		FillSubjectNameComboBox();
-		FillGroupIdComboBox();
-		FillTagComboBox();
+		FillSubjectNameComboBox(conn);
+		FillGroupIdComboBox(conn);
+		FillTagComboBox(conn);
 		
 		//Call Fill combo box methods in Manage Session Details Interafce:
-		FillLecturerNameComboBox2();
+		FillLecturerNameComboBox2(conn);
 	
-		FillSubjectNameComboBox2();
-		FillGroupIdComboBox2();
-		FillTagComboBox2();
+		FillSubjectNameComboBox2(conn);
+		FillGroupIdComboBox2(conn);
+		FillTagComboBox2(conn);
 		
 		
 	}

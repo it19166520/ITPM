@@ -60,34 +60,6 @@ public class AddManageLecturer extends JFrame {
 	private JTextField txtFriday3;
 	private JTextField txtSatarday3;
 	private JTextField txtSunday3;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddManageLecturer frame = new AddManageLecturer();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	public void switchPannels(JPanel panel) {
-		
-		LeclayeredPane.removeAll();
-		LeclayeredPane.add(panel);
-		LeclayeredPane.repaint();
-		LeclayeredPane.revalidate();
-		
-	}
-
-	
-	//Connection conn = SqlServerConnection.dbConnecter();
 	private JTable LecDetailstable;
 	private JTable ActiveHoursDetailstable;
 	private JTextField txtLecturerRegistrationNumber;
@@ -176,13 +148,42 @@ public class AddManageLecturer extends JFrame {
 	private JLabel lblNewLabel_41;
 	private JLabel lblNewLabel_42;
 	private JLabel ValidateLecID;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AddManageLecturer frame = new AddManageLecturer();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	public void switchPannels(JPanel panel) {
+		
+		LeclayeredPane.removeAll();
+		LeclayeredPane.add(panel);
+		LeclayeredPane.repaint();
+		LeclayeredPane.revalidate();
+		
+	}
+
+	
+	//Connection conn = SqlServerConnection.dbConnecter();
+
 	
 	//create a method to auto refresh the jtable after doing any modification in "Lecturer" table (Basic lecturer details) in database:
-	public void refreshLecturerDetailsTable()
+	public void refreshLecturerDetailsTable(Connection conn)
 	{	
 			try {
 				
-				Connection conn = SqlServerConnection.dbConnecter();
+				
 				
 				String query="select LecturerRegistrationNumber,LecturerName,Faculty,Department,Campus,Building,LecturerID,Level,Rank from Lecturer";
 				PreparedStatement pst=conn.prepareStatement(query);
@@ -197,11 +198,11 @@ public class AddManageLecturer extends JFrame {
 	}
 	
 	//create a method to auto refresh the jtable after doing any modification in "Lecturer" table (Active days and hours) in database:
-	public void refreshActiveHoursTable()
+	public void refreshActiveHoursTable(Connection conn)
 	{		
 		try {
 			
-			Connection conn = SqlServerConnection.dbConnecter();
+			
 			
 			String query="select LecturerRegistrationNumber,LecturerName,Monday,Tuesday,Wednesday,Thursday,Friday,Satarday,Sunday from Lecturer";
 			PreparedStatement pst=conn.prepareStatement(query);
@@ -216,11 +217,10 @@ public class AddManageLecturer extends JFrame {
 		
 	}		
 	//method to link LecturerComboBox with database:
-	public void fillLecturerComboBox()
+	public void fillLecturerComboBox(Connection conn)
 	{
 		try {
-			
-			Connection conn = SqlServerConnection.dbConnecter();
+		
 			
 			String query="select * from Lecturer";
 			PreparedStatement pst=conn.prepareStatement(query);
@@ -238,11 +238,11 @@ public class AddManageLecturer extends JFrame {
 		
 	}
 	//method to fillActiveHoursComboBox with database:
-	public void fillActiveHoursComboBox()
+	public void fillActiveHoursComboBox(Connection conn)
 	{
 		try {
 			
-			Connection conn = SqlServerConnection.dbConnecter();
+		
 			
 			String query="select * from Lecturer";
 			PreparedStatement pst=conn.prepareStatement(query);
@@ -1050,8 +1050,8 @@ public class AddManageLecturer extends JFrame {
 				JOptionPane.showMessageDialog(null, "Entered Lecturer ID is already in the system!" + '\n' + "  Check Your ID and try again!");
 			}
 				
-			   refreshLecturerDetailsTable();
-			   refreshActiveHoursTable();
+			   refreshLecturerDetailsTable(conn);
+			   refreshActiveHoursTable(conn);
 			   
 			}else {
 				
@@ -1530,7 +1530,7 @@ public class AddManageLecturer extends JFrame {
 					e1.printStackTrace();
 				}
 				
-				refreshLecturerDetailsTable();
+				refreshLecturerDetailsTable(conn);
 				
 			}
 		});
@@ -1559,7 +1559,7 @@ public class AddManageLecturer extends JFrame {
 					{
 						e1.printStackTrace();
 					}
-				  refreshLecturerDetailsTable();
+				  refreshLecturerDetailsTable(conn);
 				  
 				}else {
 					
@@ -2179,7 +2179,7 @@ public class AddManageLecturer extends JFrame {
 						e1.printStackTrace();
 					}
 				  
-				  refreshActiveHoursTable();
+				  refreshActiveHoursTable(conn);
 			
 			}else {
 				
@@ -2265,10 +2265,10 @@ public class AddManageLecturer extends JFrame {
 		btnNewButton_11.setBounds(1188, 89, 158, 33);
 		contentPane.add(btnNewButton_11);
 		
-		refreshLecturerDetailsTable();
-		refreshActiveHoursTable();
+		refreshLecturerDetailsTable(conn);
+		refreshActiveHoursTable(conn);
 		
-		fillLecturerComboBox();
-		fillActiveHoursComboBox();
+		fillLecturerComboBox(conn);
+		fillActiveHoursComboBox(conn);
 	}
 }
