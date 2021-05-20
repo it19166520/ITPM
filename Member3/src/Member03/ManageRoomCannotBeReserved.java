@@ -565,10 +565,10 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		panel_2.setBounds(49, 107, 738, 359);
 		contentPane.add(panel_2);
 		
-		JLabel lblNewLabel_2 = new JLabel("*Click \"Load Details Table\" button to fullfill the table");
+		JLabel lblNewLabel_2 = new JLabel("*Click \"Load Details Table\" button to fullfill the table with all details.");
 		lblNewLabel_2.setForeground(new Color(0, 100, 0));
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		lblNewLabel_2.setBounds(49, 474, 297, 14);
+		lblNewLabel_2.setBounds(49, 485, 398, 14);
 		contentPane.add(lblNewLabel_2);
 	}
 }

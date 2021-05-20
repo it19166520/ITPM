@@ -729,10 +729,10 @@ public class ManageNotAvailableTime extends JFrame {
 		btnAddNewNot.setBounds(1040, 79, 308, 50);
 		contentPane.add(btnAddNewNot);
 		
-		lblNewLabel_1 = new JLabel("*Click \"Load Details Table\" button to fullfill the table");
+		lblNewLabel_1 = new JLabel("*Click \"Load Details Table\" button to fullfill the table with all details.");
 		lblNewLabel_1.setForeground(new Color(0, 100, 0));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		lblNewLabel_1.setBounds(67, 479, 297, 14);
+		lblNewLabel_1.setBounds(67, 479, 398, 14);
 		contentPane.add(lblNewLabel_1);
 	}
 }

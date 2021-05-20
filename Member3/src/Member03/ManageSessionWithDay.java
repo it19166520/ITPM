@@ -532,10 +532,10 @@ public class ManageSessionWithDay extends JFrame {
 		deletebtn.setBounds(795, 332, 229, 50);
 		contentPane.add(deletebtn);
 		
-		JLabel lblNewLabel_2 = new JLabel("*Click \"Load Details Table\" button to fullfill the table");
+		JLabel lblNewLabel_2 = new JLabel("*Click \"Load Details Table\" button to fullfill the table with all details.");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		lblNewLabel_2.setForeground(new Color(0, 100, 0));
-		lblNewLabel_2.setBounds(26, 474, 297, 14);
+		lblNewLabel_2.setBounds(26, 474, 398, 14);
 		contentPane.add(lblNewLabel_2);
 	}
 }
