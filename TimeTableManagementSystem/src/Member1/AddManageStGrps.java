@@ -145,7 +145,7 @@ public class AddManageStGrps extends JFrame {
 		public void RefreshStGroupsTable()
 		{
 			try {
-				
+				//retrieve 
 				String refreshque="select * from StudentGroups";
 				PreparedStatement psat= connection.prepareStatement(refreshque);
 				ResultSet rs=psat.executeQuery();
