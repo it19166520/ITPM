@@ -74,9 +74,7 @@ public class HomePage {
 		JButton locationmng_1_1 = new JButton("Generate And View Timetables");
 		locationmng_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				timetable p = new timetable();
-			    p.genTimetable();
-			    Homeframe.dispose();	
+				
 			}
 		});
 		locationmng_1_1.setBackground(new Color(30, 144, 255));

@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.MessageFormat;
 import java.awt.event.ActionEvent;
 import java.awt.CardLayout;
@@ -57,7 +58,7 @@ public class timetable extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void genTimetable() {
+	public static void  main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -263,6 +264,44 @@ public class timetable extends JFrame {
 		Lecturer.add(lblNewLabel);
 		
 		JButton GenBtn = new JButton("Generate Timetable");
+		GenBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+						
+					Connection conn = SqlServerConnection.dbConnecter();
+
+                    DefaultTableModel tblModel = (DefaultTableModel)table_lec.getModel();
+                    //int indexes[] =
+
+                    String lecName = LecturerNameCombo.getSelectedItem().toString();
+
+                    String query="select SessionId From session  where  LecturerNameSession='"+lecName+"'";                     
+                    Statement pst=conn.createStatement();
+                    ResultSet rs = pst.executeQuery(query);
+
+                    String query1="SELECT date FROM session";
+                    Statement pst1=conn.createStatement();
+                    ResultSet rs1 = pst1.executeQuery(query1);
+
+                    String query3="SELECT SessionId FROM session WHERE date LIKE 'M%'";
+                    Statement pst3=conn.createStatement();
+                    ResultSet r3 = pst1.executeQuery(query1);
+
+                    Statement stat = conn.createStatement();
+                    ResultSet rs3 = stat.executeQuery("SELECT SessionId FROM session WHERE date LIKE 'M%'");
+
+                     for(int i=0; i< table_lec.getRowCount();i++)
+                     {
+                         tblModel.setValueAt(rs3.toString(), i, 1);
+                     }
+
+				}catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+			}
+		});
 		GenBtn.setForeground(Color.WHITE);
 		GenBtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		GenBtn.setBackground(new Color(27, 163, 156));

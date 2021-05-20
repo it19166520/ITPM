@@ -562,7 +562,13 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 128), 2, true), "Manage The Room Cannot Be Reserved", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 128)));
 		panel_2.setBackground(new Color(228, 241, 254));
-		panel_2.setBounds(49, 107, 738, 378);
+		panel_2.setBounds(49, 107, 738, 359);
 		contentPane.add(panel_2);
+		
+		JLabel lblNewLabel_2 = new JLabel("*Click \"Load Details Table\" button to fullfill the table");
+		lblNewLabel_2.setForeground(new Color(0, 100, 0));
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		lblNewLabel_2.setBounds(49, 474, 297, 14);
+		contentPane.add(lblNewLabel_2);
 	}
 }

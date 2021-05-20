@@ -80,6 +80,7 @@ public class ManageNotAvailableTime extends JFrame {
 	private JButton clearbtn;
 	private JButton exitbtn;
 	private JButton btnAddNewNot;
+	private JLabel lblNewLabel_1;
 
 	/**
 	 * Launch the application.
@@ -694,7 +695,7 @@ public class ManageNotAvailableTime extends JFrame {
 		panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 128), 2, true), "Manage Not Available Time Allocation", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 128)));
 		panel_2.setBackground(new Color(228, 241, 254));
-		panel_2.setBounds(62, 90, 732, 389);
+		panel_2.setBounds(62, 90, 732, 378);
 		contentPane.add(panel_2);
 		
 		exitbtn = new JButton("Exit\r\n");
@@ -727,5 +728,11 @@ public class ManageNotAvailableTime extends JFrame {
 		btnAddNewNot.setBackground(new Color(25, 25, 112));
 		btnAddNewNot.setBounds(1040, 79, 308, 50);
 		contentPane.add(btnAddNewNot);
+		
+		lblNewLabel_1 = new JLabel("*Click \"Load Details Table\" button to fullfill the table");
+		lblNewLabel_1.setForeground(new Color(0, 100, 0));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		lblNewLabel_1.setBounds(67, 479, 297, 14);
+		contentPane.add(lblNewLabel_1);
 	}
 }
