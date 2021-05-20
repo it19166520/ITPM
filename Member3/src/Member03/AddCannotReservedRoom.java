@@ -262,7 +262,7 @@ public class AddCannotReservedRoom extends JFrame {
 		txtrTimeTableManagement.setBackground(new Color(75, 119, 190));
 		panel.add(txtrTimeTableManagement);
 		
-		JButton btnViewAndManage = new JButton("View And Manage Time Slot");
+		JButton btnViewAndManage = new JButton("View And Manage Room Cannot Be Reserved");
 		btnViewAndManage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ManageRoomCannotBeReserved mn = new ManageRoomCannotBeReserved();
@@ -273,7 +273,7 @@ public class AddCannotReservedRoom extends JFrame {
 		btnViewAndManage.setForeground(Color.WHITE);
 		btnViewAndManage.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		btnViewAndManage.setBackground(new Color(0, 0, 128));
-		btnViewAndManage.setBounds(543, 90, 262, 49);
+		btnViewAndManage.setBounds(495, 90, 373, 49);
 		contentPane.add(btnViewAndManage);
 		
 		JButton add = new JButton("Add Details");

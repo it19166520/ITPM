@@ -263,6 +263,7 @@ public class ManageTimeSlot extends JFrame {
 		});
 		
 		txtID = new JTextField();
+		txtID.setEnabled(false);
 		txtID.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtID.setBackground(new Color(255, 255, 255));
 		txtID.setEditable(false);

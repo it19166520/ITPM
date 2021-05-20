@@ -437,6 +437,7 @@ public class ManageNotAvailableTime extends JFrame {
 		FillLecturerComboBox();
 		
 		txtID = new JTextField();
+		txtID.setEnabled(false);
 		txtID.setFont(new Font("Dialog", Font.BOLD, 11));
 		txtID.setEditable(false);
 		txtID.setColumns(10);

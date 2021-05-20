@@ -308,6 +308,7 @@ public class ManageRoomCannotBeReserved extends JFrame {
 		contentPane.add(id);
 		
 		txtID = new JTextField();
+		txtID.setEnabled(false);
 		txtID.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txtID.setEditable(false);
 		txtID.setColumns(10);

@@ -56,7 +56,7 @@ public class ManageSessionWithDay extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void mngSession() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -280,6 +280,9 @@ public class ManageSessionWithDay extends JFrame {
 		});
 		
 		sessionIDcom = new JTextField();
+		sessionIDcom.setForeground(Color.BLUE);
+		sessionIDcom.setEnabled(false);
+		sessionIDcom.setEditable(false);
 		sessionIDcom.setFont(new Font("Tahoma", Font.BOLD, 13));
 		sessionIDcom.setColumns(10);
 		sessionIDcom.setBackground(Color.WHITE);
@@ -431,6 +434,14 @@ public class ManageSessionWithDay extends JFrame {
 		contentPane.add(updatebtn);
 		
 		JButton clearbtn = new JButton("Clear Details");
+		clearbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtStart.setText(null);
+				txtEnd.setText(null);
+				sessionIDcom.setText(null);
+				txtDaycom.setSelectedIndex(-1);
+			}
+		});
 		clearbtn.setForeground(Color.BLACK);
 		clearbtn.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		clearbtn.setBackground(Color.CYAN);
@@ -438,6 +449,13 @@ public class ManageSessionWithDay extends JFrame {
 		contentPane.add(clearbtn);
 		
 		JButton btnAddNewSession = new JButton("Add New Session With Day & Times");
+		btnAddNewSession.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				AddSessionWithDay rm= new AddSessionWithDay();
+				dispose();
+			}
+		});
 		btnAddNewSession.setForeground(Color.WHITE);
 		btnAddNewSession.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnAddNewSession.setBackground(new Color(25, 25, 112));

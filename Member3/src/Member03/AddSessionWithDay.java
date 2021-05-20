@@ -73,6 +73,13 @@ public class AddSessionWithDay extends JFrame {
 		}
 	}
 
+	public void clear() {
+		
+		enddTime.setText(null);
+		startTime.setText(null);
+		sessionIDcom.setSelectedIndex(-1);
+		txtDaycom.setSelectedIndex(-1);
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -102,6 +109,13 @@ public class AddSessionWithDay extends JFrame {
 		panel.add(txtrTimeTableManagement);
 		
 		JButton btnViewAndManage_1 = new JButton("View And Manage Sessions Time & Date");
+		btnViewAndManage_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ManageSessionWithDay hp = new ManageSessionWithDay();
+				hp.mngSession();
+				dispose();
+			}
+		});
 		btnViewAndManage_1.setForeground(Color.WHITE);
 		btnViewAndManage_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		btnViewAndManage_1.setBackground(new Color(0, 0, 128));
@@ -109,6 +123,13 @@ public class AddSessionWithDay extends JFrame {
 		contentPane.add(btnViewAndManage_1);
 		
 		JButton btnBackToHome = new JButton("Back To Home");
+		btnBackToHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HomePage p = new HomePage();
+			    p.Homeframe.setVisible(true);
+			    dispose();
+			}
+		});
 		btnBackToHome.setForeground(Color.WHITE);
 		btnBackToHome.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 12));
 		btnBackToHome.setBackground(new Color(25, 25, 112));
@@ -130,6 +151,7 @@ public class AddSessionWithDay extends JFrame {
 		
 		sessionIDcom = new JComboBox();
 		sessionIDcom.setFont(new Font("Tahoma", Font.BOLD, 13));
+		sessionIDcom.setModel(new DefaultComboBoxModel(new String[] {""}));
 		sessionIDcom.setBackground(Color.WHITE);
 		sessionIDcom.setBounds(561, 224, 356, 33);
 		contentPane.add(sessionIDcom);
@@ -291,7 +313,7 @@ public class AddSessionWithDay extends JFrame {
 				}
 				
 			}
-		
+			
 		});
 		add.setForeground(Color.WHITE);
 		add.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
@@ -300,6 +322,15 @@ public class AddSessionWithDay extends JFrame {
 		contentPane.add(add);
 		
 		JButton btnClear1 = new JButton("Clear Details");
+		btnClear1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				enddTime.setText(null);
+				startTime.setText(null);
+				sessionIDcom.setSelectedIndex(-1);
+				txtDaycom.setSelectedIndex(-1);
+				
+			}
+		});
 		btnClear1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		btnClear1.setBackground(new Color(0, 206, 209));
 		btnClear1.setBounds(737, 574, 262, 49);

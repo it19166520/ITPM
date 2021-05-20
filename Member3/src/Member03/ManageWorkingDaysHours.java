@@ -614,6 +614,7 @@ public class ManageWorkingDaysHours extends JFrame {
 		
 		
 		txtID = new JTextField();
+		txtID.setEnabled(false);
 		txtID.setFont(new Font("Dialog", Font.BOLD, 14));
 		txtID.setEditable(false);
 		txtID.setBackground(Color.WHITE);
