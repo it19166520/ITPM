@@ -280,7 +280,7 @@ public class AddManageStGrps extends JFrame {
 		btnClearAdd = new JButton("Clear");
 		btnClearAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				//clear fields
 				ClearFields();
 				
 			}
